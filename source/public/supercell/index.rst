@@ -1,7 +1,11 @@
 
-.. _source/public/supercell/index#supercell:
+.. _supercell:
 
 Supercell
 =========
 
-:doc:`nstoc 1`
+.. toctree::
+    :glob:
+
+    *
+    user/group_permissions

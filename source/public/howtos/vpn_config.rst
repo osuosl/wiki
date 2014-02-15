@@ -1,59 +1,39 @@
 
-.. _source/public/vpn_config#openvpn_client_settings:
+.. _vpn_config:
 
 OpenVPN Client Settings
 =======================
 
-XXX
----
-
-XXX
-~~~
-
-XXX
-^^^
-
-.. _source/public/vpn_config#what_you_need::
 
 What you need:
-^^^^^^^^^^^^^^
+--------------
 
   * OpenVPN
   * client certificate  **<username>.crt**
   * client private key: **<username>.key**
   * server certificate: **ca.crt**
 
-.. _source/public/vpn_config#settings::
 
 Settings:
-""""""""" 
+---------
   * server: **vpn.osuosl.org:1194**
   * type: **Certificate (TLS)**
   * protocol: **UDP**
   * compression: **None** (Note this changed on 08/18/10 - previously LZO was used)
   * device type: **TUN**
 
-.. _source/public/vpn_config#network_manager_linux:
 
 Network Manager (Linux)
 -----------------------
 
-XXX
-~~~
-
-XXX
-^^^
-
-.. _source/public/vpn_config#packages::
 
 Packages:
-^^^^^^^^^
+~~~~~~~~~
+
   * Debian/Ubuntu: **sudo aptitude install openvpn network-manager-openvpn**
 
-.. _source/public/vpn_config#procedure::
-
 Procedure:
-^^^^^^^^^^
+~~~~~~~~~~
   - Copy your key, certificate, and server certificate to a secure location of your choice such as ~/openvpn/.  Set paranoid permissions (-r-x------ or similar).
   - Install Network Manager (installed by default in many Linux distributions)
   - Install the Network Manager OpenVPN package
@@ -75,34 +55,23 @@ Procedure:
     * **ifconfig -a**: IP address should be in the 10.2.*.* range.
     * **ping 10.2.0.1**: The router should respond
 
-.. _source/public/vpn_config#trouble_shooting:
 
 Trouble shooting
-^^^^^^^^^^^^^^^^
-Shotgun style - try again, reboot, disable network devices, do the chicken dance. If all else fails, try the command line version. If that works, try this again, maybe it just didn't like you the first time.
-
-.. _source/public/vpn_config#openvpn_command-line_client:
+~~~~~~~~~~~~~~~~
+Shotgun style - try again, reboot, disable network devices, do the
+chicken dance. If all else fails, try the command line version. If that
+works, try this again, maybe it just didn't like you the first time.
 
 OpenVPN command-line client
 ---------------------------
 
-XXX
-~~~
-
-XXX
-^^^
-
-.. _source/public/vpn_config#packages::
-
 Packages:
-^^^^^^^^^
+~~~~~~~~~
   * Debian/Ubuntu: **sudo aptitude install openvpn**
   * Gentoo: **sudo emerge openvpn**.  For detailed instructions, including kernel configuration see http://en.gentoo-wiki.com/wiki/OpenVPN.
 
-.. _source/public/vpn_config#procedure::
-
 Procedure:
-^^^^^^^^^^
+~~~~~~~~~~
   - Copy your key, certificate, and server certificate to a secure location of your choice such as /etc/openvpn/.  Set paranoid permissions (-r-x------ or similar).
   - Create a configuration file in a location of your choice such as /etc/openvpn/openvpn.conf.  Here is an example configuration file:
 ::

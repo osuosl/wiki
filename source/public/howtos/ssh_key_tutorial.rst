@@ -1,10 +1,8 @@
 
-.. _source/public/ssh_key_tutorial#generating_an_ssh_key_pair:
+.. _generating_an_ssh_key_pair:
 
 Generating an SSH Key Pair
 ==========================
-
-.. _source/public/ssh_key_tutorial#why:
 
 Why?
 ----
@@ -14,12 +12,8 @@ SSH keys have numerous advantages over passwords
   - Type less passwords: You can use ssh-agent to cache your key, so you can use ssh without typing your password every time
   - Automated scripts: Because you don't need to type your password every time, its easier to automate tasks that require ssh
 
-.. _source/public/ssh_key_tutorial#how:
-
 How?
 ----
-
-.. _source/public/ssh_key_tutorial#linux/os_x_short_version:
 
 Linux/OS X (Short Version)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -30,8 +24,6 @@ Linux/OS X (Short Version)
 
   - Accept the default location, and enter a secure passphrase that you (and only you) will remember.
   - Email us the contents of ~/.ssh/id_rsa.pub
-
-.. _source/public/ssh_key_tutorial#linux/os_x_detailed:
 
 Linux/OS X (Detailed)
 ~~~~~~~~~~~~~~~~~~~~~
@@ -51,8 +43,6 @@ The OSL recommends using RSA over DSA because DSA keys are required to be only 1
   - If you are creating this key for use with an OSL SSH account, copy and paste the public key into your ticket. If we didn't ask you for a public key but you want one added to your account email it to support@osuosl.org, being sure to specify who you are and what project(s) you are associated with.
   - Or, to use the public key on a computer under your control, add it to ~/.ssh/authorized_keys (you can specify multiple public keys, one per line).
   - Never share your private key file, only the public key file.
-
-.. _source/public/ssh_key_tutorial#windows_using_putty:
 
 Windows (using putty)
 ---------------------

@@ -1,9 +1,10 @@
 
-.. _source/public/ibmpower/index#ibm_power_documentation:
+.. _ibm-power-documentation:
 
 IBM POWER Documentation
 =======================
 
-:doc:`nstoc 1`
+.. toctree::
+    :glob:
 
-~~NOCACHE~~
+    *
