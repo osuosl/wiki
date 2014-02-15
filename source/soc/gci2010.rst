@@ -1,0 +1,77 @@
+
+.. _source/soc/gci2010#google_code-in_2010_ideas:
+
+Google Code-In 2010 Ideas
+=========================
+
+Initial tasks, more to be added later.
+
+We are also offering mentoring resources to assist partner projects who have tasks that they would not normally be able to mentor.  If the projects accept our assistance, we will add the tasks they would like us to assist with here.
+
+.. _source/soc/gci2010#ganeti_web_manager:
+
+Ganeti Web Manager
+------------------
+`Ganeti Web Manager <http://code.osuosl.org/projects/ganeti-webmgr>`_ is a Django based web application that allows administrators and clients access to their ganeti clusters. It includes a permissions and quota system that allows administrators to grant access to both clusters and virtual machines. It also includes user groups for structuring access to organizations.
+
+  * `#273 - Deleting a User/Group from a Cluster does not remove custom Quota <http://code.osuosl.org/issues/273>`_
+  * `#429 - when refreshing cached objects, mtime should be checked for update <http://code.osuosl.org/issues/429>`_
+  * `#597 - Implement pagination and or incremental loading for Cluster Detail > Virtual Machines <http://code.osuosl.org/issues/597>`_
+  * `#699 - SLUG should be automatically set <http://code.osuosl.org/issues/699>`_
+  * `#849 - Ganeti Web Manager needs a logo <http://code.osuosl.org/issues/849>`_
+  * `#855 - Improve installation documentation <http://code.osuosl.org/issues/855>`_
+
+`more... <http://trac.osuosl.org/trac/touchscreen/report/3>`_
+
+.. _source/soc/gci2010#touchscreen:
+
+Touchscreen
+-----------
+`Touchscreen <http://trac.osuosl.org/trac/touchscreen>`_ is a framework for developing interactive kiosk displays. Touchscreen powers the display screen used outside the Open Source Lab's server room. We use a 42" LCD flat screen, with a 17" touchscreen display to control it.
+
+  * `#12 	Implement Interface for editing menus <http://trac.osuosl.org/trac/touchscreen/ticket/12>`_
+  * `#13 	Implement Menu view <http://trac.osuosl.org/trac/touchscreen/ticket/13>`_
+  * `#72 	Enable multiple instances of a single plugin <http://trac.osuosl.org/trac/touchscreen/ticket/72>`_
+  * `#29 	implement menu transition plugins <http://trac.osuosl.org/trac/touchscreen/ticket/29>`_
+
+`more... <http://code.osuosl.org/projects/ganeti-webmgr/issues>`_
+
+.. _source/soc/gci2010#pydra:
+
+Pydra
+-----
+`Pydra <http://pydra-project.osuosl.org/>`_ is a distributed and parallel computing framework for python. Pydra aims to provide an easy to use framework for writing and running distributed programs for developers, and an easy to manage cluster for the administrators.
+
+  * `#129 Datasource - Django ORM <http://pydra-project.osuosl.org/ticket/129>`_
+  * `#138 	Deleting a node runninga task causes errors <http://pydra-project.osuosl.org/ticket/138>`_
+  * `#184 	Lack of permissions redirects to login page even when logged in already. <http://pydra-project.osuosl.org/ticket/184>`_
+  * `#154 	implement changing task priority <http://pydra-project.osuosl.org/ticket/154>`_
+  * `#84 	Jobs View - Ajax updates do not add tasks from other users <http://pydra-project.osuosl.org/ticket/84>`_
+  * `#192 	Module Manager should have register(module) and deregister(module) functions <http://pydra-project.osuosl.org/ticket/192>`_
+  * `#124 	Modules - asynchronous signals <http://pydra-project.osuosl.org/ticket/124>`_
+  * `#148 	Implement Task Schedules <http://pydra-project.osuosl.org/ticket/148>`_
+
+`more... <http://pydra-project.osuosl.org/report/3>`_
+
+.. _source/soc/gci2010#openconferenceware_android:
+
+OpenConferenceWare Android
+--------------------------
+
+An Android application for viewing conference information such as sessions, speakers, and schedules.
+
+`OpenConferenceWare Android <http://code.osuosl.org/projects/ocw-android>`_ is a base from which a schedule app can be built for any conference. It is designed to pull data from OpenConferenceWare, but can work with any service that implements the data format.
+
+The app has been deployed for:
+Open Source Bridge 2010
+OSCON 2010
+
+   * `#81 - Store data in sqllite database <http://code.osuosl.org/issues/81>`_
+   * `#69 - Add Search <http://code.osuosl.org/issues/69>`_ 
+
+.. _source/soc/gci2010#postgres:
+
+Postgres
+--------
+
+The Postgres team is gathering tasks - from their `todo list <http://wiki.postgresql.org/wiki/Todo>`_ and their advocacy group - that we will assist them with mentoring.
