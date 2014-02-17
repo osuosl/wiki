@@ -8,10 +8,13 @@ Welcome to OSUOSL's Public documentation!
 
 .. toctree::
     :maxdepth: 2
+    :glob:
 
-    public/index
     soc/index
-
+    ganeti/index
+    supercell/index
+    ibmpower/index
+    howtos/*
 
 Indices and tables
 ------------------
