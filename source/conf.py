@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# OSUOSL Public documentation build configuration file, created by
+# OSL Wiki documentation build configuration file, created by
 # sphinx-quickstart on Fri Feb 14 17:25:30 2014.
 #
 # This file is execfile()d with the current directory set to its
@@ -43,8 +43,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'OSUOSL Public'
-copyright = u'2014, OSU Open Source Lab'
+project = u'OSL Wiki'
+copyright = u'2014, Oregon State University'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -176,7 +176,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'OSUOSLPublicdoc'
+htmlhelp_basename = 'OSLWikidoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -196,7 +196,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'OSUOSLPublic.tex', u'OSUOSL Public Documentation',
+  ('index', 'OSLWiki.tex', u'OSL Wiki Documentation',
    u'OSU Open Source Lab', 'manual'),
 ]
 
@@ -226,7 +226,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'osuoslpublic', u'OSUOSL Public Documentation',
+    ('index', 'oslwiki', u'OSL Wiki Documentation',
      [u'OSU Open Source Lab'], 1)
 ]
 
@@ -240,8 +240,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'OSUOSLPublic', u'OSUOSL Public Documentation',
-   u'OSU Open Source Lab', 'OSUOSLPublic', 'One line description of project.',
+  ('index', 'OSLWiki', u'OSL Wiki Documentation',
+   u'OSU Open Source Lab', 'OSLWiki', 'One line description of project.',
    'Miscellaneous'),
 ]
 
