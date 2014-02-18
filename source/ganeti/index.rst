@@ -1,11 +1,12 @@
 
-.. _source/public/ganeti/index#ganeti:
+.. _ganeti-public:
 
 Ganeti
 ======
 
 Here's a list of documentation for Ganeti that we've written.
 
-:doc:`nstoc 1`
+.. toctree::
+    :glob:
 
-~~NOCACHE~~
+    *

@@ -3,17 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to OSUOSL Public's documentation!
------------------------------------------
-
-Contents:
+Welcome to the OSL Wiki!
+========================
 
 .. toctree::
     :maxdepth: 2
+    :glob:
 
-    public/index
     soc/index
-
+    ganeti/index
+    supercell/index
+    ibmpower/index
+    howtos/*
 
 Indices and tables
 ------------------
