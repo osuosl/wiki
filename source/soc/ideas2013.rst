@@ -32,7 +32,7 @@ Expectations
 ~~~~~~~~~~~~
 It's important when starting a new relationship like this that both sides are aware of the expectations involved.  We're a pretty easygoing bunch here at the OSL - we're far more interested in building neat stuff than we are about rigidly following some policies and procedures manual.  However, we do have some pretty simple expectations:
 
-  - *Good communication is vital.*  If we accept your proposal, we expect you to be talking to your mentor on at least a weekly basis.  The method of communication - phone, e-mail, :doc:`IRC, <irc///irc.freenode.net/%23osuosl>` `carrier pigeon <http://www.faqs.org/rfcs/rfc1149.html>`_ - is up to you and your mentor, but the weekly contact is absolutely mandatory.  Exceptions are possible, but only if pre-arranged.  If we haven't heard from you in a week, your mentor will attempt to contact you with a friendly reminder.  If we don't hear from you after the reminder, we'll send you a formal warning.  If you don't respond to the formal warning, it is likely we will be submitting a negative evaluation to Google recommending you be dropped from the program.  It sounds dire, but it's easy to avoid: just keep in touch.
+  - *Good communication is vital.*  If we accept your proposal, we expect you to be talking to your mentor on at least a weekly basis.  The method of communication - phone, e-mail, :doc:`IRC, <irc://irc.freenode.net/%23osuosl>` `carrier pigeon <http://www.faqs.org/rfcs/rfc1149.html>`_ - is up to you and your mentor, but the weekly contact is absolutely mandatory.  Exceptions are possible, but only if pre-arranged.  If we haven't heard from you in a week, your mentor will attempt to contact you with a friendly reminder.  If we don't hear from you after the reminder, we'll send you a formal warning.  If you don't respond to the formal warning, it is likely we will be submitting a negative evaluation to Google recommending you be dropped from the program.  It sounds dire, but it's easy to avoid: just keep in touch.
   - *Commit early and commit often.*  As mentors, we need to see the code you're working on.  It's really difficult to help someone if we can't see what you're doing.  We won't require anything as rigid as scheduled code check-ins, but the more often you share what you're working on with the rest of us, the better things will go.  There is one caveat: we absolutely have to have **some** code from you before the mid-term evaluation.  We need something upon which to base our evaluation.
   - *You're part of the team.*  We're very egalitarian here at the OSL. We firmly believe that once someone is a member of the OSL you are always a member, regardless of whether you are with us as an SoC student, a community volunteer, or as an employee of the Lab.  Before, during, or after the Summer of Code.  Much of what we do is driven by consensus and we're not strong on hierarchy, so please don't hesitate to jump right in and express your opinions!
 
@@ -58,7 +58,7 @@ Ganeti Web Manager
 
 `Ganeti Web Manager <http://code.osuosl.org/projects/ganeti-webmgr>`_ is a Django based web application that allows administrators and clients access to their `Ganeti virtualization clusters <http://code.google.com/p/ganeti/>`_.  Through Ganeti Web Manager users can deploy and manage virtual servers.  Ganeti Web Manager is being built by the Open Source Lab to support `Supercell <http://supercell.osuosl.org>`_, a testing cloud for open source projects.
 
-If you would like to get started with playing with Ganeti, we recommend you checkout our :doc:`Ganeti Vagrant Development/Testing Environment <https///github.com/ramereth/vagrant-ganeti>` (look at the README for instructions). It uses VirtualBox to create a small Ganeti cluster on your own computer so you can understand the basics. Additionally we recommend you read the `Ganeti Walk-through documentation <http://docs.ganeti.org/ganeti/current/html/walkthrough.html>`_ to familiarize yourself with Ganeti. You can also checkout this `Ganeti Tutorial Guide <http://www.lancealbertson.com/wp-content/uploads/2012/06/GanetiTutorialPDFSheet.pdf>`_ to do some hands on command line familiarization. 
+If you would like to get started with playing with Ganeti, we recommend you checkout our :doc:`Ganeti Vagrant Development/Testing Environment <https://github.com/ramereth/vagrant-ganeti>` (look at the README for instructions). It uses VirtualBox to create a small Ganeti cluster on your own computer so you can understand the basics. Additionally we recommend you read the `Ganeti Walk-through documentation <http://docs.ganeti.org/ganeti/current/html/walkthrough.html>`_ to familiarize yourself with Ganeti. You can also checkout this `Ganeti Tutorial Guide <http://www.lancealbertson.com/wp-content/uploads/2012/06/GanetiTutorialPDFSheet.pdf>`_ to do some hands on command line familiarization. 
 
 Visit our irc channel **#ganeti-webmgr** on freenode for help getting started. 
 
@@ -67,13 +67,13 @@ Visit our irc channel **#ganeti-webmgr** on freenode for help getting started.
 Projects
 ~~~~~~~~
 
-These projects are only suggested by us. Please feel free to look at the :doc:`GWM Issue Tracker <https///code.osuosl.org/projects/ganeti-webmgr/issues>` for more ideas for projects. But please discuss any ideas with us first.
+These projects are only suggested by us. Please feel free to look at the :doc:`GWM Issue Tracker <https://code.osuosl.org/projects/ganeti-webmgr/issues>` for more ideas for projects. But please discuss any ideas with us first.
 
 **`Bulk Operations <http://code.osuosl.org/issues/2745>`_**
 
 *Please talk with us about this project before submitting your proposal.*
 
-We have started working on some of the Bulk operation tasks but this project would likely be mostly focused on the :doc:`Bulk VM Creation <https///code.osuosl.org/issues/2751>` feature. This will require quite a bit of thought on how the UI works and how it will interact with the templating system we've implemented.
+We have started working on some of the Bulk operation tasks but this project would likely be mostly focused on the :doc:`Bulk VM Creation <https://code.osuosl.org/issues/2751>` feature. This will require quite a bit of thought on how the UI works and how it will interact with the templating system we've implemented.
 
 **`Add visualization of clusters, nodes, and or virtual machines <http://code.osuosl.org/issues/9537>`_**
 
@@ -88,7 +88,7 @@ Currently GWM does not offer any mobile site solution. The goal of this project 
 Vagrant
 -------
 
-`Vagrant <http://www.vagrantup.com/>`_ is an open source tool that we use at the lab quite a bit. It currently supports :doc:`VirtualBox <https///www.virtualbox.org/>` and now more recently VMWare. Vagrant itself is still in a bit of flux over this so we may need to work with upstream on the viability of adding this feature.
+`Vagrant <http://www.vagrantup.com/>`_ is an open source tool that we use at the lab quite a bit. It currently supports :doc:`VirtualBox <https://www.virtualbox.org/>` and now more recently VMWare. Vagrant itself is still in a bit of flux over this so we may need to work with upstream on the viability of adding this feature.
 
 .. _source/soc/ideas2013#projects:
 
@@ -110,7 +110,7 @@ The scope of the project would likely be:
 Openconferenceware-Android
 --------------------------
 
-:doc:`Openconferenceware-android <https///github.com/osuosl/ocw-android>` is an open source project we started three years ago to provide an android conference app for Open Source Bridge. Since then its unfortunately been neglected by us and has been mostly taken care of by Igal's :doc:`fork of OCW-Android <https///github.com/igal/opensourcebridge-android>`. It was also used at OSCON in 2010. Please also take a look at the :doc:`project page <https///code.osuosl.org/projects/ocw-android>` for background info and documentation.
+:doc:`Openconferenceware-android <https://github.com/osuosl/ocw-android>` is an open source project we started three years ago to provide an android conference app for Open Source Bridge. Since then its unfortunately been neglected by us and has been mostly taken care of by Igal's :doc:`fork of OCW-Android <https://github.com/igal/opensourcebridge-android>`. It was also used at OSCON in 2010. Please also take a look at the :doc:`project page <https://code.osuosl.org/projects/ocw-android>` for background info and documentation.
 
 We intend to re-launch the project and try to merge in the changes that Igal and others have done to try and unify the project.
 
@@ -131,14 +131,14 @@ We don't have any specific features we'd like to add but taking a look at the va
 
 **Make the app more flexible to other conference data formats**
 
-Right now the application will only work with :doc:`Openconferenceware's <https///github.com/igal/openconferenceware>` data format which isn't very flexible. In the past we wrote a small Django application called :doc:`ocw-android-oscon-dataservice <https///github.com/osuosl/ocw-android-oscon-dataservice>` which screen scraped the OSCON site to generate a format that worked. Its not the most ideal solution but it worked at the time. It would be nice to have a more unified way to make this work whether you're using Drupal to run a conference or whatever else.
+Right now the application will only work with :doc:`Openconferenceware's <https://github.com/igal/openconferenceware>` data format which isn't very flexible. In the past we wrote a small Django application called :doc:`ocw-android-oscon-dataservice <https://github.com/osuosl/ocw-android-oscon-dataservice>` which screen scraped the OSCON site to generate a format that worked. Its not the most ideal solution but it worked at the time. It would be nice to have a more unified way to make this work whether you're using Drupal to run a conference or whatever else.
 
 .. _source/soc/ideas2013#ganeti_instance_image:
 
 Ganeti Instance Image
 ---------------------
 
-:doc:`Ganeti Instance Image <https///code.osuosl.org/projects/ganeti-image>` is a guest OS definition for Ganeti that uses either filesystem dumps or tar ball images to deploy instances. The goal of this OS definition is to allow fast and flexible installation of instances without the need for external tools such as debootstrap. It was originally based on :doc:`ganeti-instance-debootstrap <https///code.google.com/p/ganeti/>`.
+:doc:`Ganeti Instance Image <https://code.osuosl.org/projects/ganeti-image>` is a guest OS definition for Ganeti that uses either filesystem dumps or tar ball images to deploy instances. The goal of this OS definition is to allow fast and flexible installation of instances without the need for external tools such as debootstrap. It was originally based on :doc:`ganeti-instance-debootstrap <https://code.google.com/p/ganeti/>`.
 
 .. _source/soc/ideas2013#projects:
 
@@ -147,7 +147,7 @@ Projects
 
 **`Add support for OS Parameters <http://code.osuosl.org/issues/9549>`_**
 
-**:doc:`Add support for shared file <https///code.osuosl.org/issues/12159>`**
+**:doc:`Add support for shared file <https://code.osuosl.org/issues/12159>`**
 
 .. _source/soc/ideas2013#ganeti:
 
@@ -177,17 +177,17 @@ We have other projects that you might be interested in however we don't have a s
 Protein Geometry Database (PGD)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:doc:`Protein Geometry Database <https///code.osuosl.org/projects/pgd>` is a specialized search engine for protein geometry. It allows you to explore either protein conformation or protein covalent geometry or
+:doc:`Protein Geometry Database <https://code.osuosl.org/projects/pgd>` is a specialized search engine for protein geometry. It allows you to explore either protein conformation or protein covalent geometry or
 the correlations between protein conformation and bond angles and lengths. It is primarily a django project with a lot of javascript logic built into it. This project is a joint venture between the OSUOSL and the `Oregon State University Biochemistry department <http://biochem.science.oregonstate.edu/>`_ on campus.
 
-Feel free to take a look at the :doc:`PGD Issue Tracker <https///code.osuosl.org/projects/pgd/issues>` for ideas but *please discuss any potential ideas with us first before pursuing them*.
+Feel free to take a look at the :doc:`PGD Issue Tracker <https://code.osuosl.org/projects/pgd/issues>` for ideas but *please discuss any potential ideas with us first before pursuing them*.
 
 .. _source/soc/ideas2013#touchscreen:
 
 Touchscreen
 ~~~~~~~~~~~
 
-:doc:`Touchscreen <https///code.osuosl.org/projects/touchscreen>` is a framework for developing interactive kiosk displays. Touchscreen powers the display screen used outside the Open Source Lab's server room. We use a 42" LCD flat screen, with a 17" touchscreen display to control it. Screens are built using HTML, CSS, and Javascript and the backend is powered via Django. Touchscreen was a :ref:`GSoC 2010 <https///wiki.osuosl.org/soc/ideas2010#touchscreen_20>` project and was very successful.
+:doc:`Touchscreen <https://code.osuosl.org/projects/touchscreen>` is a framework for developing interactive kiosk displays. Touchscreen powers the display screen used outside the Open Source Lab's server room. We use a 42" LCD flat screen, with a 17" touchscreen display to control it. Screens are built using HTML, CSS, and Javascript and the backend is powered via Django. Touchscreen was a :ref:`GSoC 2010 <https://wiki.osuosl.org/soc/ideas2010#touchscreen_20>` project and was very successful.
 
 Unfortunately over time the project has been left unmaintained due to staff time and it horribly outdated (i.e. still uses a very old version of Django). We would like to revive the project with some renewed focus. Please take a look at the project and discuss with us any ideas you are interested in.
 

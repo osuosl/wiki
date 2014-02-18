@@ -54,7 +54,7 @@ Adding SSH Keys
 
 Now you need to add your ssh key to Ganeti Web Manager.
 
-  - Login into the :doc:`Supercell Ganeti Web Manager <https///ganeti-supercell.osuosl.org>` site.
+  - Login into the :doc:`Supercell Ganeti Web Manager <https://ganeti-supercell.osuosl.org>` site.
   - Click on your username in the upper right hand corner
   - Click on "Add SSH key" and copy/paste your public key
 
