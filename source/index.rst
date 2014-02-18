@@ -7,14 +7,13 @@ Welcome to the OSL Wiki!
 ========================
 
 .. toctree::
-    :maxdepth: 2
-    :glob:
+    :maxdepth: 1
 
     soc/index
     ganeti/index
     supercell/index
     ibmpower/index
-    howtos/*
+    howtos/index
 
 Indices and tables
 ------------------
