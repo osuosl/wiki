@@ -9,7 +9,7 @@ Welcome to the OSL Wiki!
 .. toctree::
     :maxdepth: 1
 
-    soc/index
+    gsoc/index
     ganeti/index
     supercell/index
     ibmpower/index
