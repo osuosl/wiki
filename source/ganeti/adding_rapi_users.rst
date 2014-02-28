@@ -1,24 +1,20 @@
-
-.. _source/public/ganeti/adding_rapi_users#adding_rapi_users_to_ganeti:
-
 Adding RAPI users to Ganeti
 ===========================
 
 To add a user to the RAPI in Ganeti you need to do the following:
 
-  - Pick a username and a good password ( usually ganeti-webmgr and $ pwgen -s -n 20 -1)
-  - Create a hash using the example below
-  - Add to /var/lib/ganeti/rapi_users
-  - Restart Ganeti
-
-.. _source/public/ganeti/adding_rapi_users#creating_a_hash:
+- Pick a username and a good password ( usually ganeti-webmgr and ``$ pwgen -s
+  -n 20 -1``)
+- Create a hash using the example below
+- Add to ``/var/lib/ganeti/rapi_users``
+- Restart Ganeti
 
 Creating a hash
 ---------------
 
 On any machine that has the openssl libraries, do the following:
 
-::
+.. code-block:: bash
 
     # username: john
     # password: p4ssw0rd
@@ -32,12 +28,10 @@ On any machine that has the openssl libraries, do the following:
 
 .. note::
 
-    The location of the file used to be /var/lib/ganeti/rapi_users prior to Ganeti 2.4
-xxx
-
-.. _source/public/ganeti/adding_rapi_users#references:
+  The location of the file used to be ``/var/lib/ganeti/rapi_users`` prior to
+  Ganeti 2.4
 
 References
 ----------
-  * `Ganeti RAPI Users documentation <http://docs.ganeti.org/ganeti/current/html/rapi.html#users-and-passwords>`_
-
+- `Ganeti RAPI Users documentation
+  <http://docs.ganeti.org/ganeti/current/html/rapi.html#users-and-passwords>`_
