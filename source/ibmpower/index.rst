@@ -5,6 +5,7 @@ IBM POWER Documentation
 =======================
 
 .. toctree::
+    :maxdepth: 1
     :glob:
 
     *

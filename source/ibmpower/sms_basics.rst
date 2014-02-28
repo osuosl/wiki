@@ -1,21 +1,15 @@
-
-.. _source/public/ibmpower/sms_basics#ibm_power_sms_basics:
-
 IBM Power SMS Basics
 ====================
 
-SMS (System Management Services) is the eqivalent to the "BIOS" of an IBM POWER machine. For our use we primarily use it to change the boot order on the machine.
-
-:doc:`nstoc sms_basics 2`
-
-.. _source/public/ibmpower/sms_basics#getting_into_sms:
+SMS (System Management Services) is the eqivalent to the "BIOS" of an IBM POWER
+machine. For our use we primarily use it to change the boot order on the
+machine.
 
 Getting into SMS
 ----------------
 
-When the machine first boots up, press "1" a few times till the main menu shows up.
-
-::
+When the machine first boots up, press "1" a few times till the main menu shows
+up::
 
     IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM
     IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM
@@ -41,19 +35,13 @@ When the machine first boots up, press "1" a few times till the main menu shows 
 
          Memory      Keyboard     Network     SCSI
 
-.. _source/public/ibmpower/sms_basics#change_one-time_boot_order:
-
 Change One-time Boot Order
 --------------------------
-
-.. _source/public/ibmpower/sms_basics#quick_howto:
 
 Quick Howto
 ~~~~~~~~~~~
 
 **Press 5, 1, 7, 2 (or which ever is the CDROM), 2, 1**
-
-.. _source/public/ibmpower/sms_basics#boot_options:
 
 Boot Options
 ~~~~~~~~~~~~
@@ -78,8 +66,6 @@ Boot Options
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:5
 
-.. _source/public/ibmpower/sms_basics#boot_device:
-
 Boot Device
 ~~~~~~~~~~~
 
@@ -101,8 +87,6 @@ Boot Device
      ESC key = return to previous screen         X = eXit System Management Services
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:1
-
-.. _source/public/ibmpower/sms_basics#list_all:
 
 List All
 ~~~~~~~~
@@ -129,8 +113,6 @@ List All
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:7
 
-.. _source/public/ibmpower/sms_basics#select_cdrom:
-
 Select CDROM
 ~~~~~~~~~~~~
 
@@ -154,8 +136,6 @@ Select CDROM
      ESC key = return to previous screen         X = eXit System Management Services
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:2
-
-.. _source/public/ibmpower/sms_basics#normal_boot_mode:
 
 Normal Boot Mode
 ~~~~~~~~~~~~~~~~
@@ -182,7 +162,6 @@ Normal Boot Mode
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:2
 
-.. _source/public/ibmpower/sms_basics#exit:
 
 Exit
 ~~~~
@@ -204,19 +183,13 @@ Exit
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:2
 
-.. _source/public/ibmpower/sms_basics#change_default_boot_order:
-
 Change Default Boot Order
 -------------------------
-
-.. _source/public/ibmpower/sms_basics#quick_howto:
 
 Quick Howto
 ~~~~~~~~~~~
 
 **5, 2, 1, 8, (choose device), 2, x, 1**
-
-.. _source/public/ibmpower/sms_basics#boot_options:
 
 Boot Options
 ~~~~~~~~~~~~
@@ -241,8 +214,6 @@ Boot Options
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:5
 
-.. _source/public/ibmpower/sms_basics#boot_device_order:
-
 Boot Device Order
 ~~~~~~~~~~~~~~~~~
 
@@ -264,8 +235,6 @@ Boot Device Order
      ESC key = return to previous screen         X = eXit System Management Services
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:2
-
-.. _source/public/ibmpower/sms_basics#configure_boot_device_order:
 
 Configure Boot Device Order
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -292,8 +261,6 @@ Configure Boot Device Order
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:1
 
-.. _source/public/ibmpower/sms_basics#select_device_type:
-
 Select Device Type
 ~~~~~~~~~~~~~~~~~~
 
@@ -319,8 +286,6 @@ Select Device Type
      ESC key = return to previous screen         X = eXit System Management Services
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:8
-
-.. _source/public/ibmpower/sms_basics#select_device:
 
 Select Device
 ~~~~~~~~~~~~~
@@ -349,8 +314,6 @@ Select Device
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:
 
-.. _source/public/ibmpower/sms_basics#set_boot_sequence:
-
 Set Boot Sequence
 ~~~~~~~~~~~~~~~~~
 
@@ -374,8 +337,6 @@ Set Boot Sequence
      ESC key = return to previous screen         X = eXit System Management Services
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:2
-
-.. _source/public/ibmpower/sms_basics#current_boot_sequence:
 
 Current Boot Sequence
 ~~~~~~~~~~~~~~~~~~~~~
@@ -402,8 +363,6 @@ Current Boot Sequence
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:x
 
-.. _source/public/ibmpower/sms_basics#exit_sms:
-
 Exit SMS
 ~~~~~~~~
 
@@ -424,14 +383,11 @@ Exit SMS
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:1
 
-.. _source/public/ibmpower/sms_basics#show_mac_address:
-
 Show MAC Address
 ----------------
 
-If you want to find the MAC address for an LPAR prior to it booting, do the following.
-
-.. _source/public/ibmpower/sms_basics#select_remote_ipl:
+If you want to find the MAC address for an LPAR prior to it booting, do the
+following.
 
 Select Remote IPL
 ~~~~~~~~~~~~~~~~~
@@ -456,8 +412,6 @@ Select Remote IPL
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:2
 
-.. _source/public/ibmpower/sms_basics#mac_address:
-
 MAC Address
 ~~~~~~~~~~~
 
@@ -479,9 +433,8 @@ MAC Address
      -------------------------------------------------------------------------------
      Type menu item number and press Enter or select Navigation key:
 
-.. _source/public/ibmpower/sms_basics#references:
-
 References
 ----------
 
-  * `IBM SMS Documentation <http://publib.boulder.ibm.com/infocenter/powersys/v3r1m5/index.jsp?topic=/iphb6_p5/sms.htm>`_
+- `IBM SMS Documentation
+  <http://publib.boulder.ibm.com/infocenter/powersys/v3r1m5/index.jsp?topic=/iphb6_p5/sms.htm>`_
