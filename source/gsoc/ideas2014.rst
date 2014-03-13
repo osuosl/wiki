@@ -22,7 +22,7 @@ Data Center Tools
 Project: Infrastructure-wide IPMI Management Console
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Brief Explaination:**
+**Brief Explanation:**
 
 We host a variety of systems in our data center which include a wide array of
 vendors (i.e. Dell, HP, Sun, etc). Each of these machines utilize some type of
