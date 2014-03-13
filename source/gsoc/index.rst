@@ -100,5 +100,12 @@ Email - gsoc-dev@osuosl.org
   chances for acceptance. We're happy to give feedback and suggestions on
   proposals, so it's a good idea talk to us before you submit it.
 
-Project Idea Pages
+Project Ideas 2014
 ------------------
+
+- :ref:`gsoc2014-data-center-tools`                                             
+- :ref:`gsoc2014-ftp-mirror-syncing`                                            
+- :ref:`gsoc2014-osl-dashboard`                                                 
+- :ref:`gsoc2014-ocw-android`                                                   
+- :ref:`gsoc2014-centralized-osl-logging`                                       
+- :ref:`gsoc2014-other-projects` 
