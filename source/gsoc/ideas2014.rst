@@ -59,6 +59,8 @@ FTP Mirror Syncing
 Project: Re-architect OSL FTP Mirror Infrastructure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+**Github Repo**: https://github.com/osuosl/osuosl-mirror-sync
+
 **Brief Explanation:**
 
 The OSL hosts a three-node FTP mirroring cluster to host various FOSS projects’
@@ -135,6 +137,8 @@ understanding. Logging.
 
 OpenConferenceWare Android
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Github Repo**: https://github.com/osuosl/ocw-android
 
 Project: Universal Scheduling API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
