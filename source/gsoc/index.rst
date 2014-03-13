@@ -45,6 +45,11 @@ much want to work with our students on developing and shaping the project. Think
 of this page as a general outline of some of the things we want to do. Don't be
 afraid to propose something that does not exactly match what we have below.
 
+You should also read the `GSOC student guide`_ and `GSOC FAQ`_.
+
+.. _GSOC student guide: http://en.flossmanuals.net/GSoCStudentGuide/
+.. _GSOC FAQ: https://www.google-melange.com/gsoc/document/show/gsoc_program/google/gsoc2014/help_page
+
 Expectations
 ~~~~~~~~~~~~
 
