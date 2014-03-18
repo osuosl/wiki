@@ -1,3 +1,5 @@
+.. _ganeti-cluster-gentoo:
+
 Building a Ganeti Cluster on Gentoo
 ===================================
 

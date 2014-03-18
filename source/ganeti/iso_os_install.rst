@@ -1,3 +1,5 @@
+.. _ganeti-iso-install:
+
 Installing an OS with an ISO using Ganeti
 =========================================
 

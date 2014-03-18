@@ -1,3 +1,5 @@
+.. _ganeti-how-it-works:
+
 How Ganeti works - The Basics
 =============================
 

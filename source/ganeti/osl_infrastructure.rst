@@ -1,3 +1,5 @@
+.. _ganeti-osl-infrastructure:
+
 Ganeti OSL Infrastructure
 =========================
 

@@ -1,3 +1,5 @@
+.. _ganeti-common-commands:
+
 Common Ganeti Commands
 ======================
 

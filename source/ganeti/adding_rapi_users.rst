@@ -1,3 +1,5 @@
+.. _ganeti-adding-rapi-users:
+
 Adding RAPI users to Ganeti
 ===========================
 
