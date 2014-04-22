@@ -1,8 +1,7 @@
+.. _power-linux:
 
-.. _power-linux-documentation:
-
-PowerLinux Documentation
-========================
+PowerLinux
+==========
 
 .. toctree::
     :maxdepth: 1
