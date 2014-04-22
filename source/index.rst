@@ -12,7 +12,7 @@ Welcome to the OSL Wiki!
     gsoc/index
     ganeti/index
     supercell/index
-    ibmpower/index
+    powerlinux/index
     howtos/index
 
 Indices and tables
