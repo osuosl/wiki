@@ -5,7 +5,7 @@ Creating a new virtual machine in Supercell is as easy as filling out a form to
 select your CPUs, RAM, disk space, and operating system.
 
 Too Long, Didn't Read Version
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 - Be sure you enable an ssh key for your account
 - Create a VM
