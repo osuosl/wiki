@@ -121,3 +121,15 @@ Make sure all the kvm modules are loaded::
 
   To work around the ``ceilometer`` issue, one option is maybe using an x86_64
   host as a controller.
+
+Fixing Firewalld After Reboot
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Right now if you reboot any of the powerkvm boxes, the firewalld settings are not saved properly.
+
+To fix this just re-run the packstack script:
+
+.. code-block:: bash
+
+  # $answers is the answers.txt file that was generated at the beginning.
+    packstack --answer-file=$answers
