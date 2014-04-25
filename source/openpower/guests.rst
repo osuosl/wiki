@@ -64,9 +64,9 @@ OpenPOWER machines directly.
 10. Run the following command (NOTE: this is just a short URL to the `github
     file`__)::
 
-      wget -O - http://goo.gl/t2b9cp | bash
+      wget -O - http://goo.gl/TznQfr | bash
 
-.. __: https://raw.githubusercontent.com/osuosl/packer-templates/master/powerkvm/postinstall-openstack-yum.sh
+.. __: https://raw.githubusercontent.com/osuosl/packer-templates/master/openpower/postinstall-openstack-yum.sh
 
 11. Compress and import image into Openstack::
 
