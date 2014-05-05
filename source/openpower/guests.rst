@@ -63,8 +63,16 @@ of the OpenPOWER machines directly.
 
     install url=http://osl.io/preseeddebian debian-installer/locale=en_US console-keymaps-at/keymap=us keyboard-configuration/xkb-keymap=us netcfg/get_hostname=unassigned-hostname netcfg/get_domain=unassigned-domain
 
+6c. **Ubuntu:**
+
+   When the yaboot prompt comes up, copy and paste the following in (NOTE: this
+   is a short URL to the `github file`__)::
+
+    install-powerpc64 url=http://osl.io/preseedubuntu debian-installer/locale=en_US console-keymaps-at/keymap=us keyboard-configuration/xkb-keymap=us netcfg/get_hostname=unassigned-hostname netcfg/get_domain=unassigned-domain
+
 .. __: https://raw.githubusercontent.com/osuosl/packer-templates/master/http/ks-fedora-qemu-20-ppc64.cfg
 .. __: http://ftp.osuosl.org/pub/osl/packer-templates/http/preseed-debian-ppc64.cfg
+.. __: http://ftp.osuosl.org/pub/osl/packer-templates/http/preseed-ubuntu-ppc64.cfg
 
 7. Wait for the VM to complete the install automatically and shutdown.
 8. Boot the image up using the newly installed system. Change ``-boot order=d``
@@ -86,8 +94,16 @@ of the OpenPOWER machines directly.
 
       wget -O - http://osl.io/postinstdebian | bash
 
+10c. **Ubuntu:**
+
+    Run the following command (NOTE: this is just a short URL to the `github
+    file`__)::
+
+      wget -O - http://osl.io/postinstubuntu | bash
+
 .. __: https://raw.githubusercontent.com/osuosl/packer-templates/master/openpower/postinstall-openstack-yum.sh
 .. __: https://raw.githubusercontent.com/osuosl/packer-templates/master/openpower/postinstall-openstack-debian.sh
+.. __: https://raw.githubusercontent.com/osuosl/packer-templates/master/openpower/postinstall-openstack-ubuntu.sh
 
 11. Compress and import image into Openstack::
 
