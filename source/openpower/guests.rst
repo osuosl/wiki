@@ -27,14 +27,16 @@ of the OpenPOWER machines directly.
 1. Download the DVD or net install ISO for desired distribution.
 2. Create a 2G qcow2 disk image::
 
-    qemu-img create -f qcow2 fedora-20.qcow2 2G
+    export DISTRO="fedora-20"
+    export DISTRO_ISO="Fedora-20-ppc64-DVD.iso"
+    qemu-img create -f qcow2 $DISTRO.qcow2 2G
 
 3. Boot up the image using kvm manually::
 
     qemu-system-ppc64 --enable-kvm -M pseries -cpu POWER7+_v2.1 -smp 2 -m 1G \
       -nodefaults -nographic -monitor stdio -serial pty -netdev user,id=user.0 \
-      -device virtio-net-pci,netdev=user.0 -cdrom Fedora-20-ppc64-DVD.iso \
-      -drive file=fedora-20.qcow2,if=virtio -boot order=d
+      -device virtio-net-pci,netdev=user.0 -cdrom $DISTRO_ISO -drive \
+      file=$DISTRO.qcow2,if=virtio -boot order=d
 
 4. Note the serial device qemu created::
 
@@ -107,10 +109,10 @@ of the OpenPOWER machines directly.
 
 11. Compress and import image into Openstack::
 
-      qemu-img convert -O qcow2 -c fedora-20.qcow2 fedora-20-compressed.qcow2
+      qemu-img convert -O qcow2 -c $DISTRO.qcow2 $DISTRO-compressed.qcow2
       source keystonerc_admin
-      glance image-create --name fedora20 --disk-format=qcow2 \
-        --container-format=bare < fedora-20-compressed.qcow2
+      glance image-create --name $DISTRO --disk-format=qcow2 \
+        --container-format=bare < $DISTRO-compressed.qcow2
 
 Known Issues
 ------------
