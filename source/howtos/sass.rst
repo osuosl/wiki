@@ -16,6 +16,7 @@ Compass:
 Compass is an `"open-source CSS Authoring Framework"`__.  It's the tool we use to interpret our Sass files and generate CSS from them.  In order to use it, your file structure should look something like this:
 
 ::
+
 	css
 	├── sass
 	│   ├── normalize.scss
@@ -29,6 +30,7 @@ What's most important about the files is that there is a parent directory which 
 To use Compass:
 ---------------
 1. Install_ Compass by running
+
 .. code-block:: bash
 
 	gem update --system
@@ -39,6 +41,7 @@ Once you've got it installed, run gem list to make sure it was installed correct
 2. Open up style.scss in your sass directory, make some edits, and save the file.
 
 3. Once you've made all your changes, cd to the parent directory (which will have your style.css file in it) and run 
+
 .. code-block:: bash
 
 	compass watch
