@@ -37,7 +37,7 @@ Packages:
 Procedure:
 ~~~~~~~~~~
 - Place your key, certificate, and server certificate to a secure location of
-  your choice such as ~/openvpn/.  Set paranoid permissions (-r-x------ or
+  your choice such as ~/.openvpn/.  Set paranoid permissions (-r-x------ or
   similar).
 - Install Network Manager (installed by default in many Linux distributions)
 - Install the Network Manager OpenVPN package
@@ -81,7 +81,7 @@ Packages:
 Procedure:
 ~~~~~~~~~~
 
-- Copy your key, certificate, and server certificate to a secure location of
+- Place your key, certificate, and server certificate to a secure location of
   your choice such as /etc/openvpn/.  Set paranoid permissions (-r-x------ or
   similar).
 - Create a configuration file in a location of your choice such as
