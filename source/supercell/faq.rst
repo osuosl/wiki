@@ -21,8 +21,4 @@ contact us in #supercell on freenode to discuss.
 How can I access a web application hosted on my Supercell VM?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please see the documentation on Connecting to your VMs via SSH. Once you ssh to
-the jumphost, you will be able to setup a proxy in your browser pointing to
-localhost:8080 which will get forwarded to the Supercell cluster. Use your VM's
-IP address to bring it up in your browser. We have plans to implement a VPN, but
-this is not yet complete.
+Please see the documentation on Connecting to your VMs via OpenVPN.

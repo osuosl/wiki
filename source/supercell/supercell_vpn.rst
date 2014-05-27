@@ -1,7 +1,10 @@
 Connecting to a VM via OpenVPN 
 ===============================
 
-The virtual machines on Supercell can be accessed via OpenVPN. Send an email with the following information to support@osuosl.org to request access. 
+.. note:: Previously, connect-proxy was used to provide access to Supercell VMs. That method is now depricated. See the following for connecting via OpenVPN.
+
+
+The virtual machines on Supercell can be accessed via OpenVPN. Send an email with the following information to mailto:support@osuosl.org?subject=Supercell-OpenVPN to request access. 
 
 - Real name
 - Preferred username
@@ -9,7 +12,7 @@ The virtual machines on Supercell can be accessed via OpenVPN. Send an email wit
 - Project name
 
 What you get from us:
---------------
+---------------------
 
 - client certificate  **<username>.crt**
 - client private key: **<username>.key**
@@ -26,8 +29,8 @@ Settings:
 - device type: **TUN**
 
 
-Network Manager (Linux)
------------------------
+Network Manager (Linux) - Preferred Method
+------------------------------------------
 
 Packages:
 ~~~~~~~~~
@@ -139,3 +142,12 @@ Procedure:
 
 - Run OpenVPN: **openvpn /etc/openvpn/openvpn.conf**
 
+OpenVPN for Windows
+-------------------
+
+The OpenVPN Windows installer is available at: http://openvpn.net/index.php/open-source/downloads.html
+
+OpenVPN for Mac
+---------------
+
+OpenVPN software for Mac can be found at: https://code.google.com/p/tunnelblick/
