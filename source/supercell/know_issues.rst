@@ -16,10 +16,6 @@ Renaming a VM does not update DNS pointer
   address. When you rename a VM, a new pointer does not get created, so you will
   still need to use the old hostname to access it via ssh.
 
-VPN Access
-  We are planning to enable VPN access to the Supercell cluster so that you
-  don't need to do ssh forwarding to access the VMs.
-
 Reinstalling sometimes results in an error
   When you issue a reinstall command sometimes there's an error. Its a known
   issue but a workaround hasn't been figured out yet. As a short term solution,
