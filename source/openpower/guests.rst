@@ -31,12 +31,19 @@ of the OpenPOWER machines directly.
     export DISTRO_ISO="Fedora-20-ppc64-DVD.iso"
     qemu-img create -f qcow2 $DISTRO.qcow2 2G
 
-3. Boot up the image using kvm manually::
+3a. Boot up the image using kvm manually (For Big Endian)::
 
     qemu-system-ppc64 --enable-kvm -M pseries -cpu POWER7+_v2.1 -smp 2 -m 1G \
       -nodefaults -nographic -monitor stdio -serial pty -netdev user,id=user.0 \
       -device virtio-net-pci,netdev=user.0 -cdrom $DISTRO_ISO -drive \
       file=$DISTRO.qcow2,if=virtio -boot order=d
+
+3b. Boot up the image using kvm manually (For Little Endian)::
+
+    qemu-system-ppc64 --enable-kvm -M pseries -cpu POWER7+_v2.1 -smp 2 -m 1G \
+      -nodefaults -nographic -monitor stdio -serial pty -netdev user,id=user.0 \
+      -device spapr-vlan,netdev=user.0 -cdrom $DISTRO_ISO -device spapr-vscsi \
+      -drive file=$DISTRO.qcow2 -boot order=d
 
 4. Note the serial device qemu created::
 
