@@ -79,9 +79,22 @@ of the OpenPOWER machines directly.
 
     install-powerpc64 url=http://osl.io/preseedubuntu debian-installer/locale=en_US console-keymaps-at/keymap=us keyboard-configuration/xkb-keymap=us netcfg/get_hostname=unassigned-hostname netcfg/get_domain=unassigned-domain
 
+6d. **Ubuntu 14.04 (Little Endian):**
+
+   When the grub menu comes up, press ``e`` to edit. Find the line that starts
+   with::
+
+    linux        /install/vmlinux
+
+   And then add the following to the end (NOTE: this is just a short URL to the
+   `github file`__) ::
+
+    url=http://osl.io/preseedubuntule debian-installer/locale=en_US console-keymaps-at/keymap=us keyboard-configuration/xkb-keymap=us netcfg/get_hostname=unassigned-hostname netcfg/get_domain=unassigned-domain
+
 .. __: https://raw.githubusercontent.com/osuosl/packer-templates/master/http/ks-fedora-qemu-20-ppc64.cfg
 .. __: http://ftp.osuosl.org/pub/osl/packer-templates/http/preseed-debian-ppc64.cfg
 .. __: http://ftp.osuosl.org/pub/osl/packer-templates/http/preseed-ubuntu-ppc64.cfg
+.. __: http://ftp.osuosl.org/pub/osl/packer-templates/http/preseed-ubuntu-ppc64le.cfg
 
 7. Wait for the VM to complete the install automatically and shutdown.
 8. Boot the image up using the newly installed system. Change ``-boot order=d``
