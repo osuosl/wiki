@@ -9,9 +9,12 @@ OpenPOWER KVM.
 Unfortunately we can't use `packer`_ yet for building images so for now we'll need
 to build them manually on the OpenPOWER boxes. For now we should **only** be
 building images on the hardware itself and not use QEMU emulation on x86. While
-it may work, we have this method as a confirmed way to build the images.
+it may work, we have this method as a confirmed way to build the images. All of
+the configuration and scripts used for building the images are included in our
+`packer-templates`_ github repo.
 
 .. _packer: http://www.packer.io/
+.. _packer-templates: https://github.com/osuosl/packer-templates
 
 .. note::
 
