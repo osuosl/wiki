@@ -133,22 +133,3 @@ of the OpenPOWER machines directly.
       source keystonerc_admin
       glance image-create --name $DISTRO --disk-format=qcow2 \
         --container-format=bare < $DISTRO-compressed.qcow2
-
-Known Issues
-------------
-
-Fedora
-~~~~~~
-
-cloud-init dmidecode dependency
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Currently cloud-init depends on dmidecode which is an x86 specific package and
-not included in ppc64. There's an open bug (`#1025071`_) that can be used to
-track the progress of the upstream fix.
-
-As a workaround, we have rebuilt the latest version of the package and edited
-the spec file to just comment out the dmidecode dependency. Thus far this seems
-to be the best short-term solution.
-
-.. _#1025071: https://bugzilla.redhat.com/show_bug.cgi?id=1025071
