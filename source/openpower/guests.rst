@@ -17,12 +17,23 @@ it may work, we have this method as a confirmed way to build the images.
 
     All guests will have their output directed to the serial console by default.
 
+Current Images
+--------------
+
+We are maintaining PPC64 and PPC64LE images on our FTP mirrors. The list of
+operating systems we currently support are:
+
+- Debian 7
+- Fedora 20
+- Ubuntu 14.04
+- Ubuntu 14.04 Little Endian
+
+.. _FTP mirrors: http://ftp.osuosl.org/pub/osl/openpower/openstack/
+
 Guest Installation
 ------------------
 
-This method should work for other distributions (in theory) but for now Fedora
-and Debian is only supported currently. Please run the following commands on one
-of the OpenPOWER machines directly.
+Please run the following commands on one of the OpenPOWER machines directly.
 
 1. Download the DVD or net install ISO for desired distribution.
 2. Create a 2G qcow2 disk image::
