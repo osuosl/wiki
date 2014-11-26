@@ -4,7 +4,7 @@ Instances for OpenStack
 =======================
 
 This is a walk through for people using our clusters for OpenPower virtual
- machines.
+machines.
 
 Groups and Users
 ----------------
@@ -46,3 +46,6 @@ For advanced users
 Again this is probably not needed
 
 .. image:: /_static/images/openstack-instance5.png
+
+
+**Hit Launch**
