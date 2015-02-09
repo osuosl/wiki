@@ -153,11 +153,6 @@ GLSA emails. Its current workflow is the following:
 
 The cron jobs are currently staggered an hour apart.
 
-The current script is :doc:`here <soc:aggregate-security-reports.py>`, and an
-example of an :doc:`email report is here <soc:email-report1.txt>`. Also, here is
-an example of the :doc:`GLSA email <soc:email-glsa.txt>` that gets sent by every
-server.
-
 Unify Package Builder
 ---------------------
 
