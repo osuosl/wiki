@@ -59,15 +59,14 @@ What's Fresh
 Project: What's Fresh version 2.0
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-What's Fresh is an open source project originally funded by the Oregon Sea Grant
+What's Fresh is an open source project originally funded by the `Oregon Sea Grant`_
 to create a mobile app for locating fresh local seafood on the Oregon coast. 
-Version 1.0 was created by a collaboration between OSU's Business Solutions Group
-and the OSL under the umbrella of OSU's Center for Applied Systems and Software. It
-consists of a Django-driven API and a multiplatform (iOS and Android) mobile app 
+Version 1.0 was created by a collaboration between OSU's `Business Solutions Group`_
+and the OSL under the umbrella of OSU's `Center for Applied Systems and Software`_ (CASS). It
+consists of a `Django driven API`_ and a multiplatform (iOS and Android) `mobile app`_ 
 created with the Sencha tool kit. It was deisgned to be easily adapted to any
 community that sells any kind of local produce and provides an easy way for people 
 to find markets, products, vendors, and detailed information about local products.
-
 
 **Expected Results**
 
@@ -84,6 +83,12 @@ Python, and familiarity with mobile applications, PhoneGap or related tools, and
 REST APIs.
 
 **Mentor:** Ken (kennric)
+
+.. _Oregon Sea Grant: http://seagrant.oregonstate.edu/
+.. _Business Solutions Group: http://bsg.oregonstate.edu/
+.. _Center for Applied Systems and Software: http://cass.oregonstate.edu/
+.. _Django driven API: https://github.com/osu-cass/whats-fresh-api
+.. _mobile app: https://github.com/osu-cass/whats-fresh-mobile
 
 ------
 
@@ -110,7 +115,7 @@ Oregon State University Biochemistry department on campus.
 
 This project has seen significant development in the last year, and several 
 important features are still on the horizon, such as support for newer protein
-file formats and support for very large proteins.
+file formats and support for very large proteins. This is an excellent project for anyone with an interest in bioinformatics or open source science.
 
 *Please talk to kennric in #osuosl-gsoc on Freenode if you want to propose an
 idea for this project.*
