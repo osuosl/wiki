@@ -9,7 +9,7 @@ Ideas
 -----
 - :ref:`gsoc2015-data-center-tools`
 - :ref:`gsoc2015-whats-fresh`
-- :ref:`gsoc2014-other-projects`
+- :ref:`gsoc2015-other-projects`
 
 .. _gsoc2015-data-center-tools:
 
@@ -92,7 +92,7 @@ REST APIs.
 
 ------
 
-.. _gsoc2014-other-projects:
+.. _gsoc2015-other-projects:
 
 Other OSL Projects
 ~~~~~~~~~~~~~~~~~~

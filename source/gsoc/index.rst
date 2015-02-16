@@ -105,5 +105,5 @@ Project Ideas 2015
 
 - :ref:`gsoc2015-data-center-tools`
 - :ref:`gsoc2015-whats-fresh`
-- :ref:`gsoc2014-other-projects`
+- :ref:`gsoc2015-other-projects`
  
