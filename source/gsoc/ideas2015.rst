@@ -119,6 +119,8 @@ file formats and support for very large proteins.
 
 This is an excellent project for anyone with an interest in bioinformatics or open source science.
 
+One specific area of the PGD that needs improvement is the user management system.  Users should be able to store and manipulate their searches, including comparing historical results to current results.  There is some additional functionality planned for admin users with regard to database management as well.
+
 *Please talk to kennric in #osuosl-gsoc on Freenode if you want to propose an
 idea for this project.*
 
