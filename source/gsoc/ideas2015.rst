@@ -9,7 +9,7 @@ Ideas
 -----
 - :ref:`gsoc2015-data-center-tools`
 - :ref:`gsoc2015-whats-fresh`
-- :ref:`gsoc2014-other-projects`
+- :ref:`gsoc2015-other-projects`
 
 .. _gsoc2015-data-center-tools:
 
@@ -92,7 +92,7 @@ REST APIs.
 
 ------
 
-.. _gsoc2014-other-projects:
+.. _gsoc2015-other-projects:
 
 Other OSL Projects
 ~~~~~~~~~~~~~~~~~~
@@ -118,6 +118,12 @@ important features are still on the horizon, such as support for newer protein
 file formats and support for very large proteins. 
 
 This is an excellent project for anyone with an interest in bioinformatics or open source science.
+
+One specific area of the PGD that needs improvement is the user
+management system.  Users should be able to store and manipulate their
+searches, including comparing historical results to current results.
+There is some additional functionality planned for admin users with
+regard to database management as well.
 
 *Please talk to kennric in #osuosl-gsoc on Freenode if you want to propose an
 idea for this project.*
