@@ -5,6 +5,10 @@ Welcome to the Oregon State University Open Source Lab Google Summer of Code
 2015 idea page! Before applying please read over our :ref:`application guide
 <gsoc-app-info>` for details specific to our organization.
 
+Note: Our timezone is UTC -8, the best times to find us on IRC are between 17:00 
+and 1:00 UTC. We will usually see your comments outside of those times, but 
+might not be able to reply immediately. 
+
 Ideas
 -----
 - :ref:`gsoc2015-data-center-tools`
