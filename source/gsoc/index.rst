@@ -92,6 +92,10 @@ Questions? Concerns? Want to ask us if we'd be interested in an application?
 IRC - Drop in and visit us in #osuosl-gsoc on irc.freenode.net. If you're not
 sure who to talk to ping Ramereth, kennric, or pwnguin in #osuosl-gsoc.
 
+The OSL is located in Corvallis, Oregon which is in the GMT-7:00 timezone.
+People are typically online between 10:00am and 5:00pm local time,
+Monday through Friday, but feel free to ask questions any time.
+
 Email - gsoc-dev@osuosl.org
 
 .. tip::
