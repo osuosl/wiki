@@ -96,9 +96,9 @@ Our timezone is UTC -7, the best times to find us on IRC are between 16:00 and
 23:00 UTC. We will usually see your comments outside of those times, but might
 not be able to reply immediately. 
 
-EMAIL - Our mailing list, gsoc-dev@osuosl.org, is the most reliable way to reach
-us when we aren't on IRC. It's also a great way to connect with other GSOC
-students and to share ideas. `Subscribe to gsoc-dev@osuosl.org`_.
+EMAIL - To contact us via email, please `Subscribe to gsoc-dev@osuosl.org`_
+This mailing list is the most reliable way to reach us when we aren't on IRC,
+it's also a great way to connect with other GSOC students and to share ideas. 
 
 .. tip::
   
