@@ -92,6 +92,10 @@ Questions? Concerns? Want to ask us if we'd be interested in an application?
 IRC - Drop in and visit us in #osuosl-gsoc on irc.freenode.net. If you're not
 sure who to talk to ping Ramereth, kennric, or pwnguin in #osuosl-gsoc.
 
+Our timezone is UTC -7, the best times to find us on IRC are between 16:00 and
+23:00 UTC. We will usually see your comments outside of those times, but might
+not be able to reply immediately. 
+
 Email - gsoc-dev@osuosl.org
 
 .. tip::
