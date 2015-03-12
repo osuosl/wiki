@@ -63,9 +63,7 @@ environment please consult the project documentation and the `OSL's internal
 documentation
 <https://docs.osuosl.org/development/docker-dev-environments.html>`_.
 The OSL uses ``git`` for version control and keeps projects on
-`GitHub <https://github.com/osuosl>`_. Some legacy
-projects such as Ganeti Web Manager use our `internal gitolite server
-<git.osuosl.org>`_. The OSL uses the `RedMine issue tracker
+`GitHub <https://github.com/osuosl>`_. The OSL uses the `RedMine issue tracker
 <https://code.osuosl.org>`_ because GitHub does not support time tracking.
 
 How a Typical Project is Written
