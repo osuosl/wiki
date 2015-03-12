@@ -129,8 +129,8 @@ can also be overridden with an environment variable.
 Application location
 ~~~~~~~~~~~~~~~~~~~~
 
-Applications live in a subdirectory of the project. That is to say, if my project
-is named ``project``, and my app is named ``app``, the directory structure will
+Applications live in a subdirectory of the project. That is to say, if the project
+is named ``project``, and the app is named ``app``, the directory structure will
 look something like this::
 
   manage.py
