@@ -101,8 +101,10 @@ The Development Process
 A Brief Introduction to Django at the OSL
 -----------------------------------------
 
-The Django project has a `great beginner's tutorial`_<https://docs.djangoproject.com/en/dev/intro/tutorial01/> that requires very little
+The Django project has a `great beginner's tutorial`_ that requires very little
 knowledge of Python.
+
+.. _great beginner's tutorial: https://docs.djangoproject.com/en/dev/intro/tutorial01/
 
 Lots of OSL projects are written in Django, including Ganeti Web Manager,
 What's Fresh, Working Waterfronts, and PGD. Here are some notes about Django
@@ -114,7 +116,9 @@ Configuration
 We use yaml-based configuration for many of our Django projects. This makes
 the configuration easier to read, and in general allows a slightly greater
 degree of freedom in setting up. To see how this is set up, take a look at
-`What's Fresh's settings.py`_<https://github.com/osu-cass/whats-fresh-api/blob/master/whats_fresh/settings.py>.
+`What's Fresh's settings.py`_.
+
+.. _What's Fresh's settings.py: https://github.com/osu-cass/whats-fresh-api/blob/master/whats_fresh/settings.py
 
 In general, apps will attempt to load settings from environmental variables.
 This is most commonly used with our Docker-based developer environments. If
