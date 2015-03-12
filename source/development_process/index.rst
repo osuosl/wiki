@@ -53,6 +53,7 @@ Tools We Use
 At the OSL we use a variety of open source tools. Developers are expected to
 have at least passing familiarity with all of these tools. New developers are
 encouraged to research any of these tools they have not heard of.
+
 Most OSL websites are written in Python using the Django web application
 framework. Websites are deployed using Chef configuration management on CentOS
 6.6. Most of our sites use the MySQL database, although some use PostGres.
@@ -63,7 +64,7 @@ documentation
 <https://docs.osuosl.org/development/docker-dev-environments.html>`_.
 The OSL keeps projects on `GitHub <https://github.com/osuosl>`_. Some legacy
 projects such as Ganeti Web Manager use our `internal gitolite server
-<git.osuosl.org`_. The OSL uses the `RedMine issue tracker
+<git.osuosl.org>`_. The OSL uses the `RedMine issue tracker
 <https://code.osuosl.org>`_ because GitHub does not support time tracking.
 
 How a Typical Project is Written
@@ -72,67 +73,74 @@ A step by step guide to writing the project
 
 Determine Requirements
 ----------------------
-Meet with client
-determine requirements
-determine milestones
-internally determine code sprints
+
+- Meet with client
+- determine requirements
+- determine milestones
+- internally determine code sprints
 
 Setting Up the Project
 ----------------------
-Create the git repo
-Create the issue tracker
-Create the project skeleton with Django
-Create the Dockerfile
+
+- Create the git repo
+- Create the issue tracker
+- Create the project skeleton with Django
+- Create the Dockerfile
 
 The Development Process
 -----------------------
-Pick an issue
-Write tests (with a sample Django test)
-Write the code
-Make a PR
-Merge it
-Close the issue
+
+- Pick an issue
+- Write tests (with a sample Django test)
+- Write the code
+- Make a PR
+- Merge it
+- Close the issue
 
 A Brief Introduction to Django
 ------------------------------
 
 How to git out of a tight corner
 --------------------------------
-Common git configuration tricks
-When and when not to force push
-How to rebase code
-How to cherry-pick
-How to reflog
-How to add remotes and set upstream branches
-
+- Common git configuration tricks
+- When and when not to force push
+- How to rebase code
+- How to cherry-pick
+- How to reflog
+- How to add remotes and set upstream branches
+- 
 Common Python Errors and How to Fix Them
 ----------------------------------------
-I can't think of any...
-
+- I can't think of any...
+ 
 Writing the Chef Cookbook
 -------------------------
-Pretty much the same as the rest of the project
-Setting up test kitchen (link to updated internal chef docs)
-Create the git repo
-Create the issue tracker
-Create the project skeleton with Berks
+
+- Pretty much the same as the rest of the project
+- Setting up test kitchen (link to updated internal chef docs)
+- Create the git repo
+- Create the issue tracker
+- Create the project skeleton with Berks
 
 Writing Chef Tests
 ------------------
-Serverspec
-A test cookbook
-A Rakefile?
-Bats?
+
+- Serverspec
+- A test cookbook
+- A Rakefile?
+- Bats?
 
 How to Write a Recipe
 ---------------------
-How to add dependencies
-How to use a LWRP
+
+- How to add dependencies
+- How to use a LWRP
 
 How to Write a LWRP
 -------------------
-Write a resource
-Write a provider
+
+- Write a resource
+- Write a provider
 
 Common Chef Errors and How to Fix Them
 --------------------------------------
