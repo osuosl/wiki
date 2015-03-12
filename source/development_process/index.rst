@@ -2,7 +2,7 @@
 .. _osl-development-process:
 
 The OSL Development Workflow Guide
-======
+==================================
 
 The OSL builds websites for a variety of clients including the Oregon Virtual
 School Districts, the Oregon Sea Grant Foundation, the OSU Biology department
@@ -184,11 +184,11 @@ team. Developers may also want to read `tricks for configuring git
 - When and when not to force push
 
 Resolving Merge Conflicts
-~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 Hopefully I'll get one in this document so I can add it to this section
 
 Rebasing and Squashing Commits
-~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Often a developer will check out a new branch and while they are working on the
 branch different changes will be merged into develop. To pick up changes on
 develop, check out the working branch and run the following:
@@ -213,7 +213,7 @@ Git will open up the editor and provide detailed instructions on how to choose
 which commits to keep or combine.
 
 Cherry Picking
-~~~~~~~
+~~~~~~~~~~~~~~
 Sometimes it will be necessary to move several commits from one branch to
 another. This can be achieved simply by using ``git cherry-pick``. First, check
 out the branch which the commits will be moved to. Then, find the hash
@@ -226,7 +226,7 @@ This will add commit ``abcde12345`` to the current branch.
 
 
 When Disaster Strikes
-~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 On occasion disaster will strike, and it will appear that all has been lost. It
 is important not to panic, such mistakes can often be resolved with ``git
 reflog``. As long as the ``.git`` folder is intact, git keeps a log of the
