@@ -178,7 +178,7 @@ Git is a powerful tool which is generally easy to use, but sometimes it is
 possible to wind up in a weird state. This section of the document describes
 some intermediate level features of git which may be useful to the developer
 team. Developers may also want to read `tricks for configuring git
-<configuring_git.html`_.
+<configuring_git.html>`_.
 
 
 - When and when not to force push
