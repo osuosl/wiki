@@ -67,13 +67,13 @@ The OSL uses ``git`` for version control and keeps projects on
 <https://code.osuosl.org>`_ because GitHub does not support time tracking.
 
 How a Typical Project is Written
---------------------------------
+================================
 This is a step by step guide for writing a Django website. It will not cover
 how to write a website using Flask because the process is nearly identical and
 the team has indicated that Django is to be preferred for new projects.
 
 Determine Requirements
-----------------------
+======================
 
 - Meet with client
 - determine requirements
@@ -81,7 +81,7 @@ Determine Requirements
 - internally determine code sprints
 
 Setting Up the Project
-----------------------
+======================
 
 - Create the git repo
 - Create the issue tracker
@@ -91,7 +91,7 @@ Setting Up the Project
 - Create the projects default branch (if not master)
 
 The Development Process
------------------------
+=======================
 
 - Pick an issue
 - Checkout a new branch (with a branch naming scheme)
@@ -103,7 +103,7 @@ The Development Process
 
 
 A Brief Introduction to Django
-------------------------------
+================================
 - Sample manage.py commands (runserver, collectstatic, migrate)
 - How to write a very simple model
 - How to write a very simple view
@@ -173,11 +173,11 @@ abcde12345``.
 
 
 Common Python Errors and How to Fix Them
-----------------------------------------
+========================================
 - I can't think of any...
  
 Writing the Chef Cookbook
--------------------------
+=========================
 
 - Pretty much the same as the rest of the project
 - Setting up test kitchen (link to updated internal chef docs)
@@ -186,7 +186,7 @@ Writing the Chef Cookbook
 - Create the project skeleton with Berks
 
 Writing Chef Tests
-------------------
+==================
 
 - Serverspec
 - A test cookbook
@@ -194,23 +194,23 @@ Writing Chef Tests
 - Bats?
 
 How to Write a Recipe
----------------------
+=====================
 
 - How to add dependencies
 - How to use a LWRP
 
 How to Write a Light Weight Resource Provider
----------------------------------------------
+=============================================
 
 - What is an LWRP and how are they useful
 - Write a resource
 - Write a provider
 
 Common Chef Errors and How to Fix Them
---------------------------------------
+======================================
 
 Google Summer of Code
----------------------
+=====================
 The OSL has been part of the `GSoC 
 <https://www.google-melange.com/gsoc/homepage/google/gsoc2015>`_ since 2006.  
 This program has linked thousands of students from around the world with hundreds 
@@ -231,6 +231,8 @@ on by a GSoC student should keep the following things in mind:
   student.  It is hard enough for the student to learn a new workflow; 
   minimizing "surprises" is just common courtesy.
 
+Related Documents:
+==================
 .. toctree::
     :maxdepth: 1
     :glob:
