@@ -101,12 +101,84 @@ The Development Process
 - Merge it
 - Close the issue
 
+<<<<<<< HEAD
 
 A Brief Introduction to Django
 ================================
 - Sample manage.py commands (runserver, collectstatic, migrate)
 - How to write a very simple model
 - How to write a very simple view
+=======
+A Brief Introduction to Django at the OSL
+-----------------------------------------
+
+The Django project has a `great beginner's tutorial`_<https://docs.djangoproject.com/en/dev/intro/tutorial01/> that requires very little
+knowledge of Python.
+
+Lots of OSL projects are written in Django, including Ganeti Web Manager,
+What's Fresh, Working Waterfronts, and PGD. Here are some notes about Django
+at the OSL:
+
+Configuration
+~~~~~~~~~~~~~
+
+We use yaml-based configuration for many of our Django projects. This makes
+the configuration easier to read, and in general allows a slightly greater
+degree of freedom in setting up. To see how this is set up, take a look at
+`What's Fresh's settings.py`_<https://github.com/osu-cass/whats-fresh-api/blob/master/whats_fresh/settings.py>.
+
+In general, apps will attempt to load settings from environmental variables.
+This is most commonly used with our Docker-based developer environments. If
+the environment variables are not set, it'll load settings from a yaml config
+file, generally stored at ``/opt/app_name/config/config.yml`` by default. This
+can also be overridden with an environment variable.
+
+Application location
+~~~~~~~~~~~~~~~~~~~~
+
+Applications live in a subdirectory of the project. That is to say, if my project
+is named ``project``, and my app is named ``app``, the directory structure will
+look something like this::
+
+  manage.py
+  project/
+    /project/settings.py
+    /app/models.py
+
+Automated testing with Travis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Automated testing with Travis CI is an incredibly powerful tool. It integrates
+into GitHub, allowing you and your team members to see if a pull request breaks
+something, or if a merge went horribly, horribly wrong.
+
+To set this up, make a ``.travis.yml`` file in the root of the repo. It should
+look something like this::
+
+  language: python
+  python:
+    - "2.7"
+  # command to install dependencies
+  install:
+    - "python setup.py develop"
+    - "pip install flake8"
+  # command to run tests
+  script:
+    - flake8 working_waterfronts/
+    - django-admin test working_waterfronts --settings="working_waterfronts.settings"
+  addons:
+    postgresql: "9.3"
+  before_script:
+    - psql -c 'create database working_waterfronts;' -U postgres
+    - psql -U postgres -c "create extension postgis;" working_waterfronts
+
+Any command put in the ``before_script`` will be run. This allows us to create
+database and extension needed for the app. The ``script`` is the actual test run
+itself. If either command fails, the "build" will fail, and Travis will report
+that it is not safe to merge.
+
+Using flake8 in our CI forces us to keep our code clean and easy to read.
+>>>>>>> f583ea2f85d3f623ec85670fa01cab4739be1a2a
 
 How to Git Out of a Tight Corner
 ================================
@@ -118,6 +190,7 @@ team. Developers may also want to read `tricks for configuring git
 
 
 - When and when not to force push
+<<<<<<< HEAD
 
 Resolving Merge Conflicts
 -------------------------
@@ -172,10 +245,17 @@ which should be restored to, for instance ``absde12345`` and run ``git reset
 abcde12345``.
 
 
+=======
+- How to rebase code
+- How to cherry-pick
+- How to reflog
+- How to add remotes and set upstream branches
+-
+>>>>>>> f583ea2f85d3f623ec85670fa01cab4739be1a2a
 Common Python Errors and How to Fix Them
 ========================================
 - I can't think of any...
- 
+
 Writing the Chef Cookbook
 =========================
 
@@ -211,24 +291,24 @@ Common Chef Errors and How to Fix Them
 
 Google Summer of Code
 =====================
-The OSL has been part of the `GSoC 
-<https://www.google-melange.com/gsoc/homepage/google/gsoc2015>`_ since 2006.  
-This program has linked thousands of students from around the world with hundreds 
-of open source projects resulting in millions of lines of additional code.  
-Just about every development project at the OSL is available for students around 
-the world to join, as long as qualified mentors are available for the duration 
-of the program.  Any devs contributing to projects that are also being worked 
+The OSL has been part of the `GSoC
+<https://www.google-melange.com/gsoc/homepage/google/gsoc2015>`_ since 2006.
+This program has linked thousands of students from around the world with hundreds
+of open source projects resulting in millions of lines of additional code.
+Just about every development project at the OSL is available for students around
+the world to join, as long as qualified mentors are available for the duration
+of the program.  Any devs contributing to projects that are also being worked
 on by a GSoC student should keep the following things in mind:
 
 - The student is new.
-  Their skillsets may not be as strong as other devs in areas like source 
-  control, documentation, IRC etiquette or deployment.  Patience and 
+  Their skillsets may not be as strong as other devs in areas like source
+  control, documentation, IRC etiquette or deployment.  Patience and
   understanding will be greatly appreciated.  Help them become the kind of
   developer and team member the OSL would want to hire.
 - Coordinate big changes with mentors.
-  If the project has significant changes on the horizon, fellow devs should 
-  keep the mentor up-to-date on those changes to keep from blindsiding the 
-  student.  It is hard enough for the student to learn a new workflow; 
+  If the project has significant changes on the horizon, fellow devs should
+  keep the mentor up-to-date on those changes to keep from blindsiding the
+  student.  It is hard enough for the student to learn a new workflow;
   minimizing "surprises" is just common courtesy.
 
 Related Documents:
