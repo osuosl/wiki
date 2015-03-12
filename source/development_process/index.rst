@@ -62,7 +62,8 @@ development fast and easy. To learn how to use the Docker development
 environment please consult the project documentation and the `OSL's internal
 documentation
 <https://docs.osuosl.org/development/docker-dev-environments.html>`_.
-The OSL keeps projects on `GitHub <https://github.com/osuosl>`_. Some legacy
+The OSL uses ``git`` for version control and keeps projects on
+`GitHub <https://github.com/osuosl>`_. Some legacy
 projects such as Ganeti Web Manager use our `internal gitolite server
 <git.osuosl.org>`_. The OSL uses the `RedMine issue tracker
 <https://code.osuosl.org>`_ because GitHub does not support time tracking.
