@@ -68,7 +68,9 @@ The OSL uses ``git`` for version control and keeps projects on
 
 How a Typical Project is Written
 --------------------------------
-A step by step guide to writing the project
+This is a step by step guide for writing a Django website. It will not cover
+how to write a website using Flask because the process is nearly identical and
+the team has indicated that Django is to be preferred for new projects.
 
 Determine Requirements
 ----------------------
@@ -85,16 +87,20 @@ Setting Up the Project
 - Create the issue tracker
 - Create the project skeleton with Django
 - Create the Dockerfile
+- Create a virtualenv
+- Create the projects default branch (if not master)
 
 The Development Process
 -----------------------
 
 - Pick an issue
+- Checkout a new branch (with a branch naming scheme)
 - Write tests (with a sample Django test)
 - Write the code
 - Make a PR
 - Merge it
 - Close the issue
+
 
 A Brief Introduction to Django
 ------------------------------
@@ -102,15 +108,70 @@ A Brief Introduction to Django
 - How to write a very simple model
 - How to write a very simple view
 
-How to git out of a tight corner
---------------------------------
-- Common git configuration tricks
+How to Git Out of a Tight Corner
+================================
+Git is a powerful tool which is generally easy to use, but sometimes it is
+possible to wind up in a weird state. This section of the document describes
+some intermediate level features of git which may be useful to the developer
+team. Developers may also want to read `tricks for configuring git
+<configuring_git.html`_.
+
+
 - When and when not to force push
-- How to rebase code
-- How to cherry-pick
-- How to reflog
-- How to add remotes and set upstream branches
-- 
+
+Resolving Merge Conflicts
+-------------------------
+Hopefully I'll get one in this document so I can add it to this section
+
+Rebasing and Squashing Commits
+------------------------------
+Often a developer will check out a new branch and while they are working on the
+branch different changes will be merged into develop. To pick up changes on
+develop, check out the working branch and run the following:
+
+.. code::shell
+	$ git checkout fancy-changes
+	$ git rebase develop
+
+This will add all of the changes merged into develop since the branches
+diverged onto ``fancy-new-changes``.
+
+Sometimes a series of commits should be combined into one large commit. This
+can be useful when there were many "work in progress" commits which do not need
+to clutter the git history. This is called squashing commits. First, find the
+oldest commit hash which should be squashed using ``git log``, in this example
+``abcde12345``. Then run:
+
+.. code::shell
+	$ git rebase -i abcde12345 # i stands for interactive
+
+Git will open up the editor and provide detailed instructions on how to choose
+which commits to keep or combine.
+
+Cherry Picking
+--------------
+Sometimes it will be necessary to move several commits from one branch to
+another. This can be achieved simply by using ``git cherry-pick``. First, check
+out the branch which the commits will be moved to. Then, find the hash
+representing the commit using ``git log``, for example ``abcde12345``, and run:
+
+.. code::shell
+	$ git cherry-pick abcde2345
+
+This will add commit ``abcde12345`` to the current branch.
+
+
+When Disaster Strikes
+---------------------
+On occasion disaster will strike, and it will appear that all has been lost. It
+is important not to panic, such mistakes can often be resolved with ``git
+reflog``. As long as the ``.git`` folder is intact, git keeps a log of the
+the changes made to the repository. Running ``git reflog`` will show a summary
+of recent actions on the repository. Choose the hash representing the state
+which should be restored to, for instance ``absde12345`` and run ``git reset
+abcde12345``.
+
+
 Common Python Errors and How to Fix Them
 ----------------------------------------
 - I can't think of any...
