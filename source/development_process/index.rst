@@ -141,9 +141,11 @@ look something like this::
 Automated testing with Travis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Automated testing with Travis CI is an incredibly powerful tool. It integrates
-into GitHub, allowing you and your team members to see if a pull request breaks
-something, or if a merge went horribly, horribly wrong.
+Automated testing with Travis CI is an incredibly powerful tool. Travis is a
+continuous integration tool, meaning it's designed to run every time someone
+commits code to a repositoy. In our case, it integrates directly into GitHub
+and runs all of our tests, allowing code reviewers to see if a pull request
+breaks something, or if a merge went horribly, horribly wrong.
 
 To set this up, make a ``.travis.yml`` file in the root of the repo. It should
 look something like this::
@@ -170,7 +172,7 @@ database and extension needed for the app. The ``script`` is the actual test run
 itself. If either command fails, the "build" will fail, and Travis will report
 that it is not safe to merge.
 
-Using flake8 in our CI forces us to keep our code clean and easy to read.
+Using flake8 in Travis forces us to keep our code clean and easy to read.
 
 How to Git Out of a Tight Corner
 --------------------------------
