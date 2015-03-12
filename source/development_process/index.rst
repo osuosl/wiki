@@ -99,6 +99,9 @@ The Development Process
 
 A Brief Introduction to Django
 ------------------------------
+- Sample manage.py commands (runserver, collectstatic, migrate)
+- How to write a very simple model
+- How to write a very simple view
 
 How to git out of a tight corner
 --------------------------------
