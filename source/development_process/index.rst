@@ -140,9 +140,10 @@ How to Write a Recipe
 - How to add dependencies
 - How to use a LWRP
 
-How to Write a LWRP
--------------------
+How to Write a Light Weight Resource Provider
+---------------------------------------------
 
+- What is an LWRP and how are they useful
 - Write a resource
 - Write a provider
 
