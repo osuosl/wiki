@@ -150,6 +150,28 @@ How to Write a Light Weight Resource Provider
 Common Chef Errors and How to Fix Them
 --------------------------------------
 
+Google Summer of Code
+---------------------
+The OSL has been part of the `GSoC 
+<https://www.google-melange.com/gsoc/homepage/google/gsoc2015>`_ since 2006.  
+This program has linked thousands of students from around the world with hundreds 
+of open source projects resulting in millions of lines of additional code.  
+Just about every development project at the OSL is available for students around 
+the world to join, as long as qualified mentors are available for the duration 
+of the program.  Any devs contributing to projects that are also being worked 
+on by a GSoC student should keep the following things in mind:
+
+- The student is new.
+  Their skillsets may not be as strong as other devs in areas like source 
+  control, documentation, IRC etiquette or deployment.  Patience and 
+  understanding will be greatly appreciated.  Help them become the kind of
+  developer and team member the OSL would want to hire.
+- Coordinate big changes with mentors.
+  If the project has significant changes on the horizon, fellow devs should 
+  keep the mentor up-to-date on those changes to keep from blindsiding the 
+  student.  It is hard enough for the student to learn a new workflow; 
+  minimizing "surprises" is just common courtesy.
+
 .. toctree::
     :maxdepth: 1
     :glob:
