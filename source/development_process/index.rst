@@ -141,12 +141,13 @@ look something like this::
 Automated testing with Travis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Automated testing with Travis CI is an incredibly powerful tool. It integrates
-into GitHub, allowing you and your team members to see if a pull request breaks
-something, or if a merge went horribly, horribly wrong.
+Automated testing with Travis Continuous Integration is an incredibly powerful
+tool. Every time code is pushed to GitHub Travis CI will run project tests. It
+allows team members to see if a pull request breaks something, or if
+a merge went horribly, horribly wrong.
 
-To set this up, make a ``.travis.yml`` file in the root of the repo. It should
-look something like this::
+To set up Travis CI, make a ``.travis.yml`` file in the root of the repository.
+It should look something like this::
 
   language: python
   python:
@@ -166,11 +167,12 @@ look something like this::
     - psql -U postgres -c "create extension postgis;" working_waterfronts
 
 Any command put in the ``before_script`` will be run. This allows us to create
-database and extension needed for the app. The ``script`` is the actual test run
-itself. If either command fails, the "build" will fail, and Travis will report
-that it is not safe to merge.
+database and extension needed for the app. The ``script`` is the actual test
+run itself. If either command fails, the "build" will fail, and Travis will
+report that it is not safe to merge.
 
-Using flake8 in our CI forces us to keep our code clean and easy to read.
+Using the flake8 Python Linter in CI forces the team to keep code clean and
+easy to read.
 
 How to Git Out of a Tight Corner
 --------------------------------
