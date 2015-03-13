@@ -28,8 +28,8 @@ For the What's Fresh and Working Waterfronts website the developer team chose
 to follow the agile methodology. The agile method promotes quick responses to
 change and customer collaboration, which made it an ideal fit for working with
 both the Sea Grant Foundation and the BSG on an integrated website and mobile
-application. The agile development methodology is defined in `the agile
-manifesto <http://www.agilemanifesto.org/>`_, which is required reading for
+application. The agile development methodology is defined in the `Agile
+Manifesto`_, which is required reading for
 all developers should the team choose to follow this methodology. When
 following the agile methodology the developer team meets every month to
 discuss the state of the project and show their progress to the client. The Sea
@@ -48,6 +48,8 @@ repositories and antiquated closed-source dependencies. Even importing new data
 can sometimes be a fraught process, but we are developing a detailed process to
 minimize problems when upstream software or data changes.
 
+.. _Agile Manifesto: http://www.agilemanifesto.org/
+
 Tools We Use
 ------------
 At the OSL we use a variety of open source tools. Developers are expected to
@@ -59,13 +61,15 @@ framework. Websites are deployed using Chef configuration management on CentOS
 6.6. Most of our sites use the MySQL database, although some use PostGres.
 Most OSL websites have a Docker development environment set up to make
 development fast and easy. To learn how to use the Docker development
-environment please consult the project documentation and the `OSL's internal
-documentation
-<https://docs.osuosl.org/development/docker-dev-environments.html>`_.
+environment please consult the project documentation and the OSL's `internal
+documentation`_.
 The OSL uses ``git`` for version control and keeps projects on
-`GitHub <https://github.com/osuosl>`_. The OSL uses the `RedMine issue tracker
-<https://code.osuosl.org>`_ because GitHub does not support time tracking.
+GitHub_. The OSL uses the RedMine_ issue tracker because GitHub does not 
+support time tracking.
 
+.. _internal documentation: https://docs.osuosl.org/development/docker-dev-environments.html
+.. _GitHub: https://github.com/osuosl
+.. _RedMine: https://code.osuosl.org
 How a Typical Project is Written
 ================================
 This is a step by step guide for writing a Django website. It will not cover
