@@ -129,8 +129,8 @@ can also be overridden with an environment variable.
 Application location
 ~~~~~~~~~~~~~~~~~~~~
 
-Applications live in a subdirectory of the project. That is to say, if my project
-is named ``project``, and my app is named ``app``, the directory structure will
+Applications live in a subdirectory of the project. That is to say, if the project
+is named ``project``, and the app is named ``app``, the directory structure will
 look something like this::
 
   manage.py
@@ -141,10 +141,11 @@ look something like this::
 Automated testing with Travis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Automated testing with Travis Continuous Integration is an incredibly powerful
-tool. Every time code is pushed to GitHub Travis CI will run project tests. It
-allows team members to see if a pull request breaks something, or if
-a merge went horribly, horribly wrong.
+Automated testing with Travis CI is an incredibly powerful tool. Travis is a
+continuous integration tool, meaning it's designed to run every time someone
+commits code to a repositoy. In our case, it integrates directly into GitHub
+and runs all of our tests, allowing code reviewers to see if a pull request
+breaks something, or if a merge went horribly, horribly wrong.
 
 To set up Travis CI, make a ``.travis.yml`` file in the root of the repository.
 It should look something like this::
