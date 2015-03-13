@@ -138,6 +138,79 @@ look something like this::
     /project/settings.py
     /app/models.py
 
+Example Model
+~~~~~~~~~~~~~
+
+A model consists of everything you might need to store about an object in a
+database. Imagine a blogging platform that allows users to share public posts,
+and write private posts. The ``models.py`` for such a blog might include
+something like this:
+
+.. code-block:: python
+
+  from django.db import models
+
+  class Entry(models.Model):
+      """
+      This docstring contains information about the model.
+      """
+      name = models.CharField(max_length=100)
+      text = models.TextField()
+      created = models.DateTimeField(auto_now_add=True)
+      public = models.BooleanField(default=False)
+
+      def __unicode__(self):
+          """
+          The __unicode__ function allows Django to show you which object
+          you're dealing with. It uses this when you want to print the object,
+          or just put the object in the template.
+          """
+          return self.name
+
+
+Example View
+~~~~~~~~~~~~
+
+Imagine the same blog platform from before. The following view might be used
+to view the details of an entry:
+
+.. code-block:: python
+
+  def entry(request, id=None):
+      """
+      /entry/<id>
+      If the user is authenticated, this returns the details page for the
+      requested entry. If the user is not authenticated, and it is a private
+      post, the user is redirected to the login page.
+      """
+      entry = get_object_or_404(Entry, pk=id)
+      if not entry.public and not request.user.is_authenticated():
+          return HttpResponseRedirect(reverse('login'))
+      return render(request, 'entry.html', {'entry': entry})
+
+Here's another example view, this one used to create new Entries. Note that
+this view can handle both GET requests, which are for the form before it's
+been filled out, and POST requests, which save the form.
+
+.. code-block:: python
+
+  @login_required
+  def new(request):
+      form = EntryForm(request.POST or None)
+      if form.is_valid():
+          entry = form.save()
+          return HttpResponseRedirect(
+              reverse('entry-details',
+                      kwargs={'id': entry.id}))
+      return render(request, 'new.html', {'form': EntryForm})
+
+Notice the ``@login_required`` above the view function. This is a decorator,
+a special Python function that "wraps" the function it's above. In this case,
+Django's login_required decorator is being used. This decorator will make sure
+the user is authenticated before running the view, and if they are not, will
+redirect them to the login page.
+
+
 Automated testing with Travis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
