@@ -113,8 +113,8 @@ at the OSL:
 Configuration
 ~~~~~~~~~~~~~
 
-We use yaml-based configuration for many of our Django projects. This makes
-the configuration easier to read, and in general allows a slightly greater
+The lab uses yaml-based configuration for many of its Django projects. This
+makes the configuration easier to read, and in general allows a slightly greater
 degree of freedom in setting up. To see how this is set up, take a look at
 `What's Fresh's settings.py`_.
 
@@ -143,7 +143,7 @@ Automated testing with Travis
 
 Automated testing with Travis CI is an incredibly powerful tool. Travis is a
 continuous integration tool, meaning it's designed to run every time someone
-commits code to a repositoy. In our case, it integrates directly into GitHub
+pushes commits to a repository. In our case, it integrates directly into GitHub
 and runs all of our tests, allowing code reviewers to see if a pull request
 breaks something, or if a merge went horribly, horribly wrong.
 
