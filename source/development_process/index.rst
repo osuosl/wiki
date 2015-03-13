@@ -196,6 +196,13 @@ been filled out, and POST requests, which save the form.
 
   @login_required
   def new(request):
+      """
+      /entry/new
+      The form for creating a new entry. On a GET request, this returns the
+      form that can be used to save the entry. On a POST request, it checks
+      the validity of the form, and if it's valid, saves and redirects the
+      user to its details page.
+      """
       form = EntryForm(request.POST or None)
       if form.is_valid():
           entry = form.save()
