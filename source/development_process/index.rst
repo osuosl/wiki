@@ -183,7 +183,24 @@ team. Developers may also want to read `tricks for configuring git
 <configuring_git.html>`_.
 
 
-- When and when not to force push
+When to Use the Powers of the Force
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sometimes changes are made which affect the past history of the local branch,
+and when these changes are pushed to GitHub or another git server they will be
+rejected because the history on the server does not match the local history. A
+common example is rebasing a branch to pick up new changes, which is detailed
+further in the next section. The server can be made to accept these changes
+with the ``--force`` flag, but be careful! Force pushing is a dangerous
+operation which will permanently rewrite history on the server. Junior
+developers should consult more experienced colleagues before force pushing.
+
+Developers must always use a fully qualified push command when force pushing,
+naming both the git remote and branch. To force push to a branch named
+``branch`` run::
+	git push --force origin branch
+
+Do NOT run::
+	git push --force
 
 Resolving Merge Conflicts
 ~~~~~~~~~~~~~~~~~~~~~~~~~
