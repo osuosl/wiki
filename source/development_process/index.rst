@@ -98,6 +98,59 @@ The Development Process
 - Merge it
 - Close the issue
 
+How to Write Python for Humans
+------------------------------
+
+A lot of the work here at the Open Source Lab involves reading other people's
+code. To make this process less painful for everyone involved, it's best to
+write readable code. Here's a couple of things to keep in mind when writing
+Python.
+
+PEP8, and how to check for it
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+PEP8 is the "Style Guide for Python Code". Essentially, it's a document
+detailing how to write Python that's homogeneous and easy to read. It's a long
+document -- here are some of the more important, more common bits.
+
+1. Limit lines to 79 characters
+
+Lines that are too long get hard to read. If your line is more than 79
+characters long, break it to the next line::
+
+.. code-block:: python
+
+  # Don't do this
+  data = json.loads(serializer.serialize([preparation], use_natural_foreign_keys=True)
+
+  # Do this
+  data = json.loads(
+      serializer.serialize(
+          [preparation],
+          use_natural_foreign_keys=True
+    )
+
+  # Or this
+  data = json.loads(
+      serializer.serialize([preparation],
+                           use_natural_foreign_keys=True
+      )
+
+When breaking just after an open-parenthesis, go in by four spaces as shown
+in the first example. When breaking after a parameter, put the second parameter
+indented to the same level as the first.
+
+2. Indentation
+
+Use four spaces per indentation level. Don't use tabs. (Set your text editor
+to insert spaces when you hit tab.)
+
+3. Blank lines
+
+Put two blank lines in between classes, and in between functions. Put one blank
+line in between methods.
+
+
 A Brief Introduction to Django at the OSL
 -----------------------------------------
 
