@@ -236,7 +236,8 @@ Cherry Picking
 Sometimes it will be necessary to move several commits from one branch to
 another. This can be achieved simply by using ``git cherry-pick``. First, check
 out the branch which the commits will be moved to. Then, find the hash
-representing the commit using ``git log``, for example ``abcde12345``, and run:
+representing the commit using ``git log --all``, for example ``abcde12345``,
+and run:
 
 .. code::shell
 	$ git cherry-pick abcde2345
