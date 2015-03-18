@@ -64,7 +64,7 @@ development fast and easy. To learn how to use the Docker development
 environment please consult the project documentation and the OSL's `internal
 documentation`_.
 The OSL uses ``git`` for version control and keeps projects on
-GitHub_. The OSL uses the RedMine_ issue tracker because GitHub does not 
+GitHub_. The OSL uses the RedMine_ issue tracker because GitHub does not
 support time tracking.
 
 .. _internal documentation: https://docs.osuosl.org/development/docker-dev-environments.html
@@ -118,9 +118,10 @@ detailing how to write Python that's homogeneous and easy to read. It's a long
 document -- here are some of the more important, more common bits.
 
 1. Limit lines to 79 characters
+```````````````````````````````
 
 Lines that are too long get hard to read. If your line is more than 79
-characters long, break it to the next line::
+characters long, break it to the next line:
 
 .. code-block:: python
 
@@ -140,20 +141,57 @@ characters long, break it to the next line::
                            use_natural_foreign_keys=True
       )
 
+
 When breaking just after an open-parenthesis, go in by four spaces as shown
 in the first example. When breaking after a parameter, put the second parameter
-indented to the same level as the first.
+indented to the same level as the first. The most important part to remember,
+though, is that the code should be *readable*. Don't confuse future readers as
+to what gets passed to what.
 
 2. Indentation
+``````````````
 
-Use four spaces per indentation level. Don't use tabs. (Set your text editor
-to insert spaces when you hit tab.)
+Use four spaces per indentation level. Don't use tabs. Set your text editor
+to insert spaces when you hit tab -- this is possible in Sublime, Atom, vim,
+and pretty much every editor worth its salt.
 
 3. Blank lines
+``````````````
 
 Put two blank lines in between classes, and in between functions. Put one blank
-line in between methods.
+line in between methods. This helps the reader easily group things logically.
 
+Docstrings
+~~~~~~~~~~
+
+Docstrings are comments that appear at the top of a function, class, or other
+definition. Says `PEP 257`_, the Python Docstring Conventions document:
+
+  All modules should normally have docstrings, and all functions and classes
+  exported by a module should also have docstrings. Public methods (including
+  the __init__ constructor) should also have docstrings.
+
+Docstrings appear as triple-quoted strings at the top of a defintion. If they're
+one line long, the quotes can be on the same line as the comment; if they're
+multiple lines, the first should be a quick summary, followed by a blank line
+and the rest of the docstring.
+
+.. _PEP 257: https://www.python.org/dev/peps/pep-0257/
+
+Example docstrings from the PEP 257:
+
+.. code-block:: python
+
+  def complex(real=0.0, imag=0.0):
+      """Form a complex number.
+
+      Keyword arguments:
+      real -- the real part (default 0.0)
+      imag -- the imaginary part (default 0.0)
+      """
+      if imag == 0.0 and real == 0.0:
+          return complex_zero
+      ...
 
 A Brief Introduction to Django at the OSL
 -----------------------------------------
@@ -208,16 +246,15 @@ something like this:
   from django.db import models
 
   class Entry(models.Model):
-      """
-      This docstring contains information about the model.
-      """
+      """This docstring contains information about the model."""
       name = models.CharField(max_length=100)
       text = models.TextField()
       created = models.DateTimeField(auto_now_add=True)
       public = models.BooleanField(default=False)
 
       def __unicode__(self):
-          """
+          """Returns Entry's name
+
           The __unicode__ function allows Django to show you which object
           you're dealing with. It uses this when you want to print the object,
           or just put the object in the template.
@@ -234,8 +271,8 @@ to view the details of an entry:
 .. code-block:: python
 
   def entry(request, id=None):
-      """
-      /entry/<id>
+      """ /entry/<id> method. Handles private/public entry page requests
+
       If the user is authenticated, this returns the details page for the
       requested entry. If the user is not authenticated, and it is a private
       post, the user is redirected to the login page.
@@ -253,8 +290,8 @@ been filled out, and POST requests, which save the form.
 
   @login_required
   def new(request):
-      """
-      /entry/new
+      """/entry/new. Handles new entry creation for auth'd users
+
       The form for creating a new entry. On a GET request, this returns the
       form that can be used to save the entry. On a POST request, it checks
       the validity of the form, and if it's valid, saves and redirects the
