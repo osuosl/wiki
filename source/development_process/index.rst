@@ -236,7 +236,7 @@ look something like this::
 Example Model
 ~~~~~~~~~~~~~
 
-A model consists of everything you might need to store about an object in a
+A model consists of everything one might need to store about an object in a
 database. Imagine a blogging platform that allows users to share public posts,
 and write private posts. The ``models.py`` for such a blog might include
 something like this:
@@ -255,8 +255,8 @@ something like this:
       def __unicode__(self):
           """Returns Entry's name
 
-          The __unicode__ function allows Django to show you which object
-          you're dealing with. It uses this when you want to print the object,
+          The __unicode__ function allows Django to print which object
+          is being dealt with. It uses this when it prints the object,
           or just put the object in the template.
           """
           return self.name
