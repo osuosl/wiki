@@ -447,12 +447,15 @@ Writing the Chef Cookbook
 Writing Chef Tests
 ------------------
 
-*Tests are awesome!* You should always write tests! Bad things can happen if
-you don't write tests. Here's the toolset we use to write tests for Chef:
+*Tests are awesome!*  Always write tests! Bad things can happen if you don't
+write tests. Here's the toolset we use to write tests for Chef projects:
 
 **`Test Kitchen`_** is a tool which provides us with a standardized environment
-in which to develop infrastructure code. To add test kitchen to a given chef
-cookbook/lwrp project run the following.
+in which to develop infrastructure code. It's essentially a Vagrant Box which
+can be automatically created and setup in a specific configuration using Chef
+Cookbooks and tested with Serverspec_ and Chefspec_. To add Test Kitchen to a
+given Chef Cookbook/Light Weight Resoruce Provider(LWRP project run the
+following.
 
 .. code:: text
 
@@ -473,17 +476,19 @@ for your project here are some commands you'll need to work on your project:
 .. code:: text
 
     $ kitchen converge      # Runs your cookbook in a given VM, similar to `vagrant up`.
-    $ kitchen destroy       # Destroys your VM, similar to `vagrant destroy`
+    $ kitchen destroy       # Destroys your VM, similar to `vagrant destroy`.
+    $ kitchen verify        # Runs a given test suite for your project.
     $ kitchen test          # Converges your cookbook, runs tests, then destroys your VM if the tests pass.
 
 The .kitchen.yml file can be altered to give you more options such as which
 operation system to run with, which recipes to converge with, and a few other
 options found in the `Test Kitchen`_ documentation.
 
-**Serverspec_** is used to do `integration testsing`_. It is an implementation
-of RSpec_ tests for chef/puppet deployment.  Essentially you write tests which
-check weather the cookbook put all the files in the right places, installed the
-right packages, and started the right daemons, etc. Here's a quick example from
+**Serverspec_** is used to do `integration testsing`_ (testing how all of the
+pieces/modules/code works together). It is an implementation of RSpec_ tests
+for chef/puppet deployment.  Essentially you write tests which check whether
+the cookbook put all the files in the right places, installed the right
+packages, and started the right daemons, etc. Here's a quick example from
 their docs:
 
 .. code:: ruby
@@ -528,10 +533,11 @@ breaking style and more or less how to fix it. You may also include a
 `.rubocop.yml`_ file for explicitly excluding or including files to be analyzed
 by Rubocop.
 
-**`Foodcritic`_** is a lint tool for Chef Cookbooks. It is similar to Rubocop
-in that it lints your code however it differs in that it is designed to test
-against syntax specific to Chef Cookbooks. When you run Foodcritic it will
-lint your code and spit out Rules which you have broken such as FC001_, in this
+**`Foodcritic`_** is a linter, like Rubocop, but it enforces style guidelines
+specific to Chef cookbooks.  When you run Foodcritic it will lint your code and
+spit out Rules which you have broken such as rule FC001_ (using strings rather than
+symbols when referencing node attributes :: aka version
+node['mysql']['version'] instead of version node[:mysql][:version]), in this
 senario the `Foodcritic Documentation`_ will be endlessly helpful.
 
 .. _Serverspec: http://serverspec.org/
