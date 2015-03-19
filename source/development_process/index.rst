@@ -447,10 +447,107 @@ Writing the Chef Cookbook
 Writing Chef Tests
 ------------------
 
-- Serverspec
-- A test cookbook
-- A Rakefile?
-- Bats?
+*Tests are awesome!* You should always write tests! Bad things can happen if
+you don't write tests. Here's the toolset we use to write tests for Chef:
+
+**`Test Kitchen`_** is a tool which provides us with a standardized environment
+in which to develop infrastructure code. To add test kitchen to a given chef
+cookbook/lwrp project run the following.
+
+.. code:: text
+
+    $ kitchen init
+          create  .kitchen.yml
+          create  test/integration/default
+    Successfully installed kitchen-vagrant-0.15.0
+    Parsing documentation for kitchen-vagrant-0.15.0
+    1 gem installed
+    $ ls -a
+    .  ..  .kitchen  .kitchen.yml  test
+
+`kitchen init` will add a .kitchen.yml file, a .kitchen directory, and a test
+directory. The .kitchen.yml file specifies how to create a given virtual
+machine and which recipes to converge it with. Once you have kitchen support
+for your project here are some commands you'll need to work on your project:
+
+.. code:: text
+
+    $ kitchen converge      # Runs your cookbook in a given VM, similar to `vagrant up`.
+    $ kitchen destroy       # Destroys your VM, similar to `vagrant destroy`
+    $ kitchen test          # Converges your cookbook, runs tests, then destroys your VM if the tests pass.
+
+The .kitchen.yml file can be altered to give you more options such as which
+operation system to run with, which recipes to converge with, and a few other
+options found in the `Test Kitchen`_ documentation.
+
+**Serverspec_** is used to do `integration testsing`_. It is an implementation
+of RSpec_ tests for chef/puppet deployment.  Essentially you write tests which
+check weather the cookbook put all the files in the right places, installed the
+right packages, and started the right daemons, etc. Here's a quick example from
+their docs:
+
+.. code:: ruby
+
+    # in the file spec/target.example.jp/http_spec.rb
+    # You can write a test file like this.
+
+    require 'spec_helper'
+
+    describe '<name of the resource being tested>' do
+      # your tests ...
+    end
+
+Read the `Serverspec docs`_ for more info.
+
+**Chefspec_** is used for `Unit Testing`_ in which we test individual parts of
+a lightweight resource provider (see section below for more info on what a LWRP
+is). A Unit Test in this instance doesn't test the state of a system like
+Serverspec tests do but rather it tests to see if Chef sent the commands to
+affect the state of a system. This is useful in that is ensures that if your
+LWRP changes you won't accidentally delete a chunk of code or change the
+functionality of your code that needs to accomplish a given task specific way.
+Here's an example of a unit test from the yum chef cookbook:
+
+.. code:: ruby
+
+    require 'spec_helper'
+
+    describe 'yum::default' do
+      let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+
+      it 'creates yum_globalconfig[/etc/yum.conf]' do
+        expect(chef_run).to create_yum_globalconfig('/etc/yum.conf')
+      end
+
+    end
+
+**Rubocop_** is a Ruby static code analyzer. Out of the box it will enforce
+many of the guidelines outlined in the community `Ruby Style Guide`_. When you
+run `rubocop` it will lint your code and tell you exactly where you are
+breaking style and more or less how to fix it. You may also include a
+`.rubocop.yml`_ file for explicitly excluding or including files to be analyzed
+by Rubocop.
+
+**`Foodcritic`_** is a lint tool for Chef Cookbooks. It is similar to Rubocop
+in that it lints your code however it differs in that it is designed to test
+against syntax specific to Chef Cookbooks. When you run Foodcritic it will
+lint your code and spit out Rules which you have broken such as FC001_, in this
+senario the `Foodcritic Documentation`_ will be endlessly helpful.
+
+.. _Serverspec: http://serverspec.org/
+.. _Serverspec docs: http://serverspec.org/tutorial.html
+.. _Rake: http://docs.seattlerb.org/rake/
+.. _Rubocop: http://batsov.com/rubocop/
+.. _Ruby Style Guide: https://github.com/bbatsov/ruby-style-guide
+.. _Test Kitchen: http://kitchen.ci/
+.. _Rspec: http://rspec.info/
+.. _Integration Testing: https://en.wikipedia.org/wiki/Integration_testing
+.. _Unit Testing: https://en.wikipedia.org/wiki/Unit_testing
+.. _Chefspec: http://sethvargo.github.io/chefspec/
+.. _.rubocop.yml: https://github.com/osuosl-cookbooks/osl-haproxy/blob/master/.rubocop.yml
+.. _Foodcritic: http://acrmp.github.io/foodcritic/
+.. _Foodcritic Documentation: http://acrmp.github.io/foodcritic/
+.. _FC001: http://acrmp.github.io/foodcritic/#FC001
 
 How to Write a Recipe
 ---------------------
