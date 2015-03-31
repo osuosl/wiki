@@ -88,24 +88,50 @@ Determine Requirements
 Setting Up the Project
 ----------------------
 
-**Create the git repo**: Unless you have special permission in the `OSL
-organization github <https://github.com/osuosl>`_, you will probably
-need to ask a full-time employee to make the repository for you.  We
-want all the repositories for the OSL to be owned by the OSL, so don't
-make a repo under your own account! Once the repo is created you'll
-want to use ``$ git clone <SSH URI>`` to start working on the project.
-**Create the Issue Traker**: Often times we will simply use the github
-issue tracker for managing issues on a repository (which doesn't
-require any set up). If we are using
-chili project or another issue tracker, you may have to set that
-up separately from the repo. 
-- Create the project skeleton with Django
-- Create the Dockerfile
-- Create a virtualenv
-**Create the projects default branch (if not master)**: Under the 
-repositories settings (the little screwdrive in the sidebar) you can
-change the default branch.  Remember that the branch needs to exist 
-first before it's made the default.
+Create the git repo: 
+~~~~~~~~~~~~~~~~~~~~
+
+Unless instructed to do otherwise, or given 
+special permission in the `OSL organization github <https://github.com/osuosl>`_, ask a full-time employee to make the repository.
+All the repositories for the OSL should be owned by the OSL, so don't
+make a repo under your own account! Once the repo is created use ``$ git clone <SSH URI>`` to start working on the project.
+
+Create the Issue Traker: 
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The OSL uses 
+`Redmine <http://www.redmine.org/>`_ to track issues. Once `registered <http://www.redmine.org/projects/redmine/wiki/RedmineProjectOverview>`_
+and `signed in <http://www.redmine.org/projects/redmine/wiki/RedmineLogin>`_, 
+to redmine, 
+
+Create the project skeleton with Django
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create the Dockerfile
+~~~~~~~~~~~~~~~~~~~~~
+
+Create a virtualenv: 
+~~~~~~~~~~~~~~~~~~~~
+
+Virtual environments are a pythonic way of 
+containing dependencies within a project, and allow the user to 
+ascertain which projects require which libraries.  If the machine
+doesn't already have the virtualenv python package (though all
+the machines should), install it by running ``$ pip install virtualenv``.  
+Then run ``$ virtualenv <NAME OF VIRTUALENV>``, naming it something 
+that indicates what the project is. To activate the virtual 
+environment ``$ source <NAME OF VIRTUALENV>/bin/activate``.  Once
+done with the virtual environment, run ``$ deactivate`` to exit. 
+Look `here <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_
+for more detailed documentation.
+
+Create the projects default branch (if not master): 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use the 
+repositories settings (the little screwdriver in the sidebar) to 
+`change the default branch <https://help.github.com/articles/setting-the-default-branch/>`_.  Remember that the branch needs to exist 
+first before it's made the default!
 
 The Development Process
 -----------------------
