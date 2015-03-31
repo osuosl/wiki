@@ -448,20 +448,24 @@ Writing the Chef Cookbook
 - Create the issue tracker
 - Create the project skeleton with Berks
 
+
 Writing Chef Tests
 ------------------
 
-*Tests are awesome!*  Always write tests! Bad things can happen if you don't
-write tests. Here's the toolset we use to write tests for Chef projects:
+Just like Python code, tests are required for Chef cookbooks. Tests will help
+ensure that new changes don't accidentally break existing functionality in
+unexpected ways. Chef tests generally fall into two categories, unit testing
+with ChefSpec, and integration testing with ServerSpec.
 
-**`Test Kitchen`_** is a tool which provides us with a standardized environment
-in which to develop infrastructure code. It's essentially a Vagrant Box which
-can be automatically created and setup in a specific configuration using Chef
-Cookbooks and tested with Serverspec_ and Chefspec_. To add Test Kitchen to a
-given Chef Cookbook/Light Weight Resoruce Provider(LWRP project run the
-following.
+Test Kitchen
+~~~~~~~~~~~~
+`Test Kitchen`_ provides a standardized environment in which to develop
+infrastructure code. Test kitchen can spin up a virtual machine on the
+OpenStack cluster or locally using Vagrant. Test kitchen will converge the chef
+cookbook and run any Serverspec_ and Chefspec_ tests. To start using test
+kitchen with a cookbook, run the following:
 
-.. code:: text
+.. code:: shell
 
     $ kitchen init
           create  .kitchen.yml
@@ -470,52 +474,66 @@ following.
     Parsing documentation for kitchen-vagrant-0.15.0
     1 gem installed
     $ ls -a
-    .  ..  .kitchen  .kitchen.yml  test
+    .  ..  .kitchen/  .kitchen.yml  test/
 
 `kitchen init` will add a .kitchen.yml file, a .kitchen directory, and a test
 directory. The .kitchen.yml file specifies how to create a given virtual
-machine and which recipes to converge it with. Once you have kitchen support
-for your project here are some commands you'll need to work on your project:
+machine and which recipes to converge it with. Kitchen is configured for the
+project, the following commands can be used:
 
 .. code:: text
 
-    $ kitchen converge      # Runs your cookbook in a given VM, similar to `vagrant up`.
-    $ kitchen destroy       # Destroys your VM, similar to `vagrant destroy`.
-    $ kitchen verify        # Runs a given test suite for your project.
-    $ kitchen test          # Converges your cookbook, runs tests, then destroys your VM if the tests pass.
+    $ kitchen converge      # Runs the cookbook in a given VM, similar to `vagrant up`.
+    $ kitchen destroy       # Destroys the VM, similar to `vagrant destroy`.
+    $ kitchen verify        # Runs a given test suite for the project.
+    $ kitchen test          # Converges the cookbook, runs tests, then destroys the VM if the tests pass.
 
-The .kitchen.yml file can be altered to give you more options such as which
-operation system to run with, which recipes to converge with, and a few other
-options found in the `Test Kitchen`_ documentation.
+Often a project will need to be run on specific operating systems with
+different recipes. These options are specified in the `.kitchen.yml` file. Most
+projects will also have a `.kitchen.cloud.yml` file which instructs kitchen how
+to spin up a virtual machine on OpenStack instead of using Vagrant.
+More information about how the various options in this config file can be found
+in the `Chef Documentation about kitchen`_.
 
-**Serverspec_** is used to do `integration testsing`_ (testing how all of the
-pieces/modules/code works together). It is an implementation of RSpec_ tests
-for chef/puppet deployment.  Essentially you write tests which check whether
-the cookbook put all the files in the right places, installed the right
-packages, and started the right daemons, etc. Here's a quick example from
+.. _Chef Documentation about kitchen: https://docs.chef.io/config_yml_kitchen.html
+
+Using Test Kitchen With OpenStack
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Running Vagrant on the workstations is slow, and it is not uncommon for virtual
+machines to hog resources or be killed and become corrupted. It's often faster
+and easier to spin up virtual machines on the Lab's OpenStack cluster. The lab
+has extensive internal documentation on using `Test Kitchen with OpenStack`_.
+After setting everything up, test kitchen will be just as easy to use, and
+tests will run much faster.
+
+.. _Test Kitchen with OpenStack: https://docs.osuosl.org/software/openstack/openstack_test_kitchen.html
+
+ServerSpec Tests
+~~~~~~~~~~~~~~~~
+Serverspec_ is used to do `integration testsing`_, that is, testing how all of
+the pieces/modules/code works together. It is an implementation of RSpec_
+tests for chef/puppet deployment. Tests are written in a declarative style to
+check whether the cookbook put all the files in the right places, installed the
+right packages, started the right daemons, etc. Here's a quick example from
 their docs:
-
 .. code:: ruby
 
-    # in the file spec/target.example.jp/http_spec.rb
-    # You can write a test file like this.
+    # In the file spec/target.example.jp/http_spec.rb
+    # A typical ServerSpec test
 
     require 'spec_helper'
 
     describe '<name of the resource being tested>' do
-      # your tests ...
+      # tests ...
     end
 
 Read the `Serverspec docs`_ for more info.
 
-**Chefspec_** is used for `Unit Testing`_ in which we test individual parts of
-a lightweight resource provider (see section below for more info on what a LWRP
-is). A Unit Test in this instance doesn't test the state of a system like
-Serverspec tests do but rather it tests to see if Chef sent the commands to
-affect the state of a system. This is useful in that is ensures that if your
-LWRP changes you won't accidentally delete a chunk of code or change the
-functionality of your code that needs to accomplish a given task specific way.
-Here's an example of a unit test from the yum chef cookbook:
+ChefSpec Tests
+~~~~~~~~~~~~~~
+Chefspec_ is used for `Unit Testing`_ which tests individual parts of
+a Light Weight Resource Provider (see section below for more info on what a
+LWRP is). Here's an example of a unit test from the yum chef cookbook:
 
 .. code:: ruby
 
@@ -530,19 +548,40 @@ Here's an example of a unit test from the yum chef cookbook:
 
     end
 
+Chef Linters
+~~~~~~~~~~~~
+Chef cookbooks need to be checked just like Python code to ensure they follow
+style guidelines.
+
+
 **Rubocop_** is a Ruby static code analyzer. Out of the box it will enforce
-many of the guidelines outlined in the community `Ruby Style Guide`_. When you
-run `rubocop` it will lint your code and tell you exactly where you are
-breaking style and more or less how to fix it. You may also include a
-`.rubocop.yml`_ file for explicitly excluding or including files to be analyzed
-by Rubocop.
+many of the guidelines outlined in the community `Ruby Style Guide`_. When
+`rubocop` is run, it will lint the code, display errors, and describe how to
+fix them. Rubocop can automatically fix many style errors, but this process is
+not perfect and can lead to subtle bugs. Rubocop errors should generally be
+fixed manually.
+
+Some projects may also include a `.rubocop.yml`_ file for explicitly excluding
+or including files to be analyzed by Rubocop.
 
 **`Foodcritic`_** is a linter, like Rubocop, but it enforces style guidelines
-specific to Chef cookbooks.  When you run Foodcritic it will lint your code and
-spit out Rules which you have broken such as rule FC001_ (using strings rather than
-symbols when referencing node attributes :: aka version
-node['mysql']['version'] instead of version node[:mysql][:version]), in this
-senario the `Foodcritic Documentation`_ will be endlessly helpful.
+specific to Chef cookbooks.  Foodcritic will check for conformance to _`rules`
+outlined by the Chef community, such as FC002_
+
+.. code:: shell
+	$ foodcritic .
+	FC002: Avoid string interpolation where not required:
+	./providers/gunicorn.rb:89
+
+.. code:: ruby
+	# Don't do this:
+	gunicorn_command = new_resource.virtualenv.nil? ? "gunicorn" :
+	 "#{::File.join(new_resource.virtualenv, "bin    ", "gunicorn")}"
+	# Do this instead:
+	gunicorn_command = new_resource.virtualenv.nil? ? "gunicorn" :
+	 ::File.join(new_resource.virtualenv, "bin    ", "gunicorn")
+
+
 
 .. _Serverspec: http://serverspec.org/
 .. _Serverspec docs: http://serverspec.org/tutorial.html
@@ -556,8 +595,8 @@ senario the `Foodcritic Documentation`_ will be endlessly helpful.
 .. _Chefspec: http://sethvargo.github.io/chefspec/
 .. _.rubocop.yml: https://github.com/osuosl-cookbooks/osl-haproxy/blob/master/.rubocop.yml
 .. _Foodcritic: http://acrmp.github.io/foodcritic/
-.. _Foodcritic Documentation: http://acrmp.github.io/foodcritic/
-.. _FC001: http://acrmp.github.io/foodcritic/#FC001
+.. _rules: http://acrmp.github.io/foodcritic/
+.. _FC002: http://acrmp.github.io/foodcritic/#FC002
 
 How to Write a Recipe
 ---------------------
