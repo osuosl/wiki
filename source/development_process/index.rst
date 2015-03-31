@@ -375,10 +375,16 @@ developers should consult more experienced colleagues before force pushing.
 
 Developers must always use a fully qualified push command when force pushing,
 naming both the git remote and branch. To force push to a branch named
-``branch`` run::
+``branch`` run
+
+.. code:: bash
+
 	git push --force origin branch
 
-Do NOT run::
+Do NOT run
+
+.. code:: bash
+
 	git push --force
 
 Resolving Merge Conflicts
@@ -391,7 +397,8 @@ Often a developer will check out a new branch and while they are working on the
 branch different changes will be merged into develop. To pick up changes on
 develop, check out the working branch and run the following:
 
-.. code::shell
+.. code:: bash
+
 	$ git checkout fancy-changes
 	$ git rebase develop
 
@@ -404,7 +411,8 @@ to clutter the git history. This is called squashing commits. First, find the
 oldest commit hash which should be squashed using ``git log``, in this example
 ``abcde12345``. Then run:
 
-.. code::shell
+.. code:: bash
+
 	$ git rebase -i abcde12345 # i stands for interactive
 
 Git will open up the editor and provide detailed instructions on how to choose
@@ -465,7 +473,7 @@ OpenStack cluster or locally using Vagrant. Test kitchen will converge the chef
 cookbook and run any Serverspec_ and Chefspec_ tests. To start using test
 kitchen with a cookbook, run the following:
 
-.. code:: shell
+.. code:: bash
 
     $ kitchen init
           create  .kitchen.yml
@@ -510,12 +518,13 @@ tests will run much faster.
 
 ServerSpec Tests
 ~~~~~~~~~~~~~~~~
-Serverspec_ is used to do `integration testsing`_, that is, testing how all of
+Serverspec_ is used to do `integration testing`_, that is, testing how all of
 the pieces/modules/code works together. It is an implementation of RSpec_
 tests for chef/puppet deployment. Tests are written in a declarative style to
 check whether the cookbook put all the files in the right places, installed the
 right packages, started the right daemons, etc. Here's a quick example from
 their docs:
+
 .. code:: ruby
 
     # In the file spec/target.example.jp/http_spec.rb
@@ -565,15 +574,17 @@ Some projects may also include a `.rubocop.yml`_ file for explicitly excluding
 or including files to be analyzed by Rubocop.
 
 **`Foodcritic`_** is a linter, like Rubocop, but it enforces style guidelines
-specific to Chef cookbooks.  Foodcritic will check for conformance to _`rules`
+specific to Chef cookbooks.  Foodcritic will check for conformance to `rules`_
 outlined by the Chef community, such as FC002_
 
-.. code:: shell
+.. code:: bash
+
 	$ foodcritic .
 	FC002: Avoid string interpolation where not required:
 	./providers/gunicorn.rb:89
 
 .. code:: ruby
+
 	# Don't do this:
 	gunicorn_command = new_resource.virtualenv.nil? ? "gunicorn" :
 	 "#{::File.join(new_resource.virtualenv, "bin    ", "gunicorn")}"
@@ -590,12 +601,13 @@ outlined by the Chef community, such as FC002_
 .. _Ruby Style Guide: https://github.com/bbatsov/ruby-style-guide
 .. _Test Kitchen: http://kitchen.ci/
 .. _Rspec: http://rspec.info/
-.. _Integration Testing: https://en.wikipedia.org/wiki/Integration_testing
+.. _integration testing: https://en.wikipedia.org/wiki/Integration_testing
 .. _Unit Testing: https://en.wikipedia.org/wiki/Unit_testing
 .. _Chefspec: http://sethvargo.github.io/chefspec/
 .. _.rubocop.yml: https://github.com/osuosl-cookbooks/osl-haproxy/blob/master/.rubocop.yml
 .. _Foodcritic: http://acrmp.github.io/foodcritic/
 .. _rules: http://acrmp.github.io/foodcritic/
+
 .. _FC002: http://acrmp.github.io/foodcritic/#FC002
 
 How to Write a Recipe
