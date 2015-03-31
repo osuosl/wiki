@@ -45,14 +45,14 @@ Every change to the PGD project must be approved by the scientists in charge of
 the project. It is difficult to write tests to ensure that new changes don't
 impact the science. Historically the PGD has had issues with upstream protein
 repositories and antiquated closed-source dependencies. Even importing new data
-can sometimes be a fraught process, but we are developing a detailed process to
-minimize problems when upstream software or data changes.
+can sometimes be a fraught process, but the team is developing a detailed
+process to minimize problems when upstream software or data changes.
 
 .. _Agile Manifesto: http://www.agilemanifesto.org/
 
 Tools We Use
 ------------
-At the OSL we use a variety of open source tools. Developers are expected to
+At the OSL developers use a variety of open source tools. Developers are expected to
 have at least passing familiarity with all of these tools. New developers are
 encouraged to research any of these tools they have not heard of.
 
@@ -65,11 +65,12 @@ environment please consult the project documentation and the OSL's `internal
 documentation`_.
 The OSL uses ``git`` for version control and keeps projects on
 GitHub_. The OSL uses the RedMine_ issue tracker because GitHub does not
-support time tracking.
+support tracking how much time was spent on individual issues.
 
 .. _internal documentation: https://docs.osuosl.org/development/docker-dev-environments.html
 .. _GitHub: https://github.com/osuosl
 .. _RedMine: https://code.osuosl.org
+
 How a Typical Project is Written
 ================================
 This is a step by step guide for writing a Django website. It will not cover
@@ -107,8 +108,10 @@ How to Write Python for Humans
 
 A lot of the work here at the Open Source Lab involves reading other people's
 code. To make this process less painful for everyone involved, it's best to
-write readable code. Here's a couple of things to keep in mind when writing
-Python.
+standardize how code is written. Python also has interesting idioms, like
+decorators, which are not common in other languages, which the Django framework
+makes extensive use of.
+
 
 PEP8, and how to check for it
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,7 +123,7 @@ document -- here are some of the more important, more common bits.
 1. Limit lines to 79 characters
 ```````````````````````````````
 
-Lines that are too long get hard to read. If your line is more than 79
+Lines that are too long get hard to read. If a line is more than 79
 characters long, break it to the next line:
 
 .. code-block:: python
@@ -151,15 +154,16 @@ to what gets passed to what.
 2. Indentation
 ``````````````
 
-Use four spaces per indentation level. Don't use tabs. Set your text editor
-to insert spaces when you hit tab -- this is possible in Sublime, Atom, vim,
-and pretty much every editor worth its salt.
+Use four spaces per indentation level. Don't use tabs. Any text editor
+can be configured to insert spaces when tab is pressed. Do not leave trailing
+whitespace at the end of lines or on otherwise blank lines.
 
 3. Blank lines
 ``````````````
 
 Put two blank lines in between classes, and in between functions. Put one blank
-line in between methods. This helps the reader easily group things logically.
+line in between methods. This helps the reader understand how the code is
+logically organized.
 
 Docstrings
 ~~~~~~~~~~
@@ -171,10 +175,10 @@ definition. Says `PEP 257`_, the Python Docstring Conventions document:
   exported by a module should also have docstrings. Public methods (including
   the __init__ constructor) should also have docstrings.
 
-Docstrings appear as triple-quoted strings at the top of a defintion. If they're
-one line long, the quotes can be on the same line as the comment; if they're
-multiple lines, the first should be a quick summary, followed by a blank line
-and the rest of the docstring.
+Docstrings appear as triple-quoted strings at the top of a definition. If
+they're one line long, the quotes can be on the same line as the comment; if
+they're multiple lines, the first should be a quick summary, followed by a
+blank line and the rest of the docstring.
 
 .. _PEP 257: https://www.python.org/dev/peps/pep-0257/
 
@@ -423,12 +427,12 @@ This will add commit ``abcde12345`` to the current branch.
 When Disaster Strikes
 ~~~~~~~~~~~~~~~~~~~~~
 On occasion disaster will strike, and it will appear that all has been lost. It
-is important not to panic, such mistakes can often be resolved with ``git
-reflog``. As long as the ``.git`` folder is intact, git keeps a log of the
-the changes made to the repository. Running ``git reflog`` will show a summary
-of recent actions on the repository. Choose the hash representing the state
-which should be restored to, for instance ``absde12345`` and run ``git reset
-abcde12345``.
+is important not to panic, such mistakes can often be resolved. As long as the
+``.git`` folder is intact, git keeps a log of the changes made to the
+repository. If a change is made which affects git history, the hash of the
+commit previous to the change will be stored in the special file
+``.git/ORIG_HEAD``, for instance ``absde12345``. To go back to that commit, run
+``git reset abcde12345``.
 
 
 Common Python Errors and How to Fix Them
