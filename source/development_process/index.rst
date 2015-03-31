@@ -635,11 +635,3 @@ on by a GSoC student should keep the following things in mind:
   keep the mentor up-to-date on those changes to keep from blindsiding the
   student.  It is hard enough for the student to learn a new workflow;
   minimizing "surprises" is just common courtesy.
-
-Related Documents:
-------------------
-.. toctree::
-    :maxdepth: 1
-    :glob:
-
-    *
