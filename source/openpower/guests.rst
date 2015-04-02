@@ -43,6 +43,12 @@ We are currently working on creating images for the following platforms:
 Guest Installation
 ------------------
 
+.. warning::
+
+  The following process is a work in progress and may not always work. We're
+  doing our best to improve this documentation so always feel to ask us first if
+  you run into any problems.
+
 Please run the following commands on one of the OpenPOWER machines directly.
 
 1. Download the DVD or net install ISO for desired distribution.
