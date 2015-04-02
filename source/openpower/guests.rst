@@ -23,41 +23,52 @@ the configuration and scripts used for building the images are included in our
 Current Images
 --------------
 
-We are maintaining PPC64 and PPC64LE images on our FTP mirrors. The list of
-operating systems we currently support are:
+We are maintaining ppc64 Big Endian (BE) and ppc64le Little Endian (LE) images
+on our FTP mirrors. The list of operating systems we currently support are:
 
-- Debian 7
-- Fedora 20
-- Ubuntu 14.04
-- Ubuntu 14.04 Little Endian
+- Debian 7 BE
+- Fedora 22 Alpha LE/BE
+- Fedora 21 LE/BE
+- Fedora 20 BE
+- Ubuntu 15.04 LE
+- Ubuntu 14.04 LE/BE
+
+We are currently working on creating images for the following platforms:
+
+- Debian 8 LE/BE
+- OpenSUSE LE/BE
 
 .. _FTP mirrors: http://ftp.osuosl.org/pub/osl/openpower/openstack/
 
 Guest Installation
 ------------------
 
+.. warning::
+
+  The following process is a work in progress and may not always work. We're
+  doing our best to improve this documentation so always feel to ask us first if
+  you run into any problems.
+
 Please run the following commands on one of the OpenPOWER machines directly.
 
 1. Download the DVD or net install ISO for desired distribution.
-2. Create a 2G qcow2 disk image::
+2. Create a 2G qcow2 disk image:
 
-    export DISTRO="fedora-20"
-    export DISTRO_ISO="Fedora-20-ppc64-DVD.iso"
+.. code-block:: bash
+
+    export DISTRO="fedora-21"
+    export DISTRO_ISO="Fedora-21-ppc64-DVD.iso"
     qemu-img create -f qcow2 $DISTRO.qcow2 2G
 
-3a. Boot up the image using kvm manually (For Big Endian)::
+3. Boot up the image using kvm manually:
 
-    qemu-system-ppc64 --enable-kvm -M pseries -cpu POWER7+_v2.1 -smp 2 -m 1G \
-      -nodefaults -nographic -monitor stdio -serial pty -netdev user,id=user.0 \
-      -device virtio-net-pci,netdev=user.0 -cdrom $DISTRO_ISO -drive \
-      file=$DISTRO.qcow2,if=virtio -boot order=d
+.. code-block:: bash
 
-3b. Boot up the image using kvm manually (For Little Endian)::
-
-    qemu-system-ppc64 --enable-kvm -M pseries -cpu POWER7+_v2.1 -smp 2 -m 1G \
-      -nodefaults -nographic -monitor stdio -serial pty -netdev user,id=user.0 \
-      -device spapr-vlan,netdev=user.0 -cdrom $DISTRO_ISO -device spapr-vscsi \
-      -drive file=$DISTRO.qcow2 -boot order=d
+    qemu-system-ppc64 --enable-kvm -M pseries -cpu host -smp 2 -m 2G \
+      -nodefaults -nographic -monitor stdio -serial pty -netdev user,id=net0 \
+      -device virtio-net-pci,netdev=net0 -cdrom $DISTRO_ISO -drive \
+      file=$DISTRO.qcow2,if=none,id=drive0,format=qcow2,cache=none -device \
+      virtio-blk-pci,scsi=off,drive=drive0,id=disk0 -boot order=d
 
 4. Note the serial device qemu created::
 
