@@ -15,7 +15,7 @@ Summary
 We use Chef as our configuration management tool of choice and have created an
 environment using the `StackForge`_ Chef Cookbooks. The compute nodes are
 running Fedora 20 and the controller node is an x86 virtual machine running
-CentOS 6.5.
+CentOS 6.6.
 
 We have created our own site specific `Openstack cookbook`_ that also includes any
 changes needed to make Openstack run on the OpenPOWER platform on Fedora 20. It
@@ -24,6 +24,23 @@ lacks some documentation.
 
 .. _StackForge: https://github.com/stackforge
 .. _Openstack cookbook: https://github.com/osuosl-cookbooks/osl-openstack
+
+Software Stack
+--------------
+
+Here is the current deployment of OpenStack on OpenPOWER we're using:
+
+- Host Operating Systems
+
+  - CentOS 6.6 x86_64 VM (keystone/glance/horizon)
+  - Fedora 20 ppc64 (nova/cinder)
+
+- OpenStack
+
+  - OpenStack Icehouse
+  - Packages from `RDO`_
+
+.. _RDO: https://www.rdoproject.org
 
 Reasons for using Fedora
 ------------------------
