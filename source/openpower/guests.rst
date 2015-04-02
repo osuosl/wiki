@@ -23,13 +23,20 @@ the configuration and scripts used for building the images are included in our
 Current Images
 --------------
 
-We are maintaining PPC64 and PPC64LE images on our FTP mirrors. The list of
-operating systems we currently support are:
+We are maintaining ppc64 Big Endian (BE) and ppc64le Little Endian (LE) images
+on our FTP mirrors. The list of operating systems we currently support are:
 
-- Debian 7
-- Fedora 20
-- Ubuntu 14.04
-- Ubuntu 14.04 Little Endian
+- Debian 7 BE
+- Fedora 22 Alpha LE/BE
+- Fedora 21 LE/BE
+- Fedora 20 BE
+- Ubuntu 15.04 LE
+- Ubuntu 14.04 LE/BE
+
+We are currently working on creating images for the following platforms:
+
+- Debian 8 LE/BE
+- OpenSUSE LE/BE
 
 .. _FTP mirrors: http://ftp.osuosl.org/pub/osl/openpower/openstack/
 
