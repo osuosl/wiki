@@ -619,9 +619,75 @@ How to Write a Recipe
 How to Write a Light Weight Resource Provider
 ---------------------------------------------
 
-- What is an LWRP and how are they useful
-- Write a resource
-- Write a provider
+A Light Weight Resource Provider, or LWRP, is a simple way to write custom
+reusable components for configuration. For instance, one could copy a sysV init
+file for apache into ``/etc/init.d`` in every cookbook which needs to setup
+apache, or one could provide a resource which will set the status of the init
+script, whether or not it is enabled etc., and automatically copies it over
+for you.
+
+.. code:: ruby
+
+	service "apache" do
+	  action [:enable]
+	end
+
+The implementation of an LWRP is split into two parts: a resource, which
+declares the interface, and the provider, which is the logic executed when the
+new resource is instantiated. LWRPs have a peculiar naming scheme which depends
+both on the name of the cookbook and the name of the file. For instance, if the
+``python-webapp`` cookbook has a provider in the file ``providers/common.rb``
+and a resource in the file ``resources/common.rb`` it will have a LWRP called
+``python_webapp_common``. It can be used like this:
+
+
+.. code:: ruby
+
+	python_webapp_common 'name goes here' do
+	  # set attributes in here
+	end
+
+Note that if the LWRP is called ``default``, and has files in similar places,
+the name of the LWRP will be ``python_webapp``.
+
+How to Write a Resource
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Resources are ruby files placed under the ``resources`` directory. Resources
+define the attributes and default actions for an LWRP. Each attribute is a
+hash, with a name, such as ``:path``, a ``'kind_of'``, which defines the type
+of the attribute, and an optional default value. A resource should also specify
+a default action.
+
+.. code:: ruby
+	# Put this file in resources/default.rb
+	default_action :install
+
+	attribute :path, 'kind_of' => String, 'default' => '/'
+	attribute :on, 'kind_of' => [TrueClass, FalseClass], 'default' => true
+
+How to Write a Provider
+~~~~~~~~~~~~~~~~~~~~~~~
+
+An LWRP needs a provider for each of its actions. A provider can have arbitrary
+ruby code, and will likely use several other LWRPs. Often, the LWRP should
+indicate that the resource was updated by the last action.
+
+
+.. code:: ruby
+	action :install do
+	  if new_resource.on
+	    # do things
+	  end
+	  # Create a file at the path using the file LWRP only if the on attribute
+	  # is set
+	  file "#{new_resource.path}/some_file" do
+	    only_if { new_resource.on }
+	    action :create
+	  end
+	  new_resource.updated_by_last_action(true)
+	end
+
 
 Common Chef Errors and How to Fix Them
 --------------------------------------
