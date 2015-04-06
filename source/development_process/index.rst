@@ -129,20 +129,21 @@ characters long, break it to the next line:
 .. code-block:: python
 
   # Don't do this
-  data = json.loads(serializer.serialize([preparation], use_natural_foreign_keys=True)
+  data = json.loads(serializer.serialize([preparation], use_natural_foreign_keys=True))
 
   # Do this
-  data = json.loads(
+
+   data = json.loads(
       serializer.serialize(
           [preparation],
           use_natural_foreign_keys=True
-    )
-
+    ))
   # Or this
   data = json.loads(
-      serializer.serialize([preparation],
-                           use_natural_foreign_keys=True
-      )
+    serializer.serialize([preparation],
+                         use_natural_foreign_keys=True
+                         )
+  )
 
 
 When breaking just after an open-parenthesis, go in by four spaces as shown
@@ -660,6 +661,7 @@ of the attribute, and an optional default value. A resource should also specify
 a default action.
 
 .. code:: ruby
+
 	# Put this file in resources/default.rb
 	default_action :install
 
@@ -675,6 +677,7 @@ indicate that the resource was updated by the last action.
 
 
 .. code:: ruby
+
 	action :install do
 	  if new_resource.on
 	    # do things
