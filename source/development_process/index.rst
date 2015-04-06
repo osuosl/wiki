@@ -79,6 +79,7 @@ the team has indicated that Django is to be preferred for new projects.
 
 Determine Requirements
 ----------------------
+Perhaps the most crucial part of the development workflow is 
 - Meet with client
 - determine requirements
 - determine milestones
@@ -390,7 +391,38 @@ Do NOT run
 
 Resolving Merge Conflicts
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Hopefully I'll get one in this document so I can add it to this section
+Merge conflicts are an unfortunate reality when working with peers on a large
+code base. They are easy to fix, but they must be fixed with care as the
+functionality of the code may be unintentionally changed. Always run tests
+before pushing a branch which had merge conflicts. Merge conflicts can happen
+when running ``git merge source_branch`` and when pulling or rebasing.
+
+Git denotes merge conflicts with a series of angle brackets. After each series
+of angle brackets is the name of the commit where the changes came from. In
+this case, the code in the HEAD revision is older than the other revision, so
+the code between ``<< HEAD`` and the equal signs should be removed. The line
+with the angle brackets and the newer commit hash should also be removed. This
+cannot be done automatically because git doesn't know which lines to include,
+or whether some combination of the lines should be included.
+
+.. code:: python
+
+	<<<<<<< HEAD
+			sortx_sql = sortx.aggregate.as_sql(qn, cn)
+			sorty_sql = sorty.aggregate.as_sql(qn, cn)
+	=======
+			sortx_sql = sortx.aggregate.as_sql(qn, cn)[0]
+			sorty_sql = sorty.aggregate.as_sql(qn, cn)[0]
+	>>>>>>> 692b8936b466d8c651bb1ab39e96ca98c7c4714b
+
+To resolve merge conflicts when running ``git merge``, add the files which were
+corrected, and then commit. That commit will have its title automatically
+generated -- do not change the title, but feel free to add more details to the
+body of the commit about why the merge is happening.
+
+Always run ``git grep '<<<'`` and ``git grep '>>>'`` before pushing code after
+a merg conflict and run tests. It is possible that some merge related code
+escaped notice, and this should be fixed as soon as possible.
 
 Rebasing and Squashing Commits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -442,6 +474,19 @@ repository. If a change is made which affects git history, the hash of the
 commit previous to the change will be stored in the special file
 ``.git/ORIG_HEAD``, for instance ``absde12345``. To go back to that commit, run
 ``git reset abcde12345``.
+
+Miscellaneous Git Tips
+~~~~~~~~~~~~~~~~~~~~~~
+
+* To undo the last commit, run ``git reset HEAD~1``.
+* To amend the last commit *which has not been pushed* and fix anything which
+  was forgotten, first add any files which were changed or forgotten, then run
+  ``git commit --amend``.
+* To add part of a file, use ``git add -p`` and follow the interactive
+  instructions.
+* To delete a remote branch named ``branch``, run ``git push origin :branch``
+* To get a pretty view of git history, run ``git log --graph --all``.
+  Some developers alias this to ``git-net``.
 
 
 Common Python Errors and How to Fix Them
