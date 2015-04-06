@@ -509,7 +509,7 @@ Using Test Kitchen With OpenStack
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Running Vagrant on the workstations is slow, and it is not uncommon for virtual
 machines to hog resources or be killed and become corrupted. It's often faster
-and easier to spin up virtual machines on the Lab's OpenStack cluster. The lab
+and easier to spin up virtual machines on the Lab's OpenStack cluster. The Lab
 has extensive internal documentation on using `Test Kitchen with OpenStack`_.
 After setting everything up, test kitchen will be just as easy to use, and
 tests will run much faster.
