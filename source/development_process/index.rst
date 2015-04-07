@@ -52,9 +52,10 @@ process to minimize problems when upstream software or data changes.
 
 Tools We Use
 ------------
-At the OSL developers use a variety of open source tools. Developers are expected to
-have at least passing familiarity with all of these tools. New developers are
-encouraged to research any of these tools they have not heard of.
+At the OSL developers use a variety of open source tools. Developers are
+expected to have at least passing familiarity with all of these tools. New
+developers are encouraged to research any of these tools they have not heard
+of.
 
 Most OSL websites are written in Python using the Django web application
 framework. Websites are deployed using Chef configuration management on CentOS
@@ -79,7 +80,6 @@ the team has indicated that Django is to be preferred for new projects.
 
 Determine Requirements
 ----------------------
-Perhaps the most crucial part of the development workflow is 
 - Meet with client
 - determine requirements
 - determine milestones
@@ -459,7 +459,8 @@ out the branch which the commits will be moved to. Then, find the hash
 representing the commit using ``git log --all``, for example ``abcde12345``,
 and run:
 
-.. code::shell
+.. code:: shell
+
 	$ git cherry-pick abcde2345
 
 This will add commit ``abcde12345`` to the current branch.
