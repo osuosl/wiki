@@ -102,13 +102,26 @@ Create the Issue Traker:
 The OSL uses 
 `Redmine <http://www.redmine.org/>`_ to track issues. Once `registered <http://www.redmine.org/projects/redmine/wiki/RedmineProjectOverview>`_
 and `signed in <http://www.redmine.org/projects/redmine/wiki/RedmineLogin>`_, 
-to redmine, 
+to redmine, click the "projects" link in the top left-hand corner
+of the page. 
 
 Create the project skeleton with Django
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+`Django <https://www.djangoproject.com/>`_ is a powerful python web
+application framework that makes building web applications much
+easier.  Framework is just a fancy word for "lots of helpful tools
+that make your life easier".  Django has `excellent documentation 
+<https://docs.djangoproject.com/en/1.7/>`_ and `tutorials <https://docs.djangoproject.com/en/1.7/intro/tutorial01/#creating-a-project>`_ 
+that are well worth looking at. To begin a project, get to the 
+directory where the site will live and run ``$ django-admin.py startproject mysite``.  
+Now the skeleton of the project is ready to go!  Add, commit, and 
+push it to github as an initial commit if appropriate.
+
 Create the Dockerfile
 ~~~~~~~~~~~~~~~~~~~~~
+
+
 
 Create a virtualenv: 
 ~~~~~~~~~~~~~~~~~~~~
@@ -118,9 +131,9 @@ containing dependencies within a project, and allow the user to
 ascertain which projects require which libraries.  If the machine
 doesn't already have the virtualenv python package (though all
 the machines should), install it by running ``$ pip install virtualenv``.  
-Then run ``$ virtualenv <NAME OF VIRTUALENV>``, naming it something 
+Then run ``$ virtualenv venv``, naming it something 
 that indicates what the project is. To activate the virtual 
-environment ``$ source <NAME OF VIRTUALENV>/bin/activate``.  Once
+environment ``$ source venv/bin/activate``.  Once
 done with the virtual environment, run ``$ deactivate`` to exit. 
 Look `here <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_
 for more detailed documentation.
