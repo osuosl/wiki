@@ -65,8 +65,7 @@ development fast and easy. To learn how to use the Docker development
 environment please consult the project documentation and the OSL's `internal
 documentation`_.
 The OSL uses ``git`` for version control and keeps projects on
-GitHub_. The OSL uses the RedMine_ issue tracker because GitHub does not
-support tracking how much time was spent on individual issues.
+GitHub_. The OSL uses the Github issue tracker.
 
 .. _internal documentation: https://docs.osuosl.org/development/docker-dev-environments.html
 .. _GitHub: https://github.com/osuosl
@@ -88,22 +87,15 @@ Determine Requirements
 Setting Up the Project
 ----------------------
 
-Create the git repo: 
+Create the git repo:
 ~~~~~~~~~~~~~~~~~~~~
 
-Unless instructed to do otherwise, or given 
-special permission in the `OSL organization github <https://github.com/osuosl>`_, ask a full-time employee to make the repository.
+Unless instructed to do otherwise, or given
+special permission in the `OSL organization github
+<https://github.com/osuosl>`_, ask a full-time employee to make the repository.
 All the repositories for the OSL should be owned by the OSL, so don't
-make a repo under your own account! Once the repo is created use ``$ git clone <SSH URI>`` to start working on the project.
-
-Create the Issue Traker: 
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-The OSL uses 
-`Redmine <http://www.redmine.org/>`_ to track issues. Once `registered <http://www.redmine.org/projects/redmine/wiki/RedmineProjectOverview>`_
-and `signed in <http://www.redmine.org/projects/redmine/wiki/RedmineLogin>`_, 
-to redmine, click the "projects" link in the top left-hand corner
-of the page. 
+make a repo under your own account! Once the repo is created use ``$ git clone
+<SSH URI>`` to start working on the project.
 
 Create the project skeleton with Django
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -111,40 +103,95 @@ Create the project skeleton with Django
 `Django <https://www.djangoproject.com/>`_ is a powerful python web
 application framework that makes building web applications much
 easier.  Framework is just a fancy word for "lots of helpful tools
-that make your life easier".  Django has `excellent documentation 
-<https://docs.djangoproject.com/en/1.7/>`_ and `tutorials <https://docs.djangoproject.com/en/1.7/intro/tutorial01/#creating-a-project>`_ 
-that are well worth looking at. To begin a project, get to the 
-directory where the site will live and run ``$ django-admin.py startproject mysite``.  
-Now the skeleton of the project is ready to go!  Add, commit, and 
-push it to github as an initial commit if appropriate.
+that make your life easier".  Django has `excellent documentation
+<https://docs.djangoproject.com/en/1.7/>`_ and `tutorials
+<https://docs.djangoproject.com/en/1.7/intro/tutorial01/#creating-a-project>`_
+that are well worth looking at. To begin a project, get to the directory where
+the site will live and run ``$ django-admin.py startproject mysite``.  Now the
+skeleton of the project is ready to go!  Add, commit, and push it to github as
+an initial commit if appropriate.
 
 Create the Dockerfile
 ~~~~~~~~~~~~~~~~~~~~~
 
+Docker is a tool for putting discrete parts of an application on their own
+pretend operating systems. This is called containerization. The upshot is that
+a web application and a database don't need to be configured together. One of
+Dockers biggest advantages for developers is its speed -- rebuilding a
+development version of a website with Docker takes seconds as opposed to the 20
+minutes Chef may need to converge. Writing a Dockerfile is easy. Here is a
+simplified example from the PGD project:
 
+.. code:: shell
+	FROM centos:7
 
-Create a virtualenv: 
+	MAINTAINER OSU OSL support@osuosl.org
+
+	EXPOSE 8000
+
+	RUN yum update && yum install -y \
+	  cairo \
+	  gcc \
+	  gcc-c++ \
+	  git \
+	  libcairo-devel \
+	  libffi \
+	  libffi-devel \
+	  mysql \
+	  mysql-devel \
+	  osuosl-dssp \
+	  pycairo \
+	  python-setuptools \
+	  python-devel
+
+	RUN easy_install pip
+
+	# Copy and configure pgd
+	WORKDIR /opt/pgd
+	# Copy requirements.txt separately for better caching
+	COPY ./requirements.txt /opt/pgd/requirements.txt
+	RUN pip install -r requirements.txt
+	# NB: copying the settings file is not a good idea when using volumes!
+	COPY . /opt/pgd/
+	RUN cp /opt/pgd/settings.py.dist /opt/pgd/settings.py
+
+	CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+More about writing Dockerfiles can be found in the `Docker documentation`_.
+Docker also has a `document`_ specifying best practices. The Lab also has
+`extensive internal documentation`_ specifying how Docker is used as part of
+the developer team's workflow.
+
+.. _Docker documentation: http://docs.docker.com/reference/builder/
+.. _document: https://docs.docker.com/articles/dockerfile_best-practices/
+.. _extensive internal documentation: ://docs.osuosl.org/development/docker-dev-environments.html
+
+Create a Virtualenv:
 ~~~~~~~~~~~~~~~~~~~~
 
-Virtual environments are a pythonic way of 
-containing dependencies within a project, and allow the user to 
-ascertain which projects require which libraries.  If the machine
-doesn't already have the virtualenv python package (though all
-the machines should), install it by running ``$ pip install virtualenv``.  
-Then run ``$ virtualenv venv``, naming it something 
-that indicates what the project is. To activate the virtual 
-environment ``$ source venv/bin/activate``.  Once
-done with the virtual environment, run ``$ deactivate`` to exit. 
-Look `here <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_
-for more detailed documentation.
+Virtual environments are a pythonic way of containing dependencies within a
+project. Virtualenvs are directories with their own version of Python, Pip, and
+all of the packages a python application needs. Virtual environments should
+probably have a descriptive name and be project specific. Many developers
+prefer to keep them in one place, such as ``~/.my_venvs/``. To create a virtual
+environment for a project such as What's Fresh, run ``virtualenv
+~/my_venvs/whats_fresh``. A new directory will be created at that location.
+Virtual environments must be activated to be used, by running ``$ source
+~/.my_venvs/whats_fresh/bin/activate``.  Once a virtual environment has been
+activated, dependencies can be installed as usual. To install all of the
+dependencies listed in a project's ``requirements.txt`` file, run ``$ pip
+install -r requirements.txt``. Once finished with the virtual environment, run
+``$ deactivate`` to exit.  More detailed documentation can be found in the
+`python guide <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_.
 
-Create the projects default branch (if not master): 
+
+Create the projects default branch (if not master):
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Use the 
-repositories settings (the little screwdriver in the sidebar) to 
-`change the default branch <https://help.github.com/articles/setting-the-default-branch/>`_.  Remember that the branch needs to exist 
-first before it's made the default!
+Use the repositories settings (the little screwdriver in the sidebar) to
+`change the default branch
+<https://help.github.com/articles/setting-the-default-branch/>`_.  Remember
+that the branch needs to exist first before it's made the default!
 
 The Development Process
 -----------------------
