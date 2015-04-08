@@ -596,12 +596,113 @@ Common Python Errors and How to Fix Them
 Writing the Chef Cookbook
 -------------------------
 
-- Pretty much the same as the rest of the project
-- Setting up test kitchen (link to updated internal chef docs)
-- Create the git repo
-- Create the issue tracker
-- Create the project skeleton with Berks
+Writing a chef cookbook is very similar to writing the rest of the project. The
+Lab has internal resources explaining how to write a cookbook, so this is just
+a summary. A cookbook describes the desired state of a server. A cookbook may
+have several recipes for different operating systems or for different parts of
+the servers configuration. Cookbooks can use pieces of code from other
+cookbooks called resources. Here is an abridged version of the What's Fresh
+coobook's default recipe:
 
+.. code:: ruby
+
+	directory node['whats_fresh']['config_dir'] do
+	  owner node['whats_fresh']['venv_owner']
+	  group node['whats_fresh']['venv_group']
+	  recursive true
+	end
+
+	python_webapp 'whats_fresh' do
+	  create_user true
+	  path node['whats_fresh']['application_dir']
+	  owner node['whats_fresh']['venv_owner']
+	  group node['whats_fresh']['venv_group']
+
+	  repository node['whats_fresh']['repository']
+	  revision node['whats_fresh']['git_branch']
+
+	  config_template 'config.yml.erb'
+	  config_destination "#{node['whats_fresh']['config_dir']}/config.yml"
+	  django_migrate true
+	  django_collectstatic true
+	  interpreter 'python2.7'
+
+	  gunicorn_port node['whats_fresh']['gunicorn_port']
+	end
+
+	nginx_app 'whats_fresh' do
+	  template 'whats_fresh.conf.erb'
+	  cookbook 'whats-fresh'
+	end
+
+This recipe uses several resources, including ``python_webapp``, ``nginx_app``,
+and ``directory``. The section ``node['whats_fresh']['application_dir']`` is
+just like a python dictionary with a specific configuration value, often a
+string.
+
+
+The Architecture of Chef, Abridged
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Chef has several parts, a central server which holds all of the cookbooks, and
+a collection of nodes, which are managed by the chef server. Each node has
+attributes which are essentially a hash or a dictionary of configuration values
+and keys. Each node has a list of roles it serves, like web server or database
+server, and a run list of recipes it will run. Every half hour or so each node
+checks with the chef server and converges to the state which the chef cookbook
+specifies. Sysadmins can edit the attributes of a node on the chef server using
+the ``knife`` tool.
+
+Anatomy of a Coobook
+~~~~~~~~~~~~~~~~~~~~
+Most cookbooks begin with a table of contents, but Chef cookbooks are full of
+files. Here is a summary of important files in a cookbook.
+
+.. code:: text
+
+	.
+	├── attributes: A directory
+	├── Berksfile: Defines other cookbooks on which this one depends
+	├── chefignore: Like a .gitignore, lists files which Chef won't upload.
+	├── Gemfile: Lists gem dependencies like python's requirements.txt
+	├── .kitchen.yml: Used for running Test Kitchen with Vagrant
+	├── .kitchen.cloud.yml: Used for running Test Kitchen on openstack
+	├── metadata.rb: Like the Berksfile, defines dependencies and cookbook info
+	├── providers: Providers define the code for a Light Weight Resource
+	│              Provider.
+	├── recipes: Recipes are ruby files instructing Chef how to configure a
+	│   │        node.
+	│   └── default.rb
+	├── resources: Resources define the interface of a Light Weight Resource
+	│              Provider.
+	├── templates: Holds Emedded Ruby (erb) templates for config files, etc.
+	│   └── default: Templates for the default recipe
+	├── test: Holds test kitchen tests.
+	│   └── integration
+	│       └── default: Tests for the default recipe
+	│           └── serverspec: Serverspec test files.
+	└── Vagrantfile: Used for starting Test Kitchen VMs
+
+
+Starting a New Cookbook
+~~~~~~~~~~~~~~~~~~~~~~~
+
+To begin a new project, run ``berks cookbook new-cookbook-name``. Berks will
+create a skeleton cookbook and git repository. It may be useful to create a
+file called ``.kitchen.cloud.yml`` which specifies how to run `test kitchen VMs
+on OpenStack`_. Commit the generated code, and ask for a new repository to be
+created under the osuosl-cookbooks organization on GitHub. Some developers may
+also need to ask for permission to join that organization so they can commit
+code there. Follow Github's guide on `importing the code to Github`_. Cookbooks
+should use the Github issue tracker.
+
+Most projects will use the default recipe, and possibly a handful of platform
+specific recipes.
+
+
+.. _internal resources: https://docs.osuosl.org/config-management/chef/index.html?highlight=chef
+.. _test kitchen VMs on OpenStack: https://docs.osuosl.org/software/openstack/openstack_test_kitchen.html?highlight=test%20kitchen%20openstack#test-kitchen
+.. _importing the code to Github: https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/#platform-linux
 
 Writing Chef Tests
 ------------------
