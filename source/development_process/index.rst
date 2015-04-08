@@ -591,7 +591,11 @@ Miscellaneous Git Tips
 
 Common Python Errors and How to Fix Them
 ----------------------------------------
-- I can't think of any...
+
+.. note:: This document was written by experienced devs who couldn't remember
+	what problems they had when they first started learning Python. You, dear
+	reader, are encouraged to make a pull request to the OSL wiki on GitHub and
+	add to this section.
 
 Writing the Chef Cookbook
 -------------------------
