@@ -122,7 +122,8 @@ development version of a website with Docker takes seconds as opposed to the 20
 minutes Chef may need to converge. Writing a Dockerfile is easy. Here is a
 simplified example from the PGD project:
 
-.. code:: shell
+.. code:: text
+
 	FROM centos:7
 
 	MAINTAINER OSU OSL support@osuosl.org
