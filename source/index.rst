@@ -15,6 +15,7 @@ Welcome to the OSL Wiki!
     openpower/index
     powerlinux/index
     howtos/index
+    development_process/index
 
 Indices and tables
 ------------------
