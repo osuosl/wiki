@@ -589,14 +589,6 @@ Miscellaneous Git Tips
   Some developers alias this to ``git-net``.
 
 
-Common Python Errors and How to Fix Them
-----------------------------------------
-
-.. note:: This document was written by experienced devs who couldn't remember
-	what problems they had when they first started learning Python. You, dear
-	reader, are encouraged to make a pull request to the OSL wiki on GitHub and
-	add to this section.
-
 Writing the Chef Cookbook
 -------------------------
 
@@ -941,9 +933,6 @@ indicate that the resource was updated by the last action.
 	  new_resource.updated_by_last_action(true)
 	end
 
-
-Common Chef Errors and How to Fix Them
---------------------------------------
 
 Google Summer of Code
 ---------------------
