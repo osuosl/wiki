@@ -834,7 +834,7 @@ outlined by the Chef community, such as FC002_
 	 "#{::File.join(new_resource.virtualenv, "bin    ", "gunicorn")}"
 	# Do this instead:
 	gunicorn_command = new_resource.virtualenv.nil? ? "gunicorn" :
-	 ::File.join(new_resource.virtualenv, "bin    ", "gunicorn")
+	 ::File.join(new_resource.virtualenv, "bin", "gunicorn")
 
 
 
