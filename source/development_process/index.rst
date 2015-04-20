@@ -19,7 +19,7 @@ How the Developer Team Interacts With Clients
 ---------------------------------------------
 The needs of clients vary a surprising amount. The developer team is expected
 to modify the development and maintenance schedule to suit the specific needs
-of each customer. In the past, the OSL has adopted an agile methodology for
+of each customer. In the past, the OSL has adopted the agile methodology for
 working with the BSG and the Sea Grant foundation. This contrasts with the more
 conservative development and release cycle of the Protein Geometry Database,
 where every major change and new release must be certified by scientists.
@@ -30,7 +30,7 @@ change and customer collaboration, which made it an ideal fit for working with
 both the Sea Grant Foundation and the BSG on an integrated website and mobile
 application. The agile development methodology is defined in the `Agile
 Manifesto`_, which is required reading for
-all developers should the team choose to follow this methodology. When
+all developers, should the team choose to follow this methodology. When
 following the agile methodology the developer team meets every month to
 discuss the state of the project and show their progress to the client. The Sea
 Grant projects also followed the test driven development model, which dictates
@@ -50,8 +50,8 @@ process to minimize problems when upstream software or data changes.
 
 .. _Agile Manifesto: http://www.agilemanifesto.org/
 
-Tools We Use
-------------
+Tools The Team Uses
+-------------------
 At the OSL developers use a variety of open source tools. Developers are
 expected to have at least passing familiarity with all of these tools. New
 developers are encouraged to research any of these tools they have not heard
@@ -73,7 +73,7 @@ GitHub_. The OSL uses the Github issue tracker.
 
 How a Typical Project is Written
 ================================
-This is a step by step guide for writing a Django website. It will not cover
+This is a guide for writing a Django website. It will not cover
 how to write a website using Flask because the process is nearly identical and
 the team has indicated that Django is to be preferred for new projects.
 
@@ -93,9 +93,9 @@ Create the git repo:
 Unless instructed to do otherwise, or given
 special permission in the `OSL organization github
 <https://github.com/osuosl>`_, ask a full-time employee to make the repository.
-All the repositories for the OSL should be owned by the OSL, so don't
-make a repo under your own account! Once the repo is created use ``$ git clone
-<SSH URI>`` to start working on the project.
+All the repositories for the OSL should be owned by the OSL. Developers should
+not make a repository under their own account. Once the repo is created use ``$
+git clone <SSH URI>`` to start working on the project.
 
 Create the project skeleton with Django
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -103,7 +103,7 @@ Create the project skeleton with Django
 `Django <https://www.djangoproject.com/>`_ is a powerful python web
 application framework that makes building web applications much
 easier.  Framework is just a fancy word for "lots of helpful tools
-that make your life easier".  Django has `excellent documentation
+that make life easier".  Django has `excellent documentation
 <https://docs.djangoproject.com/en/1.7/>`_ and `tutorials
 <https://docs.djangoproject.com/en/1.7/intro/tutorial01/#creating-a-project>`_
 that are well worth looking at. To begin a project, get to the directory where
@@ -116,11 +116,13 @@ Create the Dockerfile
 
 Docker is a tool for putting discrete parts of an application on their own
 pretend operating systems. This is called containerization. The upshot is that
-a web application and a database don't need to be configured together. One of
-Dockers biggest advantages for developers is its speed -- rebuilding a
-development version of a website with Docker takes seconds as opposed to the 20
-minutes Chef may need to converge. Writing a Dockerfile is easy. Here is a
-simplified example from the PGD project:
+different parts of an application, like a web application and a database, don't
+need to be configured together. Often off-the-shelf containers can be used
+instead of developing custom solutions. One of Dockers biggest advantages for
+developers is its speed -- rebuilding a development version of a website with
+Docker takes seconds as opposed to the 20 minutes Chef may need to converge.
+Writing a Dockerfile is easy. Here is a simplified example from the PGD
+project:
 
 .. code:: text
 
@@ -165,7 +167,7 @@ the developer team's workflow.
 
 .. _Docker documentation: http://docs.docker.com/reference/builder/
 .. _document: https://docs.docker.com/articles/dockerfile_best-practices/
-.. _extensive internal documentation: ://docs.osuosl.org/development/docker-dev-environments.html
+.. _extensive internal documentation: http://docs.osuosl.org/development/docker-dev-environments.html
 
 Create a Virtualenv:
 ~~~~~~~~~~~~~~~~~~~~
@@ -176,23 +178,26 @@ all of the packages a python application needs. Virtual environments should
 probably have a descriptive name and be project specific. Many developers
 prefer to keep them in one place, such as ``~/.my_venvs/``. To create a virtual
 environment for a project such as What's Fresh, run ``virtualenv
-~/my_venvs/whats_fresh``. A new directory will be created at that location.
-Virtual environments must be activated to be used, by running ``$ source
+~/.my_venvs/whats_fresh``. A new directory will be created at that location.
+Virtual environments must be activated to be used by running ``$ source
 ~/.my_venvs/whats_fresh/bin/activate``.  Once a virtual environment has been
 activated, dependencies can be installed as usual. To install all of the
 dependencies listed in a project's ``requirements.txt`` file, run ``$ pip
 install -r requirements.txt``. Once finished with the virtual environment, run
-``$ deactivate`` to exit.  More detailed documentation can be found in the
+``$ deactivate``.  More detailed documentation can be found in the
 `python guide <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_.
 
 
 Create the projects default branch (if not master):
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Use the repositories settings (the little screwdriver in the sidebar) to
-`change the default branch
-<https://help.github.com/articles/setting-the-default-branch/>`_.  Remember
-that the branch needs to exist first before it's made the default!
+Some projects use a different default branch than master. For instance, the
+What's Fresh project had develop as its default branch before it was released.
+`To set the project's default branch`_ on Github, use the repositories settings
+(the little screwdriver in the sidebar). Remember that the branch needs to
+exist first before it's made the default!
+
+.. _To set the project's default branch: https://help.github.com/articles/setting-the-default-branch/
 
 The Development Process
 -----------------------
@@ -217,9 +222,11 @@ makes extensive use of.
 PEP8, and how to check for it
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-PEP8 is the "Style Guide for Python Code". Essentially, it's a document
+`PEP8`_ is the "Style Guide for Python Code". Essentially, it's a document
 detailing how to write Python that's homogeneous and easy to read. It's a long
 document -- here are some of the more important, more common bits.
+
+.. _PEP8: https://www.python.org/dev/peps/pep-0008/
 
 1. Limit lines to 79 characters
 ```````````````````````````````
@@ -314,7 +321,7 @@ at the OSL:
 Configuration
 ~~~~~~~~~~~~~
 
-The lab uses yaml-based configuration for many of its Django projects. This
+The Lab uses yaml-based configuration for many of its Django projects. This
 makes the configuration easier to read, and in general allows a slightly greater
 degree of freedom in setting up. To see how this is set up, take a look at
 `What's Fresh's settings.py`_.
@@ -413,9 +420,9 @@ been filled out, and POST requests, which save the form.
 
 Notice the ``@login_required`` above the view function. This is a decorator,
 a special Python function that "wraps" the function it's above. In this case,
-Django's login_required decorator is being used. This decorator will make sure
-the user is authenticated before running the view, and if they are not, will
-redirect them to the login page.
+Django's ``login_required`` decorator is being used. This decorator will make
+sure the user is authenticated before running the view, and if they are not,
+will redirect them to the login page.
 
 
 Automated testing with Travis
