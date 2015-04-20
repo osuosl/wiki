@@ -201,13 +201,31 @@ exist first before it's made the default!
 
 The Development Process
 -----------------------
-- Pick an issue
-- Checkout a new branch (with a branch naming scheme)
-- Write tests (with a sample Django test)
-- Write the code
-- Make a PR
-- Merge it
-- Close the issue
+
+Developers will spend most of their time in the feedback loop which is the
+development process. It begins by going to the issue tracker and picking an
+open issue. In general, it is best to consult the project lead on which issues
+are the highest priority. Issues should also document their dependencies on
+other issues and pull requests, but look out because sometimes they do not.
+Next, create a new branch. Give the branch a descriptive name which is easy to
+tab complete and has the issue number it fixes. A common naming scheme among
+OSL projects is: ``<descriptive name>/<issue type>/<issue number>``. Having a
+descriptive name in front makes the branch easy to tab complete. Having the
+issue type makes it very clear whether the issue is a feature or a
+bug, and the issue number indicates what issue the branch belongs to in the
+issue tracker. Developers should branch off of the ``develop`` branch, not
+``master``. ``develop`` will be merged into master once it is time to make a
+release.
+Now that a new branch has been checked out, start writing tests. Only after
+tests have been written should the code be written. Once the code is at a point
+where others' advice is useful, make a pull request. Typically several
+developers or sysadmins will review the code and make comments. Once everyone
+is satisfied with the PR and two people have signed off by giving their ``+1``,
+the code can be merged. If the issue number has been mentioned in the pull
+request's conversation, then Github will automatically close it. Check to make
+sure that it has been closed anyway since the system is not foolproof. Once the
+issue has been closed go back and choose a new issue.
+
 
 How to Write Python for Humans
 ------------------------------
