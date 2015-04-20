@@ -665,14 +665,14 @@ files. Here is a summary of important files in a cookbook.
 .. code:: text
 
 	.
-	├── attributes: A directory
-	├── Berksfile: Defines other cookbooks on which this one depends
+	├── attributes: A directory that contains ruby files that set attributes.
+	├── Berksfile: Defines where to find other cookbooks.
 	├── chefignore: Like a .gitignore, lists files which Chef won't upload.
 	├── Gemfile: Lists gem dependencies like python's requirements.txt
 	├── .kitchen.yml: Used for running Test Kitchen with Vagrant
 	├── .kitchen.cloud.yml: Used for running Test Kitchen on openstack
 	├── metadata.rb: Like the Berksfile, defines dependencies and cookbook info
-	├── providers: Providers define the code for a Light Weight Resource
+	├── libraries: Providers define the code for a Light Weight Resource
 	│              Provider.
 	├── recipes: Recipes are ruby files instructing Chef how to configure a
 	│   │        node.
@@ -691,14 +691,25 @@ files. Here is a summary of important files in a cookbook.
 Starting a New Cookbook
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-To begin a new project, run ``berks cookbook new-cookbook-name``. Berks will
-create a skeleton cookbook and git repository. It may be useful to create a
-file called ``.kitchen.cloud.yml`` which specifies how to run `test kitchen VMs
-on OpenStack`_. Commit the generated code, and ask for a new repository to be
-created under the osuosl-cookbooks organization on GitHub. Some developers may
-also need to ask for permission to join that organization so they can commit
-code there. Follow Github's guide on `importing the code to Github`_. Cookbooks
-should use the Github issue tracker.
+To begin a new project, first clone the Lab's generator cookbook.
+
+.. code-block:: shell
+
+	$ git clone https://github.com/osuosl-cookbooks/code_generator
+
+Next generate a cookbook by running:
+
+.. code-block:: shell
+
+	$ berks cookbook new-cookbook-name -g /path/to/code_generator/repo
+
+Berks will create a skeleton cookbook and git repository. It may be useful to
+create a file called ``.kitchen.cloud.yml`` which specifies how to run `test
+kitchen VMs on OpenStack`_. Commit the generated code, and ask for a new
+repository to be created under the osuosl-cookbooks organization on GitHub.
+Some developers may also need to ask for permission to join that organization
+so they can commit code there. Follow Github's guide on `importing the code to
+Github`_. Cookbooks should use the Github issue tracker.
 
 Most projects will use the default recipe, and possibly a handful of platform
 specific recipes.
@@ -832,7 +843,7 @@ outlined by the Chef community, such as FC002_
 
 	$ foodcritic .
 	FC002: Avoid string interpolation where not required:
-	./providers/gunicorn.rb:89
+	./libraries/gunicorn.rb:89
 
 .. code:: ruby
 
@@ -887,7 +898,7 @@ The implementation of an LWRP is split into two parts: a resource, which
 declares the interface, and the provider, which is the logic executed when the
 new resource is instantiated. LWRPs have a peculiar naming scheme which depends
 both on the name of the cookbook and the name of the file. For instance, if the
-``python-webapp`` cookbook has a provider in the file ``providers/common.rb``
+``python-webapp`` cookbook has a provider in the file ``libraries/common.rb``
 and a resource in the file ``resources/common.rb`` it will have a LWRP called
 ``python_webapp_common``. It can be used like this:
 
