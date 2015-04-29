@@ -53,6 +53,13 @@ All the repositories for the OSL should be owned by the OSL. Developers should
 not make a repository under their own account. Once the repo is created use ``$
 git clone <SSH URI>`` to start working on the project.
 
+On some projects, the client will have their own Github organization, such as
+the `OSU CASS`_ and `ORVSD`_. In that case, open the project under their
+organization.
+
+.. _OSU CASS: https://github.com/osu-cass/
+.. _ORVSD: http://github.com/orvsd/
+
 Create the project skeleton with Django
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
