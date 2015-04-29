@@ -24,8 +24,8 @@ Tools The Team Uses
 
 At the OSL developers use a variety of open source tools. Developers are
 expected to have at least passing familiarity with all of these tools. New
-developers are encouraged to research any of these tools they have not heard
-of.
+developers are encouraged to research any of these tools with which they are
+unfamiliar.
 
 Most OSL websites are written in Python using the Django web application
 framework. Websites are deployed using Chef configuration management on CentOS
