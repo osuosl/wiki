@@ -29,7 +29,7 @@ of.
 
 Most OSL websites are written in Python using the Django web application
 framework. Websites are deployed using Chef configuration management on CentOS
-6.6. Most of our sites use the MySQL database, although some use PostGres.
+6.6. Most of our sites use the MySQL database, although some use Postgres.
 Most OSL websites have a Docker development environment set up to make
 development fast and easy. To learn how to use the Docker development
 environment please consult the project documentation and the OSL's `internal
