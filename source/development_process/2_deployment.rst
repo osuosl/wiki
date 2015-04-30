@@ -74,8 +74,7 @@ files. Here is a summary of important files in a cookbook.
 	├── .kitchen.yml: Used for running Test Kitchen with Vagrant
 	├── .kitchen.cloud.yml: Used for running Test Kitchen on openstack
 	├── metadata.rb: Like the Berksfile, defines dependencies and cookbook info
-	├── libraries: Providers define the code for a Light Weight Resource
-	│              Provider.
+	├── libraries: Stores arbitrary Ruby library code.
 	├── recipes: Recipes are ruby files instructing Chef how to configure a
 	│   │        node.
 	│   └── default.rb
