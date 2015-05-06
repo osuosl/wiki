@@ -1,8 +1,7 @@
 1. How a Project is Written
 ===========================
 This is a guide for writing a Django website. It will not cover
-how to write a website using Flask because the process is nearly identical and
-the team has indicated that Django is to be preferred for new projects.
+how to write a website using Flask because the process is nearly identical.
 
 
 How the Developer Team Interacts With Clients
