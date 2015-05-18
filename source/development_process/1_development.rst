@@ -442,6 +442,39 @@ report that it is not safe to merge.
 Using the flake8 Python Linter in CI forces the team to keep code clean and
 easy to read.
 
+Writing Docs
+------------
+
+The OSL writes docs using the Sphinx Documentation generator. Write docs in the
+Restructured Text format. There are `useful docs`_ for the restructured text
+format as well as a handy `cheat sheet`_.
+
+Sphinx is a Python package and should be included in the project's
+``requirements.txt``. If the project doesn't have docs, add a docs directory
+with the quick start script: ``sphinx-quickstart``.
+
+To build the docs, run ``make html``. The generated docs will be in the
+``build`` directory.
+
+All API endpoints and error messages should be thoroughly documented. Error
+messages should be clear, grepable and Googleable by outside developers. The
+text of error messages should be explicitly included in documentation
+
+All configuration variables and values should be throughly documented. Be sure
+to include a description of possible values and problematic values.
+
+Any instructions or tutorials should be vetted by other team members,
+especially junior developers.
+
+There are plenty of automated tools to make sure prose is easy to read. The
+best is probably the `Hemingway app website`_. There is also a CLI called
+`write-good`_ which will catch some common errors but is nowhere near as thorough.
+
+.. _useful docs: http://sphinx-doc.org/rest.html
+.. _cheat sheet: https://docutils.sourceforge.net/docs/user/rst/quickref.html
+.. _Hemingway app website: hemingwayapp.com
+.. _write-good: https://github.com/btford/write-good
+
 Google Summer of Code
 ---------------------
 The OSL has been part of the `GSoC
