@@ -13,21 +13,21 @@ working with the BSG and the Sea Grant foundation. This contrasts with the more
 conservative development and release cycle of the Protein Geometry Database,
 where every major change and new release must be certified by scientists.
 
-For the What's Fresh and Working Waterfronts website the developer team chose
+For the What's Fresh and Working Waterfronts websites, the developer team chose
 to follow the agile methodology. The agile method promotes quick responses to
 change and customer collaboration, which made it an ideal fit for working with
 both the Sea Grant Foundation and the BSG on an integrated website and mobile
 application. The agile development methodology is defined in the `Agile
 Manifesto`_, which is required reading for
 all developers, should the team choose to follow this methodology. When
-following the agile methodology the developer team meets every month to
+following the agile methodology, the developer team meets every month to
 discuss the state of the project and show their progress to the client. The Sea
 Grant projects also followed the test driven development model, which dictates
 that tests should be written before code. This ensures that all of the code is
 tested and works properly.
 
 The PGD project has a very different set of constraints. It is a large project
-which is being maintained, but little active development is being done. The PGD
+that is being maintained, but with little active development being done. The PGD
 is a tool used by hundreds of scientists throughout the world, so it is very
 important that changes do not introduce bugs which may affect ongoing research.
 Every change to the PGD project must be approved by the scientists in charge of
@@ -80,7 +80,7 @@ Docker is a tool for putting discrete parts of an application on their own
 pretend operating systems. This is called containerization. The upshot is that
 different parts of an application, like a web application and a database, don't
 need to be configured together. Often off-the-shelf containers can be used
-instead of developing custom solutions. One of Dockers biggest advantages for
+instead of developing custom solutions. One of Docker's biggest advantages for
 developers is its speed -- rebuilding a development version of a website with
 Docker takes seconds as opposed to the 20 minutes Chef may need to converge.
 Writing a Dockerfile is easy. Here is a simplified example from the PGD
@@ -150,11 +150,11 @@ install -r requirements.txt``. Once finished with the virtual environment, run
 `python guide <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_.
 
 
-Create the projects default branch (if not master):
+Create the project's default branch (if not master):
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Some projects use a different default branch than master. For instance, the
-What's Fresh project had develop as its default branch before it was released.
+What's Fresh project had ``develop`` as its default branch before it was released.
 `To set the project's default branch`_ on Github, use the repositories settings
 (the little screwdriver in the sidebar). Remember that the branch needs to
 exist first before it's made the default!
@@ -168,25 +168,31 @@ Developers will spend most of their time in the feedback loop which is the
 development process. It begins by going to the issue tracker and picking an
 open issue. In general, it is best to consult the project lead on which issues
 are the highest priority. Issues should also document their dependencies on
-other issues and pull requests, but look out because sometimes they do not.
-Next, create a new branch. Give the branch a descriptive name which is easy to
+other issues and pull requests, but look out, because sometimes they do not.
+
+Create a new branch. Give the branch a descriptive name which is easy to
 tab complete and has the issue number it fixes. A common naming scheme among
 OSL projects is: ``<descriptive name>/<issue type>/<issue number>``. Having a
 descriptive name in front makes the branch easy to tab complete. Having the
 issue type makes it very clear whether the issue is a feature or a
 bug, and the issue number indicates what issue the branch belongs to in the
-issue tracker. Developers should branch off of the ``develop`` branch, not
-``master``. ``develop`` will be merged into master once it is time to make a
-release.
+issue tracker. 
+
+.. note::
+
+    Developers should branch off of the ``develop`` branch, not
+    ``master``. Once it is time to make a release, ``develop`` will be merged into
+    ``master``.
+
 Now that a new branch has been checked out, start writing tests. Only after
 tests have been written should the code be written. Once the code is at a point
-where others' advice is useful, make a pull request. Typically several
+where others' advice is useful, make a pull request. Typically, several
 developers or sysadmins will review the code and make comments. Once everyone
 is satisfied with the PR and two people have signed off by giving their ``+1``,
 the code can be merged. If the issue number has been mentioned in the pull
 request's conversation, then Github will automatically close it. Check to make
 sure that it has been closed anyway since the system is not foolproof. Once the
-issue has been closed go back and choose a new issue.
+issue has been closed, go back and choose a new issue.
 
 
 How to Write Python for Humans
@@ -194,8 +200,8 @@ How to Write Python for Humans
 
 A lot of the work here at the Open Source Lab involves reading other people's
 code. To make this process less painful for everyone involved, it's best to
-standardize how code is written. Python also has interesting idioms, like
-decorators, which are not common in other languages, which the Django framework
+standardize how code is written. Python also has interesting idioms -- like
+decorators -- which are not common in other languages that the Django framework
 makes extensive use of.
 
 
@@ -220,17 +226,17 @@ characters long, break it to the next line:
   data = json.loads(serializer.serialize([preparation], use_natural_foreign_keys=True))
 
   # Do this
-
-   data = json.loads(
+  data = json.loads(
       serializer.serialize(
           [preparation],
           use_natural_foreign_keys=True
     ))
+
   # Or this
   data = json.loads(
-    serializer.serialize([preparation],
-                         use_natural_foreign_keys=True
-                         )
+      serializer.serialize([preparation],
+                           use_natural_foreign_keys=True
+                          )
   )
 
 
@@ -250,7 +256,7 @@ whitespace at the end of lines or on otherwise blank lines.
 3. Blank lines
 ``````````````
 
-Put two blank lines in between classes, and in between functions. Put one blank
+Put two blank lines in between classes and in between functions. Put one blank
 line in between methods. This helps the reader understand how the code is
 logically organized.
 
@@ -302,7 +308,7 @@ Configuration
 ~~~~~~~~~~~~~
 
 The Lab uses yaml-based configuration for many of its Django projects. This
-makes the configuration easier to read, and in general allows a slightly greater
+makes the configuration easier to read, and in general, allows a slightly greater
 degree of freedom in setting up. To see how this is set up, take a look at
 `What's Fresh's settings.py`_.
 
@@ -330,13 +336,14 @@ Example Model
 ~~~~~~~~~~~~~
 
 A model consists of everything one might need to store about an object in a
-database. Imagine a blogging platform that allows users to share public posts,
+database. Imagine a blogging platform that allows users to share public posts
 and write private posts. The ``models.py`` for such a blog might include
 something like this:
 
 .. code-block:: python
 
   from django.db import models
+
 
   class Entry(models.Model):
       """This docstring contains information about the model."""
@@ -350,7 +357,7 @@ something like this:
 
           The __unicode__ function allows Django to print which object
           is being dealt with. It uses this when it prints the object,
-          or just put the object in the template.
+          or just puts the object in the template.
           """
           return self.name
 
@@ -412,7 +419,7 @@ Automated testing with Travis CI is an incredibly powerful tool. Travis is a
 continuous integration tool, meaning it's designed to run every time someone
 pushes commits to a repository. In our case, it integrates directly into GitHub
 and runs all of our tests, allowing code reviewers to see if a pull request
-breaks something, or if a merge went horribly, horribly wrong.
+breaks something or if a merge went horribly, horribly wrong.
 
 To set up Travis CI, make a ``.travis.yml`` file in the root of the repository.
 It should look something like this::
@@ -453,12 +460,12 @@ the world to join, as long as qualified mentors are available for the duration
 of the program.  Any devs contributing to projects that are also being worked
 on by a GSoC student should keep the following things in mind:
 
-- The student is new.
+- **The student is new.**
   Their skillsets may not be as strong as other devs in areas like source
   control, documentation, IRC etiquette or deployment.  Patience and
   understanding will be greatly appreciated.  Help them become the kind of
   developer and team member the OSL would want to hire.
-- Coordinate big changes with mentors.
+- **Coordinate big changes with mentors.**
   If the project has significant changes on the horizon, fellow devs should
   keep the mentor up-to-date on those changes to keep from blindsiding the
   student.  It is hard enough for the student to learn a new workflow;
