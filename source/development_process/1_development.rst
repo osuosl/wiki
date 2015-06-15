@@ -123,13 +123,10 @@ project:
 	CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 More about writing Dockerfiles can be found in the `Docker documentation`_.
-Docker also has a `document`_ specifying best practices. The Lab also has
-`extensive internal documentation`_ specifying how Docker is used as part of
-the developer team's workflow.
+Docker also has a `document`_ specifying best practices.
 
 .. _Docker documentation: http://docs.docker.com/reference/builder/
 .. _document: https://docs.docker.com/articles/dockerfile_best-practices/
-.. _extensive internal documentation: http://docs.osuosl.org/development/docker-dev-environments.html
 
 Create a Virtualenv:
 ~~~~~~~~~~~~~~~~~~~~
