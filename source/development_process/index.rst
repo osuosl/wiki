@@ -2,7 +2,7 @@ The OSL Development Workflow
 ============================
 
 The OSL builds websites for a variety of clients including the Oregon Virtual
-School Districts, the Oregon Sea Grant Foundation, the OSU Biology department
+School Districts, the Oregon Sea Grant Foundation, the OSU Biology department,
 and Google. When the initial development is finished, the OSL will host and
 maintain the websites. This document will guide developers through the steps of
 creating a new website for a client. New developers are encouraged to read this
@@ -32,10 +32,8 @@ framework. Websites are deployed using Chef configuration management on CentOS
 6.6. Most of our sites use the MySQL database, although some use Postgres.
 Most OSL websites have a Docker development environment set up to make
 development fast and easy. To learn how to use the Docker development
-environment please consult the project documentation and the OSL's `internal
-documentation`_.
+environment, please consult the project documentation.
 The OSL uses ``git`` for version control and keeps projects on
 GitHub_. The OSL uses the Github issue tracker.
 
-.. _internal documentation: https://docs.osuosl.org/development/docker-dev-environments.html
 .. _GitHub: https://github.com/osuosl
