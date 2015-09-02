@@ -148,7 +148,7 @@ install -r requirements.txt``. Once finished with the virtual environment, run
 
 
 Create the project's default branch (if not master):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Some projects use a different default branch than master. For instance, the
 What's Fresh project had ``develop`` as its default branch before it was released.

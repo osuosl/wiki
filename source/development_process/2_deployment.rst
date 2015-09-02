@@ -1,7 +1,7 @@
 2. How a Project is Deployed
 ============================
 
-The OSL uses Chef Configuration Management to deploy all modern projects. 
+The OSL uses Chef Configuration Management to deploy all modern projects.
 Writing a chef cookbook is very similar to writing the rest of the project. The
 Lab has internal resources explaining how to write a cookbook, so this is just
 a summary. A cookbook describes the desired state of a server. A cookbook may
@@ -60,7 +60,7 @@ specifies. Sysadmins can edit the attributes of a node on the chef server using
 the ``knife`` tool.
 
 Anatomy of a Cookbook
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 Most cookbooks begin with a table of contents, but Chef cookbooks are full of
 files. Here is a summary of important files in a cookbook.
 
@@ -94,13 +94,13 @@ Starting a New Cookbook
 
 To begin a new project, first clone the Lab's generator cookbook.
 
-.. code-block:: shell
+.. code-block:: bash
 
 	$ git clone https://github.com/osuosl-cookbooks/code_generator
 
 Next generate a cookbook by running:
 
-.. code-block:: shell
+.. code-block:: bash
 
 	$ berks cookbook new-cookbook-name -g /path/to/code_generator/repo
 
@@ -301,7 +301,7 @@ An LWRP lets you call dozens of lines of code into something as simple as:
 .. For instance, one could copy a sysV init
    file for apache into ``/etc/init.d`` in every cookbook which needs to setup
    apache, or one could provide a resource which will set the status of the init
-   script, whether or not it is enabled etc., and automatically copies it over 
+   script, whether or not it is enabled etc., and automatically copies it over
    for you.
 
 The implementation of an LWRP is split into two parts: a resource, which
@@ -323,7 +323,7 @@ Note that if the LWRP is called ``default``, and has files in similar places,
 the name of the LWRP will be ``python_webapp``.
 
 *For more information on LWRPs, check out the official* `LWRP docs`_.
-   
+
 .. _LWRP docs: https://docs.chef.io/lwrp.html
 
 How to Write a Resource
@@ -337,7 +337,7 @@ Each hash has a:
 - ``kind_of``: Which describes the type of the attribute like ``String`` or
   ``TrueClass, FalseClass``
 - default value: What the value is set to if the user does not specify
-  a value, like a filesystem path of true/false for a boolean 
+  a value, like a filesystem path of true/false for a boolean
 
 .. code:: ruby
 

@@ -105,7 +105,7 @@ out the branch which the commits will be moved to. Then, find the hash
 representing the commit using ``git log --all``. For example, if that hash were
 ``abcde12345``, run:
 
-.. code:: shell
+.. code:: bash
 
 	$ git cherry-pick abcde12345
 
