@@ -1,3 +1,5 @@
+.. _vpn-config:
+
 OpenVPN Client Settings
 =======================
 
@@ -38,7 +40,7 @@ Procedure:
 - Open Network Manager
 - Add a new VPN connection:
 
-  - Connection name:  **<witty name>** 
+  - Connection name:  **<witty name>**
   - Gateway: **vpn.osuosl.org**
   - Type: **Certificates (TLS)**
   - User Certificate: **<username>.crt**
@@ -116,7 +118,7 @@ Procedure:
 
     # Verify server certificate by checking that the certicate has the
     # nsCertType field set to 'server'. See:
-    # http://openvpn.net/index.php/open-source/documentation/howto.html#mitm 
+    # http://openvpn.net/index.php/open-source/documentation/howto.html#mitm
     ns-cert-type server
 
     verb 4                         # Set log file verbosity
@@ -126,7 +128,7 @@ Procedure:
     up /etc/openvpn/update-resolv-conf
     down /etc/openvpn/update-resolv-conf
 
-    # For Gentoo: 
+    # For Gentoo:
     up /etc/openvpn/up.sh
     down /etc/openvpn/down.sh
 
@@ -139,3 +141,36 @@ Procedure:
 
   - **ifconfig -a**: IP address should be in the 10.*.*.* range.
   - **ping 10.0.0.1**: The router should respond
+
+Tunnelblick (OS X)
+------------------
+Tunnelblick is a free, open source gui for OpenVPN on OS X that allows for easy
+control of the OpenVPN client.
+
+Installation
+~~~~~~~~~~~~
+Download and install Tunnelblick from the project's downloads_ page.
+
+Alternatively install the package using the Homebrew:
+
+.. code-block:: bash
+
+    brew cask install tunnelblick
+
+Configuration
+~~~~~~~~~~~~~
+#.  Download this :download:`Tunnelblick profile</_static/files/osuosl.tblk.zip>`.
+
+#.  Replace the contents of ``osuosl.tblk/USER.crt`` and
+    ``osuosl.tblk/USER.key`` with your personal ``crt`` and ``key``.
+
+#.  Double click the ``osuosl.tblk`` file to install the profile in Tunnelblick.
+
+#.  Connect to the ``osuosl`` profile in Tunnelblick.
+
+.. note::
+
+    You may need to check ``Tunnel all IPv4`` under the advanced settings for
+    the ``osuosl`` profile.
+
+.. _downloads: https://tunnelblick.net/downloads.html
