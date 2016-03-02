@@ -34,6 +34,7 @@ The Workflow
 #.	Check out the Git repository and create a new branch
 #.	Add/edit content
 #.	Push your branch up to Github
+#.	Make a pull request on Github
 #.	Solicit reviews of your changes
 #.	Review changes on the staging website
 #.	Merge staging with production
@@ -292,3 +293,95 @@ This will open an editor, because git insists that you add a message describing
 your commit. The format for a git commit message is simply a short one-line summary
 followed by a blank line and then an optional long description of your commit.
 
+.. code-block:: bash
+
+	Here is my quick summary sentence
+
+	Here is a longer, more detail description of my changes. I don't need to tell
+	git what files I changed, or what the changes are, I use this commit message
+	to tell my colleagues why I made the changes.
+
+	# Please enter the commit message for your changes. Lines starting
+	# with '#' will be ignored, and an empty message aborts the commit.
+	# On branch kennric/pelican_howto
+	# Changes to be committed:
+	#       new file:   source/howtos/updating_pelican_sites.rst
+	#
+
+Note that git already knows everything I changed, this message is to tell other
+humans why I made the changes I made.
+
+Now your local copy of the git repository contains your changes. Next, we need to 
+push those changes up to Github so that others can see and review them.
+
+.. code-block:: bash
+
+	git push origin your_name/a_descriptive_branch_name
+
+
+Now your branch is on Github. For the next step, we'll need to go to the Github
+page for the site you are editing.
+
+
+Make a Pull Request
+-------------------
+
+
+A pull request, a.k.a. PR, is a request to have your branch merged into another
+branch (usually staging or master, but it can be any branch). 
+
+I'll defer to Github's own documentation on how to make a PR:
+
+`A guide to Github PRs <https://help.github.com/articles/using-pull-requests/>`_
+
+When you make your initial pull request, you'll select your branch (it will be 
+easy to find if you prefixed it with your name), and request to merge with the 
+**staging** branch. Be sure to select staging in the "base: " pulldown box.
+
+
+Solicit Reviews
+---------------
+
+The next step is to have your changes approved by the page owner. If you are 
+the page owner, it's a very good idea to have someone else look over your
+changes. You can 'tag' other users in the 'Conversation' tab of the pull 
+request by adding an @ to their username in a comment:
+
+
+.. code-block:: bash
+
+	My changes are complete, @Ramereth, can you review?
+
+
+This will notify them of the comment, according to their own notification 
+settings. It's a good idea to ping that person online or in person to make
+sure they know that you are waiting on their review.
+
+When you have a thumbs-up (a.k.a. +1) from the page owner or other reviewer,
+the content can be merged by the page owner.
+
+Merge Into Staging
+------------------
+
+If you are the page owner, please read the `Github documentation on merging pull requests <https://help.github.com/articles/merging-a-pull-request/>`_
+
+In most cases, merging is a simple click on the Merge pull request button. 
+
+
+Review the Staging Site
+-----------------------
+
+When changes are merged into the staging branch, our back-end systems will
+push those changes to the staging website. You can see what your changes will
+look like in production by visiting the staging site.
+
+`The CASS staging site <http://cass.staging.osuosl.org>`_
+`The OSL staging site <http://osuosl.staging.osuosl.org>`_
+
+Merge with Master
+-----------------
+
+If things look good, you or the page owner can create a pull request from
+the staging branch to the master branch, following the same procedure as 
+for creating a pull request from your editing branch to staging. When this 
+is merged into master, the production site will be updated with your changes.
