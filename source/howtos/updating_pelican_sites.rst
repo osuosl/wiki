@@ -8,21 +8,40 @@ and any other sites using the Pelican static site generator.
 What is Pelican
 ---------------
 
+Pelican is a static site generator. In short, it allows us to create a 
+great website by writing simple text files and checking them into Git.
+
 
 What is Git
 -----------
 
+Git is a system that tracks changes to files. It allows multiple people
+to edit the same set of files and merge their changes together. All the
+files, and a history of all the changes made to them, are stored in such
+a way that you can retrieve the past state of any file easily. 
+
+We store our Pelican site files in Git, and we use Github to store 
+those git repositories. Github provides an easy to use web interface to
+the majority of git's functionality. We use it to review changes, to
+merge changes into production, and to track issues.
+
 
 Git via GitHub
 ~~~~~~~~~~~~~~
+
+You can do most git operations entirely from the Github web UI. If 
+installing a git client on your personal workstation is problematic,
+you can create and edit site content entirely online.
 
 
 Git on the Mac
 ~~~~~~~~~~~~~~
 
 
+
 Git on Windows
 ~~~~~~~~~~~~~~
+
 
 
 The Workflow
@@ -259,11 +278,11 @@ them unless you tell it.
 
 .. code-block:: bash
 
-	> git add content/your_changed_file.rst
+	git add content/your_changed_file.rst
 
 
 If you have changed several things, it's a good idea to ask git what is 
-different so that you can add everything and nothign is missed.
+different so that you can add everything and nothing is missed.
 
 .. code-block:: bash
 
@@ -336,7 +355,7 @@ I'll defer to Github's own documentation on how to make a PR:
 
 When you make your initial pull request, you'll select your branch (it will be 
 easy to find if you prefixed it with your name), and request to merge with the 
-**staging** branch. Be sure to select staging in the "base: " pulldown box.
+**staging** branch. Be sure to select staging in the "base: " pull-down box.
 
 
 Solicit Reviews
