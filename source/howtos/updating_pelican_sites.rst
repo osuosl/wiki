@@ -114,7 +114,7 @@ hold your changes
 
 
 The string "your_name/a_descriptive_branch_name" is the full name of the 
-branch, you can call it whatever you like, but it is easier to manage if you 
+branch. You can call it whatever you like, but it is easier to manage if you 
 prefix them with your own username, followed by a descriptive name that 
 explains what you are doing. 
 
