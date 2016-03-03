@@ -75,7 +75,7 @@ local machine. How you do this depends on the operating system and git
 client you use. For examples in this document, I'll use the git 
 command-line client, which can be used on all platforms. 
 
-.. code-block::bash
+.. code-block:: none
 
 	git clone https://github.com/osuosl/cass-pelican
 
@@ -86,21 +86,21 @@ First, we have to check out the staging branch. If this is the first time
 you have cloned the repository, this command will check out staging and 
 make sure your local copy tracks the changes on Github.
 
-.. code-block::bash
+.. code-block:: none
 
 	git checkout -tb staging origin/staging
 
 If you already have the staging branch checked out from before, you can 
 just switch to it:
 
-.. code-block::bash
+.. code-block:: none
 
 	git checkout staging
 
 and pull in any changes that have happened since the last time you worked
 on the site:
 
-.. code-block::bash
+.. code-block:: none
 
 	git pull
 
@@ -108,7 +108,7 @@ on the site:
 Now you are in an up-to-date staging branch. Next, create a new branch to
 hold your changes
 
-.. code-block::bash
+.. code-block:: none
 
 	git checkout -b your_name/a_descriptive_branch_name
 
@@ -122,7 +122,7 @@ For example, if I were updating the staff list, I would probably make a
 branch like this:
 
 
-.. code-block::bash
+.. code-block:: none
 
 	git checkout -b kennric/update_staff_list
 
@@ -276,7 +276,7 @@ First, we need to add the changes to your copy of the repository. Git will
 see the files you have added or changed, but doesn't know you want to keep
 them unless you tell it.
 
-.. code-block:: bash
+.. code-block:: none
 
 	git add content/your_changed_file.rst
 
@@ -284,13 +284,13 @@ them unless you tell it.
 If you have changed several things, it's a good idea to ask git what is 
 different so that you can add everything and nothing is missed.
 
-.. code-block:: bash
+.. code-block:: none
 
 	git status
 
 which prints out the following in my case:
 
-.. code-block:: bash
+.. code-block:: none
 
 	On branch kennric/pelican_howto
 	Untracked files:
@@ -304,7 +304,7 @@ which prints out the following in my case:
 Next, you will need to reassure git that you really want to commit your
 changes to the repo:
 
-.. code-block:: bash
+.. code-block:: none
 
 	git commit
 
@@ -312,7 +312,7 @@ This will open an editor, because git insists that you add a message describing
 your commit. The format for a git commit message is simply a short one-line summary
 followed by a blank line and then an optional long description of your commit.
 
-.. code-block:: bash
+.. code-block:: none
 
 	Here is my quick summary sentence
 
@@ -333,7 +333,7 @@ humans why I made the changes I made.
 Now your local copy of the git repository contains your changes. Next, we need to 
 push those changes up to Github so that others can see and review them.
 
-.. code-block:: bash
+.. code-block:: none
 
 	git push origin your_name/a_descriptive_branch_name
 
@@ -367,7 +367,7 @@ changes. You can 'tag' other users in the 'Conversation' tab of the pull
 request by adding an @ to their username in a comment:
 
 
-.. code-block:: bash
+.. code-block:: none
 
 	My changes are complete, @Ramereth, can you review?
 
