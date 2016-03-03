@@ -1,7 +1,7 @@
 CASS Website Workflow
 =====================
 
-This documentation applies to both the CASS main website, the OSL website
+This documentation applies to both the CASS main website, the OSL website,
 and any other sites using the Pelican static site generator.
 
 
@@ -65,9 +65,9 @@ Checking out the repository
 The content for Pelican sites will be in a repository on Github named
 for the site it contains:
 
-OSL website: https://github.com/osuosl/osuosl-pelican
-CASS website: https://github.com/osuosl/cass-pelican
-Beaver Barcamp: https://github.com/osuosl/beaver-barcamp-pelican
+* OSL website: https://github.com/osuosl/osuosl-pelican
+* CASS website: https://github.com/osuosl/cass-pelican
+* Beaver Barcamp: https://github.com/osuosl/beaver-barcamp-pelican
 
 You can view and even edit the contents of the repository directly on its 
 Github page, but it is usually better to 'clone' the repository to your
@@ -394,8 +394,8 @@ When changes are merged into the staging branch, our back-end systems will
 push those changes to the staging website. You can see what your changes will
 look like in production by visiting the staging site.
 
-`The CASS staging site <http://cass.staging.osuosl.org>`_
-`The OSL staging site <http://osuosl.staging.osuosl.org>`_
+* `The CASS staging site <http://cass.staging.osuosl.org>`_
+* `The OSL staging site <http://osuosl.staging.osuosl.org>`_
 
 Merge with Master
 -----------------
