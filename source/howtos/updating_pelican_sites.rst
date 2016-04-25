@@ -2,46 +2,69 @@ Updating CASS Pelican Websites
 ==============================
 
 This documentation applies to both the CASS main website, the OSL website and 
-any other sites using the Pelican static site generator.
+any other sites using the Pelican static site generator with Git and Github.
 
 What is Pelican
 ---------------
 
-`Pelican`_ is a static site generator. In short, it allows us to create a great 
-website by writing simple text files and checking them into Git.
+`Pelican`_ is a static site generator. Static Site Generators, a.k.a. SSGs take
+structured text files and convert them into websites. In short, it allows us to 
+create a great website by writing simple text files, without the overhead of 
+logging into a website to write content.
+
+`This article`_ discusses the advantages and disadvantages of SSGs.
+
+Another advantage of Pelican and other SSGs is that we can use familiar 
+code-management tools to manage our website content: Git and Github
 
 .. _Pelican: http://docs.getpelican.com
+.. _This article: https://davidwalsh.name/introduction-static-site-generators
 
 What is Git
 -----------
 
-Git is a system that tracks changes to files. It allows multiple people to edit 
-the same set of files and merge their changes together. All the files, and a 
-history of all the changes made to them, are stored in such a way that you can 
-retrieve the past state of any file easily.
+`Git`_ is a system that tracks changes to files. It allows multiple people to 
+edit the same set of files and merge their changes together. All the files, and
+a history of all the changes made to them, are stored in such a way that you can 
+retrieve the past state of any file easily, without having many copies of a 
+file, each with different changes. `This comic`_ neatly illustrates how useful a 
+revision control system like Git this can be.
 
-We store our Pelican site files in Git, and we use Github to store those git 
-repositories. Github provides an easy to use web interface to the majority of 
-git's functionality. We use it to review changes, to merge changes into 
-production, and to track issues.
+We store our Pelican site files in Git repositories, and we use `Github`_ to 
+store and manage those repositories. Github provides an easy to use web 
+interface to the majority of git's functionality. We use it to review changes, 
+to merge changes into production, and to track issues.
+
+.. _Git: https://git-scm.com
+.. _Github: https://github.com
+.. _This comic: http://www.phdcomics.com/comics/archive.php?comicid=1531
 
 Git via GitHub
 ~~~~~~~~~~~~~~
 
-You can do most git operations entirely from the Github web UI. If installing a 
-git client on your personal workstation is problematic, you can create and edit 
-site content entirely online.
+Many people use Git through the command-line, but this isn't everyone's cup of 
+tea. Thankfully, you can do most git operations entirely from the Github web UI. 
+If installing a git client on your personal workstation is problematic, you can 
+create and edit site content entirely on-line.
 
 Git on the Desktop
 ~~~~~~~~~~~~~~~~~~
+
+Another alternative to using git on the command-line is a Git Desktop 
+application. 
 
 There are a number of good Git desktop applications, but for working with 
 GitHub, we recommend `GitHub Desktop`_
 
 When working with the website on your workstation, you will want a good text 
-editor if you don't already have one, we recommend `Atom`_.
+editor if you don't already have one, we recommend `Atom`_. Text editors are 
+different from Word Processors like MS Word or LibreOffice, text editors are
+focused only on plain text, they don't do formatting, fonts, colors or other
+visual styling or layout, and they save files in a universal format that can be 
+read by any computer system. Because our Pelican website theme handles all the
+formatting for the website, we only want to write plain text files.
 
-.. WARNING::
+.. warning::
   
   Only edit files in a Text Editor, never use a Word Processor like MS Word.
 
@@ -55,16 +78,18 @@ If you already are used to working with Git on a command line, you are good to
 go, you'll just need to insure that you have access to the OSL Pelican Git 
 repositories. See the `official Git web page`_ to install Git on your platform.
 
-The Github Desktop for Windows package comes with a Git Shell program for 
-working with git on a command line.
+.. note::
+
+  The Github Desktop for Windows package comes with a Git Shell program for 
+  working with git on a command line.
 
 .. _official Git web page: https://git-scm.com
 
 Getting Access
 --------------
 
-In order to make updates to the pelican sites, you will need access to the OSL 
-repositories.
+In order to make updates to the pelican sites, you will need access to the 
+`OSL Git repositories`_.
 
 First, create an account on `Github`_. Then contact the OSL dev team and they
 will add your account to the repositories you need.
@@ -75,20 +100,21 @@ for more information.
 
 .. _Github: https://github.com/join
 .. _Github SSH Key: https://help.github.com/articles/generating-an-ssh-key
+.. _OSL Git repositories: https://github.com/osuosl/ 
 
 The Workflow
 ------------
 
 **Summary**
 
-#.	Check out the Git repository and create a new branch
-#.	Add/edit content
-#.	Push your branch up to Github
-#.	Make a pull request to the staging branch on Github
-#.	Solicit reviews of your changes
+#.  Check out the Git repository and create a new branch
+#.  Add/edit content
+#.  Push your branch up to Github
+#.  Make a pull request to the staging branch on Github
+#.  Solicit reviews of your changes
 #.  Merge your branch with the staging branch
-#.	Review changes on the staging site
-#.	Merge staging with the production branch
+#.  Review changes on the staging site
+#.  Merge staging with the production branch
 #.  Review changes on the production site
 
 Checking out the repository
@@ -126,7 +152,7 @@ application. Once the repository is added, you won't have to add it again,
 you'll only  need this step if you want to work on a repository you haven't 
 already cloned.
 
-.. NOTE::
+.. note::
   Before you start working on new changes to the site, change to 
   the **staging** branch; this is the branch from which you should always 
   start.
@@ -157,9 +183,12 @@ Editing Content.
 
 **Command Line**
 
+First, clone the repository you want to work on. Once you have a local clone, 
+you won't need to do this again. 
+
 ::
 
-	git clone https://github.com/osuosl/cass-pelican
+  git clone https://github.com/osuosl/cass-pelican
 
 Now you have a local copy of the website in the cass-pelican directory. Move 
 into that directory for the following steps.
@@ -168,33 +197,33 @@ First, check out the staging branch. If this is the first time you have cloned
 the repository, this will check out staging and make sure your local copy tracks 
 the changes on Github.
 
-.. NOTE::
+.. note::
   Before you start working on new changes to the site, change to the **staging** 
   branch; this is the branch from which you should always start. 
 
 ::
 
-	git checkout -tb staging origin/staging
+  git checkout -tb staging origin/staging
 
 If you already have the staging branch checked out from before, you can just 
 switch to it:
 
 ::
 
-	git checkout staging
+  git checkout staging
 
 and pull in any changes that have happened since the last time you worked on the 
 site:
 
 ::
 
-	git pull
+  git pull
 
 Now you are in an up-to-date staging branch.  
 
 ::
 
-	git checkout -b your_name/a_descriptive_branch_name
+  git checkout -b your_name/a_descriptive_branch_name
 
 The string ``your_name/a_descriptive_branch_name`` is the full name of the
 branch, you can call it whatever you like, but it is easier to manage if you
@@ -233,7 +262,7 @@ before starting, and bookmarking it for future reference.
 
 When you are ready, simply open the file you want to modify and edit it.
 
-.. WARNING::
+.. warning::
   
   Only edit files in a Text Editor, never use a Word Processor like MS Word.
 
@@ -260,7 +289,7 @@ how to organize the content.
 The first thing in a file is the title, underlined with =. Always include
 the ``:author:``, ``:date:`` and ``:slug:`` metadata. 
 
-.. NOTE::
+.. note::
 
   The *slug* is the name of the page as it will appear in the URL. For instance
   if you set the slug to 'my_fancy_new_page', it will be found at 
@@ -438,26 +467,26 @@ Request.
 
 ::
 
-	git add content/your_changed_file.rst
+  git add content/your_changed_file.rst
 
 If you have changed several things, it's a good idea to ask git what is 
 different so that you can add everything and nothing is missed.
 
 ::
 
-	git status
+  git status
 
 which prints out the following in my case:
 
 ::
 
-	On branch kennric/pelican_howto
-	Untracked files:
-	  (use "git add <file>..." to include in what will be committed)
+  On branch kennric/pelican_howto
+  Untracked files:
+    (use "git add <file>..." to include in what will be committed)
 
-		source/howtos/updating_pelican_sites.rst
+    source/howtos/updating_pelican_sites.rst
 
-	nothing added to commit but untracked files present (use "git add" to track)
+  nothing added to commit but untracked files present (use "git add" to track)
 
 
 Next, you will need to reassure git that you really want to commit your
@@ -465,7 +494,7 @@ changes to the repository:
 
 ::
 
-	git commit
+  git commit
 
 This will open an editor, because git insists that you add a message describing
 your commit. The format for a git commit message is simply a short one-line
@@ -474,18 +503,18 @@ commit.
 
 ::
 
-	Here is my quick summary sentence
+  Here is my quick summary sentence
 
-	Here is a longer, more detail description of my changes. I don't need to tell
-	git what files I changed, or what the changes are, I use this commit message
-	to tell my colleagues why I made the changes.
+  Here is a longer, more detail description of my changes. I don't need to tell
+  git what files I changed, or what the changes are, I use this commit message
+  to tell my colleagues why I made the changes.
 
-	# Please enter the commit message for your changes. Lines starting
-	# with '#' will be ignored, and an empty message aborts the commit.
-	# On branch kennric/pelican_howto
-	# Changes to be committed:
-	#       new file:   source/howtos/updating_pelican_sites.rst
-	#
+  # Please enter the commit message for your changes. Lines starting
+  # with '#' will be ignored, and an empty message aborts the commit.
+  # On branch kennric/pelican_howto
+  # Changes to be committed:
+  #       new file:   source/howtos/updating_pelican_sites.rst
+  #
 
 Note that git already knows everything I changed, this message is to tell other
 humans why I made the changes I made.
@@ -495,7 +524,7 @@ those  changes up to Github so that others can see and review them.
 
 ::
 
-	git push origin your_name/a_descriptive_branch_name
+  git push origin your_name/a_descriptive_branch_name
 
 Now your branch is on Github. For the next step, we'll need to go to the Github
 page for the site you are editing.
@@ -533,7 +562,7 @@ When you make your initial pull request, you'll select your branch (it will be
 easy to find if you prefixed it with your name), and request to merge with the
 **staging** branch. Be sure to select staging in the "base: " pull-down box.
 
-.. NOTE::
+.. note::
   
   Always select **staging** as the base branch
 
@@ -556,7 +585,7 @@ pull request by adding @username or @webdevs to a comment:
 
 ::
 
-	@webdevs, please review
+  @webdevs, please review
 
 This will notify everyone in the webdevs group (you, OSL developers, and other 
 CASS content owners) of the comment, according to their own notification 
