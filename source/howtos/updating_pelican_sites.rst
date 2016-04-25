@@ -28,7 +28,7 @@ edit the same set of files and merge their changes together. All the files, and
 a history of all the changes made to them, are stored in such a way that you can 
 retrieve the past state of any file easily, without having many copies of a 
 file, each with different changes. `This comic`_ neatly illustrates how useful a 
-revision control system like Git this can be.
+revision control system like Git can be.
 
 We store our Pelican site files in Git repositories, and we use `Github`_ to 
 store and manage those repositories. Github provides an easy to use web 
