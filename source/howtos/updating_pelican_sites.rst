@@ -75,7 +75,7 @@ Git on the Command Line
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 If you already are used to working with Git on a command line, you are good to 
-go, you'll just need to insure that you have access to the OSL Pelican Git 
+go, you'll just need to ensure that you have access to the OSL Pelican Git 
 repositories. See the `official Git web page`_ to install Git on your platform.
 
 .. note::
