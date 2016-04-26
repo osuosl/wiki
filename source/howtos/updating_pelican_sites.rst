@@ -1,20 +1,20 @@
 Updating CASS Pelican Websites
 ==============================
 
-This documentation applies to both the CASS main website, the OSL website and 
+This documentation applies to both the CASS main website, the OSL website and
 any other sites using the Pelican static site generator with Git and Github.
 
 What is Pelican
 ---------------
 
 `Pelican`_ is a static site generator. Static Site Generators, a.k.a. SSGs take
-structured text files and convert them into websites. In short, it allows us to 
-create a great website by writing simple text files, without the overhead of 
+structured text files and convert them into websites. In short, it allows us to
+create a great website by writing simple text files, without the overhead of
 logging into a website to write content.
 
 `This article`_ discusses the advantages and disadvantages of SSGs.
 
-Another advantage of Pelican and other SSGs is that we can use familiar 
+Another advantage of Pelican and other SSGs is that we can use familiar
 code-management tools to manage our website content: Git and Github
 
 .. _Pelican: http://docs.getpelican.com
@@ -23,16 +23,16 @@ code-management tools to manage our website content: Git and Github
 What is Git
 -----------
 
-`Git`_ is a system that tracks changes to files. It allows multiple people to 
+`Git`_ is a system that tracks changes to files. It allows multiple people to
 edit the same set of files and merge their changes together. All the files, and
-a history of all the changes made to them, are stored in such a way that you can 
-retrieve the past state of any file easily, without having many copies of a 
-file, each with different changes. `This comic`_ neatly illustrates how useful a 
+a history of all the changes made to them, are stored in such a way that you can
+retrieve the past state of any file easily, without having many copies of a
+file, each with different changes. `This comic`_ neatly illustrates how useful a
 revision control system like Git can be.
 
-We store our Pelican site files in Git repositories, and we use `Github`_ to 
-store and manage those repositories. Github provides an easy to use web 
-interface to the majority of git's functionality. We use it to review changes, 
+We store our Pelican site files in Git repositories, and we use `Github`_ to
+store and manage those repositories. Github provides an easy to use web
+interface to the majority of git's functionality. We use it to review changes,
 to merge changes into production, and to track issues.
 
 .. _Git: https://git-scm.com
@@ -42,30 +42,30 @@ to merge changes into production, and to track issues.
 Git via GitHub
 ~~~~~~~~~~~~~~
 
-Many people use Git through the command-line, but this isn't everyone's cup of 
-tea. Thankfully, you can do most git operations entirely from the Github web UI. 
-If installing a git client on your personal workstation is problematic, you can 
+Many people use Git through the command-line, but this isn't everyone's cup of
+tea. Thankfully, you can do most git operations entirely from the Github web UI.
+If installing a git client on your personal workstation is problematic, you can
 create and edit site content entirely on-line.
 
 Git on the Desktop
 ~~~~~~~~~~~~~~~~~~
 
-Another alternative to using git on the command-line is a Git Desktop 
-application. 
+Another alternative to using git on the command-line is a Git Desktop
+application.
 
-There are a number of good Git desktop applications, but for working with 
+There are a number of good Git desktop applications, but for working with
 GitHub, we recommend `GitHub Desktop`_
 
-When working with the website on your workstation, you will want a good text 
-editor if you don't already have one, we recommend `Atom`_. Text editors are 
+When working with the website on your workstation, you will want a good text
+editor if you don't already have one, we recommend `Atom`_. Text editors are
 different from Word Processors like MS Word or LibreOffice, text editors are
 focused only on plain text, they don't do formatting, fonts, colors or other
-visual styling or layout, and they save files in a universal format that can be 
+visual styling or layout, and they save files in a universal format that can be
 read by any computer system. Because our Pelican website theme handles all the
 formatting for the website, we only want to write plain text files.
 
 .. warning::
-  
+
   Only edit files in a Text Editor, never use a Word Processor like MS Word.
 
 .. _GitHub Desktop: https://desktop.github.com
@@ -74,13 +74,13 @@ formatting for the website, we only want to write plain text files.
 Git on the Command Line
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-If you already are used to working with Git on a command line, you are good to 
-go, you'll just need to ensure that you have access to the OSL Pelican Git 
+If you already are used to working with Git on a command line, you are good to
+go, you'll just need to ensure that you have access to the OSL Pelican Git
 repositories. See the `official Git web page`_ to install Git on your platform.
 
 .. note::
 
-  The Github Desktop for Windows package comes with a Git Shell program for 
+  The Github Desktop for Windows package comes with a Git Shell program for
   working with git on a command line.
 
 .. _official Git web page: https://git-scm.com
@@ -88,19 +88,19 @@ repositories. See the `official Git web page`_ to install Git on your platform.
 Getting Access
 --------------
 
-In order to make updates to the pelican sites, you will need access to the 
+In order to make updates to the pelican sites, you will need access to the
 `OSL Git repositories`_.
 
-First, create an account on `Github`_. Then contact the OSL dev team and they
+First, `create an account on Github`_. Then contact the OSL dev team and they
 will add your account to the repositories you need.
 
 If you are working on the command line, you will also need to set up an ssh
-key pair and upload the public key to Github. See the `Github SSH Key`_ page 
+key pair and upload the public key to Github. See the `Github SSH Key`_ page
 for more information.
 
-.. _Github: https://github.com/join
+.. _create an account on Github: https://github.com/join
 .. _Github SSH Key: https://help.github.com/articles/generating-an-ssh-key
-.. _OSL Git repositories: https://github.com/osuosl/ 
+.. _OSL Git repositories: https://github.com/osuosl/
 
 The Workflow
 ------------
@@ -120,14 +120,14 @@ The Workflow
 Checking out the repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The content for Pelican sites will be in a repository on Github named for the 
+The content for Pelican sites will be in a repository on Github named for the
 site it contains:
 
 * OSL website: `osuosl-pelican`_
 * CASS website: `cass-pelican`_
 * Beaver Barcamp: `beaver-barcamp-pelican`_
 
-You can view and even edit the contents of the repository directly on its Github 
+You can view and even edit the contents of the repository directly on its Github
 page, but it is usually better to 'clone' the repository to your local machine.
 
 **GitHub Desktop**
@@ -139,22 +139,22 @@ of Github Organizations on the left, and a list of repositories on the right
 
 .. image:: /_static/images/github_desktop-add.png
 
-Select the *osuosl* organization on the left, and find the repository you want 
-to update on the right. Type 'pelican' into the filter box to see all of our 
+Select the *osuosl* organization on the left, and find the repository you want
+to update on the right. Type 'pelican' into the filter box to see all of our
 Pelican site repositories.
 
-Click on your repository and then click the checkmark button that appears below. 
-Github desktop will ask you for a directory to clone to - the default is fine, 
+Click on your repository and then click the checkmark button that appears below.
+Github desktop will ask you for a directory to clone to - the default is fine,
 but feel free to put it wherever you like.
 
-Your cloned repository now appears in the left sidebar of the Github 
-application. Once the repository is added, you won't have to add it again, 
-you'll only  need this step if you want to work on a repository you haven't 
+Your cloned repository now appears in the left sidebar of the Github
+application. Once the repository is added, you won't have to add it again,
+you'll only  need this step if you want to work on a repository you haven't
 already cloned.
 
 .. note::
-  Before you start working on new changes to the site, change to 
-  the **staging** branch; this is the branch from which you should always 
+  Before you start working on new changes to the site, change to
+  the **staging** branch; this is the branch from which you should always
   start.
 
 At the top, you will see a pull-down containing the list of branches:
@@ -175,51 +175,51 @@ explains what you are doing.
 For example, if I were adding Fred to the staff list, I would probably make a
 branch named ``kennric/add_fred_to_staff_list``.
 
-Double check that the 'From branch' says 'staging', and click 'Create new 
+Double check that the 'From branch' says 'staging', and click 'Create new
 branch'.
 
-Now you can begin making changes or adding content. Continue to the next step, 
+Now you can begin making changes or adding content. Continue to the next step,
 Editing Content.
 
 **Command Line**
 
-First, clone the repository you want to work on. Once you have a local clone, 
-you won't need to do this again. 
+First, clone the repository you want to work on. Once you have a local clone,
+you won't need to do this again.
 
 ::
 
   git clone https://github.com/osuosl/cass-pelican
 
-Now you have a local copy of the website in the cass-pelican directory. Move 
+Now you have a local copy of the website in the cass-pelican directory. Move
 into that directory for the following steps.
 
-First, check out the staging branch. If this is the first time you have cloned 
-the repository, this will check out staging and make sure your local copy tracks 
+First, check out the staging branch. If this is the first time you have cloned
+the repository, this will check out staging and make sure your local copy tracks
 the changes on Github.
 
 .. note::
-  Before you start working on new changes to the site, change to the **staging** 
-  branch; this is the branch from which you should always start. 
+  Before you start working on new changes to the site, change to the **staging**
+  branch; this is the branch from which you should always start.
 
 ::
 
   git checkout -tb staging origin/staging
 
-If you already have the staging branch checked out from before, you can just 
+If you already have the staging branch checked out from before, you can just
 switch to it:
 
 ::
 
   git checkout staging
 
-and pull in any changes that have happened since the last time you worked on the 
+and pull in any changes that have happened since the last time you worked on the
 site:
 
 ::
 
   git pull
 
-Now you are in an up-to-date staging branch.  
+Now you are in an up-to-date staging branch.
 
 ::
 
@@ -242,19 +242,19 @@ Now you can begin making changes or adding content.
 Editing Content
 ~~~~~~~~~~~~~~~
 
-Take a look at the folder where you cloned the repository. In Github Desktop you 
-can right-click on the repository name and select 'view in explorer', or open 
-the folder from the Atom editor, or whatever method you usually use to view 
+Take a look at the folder where you cloned the repository. In Github Desktop you
+can right-click on the repository name and select 'view in explorer', or open
+the folder from the Atom editor, or whatever method you usually use to view
 files.
 
-All of the content for the site lives in the ``content`` directory. Content is 
-organized into directories; in the CASS site, for instance, there are ``blog``, 
-``pages``, and ``images`` directories. You should become familiar with the 
+All of the content for the site lives in the ``content`` directory. Content is
+organized into directories; in the CASS site, for instance, there are ``blog``,
+``pages``, and ``images`` directories. You should become familiar with the
 location of the content you will be working with.
 
-Content is written in plain text with easy to read markup, the format is called 
-ReStructuredText, a.k.a. RST. The files have the extension .rst. Pelican makes 
-use of some RST declarations to add metadata to a page or blog post, such as 
+Content is written in plain text with easy to read markup, the format is called
+ReStructuredText, a.k.a. RST. The files have the extension .rst. Pelican makes
+use of some RST declarations to add metadata to a page or blog post, such as
 author and date.
 
 Here is a `guide on writing RST`_ for Pelican sites, we recommend reading it
@@ -263,10 +263,10 @@ before starting, and bookmarking it for future reference.
 When you are ready, simply open the file you want to modify and edit it.
 
 .. warning::
-  
+
   Only edit files in a Text Editor, never use a Word Processor like MS Word.
 
-Below are described several of the specific kinds of content in our sites and 
+Below are described several of the specific kinds of content in our sites and
 information about the menu structure.
 
 .. _guide on writing RST: http://docs.getpelican.com/en/3.6.3/content.html
@@ -275,7 +275,7 @@ information about the menu structure.
 Metadata
 ++++++++
 
-All Pelican content files have a block of metadata at the top that tells Pelican 
+All Pelican content files have a block of metadata at the top that tells Pelican
 how to organize the content.
 
 ::
@@ -287,12 +287,12 @@ how to organize the content.
   :slug: 10-projects-making-a-difference
 
 The first thing in a file is the title, underlined with =. Always include
-the ``:author:``, ``:date:`` and ``:slug:`` metadata. 
+the ``:author:``, ``:date:`` and ``:slug:`` metadata.
 
 .. note::
 
   The *slug* is the name of the page as it will appear in the URL. For instance
-  if you set the slug to 'my_fancy_new_page', it will be found at 
+  if you set the slug to 'my_fancy_new_page', it will be found at
   http://your_site.org/my_fancy_new_page
 
 Blog Posts
@@ -339,7 +339,7 @@ Our Pelican theme creates a main menu in the following format:
 
 This requires a menu metadata field to be added to the page:
 
-* ``:menu: <parent_name>, <page_name>, <menu_weight>; <parent2>, <name2>, 
+* ``:menu: <parent_name>, <page_name>, <menu_weight>; <parent2>, <name2>,
   <weight2>; ...``
 
   This metadata is required for pages to be included in the menu. Each menu
@@ -347,7 +347,7 @@ This requires a menu metadata field to be added to the page:
   multiple locations in the menu.
 
   - ``<parent_name`` is the name of the menu item above the current item
-  - ``<page_name>`` is the name of the current item that will be displayed in 
+  - ``<page_name>`` is the name of the current item that will be displayed in
     the menu
   - ``<menu_weight>`` is the weight of the menu item. Items with higher weights
     appear lower on the menu.
@@ -416,20 +416,20 @@ specifications outlined in the `Formsender docs`_. The OSL website already has
 Pushing Your Changes
 --------------------
 
-Now that you have new or edited content, you'll need to push it up to Github so 
+Now that you have new or edited content, you'll need to push it up to Github so
 that it can be approved and pushed onto the staging site.
 
-First, add the changes to your copy of the repository. Git will see the files 
-you have added or changed, but doesn't know you want to keep them unless you 
+First, add the changes to your copy of the repository. Git will see the files
+you have added or changed, but doesn't know you want to keep them unless you
 tell it.
 
 **GitHub Desktop**
 
-Click the 'Changes' button at the top of Github Desktop. 
+Click the 'Changes' button at the top of Github Desktop.
 
 .. image:: /_static/images/github_desktop-changes_button.png
 
-You should see a list of files you have changed below. If you click on a file, 
+You should see a list of files you have changed below. If you click on a file,
 the application will show you all the changes you have made - additions will be
 shaded in green, deletions in red.
 
@@ -437,7 +437,7 @@ If the changes look correct to you, you can commit them to your branch. Simply
 add a short description to the 'Summary' box below the file list, and a longer
 description in the 'Description' box. This is your *commit message*.
 
-The commit message is very important, it allows people to look a the history of 
+The commit message is very important, it allows people to look a the history of
 the git repository and understand what has changed, who changed it, and why.
 
 A typical commit message is structured like this:
@@ -469,7 +469,7 @@ Request.
 
   git add content/your_changed_file.rst
 
-If you have changed several things, it's a good idea to ask git what is 
+If you have changed several things, it's a good idea to ask git what is
 different so that you can add everything and nothing is missed.
 
 ::
@@ -519,7 +519,7 @@ commit.
 Note that git already knows everything I changed, this message is to tell other
 humans why I made the changes I made.
 
-Now your local copy of the git repository contains your changes. Next, push 
+Now your local copy of the git repository contains your changes. Next, push
 those  changes up to Github so that others can see and review them.
 
 ::
@@ -542,18 +542,18 @@ Click the 'Pull Request' button at the top right. This will open a Pull Request
 sidebar with a Title and Description field. These may be filled in for you, but
 it's a good idea to double-check the contents. Like the commit message, these
 fields allow you to communicate what you are doing and why. If you want your
-changes reviewed or noticed by specific people, you can 'tag' them in the 
-description field. To tag someone, simply put an @ in front of their Github 
-username. If you don't know their username, just type @ and a menu of possible 
+changes reviewed or noticed by specific people, you can 'tag' them in the
+description field. To tag someone, simply put an @ in front of their Github
+username. If you don't know their username, just type @ and a menu of possible
 people will appear.
 
-You will also see a line above the title that indicates which branch you are 
+You will also see a line above the title that indicates which branch you are
 merging, and the target branch. Be sure that the target is **staging** and the
 'from' branch is the branch you created.
 
 When you are happy with the title and description, click 'Send pull request'.
 
-**Github** 
+**Github**
 
 I'll defer to Github's own `documentation`_ on how to make a PR on the Github
 website.
@@ -563,7 +563,7 @@ easy to find if you prefixed it with your name), and request to merge with the
 **staging** branch. Be sure to select staging in the "base: " pull-down box.
 
 .. note::
-  
+
   Always select **staging** as the base branch
 
 .. _documentation: https://help.github.com/articles/using-pull-requests
@@ -574,25 +574,25 @@ Solicit Reviews
 The next step is to have your changes approved by the page owner and/or someone
 familiar with Pelican and RST.
 
-The review process takes place on the Github website. Once you have created a 
+The review process takes place on the Github website. Once you have created a
 pull request, you'll see it listed under the 'pull requests' tab of your
-repository on Github. When you select a pull request, you will see tabs for 
+repository on Github. When you select a pull request, you will see tabs for
 'Conversation', 'Commits', and 'Files changed'. 'Conversation' is where people
 will comment on your changes and approve or ask for further changes.
 
-You can 'tag' individuals or the webdev group in the 'Conversation' tab of the 
+You can 'tag' individuals or the webdev group in the 'Conversation' tab of the
 pull request by adding @username or @webdevs to a comment:
 
 ::
 
   @webdevs, please review
 
-This will notify everyone in the webdevs group (you, OSL developers, and other 
-CASS content owners) of the comment, according to their own notification 
-settings. If the change is urgent, it's a good idea to ping a specific person 
+This will notify everyone in the webdevs group (you, OSL developers, and other
+CASS content owners) of the comment, according to their own notification
+settings. If the change is urgent, it's a good idea to ping a specific person
 online or in person to make sure they know that you are waiting on their review.
 
-When you have a thumbs-up (a.k.a. +1) from the page owner or other reviewer, the 
+When you have a thumbs-up (a.k.a. +1) from the page owner or other reviewer, the
 content can be merged by the page owner.
 
 Merge Into Staging
@@ -608,8 +608,8 @@ In most cases, merging is a simple click on the "Merge Pull Request" button.
 Review the Staging Site
 -----------------------
 
-When changes are merged into the staging branch, our back-end systems will push 
-those changes to the staging website. You can see what your changes will look 
+When changes are merged into the staging branch, our back-end systems will push
+those changes to the staging website. You can see what your changes will look
 like in production by visiting the staging site.
 
 * `OSL staging`_: http://osuosl.staging.osuosl.org
@@ -626,5 +626,5 @@ Merge with Master
 If things look good, you or the page owner can create another pull request from
 the staging branch to the master branch, following the same procedure as
 for creating a pull request from your editing branch to staging. When this
-is merged into master, the production site will be updated automatically with 
+is merged into master, the production site will be updated automatically with
 your changes.
