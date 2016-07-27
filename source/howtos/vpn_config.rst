@@ -133,8 +133,8 @@ Procedure:
     down /etc/openvpn/down.sh
 
     # For Fedora:
-    up /usr/share/doc/openvpn-2.1.1/contrib/pull-resolv-conf/client.up
-    down /usr/share/doc/openvpn-2.1.1/contrib/pull-resolv-conf/client.down
+    up /usr/share/doc/openvpn/contrib/pull-resolv-conf/client.up
+    down /usr/share/doc/openvpn/contrib/pull-resolv-conf/client.down
 
 - Run OpenVPN: **openvpn /etc/openvpn/openvpn.conf**
 - Check connection:
