@@ -188,7 +188,7 @@ you won't need to do this again.
 
 ::
 
-  git clone https://github.com/osuosl/cass-pelican
+  git clone https://github.com/osu-cass/cass-pelican
 
 Now you have a local copy of the website in the cass-pelican directory. Move
 into that directory for the following steps.
@@ -236,7 +236,7 @@ branch named ``kennric/add_fred_to_staff_list``.
 Now you can begin making changes or adding content.
 
 .. _osuosl-pelican: https://github.com/osuosl/osuosl-pelican
-.. _cass-pelican: https://github.com/osuosl/cass-pelican
+.. _cass-pelican: https://github.com/osu-cass/cass-pelican
 .. _beaver-barcamp-pelican: https://github.com/osuosl/beaver-barcamp-pelican
 
 Editing Content
