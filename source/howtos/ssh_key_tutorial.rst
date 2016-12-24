@@ -86,6 +86,9 @@ puttygen.exe generator.
   key. You will be asked for it when you connect via SSH.
 - Click "Save private key" to save your private key.
 - Click "Save public key" to save your public key.
-- Email your public key to support@osuosl.org
+- If you are creating this key for use with an OSL SSH account, copy and paste
+  the public key into your ticket. If we didn't ask you for a public key but you
+  want one added to your account email it to support@osuosl.org, being sure to
+  specify who you are and what project(s) you are associated with.
 - keep your private key in a safe place  
 - when using putty go to connection->SSH->Auth and Browse to your private key
