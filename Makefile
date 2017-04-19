@@ -2,10 +2,10 @@
 #
 
 # You can set these variables from the command line.
-SPHINXOPTS    =
-SPHINXBUILD   = sphinx-build
-PAPER         =
-BUILDDIR      = build
+SPHINXOPTS  =
+SPHINXBUILD = sphinx-build
+PAPER       =
+BUILDDIR    = build
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -45,6 +45,7 @@ help:
 	@echo "  pseudoxml  to make pseudoxml-XML files for display purposes"
 	@echo "  linkcheck  to check all external links for integrity"
 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
+	@echo "  rsync_copy to copy the web site locally via rsync"
 
 clean:
 	rm -rf $(BUILDDIR)/*
@@ -53,6 +54,11 @@ html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+
+rsync_copy: html
+	@echo
+	@echo "Copying files to $(RSYNC_TARGET_DIR)"
+	rsync -acq --delete-after --force --cvs-exclude $(BUILDDIR)/html/ $(RSYNC_TARGET_DIR)
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
