@@ -1,11 +1,16 @@
 alabaster==0.7.7
 Babel==2.2.0
+chardet==3.0.2
+doc8==0.8.0
 docutils==0.12
 Jinja2==2.8
 MarkupSafe==0.23
+pbr==3.0.0
 Pygments==2.1.3
 pytz==2015.7
+restructuredtext-lint==1.0.1
 six==1.10.0
 snowballstemmer==1.2.1
 Sphinx==1.3.6
 sphinx-rtd-theme==0.1.9
+stevedore==1.21.0

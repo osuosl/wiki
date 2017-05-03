@@ -45,6 +45,7 @@ help:
 	@echo "  pseudoxml  to make pseudoxml-XML files for display purposes"
 	@echo "  linkcheck  to check all external links for integrity"
 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
+	@echo "  lint       to run a lint check on the docs. For a single file set FILE=path/to/your_file.rst"
 	@echo "  rsync_copy to copy the web site locally via rsync"
 
 clean:
@@ -127,6 +128,11 @@ latexpdfja:
 	@echo "Running LaTeX files through platex and dvipdfmx..."
 	$(MAKE) -C $(BUILDDIR)/latex all-pdf-ja
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
+
+lint:
+	@echo "To lint only a single file pass FILE=path/to/file.rst."
+	doc8 $(FILE)
+	@echo "Linting with doc8 finished successfully.  See output above."
 
 text:
 	$(SPHINXBUILD) -b text $(ALLSPHINXOPTS) $(BUILDDIR)/text
