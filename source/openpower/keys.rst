@@ -32,18 +32,18 @@ On a simple level, instances can be accessed using ``ssh``::
   <image_name> changes after rebuilding an instance with a different OS. Ubuntu machines -> ``ubuntu@<IP>``
   CentOS machines -> ``centos@<IP>``, Debian machines -> ``debian@<IP>``, Fedora machines -> ``fedora@<IP>``, etc...
 
-Doing so will prompt the server and client to establish a secure connection, then the server authenticates the requesting client.
-
-If you have the correct credentials (the desired SSH private key), then you will be granted access to the server.
+Doing so will prompt the server and client to establish a secure connection, then the server authenticates
+the requesting client. If you have the correct credentials (the desired SSH private key), then you will be
+granted access to the server.
 
 .. note::
 
-  This description is very brief and not detailed enough to fully explain how SSH keys and the Diffie-Hellman exchange works. 
+  This description is very brief and not detailed enough to fully explain how SSH keys and the Diffie-Hellman exchange works.
   A more descriptive overview is linked in the section `above.`__
 
 .. __: keys.html#ssh-key-behavior-and-management-on-openpower
 
-*However*, a common issue occurs **after rebuilding an instance**, regarding your local 'known_hosts' file, 
+*However*, a common issue occurs **after rebuilding an instance**, regarding your local 'known_hosts' file,
 which stores a list of IP addresses and their corresponding DSA, RSA, or ECDSA host keys.
 
 If you are recieving something similar to the error::
@@ -57,9 +57,9 @@ then a simple command should fix the error::
 
 *Example:* ``$ ssh-keygen -f "/home/scobeavs/.ssh/known_hosts" -R 140.211.123.456``
 
-This issue occurs because the client (the machine you're attempting to log on to the server through), 
-is also attempting to authenticate the server, to keep the user (you) from connecting to a potentially dangerous imposter. 
-This command removes the server from your 'known_hosts' file, 
+This issue occurs because the client (the machine you're attempting to log on to the server through),
+is also attempting to authenticate the server, to keep the user (you) from connecting to a potentially
+dangerous imposter. This command removes the server from your 'known_hosts' file,
 allowing you to connect to the server as if it were brand new to you.
 
 Changing a Key From Inside an Instance
@@ -72,14 +72,14 @@ To create an OpenPOWER OpenStack instance, we must first set up a Key Pair to as
   For the purposes of this documentation, this key pair will be known as the **Original Key Pair**.
 
 To allow for multiple SSH Keys to access this instance:
-  We need to add the contents of ``<our_key>.pub`` to ``~/.ssh/authorized_keys`` from the machine 
+  We need to add the contents of ``<our_key>.pub`` to ``~/.ssh/authorized_keys`` from the machine
   with the corresponding keyfile.
 
   To do so, we need to be certain we can ``ssh`` into our instance with::
 
       $ ssh <image_name>@<instance_IP_address>
 
-  After we have tested that, we can ``Ctrl+D`` or ``logout`` out of the instance, and use ``ssh-copy-id`` 
+  After we have tested that, we can ``Ctrl+D`` or ``logout`` out of the instance, and use ``ssh-copy-id``
   to transfer ``<our_key>.pub`` to ``authorized_keys``, allowing multiple key pairs.
 
   - To **add** a key pair, retaining the original(s)::
@@ -99,23 +99,24 @@ Changing a Key From OpenStack Web GUI
 
 There is currently no known way to edit the **Original Key Pair** designated to the instance.
 
-Once an instance is created, the original keypair with the original name and fingerprint will always be attached to that machine.
+Once an instance is created, the original keypair with the original
+name and fingerprint will always be attached to that machine.
 
-The instance will *still* not change even if an administrator deletes the **Original Key Pair** and creates a 
+The instance will *still* not change even if an administrator deletes the **Original Key Pair** and creates a
 new key pair with the same name as the **Original**, and rebuilds the machine.
 
-Our best guess to the reason why is because when the instance is created, the **Original Key Pair** and its fingerprint 
-are entered into the ``nova`` database, and there remain, uneditable, until its destruction.
+Our best guess to the reason why is because when the instance is created, the **Original Key Pair** and its
+fingerprint are entered into the ``nova`` database, and there remain, uneditable, until its destruction.
 
-Note that we can use this knowledge to our advantage, however, as there is a fail-proof way to return the 
+Note that we can use this knowledge to our advantage, however, as there is a fail-proof way to return the
 ``authorized_keys`` file to its original state by simply rebuilding the instance.
 
 Accessing an Instance After a Rebuild
 -------------------------------------
 
-As explained above, using SSH Key Pairs to access an instance after a rebuild will *only* work with the **Original Key Pair**. 
-This remains true through operating systems. *However*, an error may occur like the one noted in `the first section`__. To rid of 
-this error, follow the steps given there.
+As explained above, using SSH Key Pairs to access an instance after a rebuild will *only* work with the
+**Original Key Pair**. This remains true through operating systems. *However*, an error may occur like
+the one noted in `the first section`__. To rid of this error, follow the steps given there.
 
 .. __: keys.html#accessing-an-instance-using-an-ssh-key
 
@@ -131,8 +132,8 @@ As of right now, the preferred method (still being researched) is administrator 
   *Sounds perfect, right?
   ...Well, sort of.*
 
-Password Injection can be useful, especially in a dire situation, but poses a security threat not only for the instance, but for 
-*the entire cluster of instances*.
+Password Injection can be useful, especially in a dire situation, but poses a security threat not only for the
+instance, but for *the entire cluster of instances*.
 
   A useful link from OpenStack: `Password Injection`__
 
@@ -142,33 +143,37 @@ Password Injection can be useful, especially in a dire situation, but poses a se
 
   **Password Injection should only be used in rare circumstances, and only with proper administrator permission and guidance.**
 
-  **The OSU Open Source Lab does not and will not support Administrator Password Injection due to its high security risk. This 
+  **The OSU Open Source Lab does not and will not support Administrator Password Injection due to its high security risk. This
   information is here for the purpose of knowledge.**
 
 .. note::
 
-  The Virtual Machine *must* be a Linux-based distribution, and must be configured to allow users to use SSH as the **Root User**
+  The Virtual Machine *must* be a Linux-based distribution, and must be configured to
+  allow users to use SSH as the **Root User**
 
 - To **enable** Password Injection on **libvert-based hypervisors** (KVM, QEMU, and LXC Clusters):
 
-  Password Injection is **disabled** by default. Find the ``/etc/nova/nova.conf`` file and edit the following variable::
+  Password Injection is **disabled** by default. Find the ``/etc/nova/nova.conf``
+  file and edit the following variable:
 
-.. code-block:: python
+.. code-block::
 
       [libvirt]
       inject_password=true
 
+
 - To **disable** password fields through the OpenStack Dashboard, making Password Injection nearly impossible, find the
-dashboard's ``local_settings.py`` file and edit the following variable::
+  dashboard's ``local_settings.py`` file and edit the following variable:
 
-.. code-block:: python
+.. code-block::
 
-      OPENSTACK_HYPERVISOR_FEATURES = {
-      ...
-          'can_set_password': False,
-      }
+    OPENSTACK_HYPERVISOR_FEATURES = {
+    ...
+        'can_set_password': False,
+    }
 
-Now that Password Injection is enabled, anyone can SSH to the instance, using the same command as per usual::
+
+Now that Password Injection is enabled, anyone can SSH to the instance, using the same command as per usual ::
 
     $ ssh <image_name>@<instance_IP_address>
 
