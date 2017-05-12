@@ -154,18 +154,14 @@ instance, but for *the entire cluster of instances*.
 - To **enable** Password Injection on **libvert-based hypervisors** (KVM, QEMU, and LXC Clusters):
 
   Password Injection is **disabled** by default. Find the ``/etc/nova/nova.conf``
-  file and edit the following variable:
+  file and edit the following variable::
 
-.. code-block::
-
-      [libvirt]
-      inject_password=true
+    [libvirt]
+    inject_password=true
 
 
 - To **disable** password fields through the OpenStack Dashboard, making Password Injection nearly impossible, find the
-  dashboard's ``local_settings.py`` file and edit the following variable:
-
-.. code-block::
+  dashboard's ``local_settings.py`` file and edit the following variable::
 
     OPENSTACK_HYPERVISOR_FEATURES = {
     ...
