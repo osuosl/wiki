@@ -156,17 +156,17 @@ instance, but for *the entire cluster of instances*.
   Password Injection is **disabled** by default. Find the ``/etc/nova/nova.conf``
   file and edit the following variable::
 
-    [libvirt]
-    inject_password=true
+      [libvirt]
+      inject_password=true
 
 
 - To **disable** password fields through the OpenStack Dashboard, making Password Injection nearly impossible, find the
   dashboard's ``local_settings.py`` file and edit the following variable::
 
-    OPENSTACK_HYPERVISOR_FEATURES = {
-    ...
-        'can_set_password': False,
-    }
+      OPENSTACK_HYPERVISOR_FEATURES = {
+      ...
+          'can_set_password': False,
+      }
 
 
 Now that Password Injection is enabled, anyone can SSH to the instance, using the same command as per usual ::
