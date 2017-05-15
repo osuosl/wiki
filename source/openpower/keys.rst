@@ -72,7 +72,7 @@ then a simple command should fix the error::
 
 This issue occurs because the client (the machine you're attempting to log on to the server through),
 is also attempting to authenticate the server, to keep the user (you) from connecting to a potentially
-dangerous imposter. This command removes the server from your 'known_hosts' file,
+dangerous imposter. This command removes the server from your ``known_hosts`` file,
 allowing you to connect to the server as if it were brand new to you.
 
 Changing a Key From Inside an Instance
