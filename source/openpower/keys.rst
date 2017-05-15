@@ -29,8 +29,21 @@ On a simple level, instances can be accessed using ``ssh``::
 
 .. note::
 
-  <image_name> changes after rebuilding an instance with a different OS. Ubuntu machines -> ``ubuntu@<IP>``
-  CentOS machines -> ``centos@<IP>``, Debian machines -> ``debian@<IP>``, Fedora machines -> ``fedora@<IP>``, etc...
+  ``<image_name>`` changes after rebuilding an instance with a different OS.
+
+  +----------+--------------+
+  | OS       | Login Name   |
+  +==========+==============+
+  | Debian   | ``debian``   |
+  +----------+--------------+
+  | CentOS   | ``centos``   |
+  +----------+--------------+
+  | Ubuntu   | ``ubuntu``   |
+  +----------+--------------+
+  | Fedora   | ``fedora``   |
+  +----------+--------------+
+  | OpenSUSE | ``opensuse`` |
+  +----------+--------------+
 
 Doing so will prompt the server and client to establish a secure connection, then the server authenticates
 the requesting client. If you have the correct credentials (the desired SSH private key), then you will be
@@ -43,7 +56,7 @@ granted access to the server.
 
 .. __: keys.html#ssh-key-behavior-and-management-on-openpower
 
-*However*, a common issue occurs **after rebuilding an instance**, regarding your local 'known_hosts' file,
+*However*, a common issue occurs **after rebuilding an instance**, regarding your local ``known_hosts`` file,
 which stores a list of IP addresses and their corresponding DSA, RSA, or ECDSA host keys.
 
 If you are recieving something similar to the error::
@@ -125,54 +138,6 @@ So... What do you do if you lost the original key?
 Accessing an Instance After a Rebuild ... *Without the Original Key*
 --------------------------------------------------------------------
 
-As of right now, the preferred method (still being researched) is administrator password injection.
+As of right now, there is no simple way to fix this issue. Send in a support ticket request here to have the OSU Open Source Lab work with you to remedy this issue.
 
-**Administrator Password Injection** allows a user to SSH into an instance without the proper SSH Key.
-
-  *Sounds perfect, right?
-  ...Well, sort of.*
-
-Password Injection can be useful, especially in a dire situation, but poses a security threat not only for the
-instance, but for *the entire cluster of instances*.
-
-  A useful link from OpenStack: `Password Injection`__
-
-.. __: https://docs.openstack.org/admin-guide/compute-admin-password-injection.html
-
-.. warning::
-
-  **Password Injection should only be used in rare circumstances, and only with proper administrator permission and guidance.**
-
-  **The OSU Open Source Lab does not and will not support Administrator Password Injection due to its high security risk. This
-  information is here for the purpose of knowledge.**
-
-.. note::
-
-  The Virtual Machine *must* be a Linux-based distribution, and must be configured to
-  allow users to use SSH as the **Root User**
-
-- To **enable** Password Injection on **libvert-based hypervisors** (KVM, QEMU, and LXC Clusters):
-
-  Password Injection is **disabled** by default. Find the ``/etc/nova/nova.conf``
-  file and edit the following variable::
-
-      [libvirt]
-      inject_password=true
-
-
-- To **disable** password fields through the OpenStack Dashboard, making Password Injection nearly impossible, find the
-  dashboard's ``local_settings.py`` file and edit the following variable::
-
-      OPENSTACK_HYPERVISOR_FEATURES = {
-      ...
-          'can_set_password': False,
-      }
-
-
-Now that Password Injection is enabled, anyone can SSH to the instance, using the same command as per usual ::
-
-    $ ssh <image_name>@<instance_IP_address>
-
-We are now prompted for the Administrator password if we do not have a matching SSH keypair.
-
-Once we are in the instance, we can edit the SSH key pairs and more using the techniques above.
+support@osuosl.org
