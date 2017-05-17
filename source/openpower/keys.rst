@@ -29,6 +29,8 @@ On a simple level, instances can be accessed using ``ssh``::
 
 .. note::
 
+  Login Usernames change after a rebuild depending on the OS used to rebuild the machine.
+
   .. csv-table:: Login Names
     :header: "OS", "Username"
     :widths: 12, 15
