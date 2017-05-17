@@ -29,21 +29,15 @@ On a simple level, instances can be accessed using ``ssh``::
 
 .. note::
 
-  ``<image_name>`` changes after rebuilding an instance with a different OS.
+  .. csv-table:: Login Names
+    :header: "OS", "Username"
+    :widths: 12, 15
 
-  +----------+--------------+
-  | OS       | Login Name   |
-  +==========+==============+
-  | Debian   | ``debian``   |
-  +----------+--------------+
-  | CentOS   | ``centos``   |
-  +----------+--------------+
-  | Ubuntu   | ``ubuntu``   |
-  +----------+--------------+
-  | Fedora   | ``fedora``   |
-  +----------+--------------+
-  | OpenSUSE | ``opensuse`` |
-  +----------+--------------+
+    "Debian", "``debian``"
+    "CentOS", "``centos``"
+    "Ubuntu", "``ubuntu``"
+    "Fedora", "``fedora``"
+    "OpenSUSE", "``opensuse``"
 
 Doing so will prompt the server and client to establish a secure connection, then the server authenticates
 the requesting client. If you have the correct credentials (the desired SSH private key), then you will be
