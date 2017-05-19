@@ -55,7 +55,7 @@ granted access to the server.
 *However*, a common issue occurs **after rebuilding an instance**, regarding your local ``known_hosts`` file,
 which stores a list of IP addresses and their corresponding DSA, RSA, or ECDSA host keys.
 
-If you are recieving something similar to the error::
+If you are receiving something similar to the error::
 
   ECDSA host key for 140.211.123.456 has changed and you have requested strict checking.
   Host key verification failed.
