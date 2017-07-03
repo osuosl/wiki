@@ -16,8 +16,8 @@ this package pre-installed:
   :header: "OS", "``ppc64-diag``"
   :widths: 12, 4
 
-  "Debian", "[ ]"
-  "CentOS", "[x]"
-  "Fedora", "[ ]"
-  "Ubuntu", "[ ]"
-  "OpenSUSE", "[ ]"
+  "Debian", "no"
+  "CentOS", "yes"
+  "Fedora", "no"
+  "Ubuntu", "no"
+  "OpenSUSE", "no"
