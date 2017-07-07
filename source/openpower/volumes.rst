@@ -7,7 +7,7 @@ as ``fdisk``, ``mount``/``umount``, and other LVM commands. Alongside these pack
 there are other packages that are necessary to view and allow the system to properly
 interact with the volumes that the user is attempting to manipulate.
 
-Volumes on ``ppc64``
+Volumes on ppc64
 --------------------
 
 One of the most crucial packages for proper POWER volume management is ``ppc64-diag``.
