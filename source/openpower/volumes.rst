@@ -1,5 +1,5 @@
-Packages Required for Different OS Families
-===========================================
+Interacting with Volumes on OpenPOWER
+=====================================
 
 Each Operating System interacts with the volumes attached to it in various ways.
 The most common ways to interact with volumes are through packaged programs such
@@ -15,7 +15,7 @@ One of the most crucial packages for proper POWER volume management is ``ppc64-d
 The following is a table showing which images on openpower-controller.osuosl.org have
 this package pre-installed:
 
-.. csv-table:: ppc64-diag Pre-Installed Images
+.. csv-table::
   :header: "OS", "``ppc64-diag``"
   :widths: 12, 15
 
