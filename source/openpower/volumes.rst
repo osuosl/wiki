@@ -15,7 +15,7 @@ One of the most crucial packages for proper POWER volume management is ``ppc64-d
 The following is a table showing which images on openpower-controller.osuosl.org have
 this package pre-installed:
 
-.. csv-table:: Pre-Installed Images
+.. csv-table:: ppc64-diag Pre-Installed Images
   :header: "OS", "``ppc64-diag``"
   :widths: 12, 15
 
