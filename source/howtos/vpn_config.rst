@@ -147,6 +147,12 @@ Tunnelblick (OS X)
 Tunnelblick is a free, open source gui for OpenVPN on OS X that allows for easy
 control of the OpenVPN client.
 
+Troubleshooting
+~~~~~~~~~~~~~~~
+
+The version of OpenVPN we are running is incompatible with OpenVPN client v2.4+ on OS X.
+If you are running OS X, please use OpenVPN v2.3 to connect to the VPN.
+
 Installation
 ~~~~~~~~~~~~
 Download and install Tunnelblick from the project's downloads_ page.
