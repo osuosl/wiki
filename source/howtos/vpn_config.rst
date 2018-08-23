@@ -18,7 +18,6 @@ Settings:
 - server: **vpn.osuosl.org:1194**
 - type: **Certificate (TLS)**
 - protocol: **UDP**
-- compression: **None** (Note this changed on 08/18/10 - previously LZO was used)
 - device type: **TUN**
 
 
@@ -47,7 +46,6 @@ Procedure:
   - CA Certificate:  **ca.crt**
   - Private Key: **<username>.key**
   - Private Key Password: **<password>** (if applicable)
-  - Advanced->Make sure 'Use LZO data compression' is **unchecked**
   - IPv4 Settings->Routes...->Use this connection only for resources on its
     network: **✔** (if unchecked, all network traffic is routed through the VPN)
 - Apply
@@ -91,7 +89,6 @@ Procedure:
     client                         # Client mode
     dev tun                        # Create a TUN device (not TAP)
     proto udp                      # Use UDP (not TCP)
-    #comp-lzo                      # Don't enable LZO compression
 
     remote vpn.osuosl.org 1194  # Server settings
     remote-cert-tls server         # Use TLS to check server identity
