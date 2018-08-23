@@ -150,6 +150,8 @@ Troubleshooting
 The version of OpenVPN we are running is incompatible with OpenVPN client v2.4+ on OS X.
 If you are running OS X, please use OpenVPN v2.3 to connect to the VPN.
 
+Disabling LZO compression may help on older OpenVPN instances.
+
 Installation
 ~~~~~~~~~~~~
 Download and install Tunnelblick from the project's downloads_ page.
