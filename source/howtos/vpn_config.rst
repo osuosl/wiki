@@ -18,6 +18,7 @@ Settings:
 - server: **vpn.osuosl.org:1194**
 - type: **Certificate (TLS)**
 - protocol: **UDP**
+  * compression: **None** (Note this changed on 08/18/10 - previously LZO was used)
 - device type: **TUN**
 
 
@@ -46,6 +47,7 @@ Procedure:
   - CA Certificate:  **ca.crt**
   - Private Key: **<username>.key**
   - Private Key Password: **<password>** (if applicable)
+  - Advanced->Make sure 'Use LZO data compression' is **unchecked**
   - IPv4 Settings->Routes...->Use this connection only for resources on its
     network: **✔** (if unchecked, all network traffic is routed through the VPN)
 - Apply
@@ -139,6 +141,13 @@ Procedure:
   - **ifconfig -a**: IP address should be in the 10.*.*.* range.
   - **ping 10.0.0.1**: The router should respond
 
+Errors
+------
+If you receive the error 'unable to find GID for group nobody', then you
+will need to create the 'nobody' group.::
+
+    $ sudo groupadd nobody
+
 Tunnelblick (OS X)
 ------------------
 Tunnelblick is a free, open source gui for OpenVPN on OS X that allows for easy
@@ -149,8 +158,6 @@ Troubleshooting
 
 The version of OpenVPN we are running is incompatible with OpenVPN client v2.4+ on OS X.
 If you are running OS X, please use OpenVPN v2.3 to connect to the VPN.
-
-Disabling LZO compression may help on older OpenVPN instances.
 
 Installation
 ~~~~~~~~~~~~
