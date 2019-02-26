@@ -3,44 +3,54 @@
 Building Openstack OpenPOWER Guests
 ===================================
 
-This documentation covers the steps needed to build an Openstack guests on
-OpenPOWER KVM using both `packer` and also manually.
-
-Unfortunately we can't use `packer`_ yet for building images so for now we'll need
-to build them manually on the OpenPOWER boxes. For now we should **only** be
-building images on the hardware itself and not use QEMU emulation on x86. While
-it may work, we have this method as a confirmed way to build the images. All of
-the configuration and scripts used for building the images are included in our
-`packer-templates`_ github repo.
-
-.. _packer: http://www.packer.io/
-.. _packer-templates: https://github.com/osuosl/packer-templates
-
-.. note::
-
-    All guests will have their output directed to the serial console by default.
+This documentation covers the steps needed to build an Openstack guests on OpenPOWER KVM using both `packer` and also
+manually.
 
 Current Images
 --------------
 
-We are maintaining ppc64 Big Endian (BE) and ppc64le Little Endian (LE) images
-on our FTP mirrors. The list of operating systems we currently support are:
+We are currently maintaining ppc64le Little endian (LE) and some ppc64 Big Endian (BE) images. Please keep in mind that
+IBM is focusing their efforts primarily on LE so don't expect BE support to last for much longer on various
+distributions.
 
-- Fedora 22 Alpha LE/BE
-- Fedora 21 LE/BE
-- Fedora 20 BE
-- Ubuntu 15.04 LE
-- Ubuntu 14.04 LE/BE
-- Debian 8 LE/BE
-- Debian 7 BE
-- OpenSUSE 13.2 LE/BE
+The list of operating systems we currently support are (systems which support POWER9 are noted with **P9**):
+
+- CentOS 7.5 BE
+- CentOS 7.6 LE (P9)
+- Debian 8.11 BE
+- Debian 8.11 LE
+- Debian 9.8 LE (P9)
+- Fedora 28 BE
+- Fedora 28 LE (P9)
+- Fedora 29 LE (P9)
+- OpenSUSE 13.2 BE
+- OpenSUSE 13.2 LE
+- OpenSUSE Leap 15.0 LE (P9)
+- OpenSUSE Leap 42.3 LE
+- Ubuntu 14.04 BE
+- Ubuntu 14.04 BE
+- Ubuntu 16.04 BE
+- Ubuntu 16.04 BE (32bits)
+- Ubuntu 16.04 LE
+- Ubuntu 18.04 LE (P9)
 
 If there are any images you would like us to create, please let us know.
 
-.. _FTP mirrors: http://ftp.osuosl.org/pub/osl/openpower/openstack/
+Building images with packer
+---------------------------
+
+We build all of our images using `packer`_ iva our `packer-templates`_ github repo. Builds are triggered via opening a
+pull request with the changes that are needed. Once an image has been built, `openstack_taster`_ will test to ensure
+the images will work properly on our openstack cluster.
+
+.. _packer: http://www.packer.io/
+.. _packer-templates: https://github.com/osuosl/packer-templates
+.. _openstack_taster: https://github.com/osuosl/openstack_taster
 
 Manual Guest Installation
 -------------------------
+
+.. note:: This is only useful for manually testing some images and is no longer used for building images.
 
 Please run the following commands on one of the OpenPOWER machines directly.
 
