@@ -11,7 +11,7 @@ These machines are intended to run Openstack in a cluster fashion powered by
 KVM.
 
 .. toctree::
-  :maxdepth: 1
+  :maxdepth: 2
   :glob:
 
   *
