@@ -3,102 +3,83 @@
 Openstack on OpenPOWER
 ======================
 
-These are notes on how the OSUOSL is setting up Openstack on OpenPOWER.
-
-.. note::
-
-  These steps are still a work in a progress and may change at anytime.
+These are notes on how the OSUOSL is setting up Openstack on OpenPOWER (as of Feb 2019).
 
 Summary
 -------
 
-We use Chef as our configuration management tool of choice and have created an
-environment using the `StackForge`_ Chef Cookbooks. The compute nodes are
-running Fedora 20 and the controller node is an x86 virtual machine running
-CentOS 6.6.
+We use Chef as our configuration management tool of choice and have created an environment using the `OpenStack Chef`_
+Cookbooks. The compute nodes are running CentOS 7 and the controller node is an x86 virtual machine running CentOS 7.
+All storage for the cluster is powered via a `Ceph`_ cluster backed by a 40Gb network.
 
-We have created our own site specific `Openstack cookbook`_ that also includes any
-changes needed to make Openstack run on the OpenPOWER platform on Fedora 20. It
-currently requires some private cookbooks to run (namely the firewall), and
-lacks some documentation.
+We have created our own site specific wrapper `Openstack cookbook`_ that also includes any changes needed to make
+Openstack run on the OpenPOWER platform on CentOS 7. It currently requires some private cookbooks to run however we are
+working on removing those requirements.
 
-.. _StackForge: https://github.com/stackforge
+.. _OpenStack Chef: https://docs.openstack.org/openstack-chef/latest/
 .. _Openstack cookbook: https://github.com/osuosl-cookbooks/osl-openstack
+.. _Ceph: https://ceph.com/
+
+Hardware Stack
+--------------
+
+- Controller (1)
+
+  - One (1) x86_64 Virtual Machine running on Ganeti with KVM
+  - 12g RAM / 20g disk / 4 vCPU
+
+- Compute (8)
+
+  - Five (5) 8247-22L POWER8 systems w/ 512g RAM
+  - Three (3) 9006-12P POWER9 systems w/ 512g RAM
+
+- Storage (5)
+
+  - Five (5) 8001-22C POWER8 systems
+  - 256g RAM
+  - 8 x 8TB SATA / 4 x 240GB SSD
 
 Software Stack
 --------------
 
 Here is the current deployment of OpenStack on OpenPOWER we're using:
 
-- Host Operating Systems
+- Host Operating System
 
-  - CentOS 6.6 x86_64 VM (keystone/glance/horizon)
-  - Fedora 20 ppc64 (nova/cinder)
+  - CentOS 7
+  - Compute nodes running a mainline 4.14.x kernel
 
 - OpenStack
 
-  - OpenStack Icehouse
+  - OpenStack Ocata Release
   - Packages from `RDO`_
 
+- Ceph
+
+  - Ceph Luminous Release
+
 .. _RDO: https://www.rdoproject.org
-
-Reasons for using Fedora
-------------------------
-
-Fedora wasn't our first choice for the OS running on the compute nodes because
-of its fast pace nature, however the IBM engineers recommended we use that for
-now because it was easier to get newer bug fixes included. Our goal is to
-eventually use CentOS 7 on the compute nodes once support has been completed.
 
 Specific Changes
 ----------------
 
-Here are a listing of specific changes we made to get this working on Fedora 20
-on OpenPOWER.
+Here are a listing of specific changes we made to get this working on CentOS 7 on OpenPOWER.
 
-Turn Off SELinux
-~~~~~~~~~~~~~~~~
+Building of ppc64le binaries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There will be issues if SELinux is set to ``Enforce``. Change it to
-``Permissive``. We haven't had time to figure out the exact problem with the
-SELinx permissions.
-
-Install newer versions of packages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Some packages need to be newer than what comes from Fedora 20 and so we created
-a new `repository`_ with the packages we needed. All of these packages have been
-compiled from the Fedora rawhide repository. The list of packages that needed to
-be upgraded are:
-
-- kernel
-- libvirt
-- libvirt-python
-- qemu
-- seabios
-- SLOF
-
-.. _repository: http://ftp.osuosl.org/pub/osl/repos/yum/openpower/f20/ppc64/
+`RDO`_ technically doesn't include ppc64le in its distribution, however the vast majority of the packages are
+``noarch`` so this isn't a problem. But there are a few cases where this isn't right. To do that, we've pulled the
+SRPMs from http://vault.centos.org/ and published them in our own repositories at
+http://ftp.osuosl.org/pub/osl/repos/yum/openpower/centos-7/ppc64le/.
 
 Turn off SMT
 ~~~~~~~~~~~~
 
-The SMT feature in the PPC64 cpu needs to be turned off via running
-``/sbin/ppc64_cpu --smt=off``. Otherwise the Little Endian guests will not run
-properly.
+The SMT feature in the PPC64 cpu needs to be turned off via running ``/sbin/ppc64_cpu --smt=off``. Otherwise the Little
+Endian guests will not run properly.
 
 Loading kvm-hv module
 ~~~~~~~~~~~~~~~~~~~~~
 
-The ``kvm-hv`` module will need to be loaded and the ``kvm-pr`` should not be
-loaded.
-
-Chef specific changes
-~~~~~~~~~~~~~~~~~~~~~
-
-Much of the Fedora support in the Openstack cookbooks has been removed, however
-most of the changes were done in the attributes. We have included some changes
-in our ``osl-openstack`` cookbook to fix those. The majority of the changes are:
-
-- Setting correct package names for Fedora on a few attributes
-- Setting the correct yum repository for Fedora and adding it
+The ``kvm-hv`` module will need to be loaded and the ``kvm-pr`` should not be loaded.
