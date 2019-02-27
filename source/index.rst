@@ -11,7 +11,6 @@ Welcome to the OSL Wiki!
 
     gsoc/index
     ganeti/index
-    supercell/index
     openpower/index
     powerlinux/index
     howtos/index
