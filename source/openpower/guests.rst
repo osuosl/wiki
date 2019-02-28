@@ -3,8 +3,9 @@
 Building Openstack OpenPOWER Guests
 ===================================
 
-This documentation covers the steps needed to build an Openstack guests on OpenPOWER KVM using both `packer` and also
-manually.
+This documentation covers the steps needed to build an Openstack guests on OpenPOWER using a tool called `packer`. In
+addition, we include documentation which covers how to build the images manually in case you run into issues with
+packer.
 
 Current Images
 --------------
@@ -39,7 +40,7 @@ If there are any images you would like us to create, please let us know.
 Building images with packer
 ---------------------------
 
-We build all of our images using `packer`_ iva our `packer-templates`_ github repo. Builds are triggered via opening a
+We build all of our images using `packer`_ via our `packer-templates`_ github repo. Builds are triggered via opening a
 pull request with the changes that are needed. Once an image has been built, `openstack_taster`_ will test to ensure
 the images will work properly on our openstack cluster.
 
