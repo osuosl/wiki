@@ -1,159 +1,92 @@
 .. _openpower-openstack-guests:
 
-Openstack OpenPOWER Guests
-==========================
+Building Openstack OpenPOWER Guests
+===================================
 
-This documentation covers the steps needed to build an Openstack guests on
-OpenPOWER KVM.
-
-Unfortunately we can't use `packer`_ yet for building images so for now we'll need
-to build them manually on the OpenPOWER boxes. For now we should **only** be
-building images on the hardware itself and not use QEMU emulation on x86. While
-it may work, we have this method as a confirmed way to build the images. All of
-the configuration and scripts used for building the images are included in our
-`packer-templates`_ github repo.
-
-.. _packer: http://www.packer.io/
-.. _packer-templates: https://github.com/osuosl/packer-templates
-
-.. note::
-
-    All guests will have their output directed to the serial console by default.
+This documentation covers the steps needed to build an Openstack guests on OpenPOWER using a tool called `packer`. In
+addition, we include documentation which covers how to build the images manually in case you run into issues with
+packer.
 
 Current Images
 --------------
 
-We are maintaining ppc64 Big Endian (BE) and ppc64le Little Endian (LE) images
-on our FTP mirrors. The list of operating systems we currently support are:
+We are currently maintaining ppc64le Little endian (LE) and some ppc64 Big Endian (BE) images. Please keep in mind that
+IBM is focusing their efforts primarily on LE so don't expect BE support to last for much longer on various
+distributions.
 
-- Fedora 22 Alpha LE/BE
-- Fedora 21 LE/BE
-- Fedora 20 BE
-- Ubuntu 15.04 LE
-- Ubuntu 14.04 LE/BE
-- Debian 8 LE/BE
-- Debian 7 BE
-- OpenSUSE 13.2 LE/BE
+The list of operating systems we currently support are (systems which support POWER9 are noted with **P9**):
+
+- CentOS 7.5 BE
+- CentOS 7.6 LE (P9)
+- Debian 8.11 BE
+- Debian 8.11 LE
+- Debian 9.8 LE (P9)
+- Fedora 28 BE
+- Fedora 28 LE (P9)
+- Fedora 29 LE (P9)
+- OpenSUSE 13.2 BE
+- OpenSUSE 13.2 LE
+- OpenSUSE Leap 15.0 LE (P9)
+- OpenSUSE Leap 42.3 LE
+- Ubuntu 14.04 BE
+- Ubuntu 14.04 BE
+- Ubuntu 16.04 BE
+- Ubuntu 16.04 BE (32bits)
+- Ubuntu 16.04 LE
+- Ubuntu 18.04 LE (P9)
 
 If there are any images you would like us to create, please let us know.
 
-.. _FTP mirrors: http://ftp.osuosl.org/pub/osl/openpower/openstack/
+Building images with packer
+---------------------------
 
-Guest Installation
-------------------
+We build all of our images using `packer`_ via our `packer-templates`_ github repo. Builds are triggered via opening a
+pull request with the changes that are needed. Once an image has been built, `openstack_taster`_ will test to ensure
+the images will work properly on our openstack cluster.
 
-.. warning::
+.. _packer: http://www.packer.io/
+.. _packer-templates: https://github.com/osuosl/packer-templates
+.. _openstack_taster: https://github.com/osuosl/openstack_taster
 
-  The following process is a work in progress and may not always work. We're
-  doing our best to improve this documentation so always feel to ask us first if
-  you run into any problems.
+Manual Guest Installation
+-------------------------
+
+.. note:: This is only useful for manually testing some images and is no longer used for building images.
 
 Please run the following commands on one of the OpenPOWER machines directly.
 
 1. Download the DVD or net install ISO for desired distribution.
-2. Create a 2G qcow2 disk image:
+2. Create a 3G qcow2 disk image:
 
 .. code-block:: bash
 
-    export DISTRO="fedora-21"
-    export DISTRO_ISO="Fedora-21-ppc64-DVD.iso"
-    qemu-img create -f qcow2 $DISTRO.qcow2 2G
+    export DISTRO="debian-9"
+    export DISTRO_ISO="debian-9.5.0-ppc64el-netinst.iso"
+    qemu-img create -f qcow2 $DISTRO.qcow2 3G
 
 3. Boot up the image using kvm manually:
 
-.. code-block:: bash
+.. code-block:: console
 
-    qemu-system-ppc64 --enable-kvm -M pseries -cpu host -smp 2 -m 2G \
-      -nodefaults -nographic -monitor stdio -serial pty -netdev user,id=net0 \
-      -device virtio-net-pci,netdev=net0 -cdrom $DISTRO_ISO -drive \
-      file=$DISTRO.qcow2,if=none,id=drive0,format=qcow2,cache=none -device \
-      virtio-blk-pci,scsi=off,drive=drive0,id=disk0 -boot order=d
+   $ /usr/libexec/qemu-kvm -m 2048M -boot strict=on -name $DISTRO -machine type=pseries,accel=kvm \
+     -cdrom $DISTRO_ISO -netdev user,id=user.0,hostfwd=tcp::2222-:22 \
+     -device virtio-net,netdev=user.0 \
+     -drive file=$DISTRO.qcow2,if=virtio,cache=writeback,discard=ignore,format=qcow2 \
+     -vnc 0.0.0.0:99
 
-4. Note the serial device qemu created::
+4. Connect via VNC to the VM and complete the installation
 
-    (qemu) char device redirected to /dev/pts/2 (label serial0)
+.. code-block:: console
 
-5. Quickly connect to the serial console using ``socat``. To escape, use
-   ``ctrl+]``::
+  $ vncviewer $host:99
 
-    socat STDIO,raw,echo=0,escape=0x1d /dev/pts/2
+5. Wait for the VM to complete the install.
 
-6a. **Fedora:**
+6. Compress and import image into Openstack:
 
-   When the grub menu comes up, press ``e`` to edit. Find the line that says::
+.. code-block:: console
 
-    linux /ppc/ppc${2}/vmlinuz  ro
-
-   And then add the following to the end (NOTE: this is just a short URL to the
-   `github file`__) ::
-
-    ks=http://osl.io/ksfedora20
-
-6b. **Debian:**
-
-   When the yaboot prompt comes up, copy and paste the following in (NOTE: this
-   is a short URL to the `github file`__)::
-
-    install url=http://osl.io/preseeddebian debian-installer/locale=en_US console-keymaps-at/keymap=us keyboard-configuration/xkb-keymap=us netcfg/get_hostname=unassigned-hostname netcfg/get_domain=unassigned-domain
-
-6c. **Ubuntu:**
-
-   When the yaboot prompt comes up, copy and paste the following in (NOTE: this
-   is a short URL to the `github file`__)::
-
-    install-powerpc64 url=http://osl.io/preseedubuntu debian-installer/locale=en_US console-keymaps-at/keymap=us keyboard-configuration/xkb-keymap=us netcfg/get_hostname=unassigned-hostname netcfg/get_domain=unassigned-domain
-
-6d. **Ubuntu 14.04 (Little Endian):**
-
-   When the grub menu comes up, press ``e`` to edit. Find the line that starts
-   with::
-
-    linux        /install/vmlinux
-
-   And then add the following to the end (NOTE: this is just a short URL to the
-   `github file`__) ::
-
-    url=http://osl.io/preseedubuntule debian-installer/locale=en_US console-keymaps-at/keymap=us keyboard-configuration/xkb-keymap=us netcfg/get_hostname=unassigned-hostname netcfg/get_domain=unassigned-domain
-
-.. __: https://raw.githubusercontent.com/osuosl/packer-templates/master/http/ks-fedora-qemu-20-ppc64.cfg
-.. __: http://ftp.osuosl.org/pub/osl/packer-templates/http/preseed-debian-ppc64.cfg
-.. __: http://ftp.osuosl.org/pub/osl/packer-templates/http/preseed-ubuntu-ppc64.cfg
-.. __: http://ftp.osuosl.org/pub/osl/packer-templates/http/preseed-ubuntu-ppc64le.cfg
-
-7. Wait for the VM to complete the install automatically and shutdown.
-8. Boot the image up using the newly installed system. Change ``-boot order=d``
-   to ``-boot order=c`` for the kvm command. Quickly connect to the serial
-   console.
-9. Login as root (password is ``osuadmin``).
-
-10a. **Fedora:**
-
-    Run the following command (NOTE: this is just a short URL to the `github
-    file`__)::
-
-      wget -O - http://osl.io/postinstyum | bash
-
-10b. **Debian:**
-
-    Run the following command (NOTE: this is just a short URL to the `github
-    file`__)::
-
-      wget -O - http://osl.io/postinstdebian | bash
-
-10c. **Ubuntu:**
-
-    Run the following command (NOTE: this is just a short URL to the `github
-    file`__)::
-
-      wget -O - http://osl.io/postinstubuntu | bash
-
-.. __: https://raw.githubusercontent.com/osuosl/packer-templates/master/openpower/postinstall-openstack-yum.sh
-.. __: https://raw.githubusercontent.com/osuosl/packer-templates/master/openpower/postinstall-openstack-debian.sh
-.. __: https://raw.githubusercontent.com/osuosl/packer-templates/master/openpower/postinstall-openstack-ubuntu.sh
-
-11. Compress and import image into Openstack::
-
-      qemu-img convert -O qcow2 -c $DISTRO.qcow2 $DISTRO-compressed.qcow2
-      source keystonerc_admin
-      glance image-create --name $DISTRO --disk-format=qcow2 \
+      $ qemu-img convert -O qcow2 -c $DISTRO.qcow2 $DISTRO-compressed.qcow2
+      $ source openrc
+      $ glance image-create --name $DISTRO --disk-format=qcow2 \
         --container-format=bare < $DISTRO-compressed.qcow2

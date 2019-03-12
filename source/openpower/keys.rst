@@ -3,8 +3,8 @@
 SSH Key Behavior and Management on OpenPOWER
 ============================================
 
-These are findings of how SSH Keys behave in various conditions on OSL's POWERDev OpenStack cluster,
-and how to manage these keys.
+These are findings of how SSH Keys behave in various conditions on OSL's OpenPOWER OpenStack cluster, and how to manage
+these keys.
 
 .. note::
 
