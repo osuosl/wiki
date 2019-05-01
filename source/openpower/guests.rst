@@ -20,10 +20,11 @@ The list of operating systems we currently support are (systems which support PO
 - CentOS 7.6 LE (P9)
 - Debian 8.11 BE
 - Debian 8.11 LE
-- Debian 9.8 LE (P9)
+- Debian 9.9 LE (P9)
 - Fedora 28 BE
 - Fedora 28 LE (P9)
 - Fedora 29 LE (P9)
+- Fedora 30 LE (P9)
 - OpenSUSE 13.2 BE
 - OpenSUSE 13.2 LE
 - OpenSUSE Leap 15.0 LE (P9)
