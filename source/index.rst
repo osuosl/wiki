@@ -12,6 +12,7 @@ Welcome to the OSL Wiki!
     gsoc/index
     ganeti/index
     openpower/index
+    powerci/index
     powerlinux/index
     howtos/index
 
