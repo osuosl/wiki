@@ -16,13 +16,12 @@ distributions.
 
 The list of operating systems we currently support are (systems which support POWER9 are noted with **P9**):
 
-- CentOS 7.5 BE
+- CentOS 7.6 BE
 - CentOS 7.6 LE (P9)
 - Debian 8.11 BE
 - Debian 8.11 LE
 - Debian 9.9 LE (P9)
-- Fedora 28 BE
-- Fedora 28 LE (P9)
+- Debian 10.0 LE (P9)
 - Fedora 29 LE (P9)
 - Fedora 30 LE (P9)
 - OpenSUSE 13.2 BE
@@ -30,7 +29,7 @@ The list of operating systems we currently support are (systems which support PO
 - OpenSUSE Leap 15.0 LE (P9)
 - OpenSUSE Leap 42.3 LE
 - Ubuntu 14.04 BE
-- Ubuntu 14.04 BE
+- Ubuntu 14.04 LE
 - Ubuntu 16.04 BE
 - Ubuntu 16.04 BE (32bits)
 - Ubuntu 16.04 LE
