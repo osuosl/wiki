@@ -3,7 +3,7 @@
 Openstack on OpenPOWER
 ======================
 
-These are notes on how the OSUOSL is setting up Openstack on OpenPOWER (as of Feb 2019).
+These are notes on how the OSUOSL is setting up Openstack on OpenPOWER (as of July 2019).
 
 Summary
 -------
@@ -26,12 +26,12 @@ Hardware Stack
 - Controller (1)
 
   - One (1) x86_64 Virtual Machine running on Ganeti with KVM
-  - 12g RAM / 20g disk / 4 vCPU
+  - 16g RAM / 20g disk / 4 vCPU
 
-- Compute (8)
+- Compute (9)
 
   - Five (5) 8247-22L POWER8 systems w/ 512g RAM
-  - Three (3) 9006-12P POWER9 systems w/ 512g RAM
+  - Four (4) 9006-12P POWER9 systems w/ 512g RAM
 
 - Storage (5)
 
@@ -47,18 +47,20 @@ Here is the current deployment of OpenStack on OpenPOWER we're using:
 - Host Operating System
 
   - CentOS 7
-  - Compute nodes running a mainline 4.14.x kernel
+  - Compute nodes running a mainline 4.19.x kernel
 
 - OpenStack
 
-  - OpenStack Ocata Release
+  - `OpenStack Queens Release`_
   - Packages from `RDO`_
 
 - Ceph
 
-  - Ceph Luminous Release
+  - `Ceph Mimic Release`_
 
+.. _OpenStack Queens Release: https://releases.openstack.org/queens/highlights.html
 .. _RDO: https://www.rdoproject.org
+.. _Ceph Mimic Release: https://ceph.com/releases/v13-2-0-mimic-released/
 
 Specific Changes
 ----------------
@@ -71,7 +73,7 @@ Building of ppc64le binaries
 `RDO`_ technically doesn't include ppc64le in its distribution, however the vast majority of the packages are
 ``noarch`` so this isn't a problem. But there are a few cases where this isn't right. To do that, we've pulled the
 SRPMs from http://vault.centos.org/ and published them in our own repositories at
-http://ftp.osuosl.org/pub/osl/repos/yum/openpower/centos-7/ppc64le/.
+http://ftp.osuosl.org/pub/osl/repos/yum/7/.
 
 Turn off SMT
 ~~~~~~~~~~~~
