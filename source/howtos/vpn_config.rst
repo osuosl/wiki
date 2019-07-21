@@ -152,6 +152,14 @@ If you are running OS X, please use OpenVPN v2.3 to connect to the VPN.
 
 Disabling LZO compression may help on older OpenVPN instances.
 
+In addition, the version of OpenVPN we are running is incompatible with TLSv1.2, so if you are running into issues
+(such as on Debian 10), please do the following in ``/etc/ssl/openssl.cnf``::
+
+  #MinProtocol = TLSv1.2
+  MinProtocol = TLSv1
+
+We plan to resolve this issue soon.
+
 Installation
 ~~~~~~~~~~~~
 Download and install Tunnelblick from the project's downloads_ page.
