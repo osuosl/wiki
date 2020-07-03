@@ -12,6 +12,7 @@ Welcome to the OSL Wiki!
     aarch64/index
     gsoc/index
     ganeti/index
+    openstack/index
     openpower/index
     powerci/index
     powerlinux/index
