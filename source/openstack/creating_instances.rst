@@ -1,7 +1,7 @@
-.. _openstack-instances:
+.. _creating-instances:
 
-Instances for OpenStack
-=======================
+Creating Instances on OpenStack
+===============================
 
 This is a walk through for people using our clusters for virtual machines.
 
