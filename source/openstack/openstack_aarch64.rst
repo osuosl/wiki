@@ -1,9 +1,9 @@
-.. _x86-openstack:
+.. _openstack-aarch64:
 
-Openstack on x86
-================
+Openstack on AARCH64 (arm64)
+============================
 
-These are notes on how the OSUOSL is setting up Openstack on x86 (as of May 2020).
+These are notes on how the OSUOSL is setting up Openstack on AARCH64 (arm64) (as of May 2020).
 
 Summary
 -------
@@ -13,7 +13,7 @@ Cookbooks. The compute nodes are running CentOS 7 and the controller node is an 
 All storage for the cluster is powered via a `Ceph`_ cluster backed by a 10Gb network.
 
 We have created our own site specific wrapper `Openstack cookbook`_ that also includes any changes needed to make
-Openstack run on the x86 platform on CentOS 7. It currently requires some private cookbooks to run however
+Openstack run on the AARCH64 (arm64) platform on CentOS 7. It currently requires some private cookbooks to run however
 we are working on removing those requirements.
 
 .. _OpenStack Chef: https://docs.openstack.org/openstack-chef/latest/
@@ -30,7 +30,7 @@ Hardware Stack
 
 - Compute (12)
 
-  - (specs?)
+  - Twelve (12) Ampere Computing eMAG (HR350A) aarch64 systems w/ 128g RAM
 
 - Storage (8)
 
@@ -41,7 +41,7 @@ Hardware Stack
 Software Stack
 --------------
 
-Here is the current deployment of OpenStack on x86 we're using:
+Here is the current deployment of OpenStack on AARCH64 (arm64) we're using:
 
 - Host Operating System
 

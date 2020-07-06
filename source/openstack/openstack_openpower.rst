@@ -1,4 +1,4 @@
-.. _openpower-openstack:
+.. _openstack-openpower:
 
 Openstack on OpenPOWER
 ======================

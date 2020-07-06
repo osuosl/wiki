@@ -1,6 +1,6 @@
-.. _x86:
+.. _openstack:
 
-OpenStack (x86_64)
+OpenStack (x86_64, POWER, & AARCH64)
 ===============
 
 (description)

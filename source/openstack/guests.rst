@@ -1,18 +1,19 @@
-.. _x86-openstack-guests:
+.. _openstack-guests:
 
-Building Openstack x86_64 Guests
+Building Openstack Guests
 =========================================
 
-This documentation covers the steps needed to build an Openstack guests on x86_64 using a tool called
+This documentation covers the steps needed to build an Openstack guests using a tool called
 `packer`. In addition, we include documentation which covers how to build the images manually in case you run into
 issues with packer.
 
 Current Images
 --------------
 
-We are currently maintaining x86_64 images.
+We are currently maintaining these images:
 
 - CentOS 7
+- CentOS 8
 - Debian 10
 - Fedora 31
 - Ubuntu 18.04
@@ -35,7 +36,7 @@ Manual Guest Installation
 
 .. note:: This is only useful for manually testing some images and is no longer used for building images.
 
-Please run the following commands on one of the x86 machines directly. Please make sure you have the
+Please run the following commands on one of the machines directly. Please make sure you have the
 ``AAVMF`` package installed which contains the UEFI firmware to boot the VMs properly.
 
 1. Download the DVD or net install ISO for desired distribution.

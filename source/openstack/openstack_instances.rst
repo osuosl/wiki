@@ -1,9 +1,9 @@
-.. _x86-openstack_instances:
+.. _openstack-instances:
 
 Instances for OpenStack
 =======================
 
-This is a walk through for people using our clusters for x86 virtual machines.
+This is a walk through for people using our clusters for virtual machines.
 
 Groups and Users
 ----------------

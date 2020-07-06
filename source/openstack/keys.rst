@@ -1,9 +1,9 @@
-.. _x86-keys:
+.. _keys:
 
-SSH Key Behavior and Management on x86_64 Openstack
+SSH Key Behavior and Management on Openstack
 ===================================================
 
-These are findings of how SSH Keys behave in various conditions on OSL's x86 OpenStack cluster, and how to
+These are findings of how SSH Keys behave in various conditions on OSL's OpenStack cluster, and how to
 manage these keys.
 
 .. note::
@@ -49,7 +49,7 @@ granted access to the server.
   This description is very brief and not detailed enough to fully explain how SSH keys and the Diffie-Hellman exchange works.
   A more descriptive overview is linked in the section `above.`__
 
-.. __: keys.html#ssh-key-behavior-and-management-on-x86_64-openstack
+.. __: keys.html#ssh-key-behavior-and-management-on-openstack
 
 *However*, a common issue occurs **after rebuilding an instance**, regarding your local ``known_hosts`` file,
 which stores a list of IP addresses and their corresponding DSA, RSA, or ECDSA host keys.
@@ -67,13 +67,14 @@ then a simple command should fix the error::
 
 This issue occurs because the client (the machine you're attempting to log on to the server through),
 is also attempting to authenticate the server, to keep the user (you) from connecting to a potentially
-dangerous imposter. This command removes the server from your ``known_hosts`` file,
-allowing you to connect to the server as if it were brand new to you.
+dangerous imposter. Since it recieves its old IP stored in ``known_hosts`` which is no longer correct,
+it fails. This command removes the server from your ``known_hosts`` file, allowing you to connect to
+the server as if it were brand new to you.
 
 Changing a Key From Inside an Instance
 --------------------------------------
 
-To create an x86 OpenStack instance, we must first set up a Key Pair to associate with that machine.
+To create an OpenStack instance, we must first set up a Key Pair to associate with that machine.
 
 .. note::
 
@@ -114,7 +115,7 @@ The instance will *still* not change even if an administrator deletes the **Orig
 new key pair with the same name as the **Original**, and rebuilds the machine.
 
 Our best guess to the reason why is because when the instance is created, the **Original Key Pair** and its
-fingerprint are entered into the ``nova`` database, and there remain, uneditable, until its destruction.
+fingerprint are entered into the ``nova`` database, and remain there, uneditable, until its destruction.
 
 Note that we can use this knowledge to our advantage, however, as there is a fail-proof way to return the
 ``authorized_keys`` file to its original state by simply rebuilding the instance.
