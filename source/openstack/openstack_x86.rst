@@ -28,16 +28,18 @@ Hardware Stack
   - One (1) x86_64 Virtual Machine running on Ganeti with KVM
   - 8g RAM / 10g disk / 8 vCPU
 
-- Compute (?)
+- Compute (8)
 
-  - (specs?)
+  - Eight (8) servers, each with:
+    - 2 x Intel(R) Xeon(R) CPU E5-2620 v3 @ 2.40GHz
+    - 128G RAM
+    - 10Gb NIC
 
 - Storage (8)
 
   - Eight (8) Dell PowerEdge R710
   - 64g RAM
   - 6 x 4TB SATA / 1 x 800GB NVMe
-  - (is this correct?)
 
 Software Stack
 --------------
