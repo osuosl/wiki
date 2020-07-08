@@ -1,7 +1,7 @@
 .. _openstack-guests:
 
 Building Openstack Guests
-=========================================
+=========================
 
 This documentation covers the steps needed to build an Openstack guests using a tool called
 `packer`. In addition, we include documentation which covers how to build the images manually in case you run into
