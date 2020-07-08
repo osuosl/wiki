@@ -31,6 +31,7 @@ Hardware Stack
 - Compute (8)
 
   - Eight (8) servers, each with:
+
     - 2 x Intel(R) Xeon(R) CPU E5-2620 v3 @ 2.40GHz
     - 128G RAM
     - 10Gb NIC
