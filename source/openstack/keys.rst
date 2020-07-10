@@ -1,6 +1,6 @@
 .. _keys:
 
-SSH Key Behavior and Management on Openstack
+SSH Key Behavior and Management on OpenStack
 ============================================
 
 These are findings of how SSH Keys behave in various conditions on OSL's OpenStack cluster, and how to
@@ -39,6 +39,7 @@ On a simple level, instances can be accessed using ``ssh``::
     "CentOS", "``centos``"
     "Ubuntu", "``ubuntu``"
     "Fedora", "``fedora``"
+    "OpenSUSE", "``opensuse``"
 
 Doing so will prompt the server and client to establish a secure connection, then the server authenticates
 the requesting client. If you have the correct credentials (the desired SSH private key), then you will be

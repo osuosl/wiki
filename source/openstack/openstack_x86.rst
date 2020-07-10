@@ -1,9 +1,9 @@
 .. _openstack-x86:
 
-Openstack on x86_64
+OpenStack on x86_64
 ===================
 
-These are notes on how the OSUOSL is setting up Openstack on x86_64 (as of May 2020).
+These are notes on how the OSUOSL is setting up OpenStack on x86_64 (as of May 2020).
 
 Summary
 -------
@@ -12,12 +12,12 @@ We use Chef as our configuration management tool of choice and have created an e
 Cookbooks. The compute nodes are running CentOS 7 and the controller node is an x86 virtual machine running CentOS 7.
 All storage for the cluster is powered via a `Ceph`_ cluster backed by a 10Gb network.
 
-We have created our own site specific wrapper `Openstack cookbook`_ that also includes any changes needed to make
-Openstack run on the x86 platform on CentOS 7. It currently requires some private cookbooks to run however
+We have created our own site specific wrapper `OpenStack cookbook`_ that also includes any changes needed to make
+OpenStack run on the x86 platform on CentOS 7. It currently requires some private cookbooks to run however
 we are working on removing those requirements.
 
 .. _OpenStack Chef: https://docs.openstack.org/openstack-chef/latest/
-.. _Openstack cookbook: https://github.com/osuosl-cookbooks/osl-openstack
+.. _OpenStack cookbook: https://github.com/osuosl-cookbooks/osl-openstack
 .. _Ceph: https://ceph.com/
 
 Hardware Stack

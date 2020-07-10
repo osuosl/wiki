@@ -1,9 +1,9 @@
 .. _openstack-guests:
 
-Building Openstack Guests
+Building OpenStack Guests
 =========================
 
-This documentation covers the steps needed to build an Openstack guests using a tool called
+This documentation covers the steps needed to build OpenStack guests using a tool called
 `packer`. In addition, we include documentation which covers how to build the images manually in case you run into
 issues with packer.
 
@@ -17,6 +17,7 @@ We are currently maintaining these images:
 - Debian 10
 - Fedora 31
 - Ubuntu 18.04
+- OpenSUSE Leap
 
 If there are any images you would like us to create, please let us know.
 
@@ -36,7 +37,7 @@ Manual Guest Installation
 
 .. note:: This is only useful for manually testing some images and is no longer used for building images.
 
-Please run the following commands on one of the machines directly. Please make sure you have the
+.. note:: For AARCH64, Please run the following commands on one of the machines directly. Please make sure you have the
 ``AAVMF`` package installed which contains the UEFI firmware to boot the VMs properly.
 
 1. Download the DVD or net install ISO for desired distribution.
@@ -67,7 +68,7 @@ Please run the following commands on one of the machines directly. Please make s
 
 5. Wait for the VM to complete the install.
 
-6. Compress and import image into Openstack:
+6. Compress and import image into OpenStack:
 
 .. code-block:: console
 
