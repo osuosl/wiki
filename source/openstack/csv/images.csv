@@ -1,4 +1,4 @@
-"Image","x86","AARCH64","POWER8","POWER9"
+"Image","x86_64","AARCH64","POWER8","POWER9"
 "CentOS 6","x","","",""
 "CentOS 7","x","x","x","x"
 "CentOS 8","x","x","",""
@@ -16,4 +16,3 @@
 "OpenSUSE 13","","","x",""
 "OpenSUSE Leap 15","","","x","x"
 "OpenSUSE Leap 42","","","x",""
-

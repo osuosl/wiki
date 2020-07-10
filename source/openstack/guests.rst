@@ -12,12 +12,12 @@ Current Images
 
 We are currently maintaining these images:
 
-.. csv-table:: Supported Images
+.. csv-table::
    :file: ./csv/images.csv
    :widths: 40, 15, 15, 15, 15
    :header-rows: 1
 
-.. note:: See `OpenStack on OpenPOWER`_ for further details on big-/little-endian availability.
+.. note:: See `OpenStack on OpenPOWER`_ for further details on big-endian/little-endian images on POWER.
 
 .. _OpenStack on OpenPOWER: openstack_openpower.html
 
