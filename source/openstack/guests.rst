@@ -37,8 +37,7 @@ Manual Guest Installation
 
 .. note:: This is only useful for manually testing some images and is no longer used for building images.
 
-.. note:: For AARCH64, Please run the following commands on one of the machines directly. Please make sure you have the
-``AAVMF`` package installed which contains the UEFI firmware to boot the VMs properly.
+.. note:: For AARCH64, Please run the following commands on one of the machines directly. Please make sure you have the ``AAVMF`` package installed which contains the UEFI firmware to boot the VMs properly.
 
 1. Download the DVD or net install ISO for desired distribution.
 2. Create a 3G qcow2 disk image:
