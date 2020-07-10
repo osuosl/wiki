@@ -20,6 +20,34 @@ working on removing those requirements.
 .. _OpenStack cookbook: https://github.com/osuosl-cookbooks/osl-openstack
 .. _Ceph: https://ceph.com/
 
+Current Images
+--------------
+
+We are currently maintaining ppc64le Little endian (LE) and some ppc64 Big Endian (BE) images. Please keep in
+mind that IBM is focusing their efforts primarily on LE so don't expect BE support to last for much longer on
+various distributions.
+
+The list of operating systems we currently support are (systems which support POWER9 are noted with **P9**):
+
+- CentOS 7.6 BE
+- CentOS 7.6 LE (P9)
+- Debian 8.11 BE
+- Debian 8.11 LE
+- Debian 9.9 LE (P9)
+- Debian 10.0 LE (P9)
+- Fedora 29 LE (P9)
+- Fedora 30 LE (P9)
+- OpenSUSE 13.2 BE
+- OpenSUSE 13.2 LE
+- OpenSUSE Leap 15.0 LE (P9)
+- OpenSUSE Leap 42.3 LE
+- Ubuntu 14.04 BE
+- Ubuntu 14.04 LE
+- Ubuntu 16.04 BE
+- Ubuntu 16.04 BE (32bits)
+- Ubuntu 16.04 LE
+- Ubuntu 18.04 LE (P9)
+
 Hardware Stack
 --------------
 
