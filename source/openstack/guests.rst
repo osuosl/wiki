@@ -12,12 +12,14 @@ Current Images
 
 We are currently maintaining these images:
 
-- CentOS 7
-- CentOS 8
-- Debian 10
-- Fedora 31
-- Ubuntu 18.04
-- OpenSUSE Leap
+.. csv-table
+   :file: ./csv/images.csv
+   :widths: 40, 15, 15, 15, 15
+   :header-rows: 1
+
+.. note:: See `OpenStack on OpenPOWER`_ for further details on big-/little-endian availability.
+
+.. _OpenStack on OpenPOWER: openstack-openpower.html
 
 If there are any images you would like us to create, please let us know.
 
