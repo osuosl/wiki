@@ -9,6 +9,16 @@ We curently have 3 OpenStack clusters at the OSL: x86_64, POWER, and AARCH64. Th
 typically for production hosting while the other two are mainly used to support development and CI
 for those architectures. All 3 clusters run OpenStack powered by KVM.
 
+OpenStack Dashboards:
+
+- `x86_64 cluster`_
+- `OpenPOWER cluster`_
+- `AARCH64 cluster`_
+
+.. _x86_64 cluster: http://oprod-controller1.osuosl.org
+.. OpenPOWER cluster: http://openpower-controller.osuosl.org
+.. AARCH64 cluster: http://arm-controller1.osuosl.org
+
 .. toctree::
   :maxdepth: 2
   :glob:

@@ -17,9 +17,18 @@ We are currently maintaining these images:
    :widths: 40, 15, 15, 15, 15
    :header-rows: 1
 
-.. note:: See :ref:`openstack-openpower` for further details on big-endian/little-endian images on POWER.
+.. note:: We are currently fixing some issues with our Ubuntu 20.04 images.
 
-If there are any images you would like us to create, please let us know.
+We are currently maintaining ppc64le Little endian (LE) and some ppc64 Big Endian (BE) images. Please keep in
+mind that IBM is focusing their efforts primarily on LE so don't expect BE support to last for much longer on
+various distributions.
+
+.. csv-table::
+   :file: ./csv/power-ble.csv
+   :widths: 40, 15, 15, 15, 15
+   :header-rows: 1
+
+If there are any other images you would like us to create, please let us know.
 
 Building images with packer
 ---------------------------
@@ -37,18 +46,34 @@ Manual Guest Installation
 
 .. note:: This is only useful for manually testing some images and is no longer used for building images.
 
-.. note:: For AARCH64, Please run the following commands on one of the machines directly. Please make sure you have the ``AAVMF`` package installed which contains the UEFI firmware to boot the VMs properly.
+.. note:: For AARCH64, Please run the following commands on one of the machines directly. Also, make sure you have the ``AAVMF`` package installed which contains the UEFI firmware to boot the VMs properly.
 
-1. Download the DVD or net install ISO for desired distribution.
-2. Create a 3G qcow2 disk image:
+1. Download the DVD or net install ISO for desired distribution. For this example we are using Debian 10:
 
 .. code-block:: bash
 
     export DISTRO="debian-10"
     export DISTRO_ISO="debian.iso"
+
+2. Create a 3G qcow2 disk image:
+
+.. code-block:: bash
+
     qemu-img create -f qcow2 $DISTRO.qcow2 3G
 
 3. Boot up the image using kvm manually:
+
+x86 / POWER:
+
+.. code-block:: console
+
+   $ /usr/libexec/qemu-kvm -m 2048M -boot strict=on -name $DISTRO -machine type=pseries,accel=kvm \
+     -cdrom $DISTRO_ISO -netdev user,id=user.0,hostfwd=tcp::2222-:22 \
+     -device virtio-net,netdev=user.0 \
+     -drive file=$DISTRO.qcow2,if=virtio,cache=writeback,discard=ignore,format=qcow2 \
+     -vnc 0.0.0.0:99
+
+AARCH64:
 
 .. code-block:: console
 
@@ -59,7 +84,7 @@ Manual Guest Installation
      -bios /usr/share/AAVMF/AAVMF_CODE.fd
      -vnc 0.0.0.0:99
 
-4. Connect via VNC to the VM and complete the installation
+4. Connect via VNC to the VM and complete the installation:
 
 .. code-block:: console
 
