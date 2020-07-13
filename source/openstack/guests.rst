@@ -17,9 +17,7 @@ We are currently maintaining these images:
    :widths: 40, 15, 15, 15, 15
    :header-rows: 1
 
-.. note:: See `OpenStack on OpenPOWER`_ for further details on big-endian/little-endian images on POWER.
-
-.. _OpenStack on OpenPOWER: openstack_openpower.html
+.. note:: See :ref:`openstack-openpower` for further details on big-endian/little-endian images on POWER.
 
 If there are any images you would like us to create, please let us know.
 
