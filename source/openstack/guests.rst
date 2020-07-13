@@ -24,7 +24,7 @@ mind that IBM is focusing their efforts primarily on LE so don't expect BE suppo
 various distributions.
 
 .. csv-table::
-   :file: ./csv/power-ble.csv
+   :file: ./csv/power_ble.csv
    :widths: 40, 15, 15, 15, 15
    :header-rows: 1
 
