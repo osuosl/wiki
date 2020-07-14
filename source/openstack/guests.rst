@@ -3,9 +3,8 @@
 Building OpenStack Guests
 =========================
 
-This documentation covers the steps needed to build OpenStack guests using a tool called
-`packer`. In addition, we include documentation which covers how to build the images manually in case you run into
-issues with packer.
+This documentation covers the steps needed to build OpenStack guests using a tool called `packer`. In addition,
+we include documentation which covers how to build the images manually in case you run into issues with packer.
 
 Current Images
 --------------
@@ -19,13 +18,14 @@ We are currently maintaining these images:
 
 .. note:: We are currently fixing some issues with our Ubuntu 20.04 images.
 
-We are currently maintaining ppc64le Little endian (LE) and some ppc64 Big Endian (BE) images. Please keep in
-mind that IBM is focusing their efforts primarily on LE so don't expect BE support to last for much longer on
-various distributions.
+We are currently maintaining ppc64le Little endian (LE) images for POWER8/9 and some ppc64 Big Endian (BE) images
+for POWER8. See the below table:
+
+.. note:: IBM is focusing their efforts primarily on LE, so BE support is mostly limited to older distributions.
 
 .. csv-table::
    :file: ./csv/power_ble.csv
-   :widths: 40, 15, 15, 15, 15
+   :widths: 55, 15, 15, 15
    :header-rows: 1
 
 If there are any other images you would like us to create, please let us know.

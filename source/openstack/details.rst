@@ -36,7 +36,7 @@ Hardware Stack (x86)
     - 128G RAM
     - 10Gb NIC
 
-- Storage (8)
+- Storage (8) - (shared between x86 and aarch64 clusters)
 
   - Eight (8) Dell PowerEdge R710
   - 64g RAM
@@ -85,7 +85,7 @@ Hardware Stack (AARCH64)
 
   - Twelve (12) Ampere Computing eMAG (HR350A) aarch64 systems w/ 128g RAM
 
-- Storage (8)
+- Storage (8) - (shared between x86 and aarch64 clusters)
 
   - Eight (8) Dell PowerEdge R710
   - 64g RAM
