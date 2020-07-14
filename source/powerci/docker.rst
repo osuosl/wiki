@@ -1,4 +1,4 @@
-.. _powerci_docker::
+.. _powerci_docker:
 
 Create Jenkins jobs using Docker
 ================================

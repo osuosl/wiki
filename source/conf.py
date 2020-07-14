@@ -46,7 +46,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'OSL Wiki'
-copyright = '2014-2019, Oregon State University'
+copyright = '2014-2020, Oregon State University'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
