@@ -9,10 +9,9 @@ Welcome to the OSL Wiki!
 .. toctree::
     :maxdepth: 1
 
-    aarch64/index
     gsoc/index
     ganeti/index
-    openpower/index
+    openstack/index
     powerci/index
     powerlinux/index
     howtos/index

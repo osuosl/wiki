@@ -1,9 +1,9 @@
-.. _aarch64-openstack_instances:
+.. _creating-instances:
 
-Instances for OpenStack
-=======================
+Creating Instances on OpenStack
+===============================
 
-This is a walk through for people using our clusters for AARCH64 (arm64) virtual machines.
+This is a walk through for people using our clusters for virtual machines.
 
 Groups and Users
 ----------------
