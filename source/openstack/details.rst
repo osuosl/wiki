@@ -3,14 +3,15 @@
 OpenStack Details
 =================
 
-These are notes on how the OSUOSL is setting up OpenStack (as of May 2020).
+These are notes on how the OSUOSL is setting up OpenStack (as of July 2020).
 
 Summary
 -------
 
 We use Chef as our configuration management tool of choice and have created an environment using the `OpenStack Chef`_
 Cookbooks. The compute nodes are running CentOS 7 and the controller node is an x86 virtual machine running CentOS 7.
-All storage for the cluster is powered via a `Ceph`_ cluster backed by a 10Gb network.
+All storage for the cluster is powered via a `Ceph`_ cluster backed by a 10Gb network on x86 and AARCH and a 40Gb 
+network on POWER.
 
 We have created our own site specific wrapper `OpenStack cookbook`_ that also includes any changes needed to make
 OpenStack run on the varying architectures. It currently requires some private cookbooks to run, however we are
@@ -36,7 +37,7 @@ Hardware Stack (x86)
     - 128G RAM
     - 10Gb NIC
 
-- Storage (8) - (shared between x86 and aarch64 clusters)
+- Storage (8) - (shared between x86 and AARCH clusters)
 
   - Eight (8) Dell PowerEdge R710
   - 64g RAM
@@ -62,14 +63,16 @@ Hardware Stack (POWER)
   - 8 x 8TB SATA / 4 x 240GB SSD
 
 POWER-Specific Changes
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
-- Turn off SMT
+Turn off SMT
+""""""""""""
 
 The SMT feature in the PPC64 cpu needs to be turned off via running ``/sbin/ppc64_cpu --smt=off``. Otherwise the Little
 Endian guests will not run properly.
 
-- Loading kvm-hv module
+Loading kvm-hv module
+"""""""""""""""""""""
 
 The ``kvm-hv`` module needs to be loaded and the ``kvm-pr`` should not be loaded.
 
@@ -85,7 +88,7 @@ Hardware Stack (AARCH64)
 
   - Twelve (12) Ampere Computing eMAG (HR350A) aarch64 systems w/ 128g RAM
 
-- Storage (8) - (shared between x86 and aarch64 clusters)
+- Storage (8) - (shared between x86 and AARCH clusters)
 
   - Eight (8) Dell PowerEdge R710
   - 64g RAM
