@@ -101,4 +101,6 @@ AARCH64:
 
 .. rubric:: Footnotes
 
-.. [#ubuntu] We are currently fixing some issues with our Ubuntu 20.04 images.
+.. [#ubuntu] We are currently fixing some issues with our Ubuntu 20.04 images. See `this issue`_ for updates.
+
+.. _`this issue`: https://github.com/osuosl/packer-templates/issues/124

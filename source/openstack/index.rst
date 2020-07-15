@@ -15,9 +15,9 @@ OpenStack Dashboards:
 - `OpenPOWER cluster`_
 - `AARCH64 cluster`_
 
-.. _x86_64 cluster: http://oprod-controller1.osuosl.org
-.. _OpenPOWER cluster: http://openpower-controller.osuosl.org
-.. _AARCH64 cluster: http://arm-openstack.osuosl.org
+.. _x86_64 cluster: https://oprod-controller1.osuosl.org
+.. _OpenPOWER cluster: https://openpower-controller.osuosl.org
+.. _AARCH64 cluster: https://arm-openstack.osuosl.org
 
 .. toctree::
   :maxdepth: 2
