@@ -10,7 +10,7 @@ Summary
 
 We use Chef as our configuration management tool of choice and have created an environment using the `OpenStack Chef`_
 Cookbooks. The compute nodes are running CentOS 7 and the controller node is an x86 virtual machine running CentOS 7.
-All storage for the cluster is powered via a `Ceph`_ cluster backed by a 10Gb network on x86 and AARCH and a 40Gb 
+All storage for the cluster is powered via a `Ceph`_ cluster backed by a 10Gb network on x86 and AARCH64 and a 40Gb 
 network on POWER.
 
 We have created our own site specific wrapper `OpenStack cookbook`_ that also includes any changes needed to make
@@ -37,7 +37,7 @@ Hardware Stack (x86)
     - 128G RAM
     - 10Gb NIC
 
-- Storage (8) - (shared between x86 and AARCH clusters)
+- Storage (8) - (shared between x86 and AARCH64 clusters)
 
   - Eight (8) Dell PowerEdge R710
   - 64g RAM
@@ -88,7 +88,7 @@ Hardware Stack (AARCH64)
 
   - Twelve (12) Ampere Computing eMAG (HR350A) aarch64 systems w/ 128g RAM
 
-- Storage (8) - (shared between x86 and AARCH clusters)
+- Storage (8) - (shared between x86 and AARCH64 clusters)
 
   - Eight (8) Dell PowerEdge R710
   - 64g RAM
