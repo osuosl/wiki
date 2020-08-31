@@ -48,33 +48,35 @@ container, you need to do the following:
 1. Create new Freestyle project
 -------------------------------
 
-First step is to create a new freestyle project.
+First step is to create a new freestyle project. After you logged in at https://powerci.osuosl.org with you GitHub account, click on the "New Item" option on the left menu as in the image below. Then, enter your item's name and select "Freestyle project" under the textbox.
 
-2. Set label to restrict where the job runs
--------------------------------------------
+.. image:: /_static/images/powerci-new-item.png
 
-.. image:: /_static/images/powerci-restrict-label.png
 
-Please select either ``power8`` or ``power9`` to restrict where the job is run. The labels will deploy the container on
-either a VM running on a POWER8 or a POWER9 based managed. Please **do not** directly select one of the nodes that you
-might see drop down. We may take nodes offline or change the names.
-
-3. Build inside a Docker container
+2. Build inside a Docker container
 ----------------------------------
 
 Next select the ``Build inside a Docker container`` under the ``Build Environment`` section for the job. You have two
 options to select:
 
+Pull a Docker image from a repository:
+
 .. image:: /_static/images/powerci-build-inside-docker.png
 
-Pull a Docker image from a repository.
+Or build from a Dockerfile:
 
 .. image:: /_static/images/powerci-build-dockerfile.png
 
-Build from a Dockerfile.
 
-4. Set any advanced options
+3. Set any advanced options
 ---------------------------
+
+To show advanced config options, click on the "Advanced..." button below the "Docker image to use" as in the image
+below:
+
+.. image:: /_static/images/powerci-advance-docker-settings.png
+
+A lot more advanced config options will show up:
 
 .. image:: /_static/images/powerci-build-advanced.png
 
@@ -88,7 +90,7 @@ such as:
 
 Use any of these options at your own risk.
 
-5. Add build step
+4. Add build step
 -----------------
 
 Next, add a build step. You can choose any that work in the container but for this example we're just doing a simple
@@ -97,3 +99,15 @@ shell.
 .. image:: /_static/images/powerci-docker-execute-shell.png
 
 If all goes well, you should be able run the build and have it succeed!
+
+GitHub Pull Request Integration
+-------------------------------
+
+We use **GitHub Pull Request Builder (ghprb)** (repo_, wiki_) to integrate Jenkins build with GitHub Pull Request.  You
+can check out their detailed official documentation and from many other available guides elsewhere such as `this one`_.
+We think the availability of such documentation for this plugin is good enough that we don't need to replicate more of
+them here.
+
+.. _repo: https://github.com/jenkinsci/ghprb-plugin
+.. _wiki: https://plugins.jenkins.io/ghprb
+.. _this one: https://devopscube.com/jenkins-build-trigger-github-pull-request
