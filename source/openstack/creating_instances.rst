@@ -12,7 +12,7 @@ You need to first have a group which your user can live in. This group will have
 flavor settings along with security settings.
 
 Once we have made your group and user you will be sent a password that you should change. Then you can login and
-proceed to the Instances section on the left side and hit the 'Launch Instance' button.
+proceed to the **Instances** section on the left side and hit the 'Launch Instance' button.
 
 .. image:: /_static/images/openstack-instance0.png
 
@@ -50,7 +50,7 @@ Select the network
 ~~~~~~~~~~~~~~~~~~
 
 This page configures how your instance connects to the network. We currently have one public network that you can use:
-"public4". Now click "Security Groups".
+"general_servers1". Now click "Security Groups".
 
 .. image:: /_static/images/openstack-instance1-networks.png
 
