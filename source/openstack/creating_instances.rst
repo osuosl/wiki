@@ -62,6 +62,9 @@ the virtual machine. Generally the default security group should be all you need
 groups on as needed. You can also check what rules are set by clicking on the ">" icon next to the group. Now click
 "Next" or "Key Pair".
 
+.. important:: The default security group allows no traffic in. If you want to access your instance from the outside,
+               you will need to add rules to allow traffic.
+
 .. image:: /_static/images/openstack-instance1-security-groups.png
 
 Select key pair
