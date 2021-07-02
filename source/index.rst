@@ -13,6 +13,7 @@ Welcome to the OSL Wiki!
     ganeti/index
     openstack/index
     powerci/index
+    ibmz-ci/index
     powerlinux/index
     howtos/index
 
