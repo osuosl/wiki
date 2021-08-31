@@ -6,7 +6,7 @@ Why?
 
 The Differentiated Services Code Point (DSCP_) field in an IP header is for classifying network data and providing
 Quality of Service (QoS). `The default SSH DSCP setting for non-interactive sessions`__ is ``CS1``. Within the OSL
-network, ``CS1`` packets are dropped very frequently, thus resulting in poor performance when SCPing.
+network, ``CS1`` packets might be dropped very frequently, thus resulting in poor performance when SCPing.
 
 How?
 ----
