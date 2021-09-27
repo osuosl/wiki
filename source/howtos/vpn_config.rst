@@ -9,8 +9,7 @@ What you need:
 - OpenVPN
 - client certificate  **<username>.crt**
 - client private key: **<username>.key**
-- server certificate: **ca.crt**
-
+- server certificate: :download:`ca.crt </_static/files/ca.crt>`
 
 Settings:
 ---------
@@ -19,7 +18,6 @@ Settings:
 - type: **Certificate (TLS)**
 - protocol: **UDP**
 - device type: **TUN**
-
 
 Network Manager (Linux)
 -----------------------
@@ -31,9 +29,8 @@ Packages:
 
 Procedure:
 ~~~~~~~~~~
-- Copy your key, certificate, and server certificate to a secure location of
-  your choice such as ~/openvpn/.  Set paranoid permissions (-r-x------ or
-  similar).
+- Copy your key, certificate, and server certificate to a secure location of your choice such as ``~/openvpn/``.  Set
+  paranoid permissions (``-r-x------`` or similar).
 - Install Network Manager (installed by default in many Linux distributions)
 - Install the Network Manager OpenVPN package
 - Open Network Manager
@@ -49,8 +46,7 @@ Procedure:
   - IPv4 Settings->Routes...->Use this connection only for resources on its
     network: **✔** (if unchecked, all network traffic is routed through the VPN)
 - Apply
-- Click on the Network Manager status bar icon and select **VPN
-  Connections-><witty name>**
+- Click on the Network Manager status bar icon and select **VPN Connections-><witty name>**
 - Wait until connection is established
 - Check connection:
 
@@ -61,9 +57,8 @@ Procedure:
 Trouble shooting
 ~~~~~~~~~~~~~~~~
 
-Shotgun style - try again, reboot, disable network devices, do the chicken
-dance. If all else fails, try the command line version. If that works, try this
-again, maybe it just didn't like you the first time.
+Shotgun style - try again, reboot, disable network devices, do the chicken dance. If all else fails, try the command
+line version. If that works, try this again, maybe it just didn't like you the first time.
 
 OpenVPN command-line client
 ---------------------------
@@ -72,17 +67,16 @@ Packages:
 ~~~~~~~~~
 
 - Debian/Ubuntu: **sudo aptitude install openvpn**
-- Gentoo: **sudo emerge openvpn**.  For detailed instructions, including kernel
-  configuration see http://en.gentoo-wiki.com/wiki/OpenVPN.
+- Gentoo: **sudo emerge openvpn**.  For detailed instructions, including kernel configuration see
+  http://en.gentoo-wiki.com/wiki/OpenVPN.
 
 Procedure:
 ~~~~~~~~~~
 
-- Copy your key, certificate, and server certificate to a secure location of
-  your choice such as /etc/openvpn/.  Set paranoid permissions (-r-x------ or
-  similar).
-- Create a configuration file in a location of your choice such as
-  /etc/openvpn/openvpn.conf.  Here is an example configuration file:
+- Copy your key, certificate, and server certificate to a secure location of your choice such as ``/etc/openvpn/``.
+  Set paranoid permissions (``-r-x------`` or similar).
+- Create a configuration file in a location of your choice such as ``/etc/openvpn/openvpn.conf``.  Here is an example
+  configuration file:
 
 .. code-block:: bash
 
@@ -141,14 +135,14 @@ Procedure:
 
 Tunnelblick (OS X)
 ------------------
-Tunnelblick is a free, open source gui for OpenVPN on OS X that allows for easy
-control of the OpenVPN client.
+
+Tunnelblick is a free, open source gui for OpenVPN on OS X that allows for easy control of the OpenVPN client.
 
 Troubleshooting
 ~~~~~~~~~~~~~~~
 
-The version of OpenVPN we are running is incompatible with OpenVPN client v2.4+ on OS X.
-If you are running OS X, please use OpenVPN v2.3 to connect to the VPN.
+The version of OpenVPN we are running is incompatible with OpenVPN client v2.4+ on OS X.  If you are running OS X,
+please use OpenVPN v2.3 to connect to the VPN.
 
 Disabling LZO compression may help on older OpenVPN instances.
 
@@ -174,8 +168,8 @@ Configuration
 ~~~~~~~~~~~~~
 #.  Download this :download:`Tunnelblick profile</_static/files/osuosl.tblk.zip>`.
 
-#.  Replace the contents of ``osuosl.tblk/USER.crt`` and
-    ``osuosl.tblk/USER.key`` with your personal ``crt`` and ``key``.
+#.  Replace the contents of ``osuosl.tblk/USER.crt`` and ``osuosl.tblk/USER.key`` with your personal ``crt`` and
+    ``key``.
 
 #.  Double click the ``osuosl.tblk`` file to install the profile in Tunnelblick.
 
