@@ -14,7 +14,7 @@ importlib-metadata==4.8.3
 Jinja2==3.0.3
 MarkupSafe==2.0.1
 packaging==21.3
-pbr==5.9.0
+pbr==5.10.0
 Pygments==2.12.0
 pyparsing==3.0.9
 pytz==2022.2.1
