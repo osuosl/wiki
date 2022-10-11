@@ -8,7 +8,7 @@ charset-normalizer==2.0.12
 distlib==0.3.6
 doc8==0.11.2
 docutils==0.17.1
-idna==3.3
+idna==3.4
 imagesize==1.4.1
 importlib-metadata==4.8.3
 Jinja2==3.0.3
