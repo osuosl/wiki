@@ -113,7 +113,7 @@ Procedure:
     ns-cert-type server
 
     verb 4                         # Set log file verbosity
-    script-security 3 system       # Enable dns-pushing
+    script-security 3              # Enable dns-pushing
 
     # For Ubuntu:
     up /etc/openvpn/update-resolv-conf
