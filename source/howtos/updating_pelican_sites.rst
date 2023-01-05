@@ -533,7 +533,7 @@ Make a Pull Request
 -------------------
 
 A pull request, a.k.a. PR, is a request to have your branch merged into another
-branch (usually staging or master, but it can be any branch). You can create a
+branch (usually staging or main, but it can be any branch). You can create a
 PR from Github Desktop, or on the Github site itself.
 
 **GitHub Desktop**
@@ -620,11 +620,11 @@ like in production by visiting the staging site.
 .. _CASS Staging: http://cass.staging.osuosl.org
 
 
-Merge with Master
+Merge with Main
 -----------------
 
 If things look good, you or the page owner can create another pull request from
-the staging branch to the master branch, following the same procedure as
+the staging branch to the main branch, following the same procedure as
 for creating a pull request from your editing branch to staging. When this
-is merged into master, the production site will be updated automatically with
+is merged into main, the production site will be updated automatically with
 your changes.
