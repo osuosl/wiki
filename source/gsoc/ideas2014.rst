@@ -66,14 +66,14 @@ Project: Re-architect OSL FTP Mirror Infrastructure
 The OSL hosts a three-node FTP mirroring cluster to host various FOSS projects’
 ISO images and package databases. Currently it comprises of some custom-made
 bash scripts that utilize ssh, rsync and cron to coordinate the syncing process.
-The architecture is a single master machine that syncs from upstream and then
-triggers slave hosts to sync from it. This architecture has served us well over
+The architecture is a single primary machine that syncs from upstream and then
+triggers secondary hosts to sync from it. This architecture has served us well over
 the years but has limitations and needs updating to use more modern features.
 
 There are a variety of methods for syncing the repositories but generally most
 use rsync. Some have an ssh trigger system (i.e. Ubuntu/Debian) and others want
 a post script to run to provide results upstream. Finally sometimes we are the
-master mirror, meaning we are the starting point, so some projects either
+primary mirror, meaning we are the starting point, so some projects either
 manually upload and trigger a sync or we pull from a central source using cron.
 
 In addition, we have some simple monitoring that should be updated. Ideally it
