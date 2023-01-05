@@ -13,8 +13,8 @@ Basics
 ------
 
 Ganeti is a cluster virtualization environment and allows you to manage all VMs
-from one single master host. You should always connect to the master DNS name
-and never individual host. Lets use ganeti.osuosl.org as our master host for the
+from one single primary host. You should always connect to the primary DNS name
+and never individual host. Lets use ganeti.osuosl.org as our primary host for the
 following commands.
 
 All of Ganeti's commands have a ``gnt-`` prefix. The commands you'll use the
@@ -22,7 +22,7 @@ most are tied to the ``gnt-instance`` command which interacts with your VMs. You
 can find simple help output by typing ``gnt-instance`` and find specific command
 help by typing ``gnt-instance <command> --help``.
 
-First, ssh to the master ganeti host for your cluster.
+First, ssh to the primary ganeti host for your cluster.
 
 Commands
 --------
@@ -265,7 +265,7 @@ Say you want to create a new cluster that:
 - set the default bridged interface for instances to br113
 - set the default KVM settings to 2 vpus & 512M RAM
 - set the default kernel path to ``/boot/guest/vmlinuz-x86_64``
-- the master DNS name is ganeti-cluster.osuosl.org
+- the primary DNS name is ganeti-cluster.osuosl.org
 
 ::
 
@@ -294,11 +294,11 @@ You can also check the integrity of just disks::
 
     gnt-cluster verify-disks
 
-Becoming a Master Node
+Becoming a Primary Node
 ~~~~~~~~~~~~~~~~~~~~~~
 
 If you'd like to change which node is master, ssh to the node you want to become
-master and type the following::
+primary and type the following::
 
     gnt-cluster masterfailover
 
