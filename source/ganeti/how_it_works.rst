@@ -11,10 +11,10 @@ site.
 
 Ganeti is written primarily in python. Each node runs several daemons which take
 care of various tasks for Ganeti such as config syncing, instance creation, lvm,
-etc. Every Ganeti cluster must have **one** node act as a master. This master is
+etc. Every Ganeti cluster must have **one** node act as a primary node. This primary node is
 the only node allowed to run cluster-wide commands such as adding new instances.
-Each node can be a master (if setup as a master candidate) and can become a
-master.
+Each node can be a primary (if setup as a primary candidate) and can become a
+primary node.
 
 Communication between the nodes happens via an encrypted connection using a
 restful API. It currently only supports Xen, KVM for HVM backends and some
@@ -30,7 +30,7 @@ Managing the Cluster
 --------------------
 
 Managing all aspects of the cluster is done via ``gnt-`` prefixed commands on
-the master node. The ssh host key is copied between all the nodes so that there
+the primary node. The ssh host key is copied between all the nodes so that there
 should be no warning when you ssh to the host. Here's a list of commands you can
 use to manage the cluster:
 
@@ -52,7 +52,7 @@ All commands are well documented in both man pages and command line based help. 
 When you call a command, Ganeti will communicate to the other nodes it needs to
 via the daemons, gather up information about the node, verify several factors,
 and then create a job to complete the task. Logs can be found in
-``/var/log/ganeti/``. You should look on the master node for more logs however
+``/var/log/ganeti/``. You should look on the primary node for more logs however
 you may need to look at node specific logs during instance creation, etc. 
 
 Some useful common commands are :doc:`documented here <common_commands>` in more detail.
