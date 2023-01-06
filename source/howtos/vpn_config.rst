@@ -3,16 +3,42 @@
 OpenVPN Client Settings
 =======================
 
-What you need:
---------------
+.. contents::
+
+Supported Client Platforms
+--------------------------
+
+.. note::
+
+  As of December 2022 our current VPN server is still running on a legacy system and has difficulty working on newer
+  platforms. We are in the process of getting this service migrated to a newer system by sometime in Q1 2023.
+
+  We understand the security implications of continuing to run a legacy server such as this and are working as
+  diligently as we can to have this service upgraded ASAP.
+
+The following platforms have been tested to work with our server:
+
+- RHEL 7 & 8
+- Debian 10, 11
+- Ubuntu 18.04, 20.04
+- Mac OS
+
+The following platforms are unsupported per the note above (basically, anything that uses OpenSSL 3):
+
+- RHEL 9
+- Fedora
+- Ubuntu 22.04
+
+What you need
+-------------
 
 - OpenVPN
 - client certificate  **<username>.crt**
 - client private key: **<username>.key**
 - server certificate: :download:`ca.crt </_static/files/ca.crt>`
 
-Settings:
----------
+Settings
+--------
 
 - server: **vpn.osuosl.org:1194**
 - type: **Certificate (TLS)**
@@ -22,37 +48,52 @@ Settings:
 Network Manager (Linux)
 -----------------------
 
-Packages:
+Packages
+~~~~~~~~
+
+.. code-block:: bash
+
+  # Debian/Ubuntu:
+  $ apt install network-manager-openvpn-gnome
+
+  # RHEL
+  $ yum install epel-release
+  $ yum install NetworkManager-openvpn-gnome
+
+Procedure
 ~~~~~~~~~
-
-- Debian/Ubuntu: **sudo aptitude install openvpn network-manager-openvpn**
-
-Procedure:
-~~~~~~~~~~
-- Copy your key, certificate, and server certificate to a secure location of your choice such as ``~/openvpn/``.  Set
-  paranoid permissions (``-r-x------`` or similar).
-- Install Network Manager (installed by default in many Linux distributions)
-- Install the Network Manager OpenVPN package
+- Install the packages mentioned above
+- Copy your key, certificate, and server certificate to ``~/.openvpn`` and then run ``chmod 600 ~/.openvpn*``
 - Open Network Manager
-- Add a new VPN connection:
+- Add VPN -> OpenVPN:
 
-  - Connection name:  **<witty name>**
-  - Gateway: **vpn.osuosl.org**
-  - Type: **Certificates (TLS)**
-  - User Certificate: **<username>.crt**
-  - CA Certificate:  **ca.crt**
-  - Private Key: **<username>.key**
-  - Private Key Password: **<password>** (if applicable)
-  - IPv4 Settings->Routes...->Use this connection only for resources on its
-    network: **✔** (if unchecked, all network traffic is routed through the VPN)
-- Apply
-- Click on the Network Manager status bar icon and select **VPN Connections-><witty name>**
+  - Identity
+
+    - Name:  **OSUOSL VPN**
+    - Gateway: **vpn.osuosl.org**
+    - Type: **Certificates (TLS)**
+    - User Certificate: **<username>.crt**
+    - CA Certificate:  **ca.crt**
+    - Private Key: **<username>.key**
+    - Advanced:
+
+      - General -> Set virtual device type: **TUN**
+      - Security ->  Cipher: **BF-CBC**
+      - TLS Authentication -> TLS min version: **1.0**
+  - IPv4
+
+    - Routes -> Use this connection only for resources on its network: **✔** (if unchecked, all network traffic is
+      routed through the VPN)
+  - IPv6
+
+    - IPv6 Method -> Disable: **✔**
+- Add
+- Click on the Network Manager status bar icon and select **VPN Off -> Connect**
 - Wait until connection is established
 - Check connection:
 
-  - **ifconfig -a**: IP address should be in the 10.2.*.* range.
-  - **ping 10.2.0.1**: The router should respond
-
+  - ``ip a`` -- An IP address should be in the ``10.*.*.*`` range via a ``tun0`` interface.
+  - ``ping -c 1 10.0.0.1`` -- You should be able to ping this IP address
 
 Trouble shooting
 ~~~~~~~~~~~~~~~~
@@ -60,78 +101,59 @@ Trouble shooting
 Shotgun style - try again, reboot, disable network devices, do the chicken dance. If all else fails, try the command
 line version. If that works, try this again, maybe it just didn't like you the first time.
 
-OpenVPN command-line client
----------------------------
+Systemd service (Linux)
+-----------------------
 
-Packages:
-~~~~~~~~~
-
-- Debian/Ubuntu: **sudo aptitude install openvpn**
-- Gentoo: **sudo emerge openvpn**.  For detailed instructions, including kernel configuration see
-  http://en.gentoo-wiki.com/wiki/OpenVPN.
-
-Procedure:
-~~~~~~~~~~
-
-- Copy your key, certificate, and server certificate to a secure location of your choice such as ``/etc/openvpn/``.
-  Set paranoid permissions (``-r-x------`` or similar).
-- Create a configuration file in a location of your choice such as ``/etc/openvpn/openvpn.conf``.  Here is an example
-  configuration file:
+Packages
+~~~~~~~~
 
 .. code-block:: bash
 
-    client                         # Client mode
-    dev tun                        # Create a TUN device (not TAP)
-    proto udp                      # Use UDP (not TCP)
+  # Debian/Ubuntu:
+  $ apt update
+  $ apt install openvpn resolvconf-admin
 
-    remote vpn.osuosl.org 1194  # Server settings
-    remote-cert-tls server         # Use TLS to check server identity
+  # RHEL
+  $ yum install epel-release
+  $ yum install openvpn
 
-    ca /etc/openvpn/ca.crt                      # Server certificate
-    cert /etc/openvpn/<username>.crt            # Client certificate
-    key /etc/openvpn/<username>.key             # Client private key
 
-    resolv-retry infinite          # Never give up trying to connect to the
-                                   # server (useful for unreliable internet
-                                   # connections and laptops)
-    nobind                         # Don't bind a local port
+Procedure
+~~~~~~~~~
 
-    # Drop privileges after initialization (not applicable to Windows)
-    user nobody
-    group nobody
+- Install the packages mentioned above
+- Copy your key, certificate, and server certificate to ``/etc/openvpn/client/`` and then run ``chmod 600
+  /etc/openvpn/client/*``
+- Download the following config file and update the key names to match what you have:
 
-    # Preserve state across restarts.
-    persist-key
-    persist-tun
+  - Ubuntu :download:`osuosl.conf </_static/files/osuosl-ubuntu.conf>`
+  - Debian :download:`osuosl.conf </_static/files/osuosl-debian.conf>`
+  - RHEL :download:`osuosl.conf </_static/files/osuosl-rhel.conf>`
 
-    mute-replay-warnings           # Do not complain about duplicate packets
-                                   # (common on wireless networks)
+.. code-block::
 
-    # Verify server certificate by checking that the certicate has the
-    # nsCertType field set to 'server'. See:
-    # http://openvpn.net/index.php/open-source/documentation/howto.html#mitm
-    ns-cert-type server
+  wget -O /etc/openvpn/client/osuosl.conf # <url from above>
 
-    verb 4                         # Set log file verbosity
-    script-security 3              # Enable dns-pushing
+- Enable and start the OpenVPN client service:
 
-    # For Ubuntu:
-    up /etc/openvpn/update-resolv-conf
-    down /etc/openvpn/update-resolv-conf
+.. code-block:: bash
 
-    # For Gentoo:
-    up /etc/openvpn/up.sh
-    down /etc/openvpn/down.sh
+  systemctl enable openvpn-client@osuosl.service
+  systemctl start openvpn-client@osuosl.service
 
-    # For Fedora:
-    up /usr/share/doc/openvpn/contrib/pull-resolv-conf/client.up
-    down /usr/share/doc/openvpn/contrib/pull-resolv-conf/client.down
-
-- Run OpenVPN: **openvpn /etc/openvpn/openvpn.conf**
 - Check connection:
 
-  - **ifconfig -a**: IP address should be in the 10.*.*.* range.
-  - **ping 10.0.0.1**: The router should respond
+  - ``ip a`` -- An IP address should be in the ``10.*.*.*`` range via a ``tun0`` interface.
+  - ``ping -c 1 10.0.0.1`` -- You should be able to ping this IP address
+
+Troubleshooting
+~~~~~~~~~~~~~~~
+
+Check the log out from the service by doing the following:
+
+.. code-block:: bash
+
+  journalctl -u openvpn-client@osuosl.service
 
 Tunnelblick (OS X)
 ------------------
