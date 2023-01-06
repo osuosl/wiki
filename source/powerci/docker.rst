@@ -10,7 +10,7 @@ Overview
 --------
 
 The `Docker Custom Build Environment`_ plugin has been installed to allow the ability to run jobs inside of containers.
-When a job is executed, the Jenkins master node connects to one of the worker nodes, deploys a container on the node
+When a job is executed, the Jenkins primary node connects to one of the worker nodes, deploys a container on the node
 and reports the information back.
 
 .. _Docker Custom Build Environment: https://plugins.jenkins.io/docker-custom-build-environment
@@ -39,10 +39,10 @@ Notes on using your own containers
 
 The Docker Custom Build Environment plugin allows users to build and run any container they would like, however there
 are some restrictions that need to be made before using it. The plugin requires the user running the build commands to
-be the same as the jenkins slave agent user. This means if you need to run root level commands inside of your
+be the same as the jenkins secondary agent user. This means if you need to run root level commands inside of your
 container, you need to do the following:
 
-1. Ensure you create a user with the same UID/GID as our slave agent which is currently ``10000``
+1. Ensure you create a user with the same UID/GID as our secondary agent which is currently ``10000``
 2. Ensure sudo is installed on the container and the user is allowed to run sudo commands
 
 1. Create new Freestyle project

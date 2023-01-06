@@ -41,12 +41,12 @@ source_suffix = '.rst'
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
 
-# The master toctree document.
+# The main toctree document.
 master_doc = 'index'
 
 # General information about the project.
 project = 'OSL Wiki'
-copyright = '2014-2020, Oregon State University'
+copyright = '2014-2023, Oregon State University'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
