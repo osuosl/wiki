@@ -1,4 +1,4 @@
-alabaster==0.7.12
+alabaster==0.7.13
 Babel==2.11.0
 backports.functools-lru-cache==1.6.4
 caniusepython3==7.3.0
