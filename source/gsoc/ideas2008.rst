@@ -225,7 +225,7 @@ Desired features:
 
   - Mapping profile and/or bio module fields to attributes
 
-- Whitelist and blacklist for OpenID servers and users
+- Allowlist and blocklist for OpenID servers and users
 
 FOSSology
 ---------
