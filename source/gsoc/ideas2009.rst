@@ -81,7 +81,7 @@ these ideas, or check out the `task tracker`_:
 
 .. _Network Auto-Discovery: https://pydra-project.osuosl.org/ticket/8
 .. _Map-Reduce support: https://pydra-project.osuosl.org/ticket/64
-.. _Multi-Master: https://pydra-project.osuosl.org/ticket/67
+.. _Multi-Primary: https://pydra-project.osuosl.org/ticket/67
 .. _Multi-Main support: https://pydra-project.osuosl.org/ticket/68
 .. __: https://pydra-project.osuosl.org/ticket/20
 
