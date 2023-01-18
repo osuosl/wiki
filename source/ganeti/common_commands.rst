@@ -295,7 +295,7 @@ You can also check the integrity of just disks::
     gnt-cluster verify-disks
 
 Becoming a Primary Node
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 
 If you'd like to change which node is master, ssh to the node you want to become
 primary and type the following::
