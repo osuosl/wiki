@@ -30,7 +30,22 @@ import sphinx_rtd_theme
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = [
+    'sphinx.ext.graphviz',         # https://www.sphinx-doc.org/en/master/usage/extensions/graphviz.html
+    'sphinx.ext.autosectionlabel', # https://www.sphinx-doc.org/en/master/usage/extensions/autosectionlabel.html
+]
+
+# True to prefix each section label with the name of the document it is in,
+# followed by a colon. For example, index:Introduction for a section called
+# Introduction that appears in document index.rst. Useful for avoiding
+# ambiguity when the same section heading appears in different documents.
+autosectionlabel_prefix_document = True
+
+# If set, autosectionlabel chooses the sections for labeling by its depth. For
+# example, when set 1 to autosectionlabel_maxdepth, labels are generated only
+# for top level sections, and deeper sections are not labeled. It defaults to
+# None (disabled).
+autosectionlabel_maxdepth = 2
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
