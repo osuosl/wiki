@@ -10,7 +10,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # Build docs
-make rsync_copy
+make -e rsync_copy
 
 if [ $? -eq 0 ]
 then
