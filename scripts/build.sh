@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 # Enable venv
 if [ ! -d venv ]; then
@@ -8,6 +8,10 @@ source venv/bin/activate
 
 # Update packages
 pip install -r requirements.txt
+
+if [ -n "${CHECK_LINT}" ]; then
+  make -e lint_changed
+fi
 
 # Build docs
 make -e rsync_copy
