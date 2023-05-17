@@ -11,7 +11,7 @@ Supported Client Platforms
 .. note::
 
   As of December 2022 our current VPN server is still running on a legacy system and has difficulty working on newer
-  platforms. We are in the process of getting this service migrated to a newer system by sometime in Q1 2023.
+  platforms. We are in the process of getting this service migrated to a newer system by sometime in 2023.
 
   We understand the security implications of continuing to run a legacy server such as this and are working as
   diligently as we can to have this service upgraded ASAP.
