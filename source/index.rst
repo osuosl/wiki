@@ -12,8 +12,9 @@ Welcome to the OSL Wiki!
     gsoc/index
     ganeti/index
     openstack/index
-    powerci/index
-    ibmz-ci/index
+    jenkins/powerci
+    jenkins/ibmz-ci
+    jenkins/jenkins-docker
     powerlinux/index
     howtos/index
 
