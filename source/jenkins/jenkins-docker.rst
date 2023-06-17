@@ -1,6 +1,6 @@
-.. _powerci_docker:
+.. _jenkins_docker:
 
-Create Jenkins jobs using Docker
+Create Jenkins Jobs using Docker
 ================================
 
 This document describes how to create a Jenkins job which deploys as a Docker container on our infrastructure. We'll
@@ -89,7 +89,7 @@ A lot more advanced config options will show up:
 In general, the default settings should work, however there are a few advanced options you can use. You can set things
 such as:
 
-- Private docker registries
+- Private Docker registries
 - Volumes
 - Running in privileged mode
 - Setting memory limit / CPU shares
