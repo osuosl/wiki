@@ -54,7 +54,9 @@ customized. Other project types follow a similar basic layout.
 1. Create a New Freestyle Project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Log in at https://powerci.osuosl.org with your GitHub account. Click on the "New Item" option on the left menu as in the image below. Then, enter your item's name and select "Freestyle project" under the textbox.
+Log in at the Jenkins dashboard (https://powerci.osuosl.org or https://ibmz-ci.osuosl.org) with your GitHub account.
+Click on the "New Item" option on the left menu as in the image below. Then, enter your item's name and select
+"Freestyle project" under the textbox.
 
 .. image:: /_static/images/powerci-new-item.png
 
@@ -119,7 +121,7 @@ https://www.jenkins.io/doc/book/pipeline/jenkinsfile/.
 1. Add GitHub Credentials in Jenkins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Log in to the Dashboard at powerci.osuosl.org.
+#. Log in to the Dashboard at https://powerci.osuosl.org or https://ibmz-ci.osuosl.org.
 #. Click the Credentials tab in the left menu.
 #. Click the System tab (under the Credentials tab) in the left menu.
 #. Click the "Global credentials (unrestricted)" domain in the table.
@@ -138,10 +140,10 @@ TODO: Add images
 
 #. In the Settings tab of your repository, click the Webhooks tab and click "Add a new webhook".
 
-#. For the payload url, enter https://powerci-jenkins.osuosl.org/github-webhook/. For content type, select
+#. For the payload url, enter https://powerci-jenkins.osuosl.org/github-webhook/ or https://ibmz-ci.osuosl.org. For content type, select
    "application/x-www-form-urlencoded".
 
-#. Pick the events you'd like to trigger builds on. For a pull request trigger, the "Just the ``push`` event option
+#. Pick the events you'd like to trigger builds on. For a pull request trigger, the "Just the ``push`` event" option
    should be enough, but for further customization you can choose "Let me select individual events".
 
 #. Make sure the "Active" box is checked, then click "Add webhook" to save the new webhook.
@@ -159,12 +161,20 @@ __ : https://docs.github.com/en/webhooks-and-events/webhooks
    "<your-GH-username>/******" credential from the dropdown. Enter the HTTPS URL for your repository in the Repository
    HTTPS URL field. (Click the "Validate" button to check that Jenkins is able to access the repository.) You can also
    pick specific behaviors to determine when builds will happen and on which branches/PRs.
+
+   .. note::
+
+       For a single build to trigger after one push to a PR, we suggest using
+
+       - Discover branches: Exclude branches that are also filed as PRs
+       - Discover pull requests from origin: The current pull request revision
+
+       You will need to set the webhook to include both the ``push`` event and the ``pull request`` event.
+
 #. Under Build Configuration, select "by Jenkinsfile" and a Script Path of "Jenkinsfile".
 #. Add a label under the Docker Label field if you'd like; you can find a list of available labels by going back to the
    Dashboard and clicking the Labels Dashboard tab (or go to https://powerci.osuosl.org/labelsdashboard/.).
 #. Click "Save" at the bottom to save your changes.
-
-
 
 
 Now return to your repository and try pushing a change to a pull request. It may take a few moments for the trigger to
