@@ -112,11 +112,13 @@ GitHub Pull Request Integration
 -------------------------------
 
 Follow this example to create a Jenkins pipeline that will automatically build when a pull request is updated on
-GitHub. This uses the GitHub Branch Source plugin.
+GitHub. This example uses the `GitHub Branch Source plugin`_.
 
 Before starting, add a Jenkinsfile to your repository. This file is used for configuring the pipeline, including build
 steps and agents. A simple starting example and documentation are available here:
 https://www.jenkins.io/doc/book/pipeline/jenkinsfile/.
+
+.. _GitHub Branch Source Plugin: https://plugins.jenkins.io/github-branch-source/
 
 1. Add GitHub Credentials in Jenkins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -155,7 +157,7 @@ __ : https://docs.github.com/en/webhooks-and-events/webhooks
 3. Create a New Multibranch Pipeline Item
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Return to the PowerCI Jenkins Dashboard and click "New Item".
+#. Return to the Jenkins Dashboard and click "New Item".
 #. Name the item and select "Multibranch Pipeline".
 #. Under Branch Sources, click "Add source" and select "GitHub". Under Credentials, select the
    "<your-GH-username>/******" credential from the dropdown. Enter the HTTPS URL for your repository in the Repository
