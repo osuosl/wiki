@@ -15,6 +15,9 @@ Jenkins Dashboards:
 .. _POWER CI: https://powerci.osuosl.org
 .. _IBM-Z CI: https://ibmz-ci.osuosl.org
 
+Table of Contents
+-----------------
+
 .. toctree::
   :maxdepth: 2
   :glob:

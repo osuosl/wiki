@@ -1,4 +1,3 @@
-
 .. _ganeti-public:
 
 Ganeti

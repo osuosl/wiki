@@ -7,7 +7,7 @@ Welcome to the OSL Wiki!
 ========================
 
 .. toctree::
-    :maxdepth: 1
+    :titlesonly:
 
     gsoc/index
     ganeti/index
