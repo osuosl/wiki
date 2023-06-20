@@ -207,7 +207,7 @@ __ : https://docs.github.com/en/webhooks-and-events/webhooks
 
    .. note::
 
-       For a single build to trigger after one push to a PR, we suggest using
+       For a single build to trigger after one push to a PR, we suggest using these two options:
 
        - Discover branches: Exclude branches that are also filed as PRs
        - Discover pull requests from origin: The current pull request revision
@@ -216,10 +216,11 @@ __ : https://docs.github.com/en/webhooks-and-events/webhooks
 
 #. Under Build Configuration, select "by Jenkinsfile" and a Script Path of "Jenkinsfile".
 #. Add an agent under the Docker Label field; you can find a list of available labels by going back to the Dashboard
-   and clicking the Labels Dashboard tab (or go to ``https://<dashboard>.osuosl.org/labelsdashboard/``). If this field
-   is left blank, it will inherit a default agent.
-#. Click "Save" at the bottom to save your changes.
+   and clicking the Labels Dashboard tab (or go to ``https://<dashboard>.osuosl.org/labelsdashboard/``). The list is
+   under the "Nodes" header. If the Docker Label field is left blank, it will inherit a default agent.
+#. Your configuration might now look something like the image below. Click "Save" at the bottom to save your changes.
 
+.. image:: /_static/images/ghbsp-config1.png
 
 Now return to your repository and try pushing a change to a pull request. It may take a few moments for the trigger to
 be processed; when the build starts, you should see a box with a yellow circle at the bottom of the PR that displays
