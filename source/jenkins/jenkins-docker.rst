@@ -147,7 +147,7 @@ Here's a simple example of a declarative Jenkinsfile:
 1. Add GitHub Credentials in Jenkins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Log in to the appropriate Dashboard at https://powerci.osuosl.org or https://ibmz-ci.osuosl.org.
+#. Log in to the appropriate dashboard at https://powerci.osuosl.org or https://ibmz-ci.osuosl.org.
 #. Click the Credentials tab in the left menu and then the System tab under the Credentials tab.
 #. Click the "Global credentials (unrestricted)" domain in the table.
 
@@ -169,14 +169,14 @@ Here's a simple example of a declarative Jenkinsfile:
 
 #. In the Settings tab of your repository, click the Webhooks tab and click "Add a new webhook".
 
-#. For the payload url, enter https://powerci-jenkins.osuosl.org/github-webhook/ or https://ibmz-ci.osuosl.org. For content type, select
-   "application/x-www-form-urlencoded".
+#. For the payload url, enter https://powerci-jenkins.osuosl.org/github-webhook/ or
+   https://ibmz-ci.osuosl.org/github-webhook/. For content type, select "application/x-www-form-urlencoded".
 
    .. image:: /_static/images/ghbsp-webhooks1.png
 
 #. Pick the events you'd like to trigger builds on. For a pull request trigger, the "Just the ``push`` event" option
-   should be enough, but for the build details to be linked on the GitHub PR page, you will need to add the ``pull
-   request`` event as well under "Let me select individual events".
+   should be enough, but for the build details to be linked on the GitHub PR page and depending on Jenkins
+   configuration, you may need to add the ``pull request`` event as well under "Let me select individual events".
 
    .. image:: /_static/images/ghbsp-webhooks2.png
 
@@ -186,11 +186,12 @@ Here's a simple example of a declarative Jenkinsfile:
 
 The `upstream documentation`__ has more information about GitHub webhooks.
 
-.. note::
+.. tip::
 
-   If your payload url is correct, there should be a green checkmark next to your new webhook. When troubleshooting,
-   you can also check that payloads are being sent and received by clicking "Edit" and selecting the "Recent
-   Deliveries" tab.
+   If your payload url is correct, there should be a green checkmark next to your new webhook on the webhook dashboard
+   page at https://github.com/your-user-or-org/your-repo/settings/hooks. You can also check that payloads are being
+   sent and received by clicking "Edit" and selecting the "Recent Deliveries" tab. If these are correct and the build
+   still doesn't trigger properly, the issue is probably on Jenkins' side.
 
 __ : https://docs.github.com/en/webhooks-and-events/webhooks
 
@@ -200,9 +201,9 @@ __ : https://docs.github.com/en/webhooks-and-events/webhooks
 #. Return to the Jenkins Dashboard and click "New Item".
 #. Name the item and select "Multibranch Pipeline".
 #. Under Branch Sources, click "Add source" and select "GitHub". Under Credentials, select the
-   "<your-GH-username>/******" credential from the dropdown. Enter the HTTPS URL for your repository in the Repository
-   HTTPS URL field. (Click the "Validate" button to check that Jenkins is able to access the repository.) You can also
-   pick specific behaviors to determine when builds will happen and on which branches/PRs.
+   ``<your-GH-username>/******`` credential from the dropdown. Enter the HTTPS URL for your repository in the
+   Repository HTTPS URL field. (Click the "Validate" button to check that Jenkins is able to access the repository.)
+   You can also pick specific behaviors to determine when builds will happen and on which branches/PRs.
 
    .. note::
 
@@ -214,8 +215,9 @@ __ : https://docs.github.com/en/webhooks-and-events/webhooks
        You will need to set the webhook to include both the ``push`` event and the ``pull request`` event.
 
 #. Under Build Configuration, select "by Jenkinsfile" and a Script Path of "Jenkinsfile".
-#. Add a label under the Docker Label field if you'd like; you can find a list of available labels by going back to the
-   Dashboard and clicking the Labels Dashboard tab (or go to https://powerci.osuosl.org/labelsdashboard/.).
+#. Add an agent under the Docker Label field; you can find a list of available labels by going back to the Dashboard
+   and clicking the Labels Dashboard tab (or go to ``https://<dashboard>.osuosl.org/labelsdashboard/``). If this field
+   is left blank, it will inherit a default agent.
 #. Click "Save" at the bottom to save your changes.
 
 
