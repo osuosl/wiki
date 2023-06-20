@@ -14,6 +14,7 @@ The POWER CI cluster consists of the following components:
 
   - This node does not run any jobs locally, however it does connect to other worker nodes.
   - Its authentication uses Github OAuth
+
 - Docker worker nodes
 
   - Two nodes run on POWER8 virtual machines
