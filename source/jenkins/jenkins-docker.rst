@@ -3,8 +3,7 @@
 Create Jenkins Jobs using Docker
 ================================
 
-This document describes how to create a Jenkins job which deploys as a Docker container on our infrastructure. We'll
-describe how you do this using a Multibranch Pipeline project; however, it can be adapted to any other job type.
+This document describes how to create a Jenkins job which deploys as a Docker container on our infrastructure.
 
 Overview
 --------
@@ -48,8 +47,8 @@ container, you need to do the following:
 Creating a Basic Item
 ---------------------
 
-This example shows how to create a simple Freestyle project that can be further
-customized. Other project types follow a similar basic layout.
+This example shows how to create a simple Freestyle project. Other project types follow a similar basic layout, so this
+example can be adapted to any other project type.
 
 1. Create a New Freestyle Project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -79,22 +78,19 @@ Or build from a Dockerfile:
 3. Set Any Advanced Options
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To show advanced config options, click on the "Advanced..." button below the "Docker image to use" as in the image
-below:
+The default settings should work in general, but to set advanced options, click the "Advanced..." button below the
+"Docker image to use" section:
 
 .. image:: /_static/images/powerci-advance-docker-settings.png
 
-A lot more advanced config options will show up:
-
-.. image:: /_static/images/powerci-build-advanced.png
-
-In general, the default settings should work, however there are a few advanced options you can use. You can set things
-such as:
+Available advanced options include:
 
 - Private Docker registries
 - Volumes
 - Running in privileged mode
 - Setting memory limit / CPU shares
+
+.. image:: /_static/images/powerci-build-advanced.png
 
 Use any of these options at your own risk.
 
@@ -198,8 +194,8 @@ __ : https://docs.github.com/en/webhooks-and-events/webhooks
 3. Create a New Multibranch Pipeline Item
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Return to the Jenkins Dashboard and click "New Item".
-#. Name the item and select "Multibranch Pipeline".
+#. Return to the Jenkins Dashboard and click "New Item" in the left menu.
+#. Name the item and select "Multibranch Pipeline", then click "OK".
 #. Under Branch Sources, click "Add source" and select "GitHub". Under Credentials, select the
    ``<your-GH-username>/******`` credential from the dropdown. Enter the HTTPS URL for your repository in the
    Repository HTTPS URL field. (Click the "Validate" button to check that Jenkins is able to access the repository.)
@@ -228,8 +224,8 @@ the status of the build.
 
 .. note::
 
-    We used to use the `GitHub Pull Request Builder (ghprb)`_ plugin to integrate Jenkins builds with GitHub Pull
-    Requests, but it is now deprecated.
+    We used to use the `GitHub Pull Request Builder (ghprb)`_ plugin to integrate Jenkins builds with GitHub pull
+    requests, but it is now deprecated. You can still use `this tutorial`_ to learn more about this plugin.
 
 .. _GitHub Pull Request Builder (ghprb): https://plugins.jenkins.io/ghprb
-.. _this one: https://devopscube.com/jenkins-build-trigger-github-pull-request
+.. _this tutorial: https://devopscube.com/jenkins-build-trigger-github-pull-request
