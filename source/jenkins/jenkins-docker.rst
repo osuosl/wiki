@@ -118,24 +118,51 @@ Before starting, add a Jenkinsfile to your repository. This file is used for con
 steps and agents. A simple starting example and documentation are available here:
 https://www.jenkins.io/doc/book/pipeline/jenkinsfile/.
 
+Here's a simple example of a declarative Jenkinsfile:
+
+.. code-block::
+
+   pipeline {
+       agent {
+           docker { image 'osuosl/centos-ppc64le' }
+       }
+       stages {
+           stage('Build') {
+               steps {
+                   echo 'Building....'
+                   sh 'gcc hello.c -o hello --std=gnu99'
+               }
+           }
+           stage('Test') {
+               steps {
+                   echo 'Testing....'
+                   sh './hello'
+               }
+           }
+       }
+   }
+
 .. _GitHub Branch Source Plugin: https://plugins.jenkins.io/github-branch-source/
 
 1. Add GitHub Credentials in Jenkins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Log in to the Dashboard at https://powerci.osuosl.org or https://ibmz-ci.osuosl.org.
-#. Click the Credentials tab in the left menu.
-#. Click the System tab (under the Credentials tab) in the left menu.
+#. Log in to the appropriate Dashboard at https://powerci.osuosl.org or https://ibmz-ci.osuosl.org.
+#. Click the Credentials tab in the left menu and then the System tab under the Credentials tab.
 #. Click the "Global credentials (unrestricted)" domain in the table.
+
+   .. image:: /_static/images/ghbsp-credentials1.png
+
 #. Click Add Credentials in the left menu.
 #. In the Kind dropdown, select "Username with password". Leave Scope as "Global".
 #. In the Username field, enter your GitHub username (your account used to access the repository).
-#. In the Password field, enter a GitHub Personal Access Token for your account. (Instructions for generating one of
-   these is here:
-   https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens.)
+#. In the Password field, enter a GitHub Personal Access Token for your account. (See the `upstream documentation`__ to
+   learn how to generate a Personal Access Token.)
 #. Click "OK" to save the new credentials.
 
-TODO: Add images
+   .. image:: /_static/images/ghbsp-credentials2.png
+
+.. __ : https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
 
 2. Add a Webhook in the Repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -145,12 +172,25 @@ TODO: Add images
 #. For the payload url, enter https://powerci-jenkins.osuosl.org/github-webhook/ or https://ibmz-ci.osuosl.org. For content type, select
    "application/x-www-form-urlencoded".
 
+   .. image:: /_static/images/ghbsp-webhooks1.png
+
 #. Pick the events you'd like to trigger builds on. For a pull request trigger, the "Just the ``push`` event" option
-   should be enough, but for further customization you can choose "Let me select individual events".
+   should be enough, but for the build details to be linked on the GitHub PR page, you will need to add the ``pull
+   request`` event as well under "Let me select individual events".
+
+   .. image:: /_static/images/ghbsp-webhooks2.png
+
+   .. image:: /_static/images/ghbsp-webhooks3.png
 
 #. Make sure the "Active" box is checked, then click "Add webhook" to save the new webhook.
 
 The `upstream documentation`__ has more information about GitHub webhooks.
+
+.. note::
+
+   If your payload url is correct, there should be a green checkmark next to your new webhook. When troubleshooting,
+   you can also check that payloads are being sent and received by clicking "Edit" and selecting the "Recent
+   Deliveries" tab.
 
 __ : https://docs.github.com/en/webhooks-and-events/webhooks
 
