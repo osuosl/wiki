@@ -7,15 +7,18 @@ Welcome to the OSL Wiki!
 ========================
 
 .. toctree::
-    :maxdepth: 1
+    :titlesonly:
 
-    gsoc/index
     ganeti/index
     openstack/index
-    powerci/index
-    ibmz-ci/index
+    jenkins/index
     powerlinux/index
     howtos/index
+
+.. toctree::
+   :hidden:
+
+   gsoc/index
 
 Indices and tables
 ------------------

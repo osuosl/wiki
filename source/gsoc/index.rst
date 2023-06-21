@@ -1,3 +1,4 @@
+:orphan:
 
 .. _summer_of_code_for_osuosl:
 

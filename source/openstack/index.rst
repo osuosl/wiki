@@ -19,6 +19,9 @@ OpenStack Dashboards:
 .. _OpenPOWER cluster: https://openpower-controller.osuosl.org
 .. _AARCH64 cluster: https://arm-openstack.osuosl.org
 
+Table of Contents
+-----------------
+
 .. toctree::
   :maxdepth: 2
   :glob:
