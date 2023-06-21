@@ -9,12 +9,16 @@ Welcome to the OSL Wiki!
 .. toctree::
     :titlesonly:
 
-    gsoc/index
     ganeti/index
     openstack/index
     jenkins/index
     powerlinux/index
     howtos/index
+
+.. toctree::
+   :hidden:
+
+   gsoc/index
 
 Indices and tables
 ------------------
