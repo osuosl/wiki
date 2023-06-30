@@ -8,42 +8,38 @@ OpenVPN Client Settings
 Supported Client Platforms
 --------------------------
 
-.. note::
-
-  As of December 2022 our current VPN server is still running on a legacy system and has difficulty working on newer
-  platforms. We are in the process of getting this service migrated to a newer system by sometime in 2023.
-
-  We understand the security implications of continuing to run a legacy server such as this and are working as
-  diligently as we can to have this service upgraded ASAP.
-
 The following platforms have been tested to work with our server:
 
-- RHEL 7 & 8
-- Debian 10, 11
-- Ubuntu 18.04, 20.04
+- RHEL 7, 8, 9
+- Debian 10, 11, 12
+- Ubuntu 18.04, 20.04, 22.04
 - Mac OS
-
-The following platforms are unsupported per the note above (basically, anything that uses OpenSSL 3):
-
-- RHEL 9
 - Fedora
-- Ubuntu 22.04
 
 What you need
 -------------
 
 - OpenVPN
-- client certificate  **<username>.crt**
-- client private key: **<username>.key**
-- server certificate: :download:`ca.crt </_static/files/ca.crt>`
+- OVPN config file containing our default config and all certificates
+
+CA Certificate
+--------------
+
+We renewed our CA certificate in September 2021. You can download it here: :download:`ca.crt </_static/files/ca.crt>`
 
 Settings
 --------
 
-- server: **vpn.osuosl.org:1194**
+In general, the OVPN file we provide you should have all of the information you need to connect, however below are the
+basic settings you have:
+
+- server: **vpn.osuosl.org**
 - type: **Certificate (TLS)**
-- protocol: **UDP**
-- device type: **TUN**
+- Advanced:
+
+  - General -> Set virtual device type: **TUN**
+  - Security ->  Cipher: **AES-256-GCM**
+  - TLS Authentication -> Verify peer (server) certificate usage signature: **✓**
 
 Network Manager (Linux)
 -----------------------
@@ -63,31 +59,10 @@ Packages
 Procedure
 ~~~~~~~~~
 - Install the packages mentioned above
-- Copy your key, certificate, and server certificate to ``~/.openvpn`` and then run ``chmod 600 ~/.openvpn*``
 - Open Network Manager
-- Add VPN -> OpenVPN:
-
-  - Identity
-
-    - Name:  **OSUOSL VPN**
-    - Gateway: **vpn.osuosl.org**
-    - Type: **Certificates (TLS)**
-    - User Certificate: **<username>.crt**
-    - CA Certificate:  **ca.crt**
-    - Private Key: **<username>.key**
-    - Advanced:
-
-      - General -> Set virtual device type: **TUN**
-      - Security ->  Cipher: **BF-CBC**
-      - TLS Authentication -> TLS min version: **1.0**
-  - IPv4
-
-    - Routes -> Use this connection only for resources on its network: **✔** (if unchecked, all network traffic is
-      routed through the VPN)
-  - IPv6
-
-    - IPv6 Method -> Disable: **✔**
-- Add
+- Click the **+** to create a new VPN connection
+- Click on **Import from file..**
+- Use the ``.ovpn`` file we gave you
 - Click on the Network Manager status bar icon and select **VPN Off -> Connect**
 - Wait until connection is established
 - Check connection:
@@ -98,8 +73,11 @@ Procedure
 Trouble shooting
 ~~~~~~~~~~~~~~~~
 
-Shotgun style - try again, reboot, disable network devices, do the chicken dance. If all else fails, try the command
-line version. If that works, try this again, maybe it just didn't like you the first time.
+Check the system logs by doing the following:
+
+.. code-block:: console
+
+  journalctl -t nm-openvpn
 
 Systemd service (Linux)
 -----------------------
@@ -122,18 +100,13 @@ Procedure
 ~~~~~~~~~
 
 - Install the packages mentioned above
-- Copy your key, certificate, and server certificate to ``/etc/openvpn/client/`` and then run ``chmod 600
-  /etc/openvpn/client/*``
-- Download the following config file and update the key names to match what you have:
+- Copy the ``.ovpn`` file we gave you as ``/etc/openvpn/client/osuosl.conf``
 
-  - Ubuntu :download:`osuosl.conf </_static/files/osuosl-ubuntu.conf>`
-  - Debian :download:`osuosl.conf </_static/files/osuosl-debian.conf>`
-  - RHEL :download:`osuosl.conf </_static/files/osuosl-rhel.conf>`
+.. note::
 
-.. code-block::
+  For Debian/Ubuntu users: You will need to change the ``group`` from ``nobody`` to ``nogroup``
 
-  wget -O /etc/openvpn/client/osuosl.conf # <url from above>
-
+- Change permissions: ``chmod 0600 /etc/openvpn/client/osuosl.conf``
 - Enable and start the OpenVPN client service:
 
 .. code-block:: bash
@@ -149,7 +122,7 @@ Procedure
 Troubleshooting
 ~~~~~~~~~~~~~~~
 
-Check the log out from the service by doing the following:
+Check the system logs from the service by doing the following:
 
 .. code-block:: bash
 
@@ -159,22 +132,6 @@ Tunnelblick (OS X)
 ------------------
 
 Tunnelblick is a free, open source gui for OpenVPN on OS X that allows for easy control of the OpenVPN client.
-
-Troubleshooting
-~~~~~~~~~~~~~~~
-
-The version of OpenVPN we are running is incompatible with OpenVPN client v2.4+ on OS X.  If you are running OS X,
-please use OpenVPN v2.3 to connect to the VPN.
-
-Disabling LZO compression may help on older OpenVPN instances.
-
-In addition, the version of OpenVPN we are running is incompatible with TLSv1.2, so if you are running into issues
-(such as on Debian 10), please do the following in ``/etc/ssl/openssl.cnf``::
-
-  #MinProtocol = TLSv1.2
-  MinProtocol = TLSv1
-
-We plan to resolve this issue soon.
 
 Installation
 ~~~~~~~~~~~~
@@ -199,7 +156,6 @@ Configuration
 
 .. note::
 
-    You may need to check ``Tunnel all IPv4`` under the advanced settings for
-    the ``osuosl`` profile.
+    You may need to check ``Tunnel all IPv4`` under the advanced settings for the ``osuosl`` profile.
 
 .. _downloads: https://tunnelblick.net/downloads.html
