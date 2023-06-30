@@ -63,11 +63,16 @@ Procedure
 - Click the **+** to create a new VPN connection
 - Click on **Import from file..**
 - Use the ``.ovpn`` file we gave you
-- Click on the Network Manager status bar icon and select **VPN Off -> Connect**
+- There are some additional settings we recommend you change that we're not able to do via the ``.ovpn`` file.
+
+  - IPv4 -> DNS: **140.211.166.130, 140.211.166.131**
+  - IPv4 -> and select: **Use this connection only for resources on its network**
+  - IPv6 -> IPv6 Method: **Disable**
+- Click on the Network Manager status bar icon and select: **VPN Off -> Connect**
 - Wait until connection is established
 - Check connection:
 
-  - ``ip a`` -- An IP address should be in the ``10.*.*.*`` range via a ``tun0`` interface.
+  - ``ip a`` -- An IP address should be in the ``10.2.*.*`` range via a ``tun0`` interface.
   - ``ping -c 1 10.0.0.1`` -- You should be able to ping this IP address
 
 Trouble shooting
