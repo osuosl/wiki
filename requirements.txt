@@ -5,7 +5,7 @@ caniusepython3==7.3.0
 certifi==2023.5.7
 chardet==5.0.0
 charset-normalizer==2.0.12
-distlib==0.3.6
+distlib==0.3.7
 doc8==0.11.2
 docutils==0.17.1
 idna==3.4
