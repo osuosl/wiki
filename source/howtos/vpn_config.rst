@@ -133,6 +133,16 @@ Check the system logs from the service by doing the following:
 
   journalctl -u openvpn-client@osuosl.service
 
+Unable to connect
+-----------------
+
+Our certificates were originally signed using the sha1 algorithm which is no longer supported on newer operating
+systems (Fedora, RHEL >= 9, Ubuntu >= 22.04, etc). To fix this, we need to renew your certificate which will be signed
+using sha256.
+
+Please send an email to support@osuosl.org with the subject line: ``OpenVPN Certificate renewal: <Name>``. We will send
+you an updated certificate which should fix the issue.
+
 Tunnelblick (OS X)
 ------------------
 
