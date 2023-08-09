@@ -160,9 +160,13 @@ Alternatively install the package using the Homebrew:
 
 Configuration
 ~~~~~~~~~~~~~
+Tunnelblick uses a ``.ovpn`` file with your certificate and key to install a profile. If you would like to set up
+OpenVPN using Tunnelblick, please send an email to support@osuosl.org with the subject line:
+``OpenVPN <Name> .ovpn access``. We will send you the file that you can easily use:
+ 
 #.  Double click  the ``USER.ovpn`` file we provided to install the profile in Tunnelblick.
 
-#.  Connect to the ``USER`` profile in Tunnelblick.
+#.  Open Tunnelblick and connect to the ``USER`` profile.
 
 .. note::
 
