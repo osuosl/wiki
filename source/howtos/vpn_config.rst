@@ -160,14 +160,9 @@ Alternatively install the package using the Homebrew:
 
 Configuration
 ~~~~~~~~~~~~~
-#.  Download this :download:`Tunnelblick profile</_static/files/osuosl.tblk.zip>`.
+#.  Double click  the ``USER.ovpn`` file we provided to install the profile in Tunnelblick.
 
-#.  Replace the contents of ``osuosl.tblk/USER.crt`` and ``osuosl.tblk/USER.key`` with your personal ``crt`` and
-    ``key``.
-
-#.  Double click the ``osuosl.tblk`` file to install the profile in Tunnelblick.
-
-#.  Connect to the ``osuosl`` profile in Tunnelblick.
+#.  Connect to the ``USER`` profile in Tunnelblick.
 
 .. note::
 
