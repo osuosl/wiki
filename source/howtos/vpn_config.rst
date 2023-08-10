@@ -162,7 +162,7 @@ Configuration
 ~~~~~~~~~~~~~
 Tunnelblick uses a ``.ovpn`` file with your certificate and key to install a profile. If you would like to set up
 OpenVPN using Tunnelblick, please send an email to support@osuosl.org with the subject line:
-``OpenVPN <Name> .ovpn access``. We will send you the file that you can easily use:
+``OpenVPN .ovpn file: <Name>``. We will send you the file that you can easily use:
  
 #.  Double click  the ``USER.ovpn`` file we provided to install the profile in Tunnelblick.
 
@@ -170,6 +170,6 @@ OpenVPN using Tunnelblick, please send an email to support@osuosl.org with the s
 
 .. note::
 
-    You may need to check ``Tunnel all IPv4`` under the advanced settings for the ``osuosl`` profile.
+    You may need to check ``Tunnel all IPv4`` under the advanced settings for the ``USER`` profile.
 
 .. _downloads: https://tunnelblick.net/downloads.html
