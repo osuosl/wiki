@@ -19,11 +19,3 @@ Welcome to the OSL Wiki!
    :hidden:
 
    gsoc/index
-
-Indices and tables
-------------------
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
