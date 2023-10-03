@@ -8,9 +8,7 @@ Summer of Code for OSUOSL
 .. note::
 
    These pages remain as an archive for informational purposes; OSUOSL is not currently
-   participating in Google Summer of Code, but `stay tuned`_ for updates!
-
-.. _stay tuned: https://www.facebook.com/OSUOSL/
+   participating in Google Summer of Code.
 
 .. toctree::
     :maxdepth: 1
