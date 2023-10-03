@@ -5,6 +5,11 @@
 Summer of Code for OSUOSL
 =========================
 
+.. note::
+
+   These pages remain as an archive for informational purposes; OSUOSL is not currently
+   participating in Google Summer of Code.
+
 .. toctree::
     :maxdepth: 1
     :glob:
@@ -13,9 +18,10 @@ Summer of Code for OSUOSL
     gci2010
     template
 
-Welcome to the Oregon State University Open Source Lab Google Summer of Code
-proposal guide page. Please look over our 2014 Ideas Page for some guidance on
-what we're hoping to work on this year.
+Welcome to the Oregon State University Open Source Lab Google Summer of Code proposal
+guide page. If you're hoping to participate in Summer of Code with us, please look over
+our the Ideas Page for this year for some guidance on what we're hoping to work on this
+year.
 
 .. _gsoc-app-info:
 
@@ -95,24 +101,16 @@ sure who to talk to ping Ramereth, kennric, or pwnguin in #osuosl-gsoc.
 
 Our timezone is UTC -7, the best times to find us on IRC are between 16:00 and
 23:00 UTC. We will usually see your comments outside of those times, but might
-not be able to reply immediately. 
+not be able to reply immediately.
 
 EMAIL - To contact us via email, please `Subscribe to gsoc-dev@osuosl.org`_
 This mailing list is the most reliable way to reach us when we aren't on IRC,
-it's also a great way to connect with other GSOC students and to share ideas. 
+it's also a great way to connect with other GSOC students and to share ideas.
 
 .. tip::
-  
+
   Hint: if we've already talked to you about your proposal, it helps your
   chances for acceptance. We're happy to give feedback and suggestions on
   proposals, so it's a good idea talk to us before you submit it.
-  
+
 .. _Subscribe to gsoc-dev@osuosl.org: http://lists.osuosl.org/mailman/listinfo/gsoc-dev
-
-Project Ideas 2015
-------------------
-
-- :ref:`gsoc2015-data-center-tools`
-- :ref:`gsoc2015-whats-fresh`
-- :ref:`gsoc2015-other-projects`
- 
