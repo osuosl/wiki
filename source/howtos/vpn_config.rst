@@ -15,6 +15,7 @@ The following platforms have been tested to work with our server:
 - Ubuntu 18.04, 20.04, 22.04
 - Mac OS
 - Fedora
+- Windows 10, 11
 
 What you need
 -------------
@@ -173,3 +174,26 @@ OpenVPN using Tunnelblick, please send an email to support@osuosl.org with the s
     You may need to check ``Tunnel all IPv4`` under the advanced settings for the ``USER`` profile.
 
 .. _downloads: https://tunnelblick.net/downloads.html
+
+OpenVPN (Windows)
+------------------
+
+OpenVPN community edition for windows uses the ``.ovpn`` file we provided.
+
+#. Download window openvpn client from openvpn_community_downloads_ page. and install. Versions 2.5 and higher should
+   work fine. Earlier versions may also work.
+#. Create a folder in ``C:\Program Files\OpenVPN\config`` called **osuosl** and copy the .ovpn, .crt, and .key files
+   provided into the folder
+#. Edit the .ovpn file sections ca, cert, key. Should have full path e.g. replacing **yourname** with the filename part
+   of your crt and key files
+
+.. code-block::
+
+  ca "C:\Program Files\OpenVPN\config\osuosl\ca.crt"         # Server certificate
+  cert "C:\Program Files\OpenVPN\config\osuosl\yourname.crt" # Client certificate
+  key "C:\Program Files\OpenVPN\config\osuosl\yourname.key"  # Client private key
+
+Once done with configs launch the ``C:\Program Files\OpenVPN\bin\openvpn-gui.exe``, this should create an icon on
+your task bar you can right click and see OSUOSL option for connection
+
+.. _openvpn_community_downloads: https://openvpn.net/community-downloads/
