@@ -16,28 +16,19 @@ We are currently maintaining these images:
    :widths: 40, 15, 15, 15, 15
    :header-rows: 1
 
-We are currently maintaining ppc64le Little endian (LE) images for POWER8/9 and some ppc64 Big Endian (BE) images
-for POWER8. See the below table:
-
-.. note:: IBM is focusing their efforts primarily on LE, so BE support is mostly limited to older distributions.
-
-.. csv-table::
-   :file: ./csv/power_endian.csv
-   :widths: 55, 15, 15, 15
-   :header-rows: 1
+We are currently only maintaining ppc64le Little endian (LE) images for POWER8/9. IBM is focusing their efforts
+primarily on LE, so Big endian (BE) support is limited to only Debian Sid (unstable) As all other distributions have
+removed support for BE.
 
 If there are any other images you would like us to create, please let us know.
 
 Building images with packer
 ---------------------------
 
-We build all of our images using `packer`_ via our `packer-templates`_ github repo. Builds are triggered via opening a
-pull request with the changes that are needed. Once an image has been built, `openstack_taster`_ will test to ensure
-the images will work properly on our openstack cluster.
+We build all of our images using `packer`_ via our `packer-templates`_ github repo.
 
 .. _packer: http://www.packer.io/
 .. _packer-templates: https://github.com/osuosl/packer-templates
-.. _openstack_taster: https://github.com/osuosl/openstack_taster
 
 Manual Guest Installation
 -------------------------
@@ -50,7 +41,7 @@ Manual Guest Installation
 
 .. code-block:: bash
 
-    export DISTRO="debian-10"
+    export DISTRO="debian-12"
     export DISTRO_ISO="debian.iso"
 
 2. Create a 3G qcow2 disk image:
@@ -90,17 +81,80 @@ AARCH64:
 
 5. Wait for the VM to complete the install.
 
-6. Compress and import image into OpenStack:
+Uploading Images
+----------------
+
+.. note::
+
+  We do not recommend uploading images using the GUI interface for any images larger than 1G in size due to limits we
+  have set with Apache. Instead we recommend you install using the CLI tools which will communication directly to the
+  image service (glance).
+
+1. Install OpenStack CLI packages:
 
 .. code-block:: console
 
-      $ qemu-img convert -O qcow2 -c $DISTRO.qcow2 $DISTRO-compressed.qcow2
-      $ source openrc
-      $ glance image-create --name $DISTRO --disk-format=qcow2 \
-        --container-format=bare < $DISTRO-compressed.qcow2
+  # Debian/Ubuntu
+  $ apt install python3-openstackclient
 
-.. rubric:: Footnotes
+  # Fedora
+  $ dnf install python3-openstackclient
 
-.. [#ubuntu] We are currently fixing some issues with our Ubuntu 20.04 images. See `this issue`_ for updates.
+  # MacOS (Brew)
+  $ brew install openstackclient
 
-.. _`this issue`: https://github.com/osuosl/packer-templates/issues/124
+.. note::
+
+  RHEL requires installing the RDO repository to install the ``python3-openstackclient`` package. Run ``dnf search
+  openstack``, select the latest release to install and then install the ``python3-openstackclient`` package.
+
+  This can also be installed using ``pip`` by installing the ``openstackclient`` meta package.
+
+2. Download and source openrc file
+
+Login to the OpenStack GUI interface and then on your user on the upper right corner and pressing "OpenStack RC file".
+That will download a file which you will then source using your shell environment.
+
+3. Import image into OpenStack:
+
+Due to our backend storage uses Ceph, we recommend to upload images using the raw disk format. This allows for
+Copy-on-Write features being used which speeds up VM deployment. If you already have something in qcow2 format, you can
+easily convert it by doing the following:
+
+.. code-block:: console
+
+  $ qemu-img convert -O raw -p $DISTRO.qcow2 $DISTRO.raw
+
+Now upload the image:
+
+.. code-block:: console
+
+  $ source openrc
+  $ openstack image create \
+    --file $DISTRO-compressed.raw \
+    --disk-format raw \
+    --property hw_scsi_model=virtio-scsi \
+    --property hw_disk_bus=scsi \
+    --property hw_qemu_guest_agent=yes \
+    --property os_require_quiesce=yes \
+    $DISTRO
+
+.. note::
+
+  The extra properties are optional but do align best with how our backend systems are configured. It will allow for a
+  better user experience if you include those.
+
+However, if you still prefer to use qcow2, make sure you compress it first:
+
+.. code-block:: console
+
+  $ qemu-img convert -O qcow2 -cp $DISTRO.qcow2 $DISTRO-compressed.qcow2
+  $ source openrc
+  $ openstack image create \
+    --file $DISTRO-compressed.qcow2 \
+    --disk-format qcow2 \
+    --property hw_scsi_model=virtio-scsi \
+    --property hw_disk_bus=scsi \
+    --property hw_qemu_guest_agent=yes \
+    --property os_require_quiesce=yes \
+    $DISTRO
