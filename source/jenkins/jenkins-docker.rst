@@ -25,8 +25,10 @@ list of images we support:
 - `osuosl/fedora-ppc64le`_
 - `osuosl/ubuntu-ppc64le`_
 
-These images are tested and verified to work on our infrastructure. If you have any issues or want to add support for
-something, please visit https://github.com/osuosl/osl-dockerfiles.
+These images are tested and verified to work on our infrastructure. Although you are not required to use these images
+and, many projects use images from other sources without any problem. 
+
+If you have any issues with our images or want to add support for something, please visit https://github.com/osuosl/osl-dockerfiles.
 
 .. _osuosl/centos-ppc64le: https://hub.docker.com/r/osuosl/centos-ppc64le
 .. _osuosl/debian-ppc64le: https://hub.docker.com/r/osuosl/debian-ppc64le
