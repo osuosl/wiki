@@ -70,7 +70,7 @@ options to select:
 
 Pull a Docker image from a repository:
 
-.. image:: /_static/images/powerci-build-inside-docker.png
+.. image:: /_static/images/powerci-build-repo.png
 
 Or build from a Dockerfile:
 
@@ -83,7 +83,7 @@ Or build from a Dockerfile:
 The default settings should work in general, but to set advanced options, click the "Advanced..." button below the
 "Docker image to use" section:
 
-.. image:: /_static/images/powerci-advance-docker-settings.png
+.. image:: /_static/images/powerci-build-advanced-settings.png
 
 Available advanced options include:
 
