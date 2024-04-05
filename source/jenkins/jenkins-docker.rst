@@ -25,8 +25,10 @@ list of images we support:
 - `osuosl/fedora-ppc64le`_
 - `osuosl/ubuntu-ppc64le`_
 
-These images are tested and verified to work on our infrastructure. If you have any issues or want to add support for
-something, please visit https://github.com/osuosl/osl-dockerfiles.
+These images are tested and verified to work on our infrastructure. Although you are not required to use these images
+and, many projects use images from other sources without any problem. 
+
+If you have any issues with our images or want to add support for something, please visit https://github.com/osuosl/osl-dockerfiles.
 
 .. _osuosl/centos-ppc64le: https://hub.docker.com/r/osuosl/centos-ppc64le
 .. _osuosl/debian-ppc64le: https://hub.docker.com/r/osuosl/debian-ppc64le
@@ -68,7 +70,7 @@ options to select:
 
 Pull a Docker image from a repository:
 
-.. image:: /_static/images/powerci-build-inside-docker.png
+.. image:: /_static/images/powerci-build-repo.png
 
 Or build from a Dockerfile:
 
@@ -81,7 +83,7 @@ Or build from a Dockerfile:
 The default settings should work in general, but to set advanced options, click the "Advanced..." button below the
 "Docker image to use" section:
 
-.. image:: /_static/images/powerci-advance-docker-settings.png
+.. image:: /_static/images/powerci-build-advanced-settings.png
 
 Available advanced options include:
 
