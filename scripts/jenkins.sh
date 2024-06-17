@@ -6,7 +6,7 @@ git pull -q --ff-only
 
 # Enable venv
 if [ ! -d venv ]; then
-    virtualenv venv -p python3
+    python3.11 -m venv venv
 fi
 source venv/bin/activate
 
