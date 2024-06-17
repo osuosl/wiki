@@ -7,7 +7,7 @@ chardet==5.2.0
 charset-normalizer==3.3.2
 distlib==0.3.8
 doc8==1.1.1
-docutils==0.20.1
+docutils==0.21.2
 idna==3.7
 imagesize==1.4.1
 importlib_metadata==7.1.0
