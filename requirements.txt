@@ -34,4 +34,4 @@ sphinxcontrib-serializinghtml==2.0.0
 stevedore==5.2.0
 typing_extensions==4.12.2
 urllib3==2.2.2
-zipp==3.19.2
+zipp==3.20.0
