@@ -1,5 +1,5 @@
 alabaster==0.7.16
-Babel==2.16.0
+babel==2.16.0
 backports.functools-lru-cache==2.0.0
 caniusepython3==7.3.0
 certifi==2024.8.30
@@ -22,7 +22,7 @@ requests==2.32.3
 restructuredtext-lint==1.4.0
 six==1.16.0
 snowballstemmer==2.2.0
-Sphinx==7.4.7
+Sphinx==8.0.2
 sphinx-rtd-theme==3.0.0
 sphinxcontrib-applehelp==2.0.0
 sphinxcontrib-devhelp==2.0.0
