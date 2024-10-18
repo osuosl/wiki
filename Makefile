@@ -26,6 +26,7 @@ lint:
 
 lint_changed:
 	@echo "Running doc8 on changed files RST from master branch"
+	@set -e; \
 	git diff origin/master --stat --name-only --diff-filter=d | grep rst$$ | xargs -r doc8
 
 .PHONY: help rsync_copy Makefile
