@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Enable venv
 if [ ! -d venv ]; then
