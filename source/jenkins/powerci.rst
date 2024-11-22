@@ -19,6 +19,7 @@ The POWER CI cluster consists of the following components:
 
   - Two nodes run on POWER8 virtual machines
   - Two nodes run on POWER9 virtual machines
+  - One node runs on a POWER10 virtual machine
 
 Creating a Jenkins Job with Docker
 ----------------------------------
