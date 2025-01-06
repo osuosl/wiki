@@ -16,7 +16,7 @@ MarkupSafe==3.0.2
 packaging==24.2
 pbr==6.1.0
 Pygments==2.18.0
-pyparsing==3.2.0
+pyparsing==3.2.1
 pytz==2024.2
 requests==2.32.3
 restructuredtext-lint==1.4.0
