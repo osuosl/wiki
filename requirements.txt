@@ -18,7 +18,7 @@ pbr==6.1.1
 Pygments==2.19.1
 pyparsing==3.2.3
 pytz==2025.2
-requests==2.32.3
+requests==2.32.4
 restructuredtext-lint==1.4.0
 six==1.17.0
 snowballstemmer==3.0.1
