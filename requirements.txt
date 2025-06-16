@@ -32,6 +32,6 @@ sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==2.0.0
 sphinxcontrib-serializinghtml==2.0.0
 stevedore==5.4.1
-typing_extensions==4.13.2
+typing_extensions==4.14.0
 urllib3==2.4.0
 zipp==3.23.0
