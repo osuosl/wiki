@@ -19,7 +19,7 @@ pyparsing==3.2.5
 pytz==2025.2
 requests==2.32.5
 rstcheck==6.2.4
-rstcheck-core==1.2.1
+rstcheck-core==1.2.2
 six==1.17.0
 snowballstemmer==3.0.1
 Sphinx==8.0.2
