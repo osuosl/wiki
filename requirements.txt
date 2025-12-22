@@ -15,7 +15,7 @@ MarkupSafe==3.0.3
 packaging==25.0
 pbr==7.0.3
 Pygments==2.19.2
-pyparsing==3.2.5
+pyparsing==3.3.0
 pytz==2025.2
 requests==2.32.5
 rstcheck==6.2.5
