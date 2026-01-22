@@ -14,6 +14,7 @@
 
 import sys
 import os
+import datetime
 
 import sphinx_rtd_theme
 
@@ -61,7 +62,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'OSL Wiki'
-copyright = '2014-2024, Oregon State University'
+copyright = f"2014-{datetime.datetime.now().year}, Oregon State University"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

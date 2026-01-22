@@ -13,14 +13,34 @@ We are currently maintaining these images:
 
 .. csv-table::
    :file: ./csv/images.csv
-   :widths: 40, 15, 15, 15, 15
+   :widths: 40, 15, 15, 15, 15, 15
    :header-rows: 1
 
-We are currently only maintaining ppc64le Little endian (LE) images for POWER8/9. IBM is focusing their efforts
-primarily on LE, so Big endian (BE) support is limited to only Debian Sid (unstable) As all other distributions have
-removed support for BE.
+.. note:: We currently maintain only ppc64le little-endian (LE) images for POWER8/9/10. IBM is focusing on LE, so we
+   provide limited support for a big-endian (BE) Debian Sid (unstable) image because other distributions have dropped
+   BE.
+
+.. note:: Windows images ship with an evaluation license only; you are responsible for obtaining valid licensing before
+   production use.
 
 If there are any other images you would like us to create, please let us know.
+
+User-provided images
+--------------------
+
+If you want to upload an operating system we do not maintain, make sure the image meets these requirements:
+
+- Install ``cloud-init`` and enable it to start on first boot so networking, SSH keys, and metadata are applied.
+- Install and enable ``qemu-guest-agent`` to support clean shutdowns and IP reporting when the image property
+  ``hw_qemu_guest_agent`` is set.
+- Include virtio storage and network drivers and ensure the root disk can boot with ``virtio-scsi``, matching the
+  ``hw_scsi_model``/``hw_disk_bus`` properties used here.
+- Leave cloud-init datasources for EC2/ConfigDrive enabled and do not block 169.254.169.254 so metadata can reach the
+  guest.
+- Enable disk resize on first boot (cloud-init growpart/resizefs, GPT preferred, ``cloud-guest-utils`` or equivalent
+  installed).
+- Provide an SSH-able default user for key injection and avoid shipping hardcoded passwords; disable password auth if
+  possible.
 
 Building images with packer
 ---------------------------
@@ -35,9 +55,10 @@ Manual Guest Installation
 
 .. note:: This is only useful for manually testing some images and is no longer used for building images.
 
-.. note:: For AARCH64, Please run the following commands on one of the machines directly. Also, make sure you have the ``AAVMF`` package installed which contains the UEFI firmware to boot the VMs properly.
+.. note:: For AARCH64, please run the following commands on one of the machines directly. Make sure you have the
+  ``AAVMF`` package installed; it contains the UEFI firmware required to boot the VMs.
 
-1. Download the DVD or net install ISO for desired distribution. For this example we are using Debian 10:
+1. Download the DVD or net install ISO for your desired distribution. For this example we are using Debian 12:
 
 .. code-block:: bash
 
@@ -86,9 +107,8 @@ Uploading Images
 
 .. note::
 
-  We do not recommend uploading images using the GUI interface for any images larger than 1G in size due to limits we
-  have set with Apache. Instead we recommend you install using the CLI tools which will communication directly to the
-  image service (glance).
+  We do not recommend uploading images using the web UI for any images larger than 1G because of Apache limits. Instead
+  we recommend using the CLI tools, which communicate directly with the image service (glance).
 
 1. Install OpenStack CLI packages:
 
@@ -112,14 +132,13 @@ Uploading Images
 
 2. Download and source openrc file
 
-Login to the OpenStack GUI interface and then on your user on the upper right corner and pressing "OpenStack RC file".
-That will download a file which you will then source using your shell environment.
+Log in to the OpenStack web UI, click your username in the upper right, choose "OpenStack RC file" to download it, and
+source it in your shell.
 
 3. Import image into OpenStack:
 
-Due to our backend storage uses Ceph, we recommend to upload images using the raw disk format. This allows for
-Copy-on-Write features being used which speeds up VM deployment. If you already have something in qcow2 format, you can
-easily convert it by doing the following:
+Because our backend storage uses Ceph, we recommend uploading images in the raw disk format. This enables
+copy-on-write features that speed up VM deployment. If you already have a qcow2 image, convert it with:
 
 .. code-block:: console
 
@@ -131,7 +150,7 @@ Now upload the image:
 
   $ source openrc
   $ openstack image create \
-    --file $DISTRO-compressed.raw \
+    --file $DISTRO.raw \
     --disk-format raw \
     --property hw_scsi_model=virtio-scsi \
     --property hw_disk_bus=scsi \
@@ -141,8 +160,7 @@ Now upload the image:
 
 .. note::
 
-  The extra properties are optional but do align best with how our backend systems are configured. It will allow for a
-  better user experience if you include those.
+  These properties are optional but match our backend defaults and usually deliver a better user experience.
 
 However, if you still prefer to use qcow2, make sure you compress it first:
 
