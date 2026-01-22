@@ -11,7 +11,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # Build docs
-make html
+make -e rsync_copy
 
 # Disable venv
 deactivate
