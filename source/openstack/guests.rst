@@ -91,7 +91,7 @@ AARCH64:
      -cdrom $DISTRO_ISO -netdev user,id=user.0,hostfwd=tcp::2222-:22 \
      -cpu host -monitor none \
      -drive file=$DISTRO.qcow2,if=virtio,cache=writeback,discard=ignore,format=qcow2 \
-     -bios /usr/share/AAVMF/AAVMF_CODE.fd
+     -bios /usr/share/AAVMF/AAVMF_CODE.fd \
      -vnc 0.0.0.0:99
 
 4. Connect via VNC to the VM and complete the installation:
