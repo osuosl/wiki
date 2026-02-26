@@ -89,6 +89,7 @@ AARCH64:
 
    $ /usr/libexec/qemu-kvm -m 2048M -boot strict=on -name $DISTRO -machine gic-version=3,accel=kvm \
      -cdrom $DISTRO_ISO -netdev user,id=user.0,hostfwd=tcp::2222-:22 \
+     -device virtio-net,netdev=user.0 \
      -cpu host -monitor none \
      -drive file=$DISTRO.qcow2,if=virtio,cache=writeback,discard=ignore,format=qcow2 \
      -bios /usr/share/AAVMF/AAVMF_CODE.fd \
