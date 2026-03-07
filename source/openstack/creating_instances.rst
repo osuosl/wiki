@@ -9,7 +9,13 @@ Entering Your User Account
 --------------------------
 
 We will create a project and user for you. The project will have a quota for resources, image and flavor settings, and
-security settings. You will be sent a temporary password that you should change.
+security settings. You will be sent a temporary password; log in to the appropriate OpenStack dashboard and change your
+password as soon as possible.
+
+Our OpenStack dashboards can be accessed at the following locations:
+* x86: openstack.osuosl.org
+* POWER: openpower-openstack.osuosl.org
+* AARCH64: arm-openstack.osuosl.org
 
 Launching a New Instance
 ------------------------
