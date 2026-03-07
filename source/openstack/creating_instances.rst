@@ -13,6 +13,7 @@ security settings. You will be sent a temporary password; log in to the appropri
 password as soon as possible.
 
 Our OpenStack dashboards can be accessed at the following locations:
+
 * x86: openstack.osuosl.org
 * POWER: openpower-openstack.osuosl.org
 * AARCH64: arm-openstack.osuosl.org
