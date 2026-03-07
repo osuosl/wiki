@@ -14,9 +14,9 @@ password as soon as possible.
 
 Our OpenStack dashboards can be accessed at the following locations:
 
-* x86: openstack.osuosl.org
-* POWER: openpower-openstack.osuosl.org
-* AARCH64: arm-openstack.osuosl.org
+* x86: https://openstack.osuosl.org
+* POWER: https://openpower-openstack.osuosl.org
+* AARCH64: https://arm-openstack.osuosl.org
 
 Launching a New Instance
 ------------------------
