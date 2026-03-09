@@ -3,90 +3,107 @@
 Creating Instances on OpenStack
 ===============================
 
-This is a walk through for people using our clusters for virtual machines.
+This is a walkthrough for people using our clusters for virtual machines.
 
-Groups and Users
-----------------
+Entering Your User Account
+--------------------------
 
-You need to first have a group which your user can live in. This group will have a quota for resources, image and
-flavor settings along with security settings.
+We will create a project and user for you. The project will have a quota for resources, image and flavor settings, and
+security settings. You will be sent a temporary password; log in to the appropriate OpenStack dashboard and change your
+password as soon as possible.
 
-Once we have made your group and user you will be sent a password that you should change. Then you can login and
-proceed to the Instances section on the left side and hit the 'Launch Instance' button.
+Our OpenStack dashboards can be accessed at the following locations:
+
+* x86: https://openstack.osuosl.org
+* POWER: https://openpower-openstack.osuosl.org
+* AARCH64: https://arm-openstack.osuosl.org
+
+Launching a New Instance
+------------------------
+
+Log in to your account and enter Compute > Instances through the left menu. Hit the "Launch Instance" button.
 
 .. image:: /_static/images/openstack-instance0.png
 
-Launching a new instance
-------------------------
-
-After selecting the 'Launch Instance' button you will see this popup.  Here you will enter in the name for the vm, in
-this case 'my-instance' afterwards, click "Next".
+This popup allows you to configure the instance. Enter a name for your VM ("my-instance" in the example below), then
+click "Next" to proceed to the "Source" tab.
 
 .. image:: /_static/images/openstack-instance1.png
 
-Select image
-~~~~~~~~~~~~
+Selecting an Image
+------------------
 
-The next page selects which image you want to use. By default the GUI shows you the wrong way to deploy an instance
-with our setup. We unfortunately cannot change this until the Pike release. To fix this, select "Image" under the
-"Select Boot Source" drop-down and also change "Create New Volume" to "No".
-
-.. image:: /_static/images/openstack-instance1-source1.png
-
-Your screen should now look like what we have below which lists the images you're able to use. Select one of the
-images you'd like to use. Scroll down and click "Next" or click "Flavor" on the left side for the next section.
+Ensure "Image" is selected in the "Select Boot Source" dropdown and "Create New Volume" is set to "No". Choose an image
+for your instance from the list by clicking the corresponding up arrow "↑" button. The "Allocated" section indicates
+your chosen image.
 
 .. image:: /_static/images/openstack-instance1-source2.png
 
-Select flavor
-~~~~~~~~~~~~~
+Click "Next" to proceed to the "Flavor" tab.
 
-The next page selects the "Flavor" of the system which dictates how much CPU, RAM and Disk the instance will be
-deployed with. Now click "Next" or "Networks" on the left side.
+Selecting a Flavor
+------------------
+
+Choose a flavor that corresponds with the amount of CPU, RAM and disk you want to deploy your instance with. Clicking
+the arrow ">" icon next to a flavor shows a preview of what your quota usage would be if you chose that flavor for the
+instance. Click "Next" to proceed to the "Networks" tab.
 
 .. image:: /_static/images/openstack-instance1-flavor.png
 
-Select the network
-~~~~~~~~~~~~~~~~~~
+Selecting a Network
+-------------------
 
-This page configures how your instance connects to the network. We currently have one public network that you can use:
-"public4". Now click "Security Groups".
+We have multiple public networks that your instance can be deployed on; typically, the one with the highest-numbered
+suffix will have the most openings for new instances. Choose a network and click "Next" to proceed to the "Security
+Groups" section.
 
 .. image:: /_static/images/openstack-instance1-networks.png
 
-Select security group
-~~~~~~~~~~~~~~~~~~~~~
+Selecting Security Groups
+-------------------------
 
-Next we need to configure what security groups we want to use. You can think of security groups as firewall rules for
-the virtual machine. Generally the default security group should be all you need but you can stack other security
-groups on as needed. You can also check what rules are set by clicking on the ">" icon next to the group. Now click
-"Next" or "Key Pair".
+Security groups can be thought of as groupings of firewall rules; clicking the arrow ">" icon next to a security group
+shows more information about each group. Generally, the default security group should be all you need, but you can
+stack other security groups on as needed.
 
 .. important:: The default security group allows no traffic in. If you want to access your instance from the outside,
                you will need to add rules to allow traffic.
 
 .. image:: /_static/images/openstack-instance1-security-groups.png
 
-Select key pair
-~~~~~~~~~~~~~~~
+Selected security groups are indicated under the "Allocated" section; click the down arrow "↓" button next to a group to
+remove it from your selection.
 
-Now we need to select an ssh key pair to use for the VM. If you already have a key added, select it. If not click
-"Import Key Pair" to import a public key that you've already created.
+After selecting the group(s) for your instance, click "Next" to proceed to the "Key Pair" tab.
+
+Selecting Key Pairs
+-------------------
+
+The next screen allows you to add SSH public keys to the instance. OpenStack will add them to the instance at launch
+using `cloud-init`_.
+
+.. _cloud-init: https://docs.cloud-init.io/en/latest/
 
 .. image:: /_static/images/openstack-instance2.png
 
-Enter a name for the key and paste the **public** key in that you've generated. After you import it, you can select it
-and move onto the next screen. After this, you can just click "Launch" which should be blue now.
+If you've already added keys to OpenStack, they will be displayed in the "Available" section. You can also use "Import
+Key Pair" to upload or paste a public key of your choice, or use "Create Key Pair" to generate new keys.
 
-.. image:: /_static/images/openstack-instance3.png
+Launching the Instance
+----------------------
 
-Advanced usage
-~~~~~~~~~~~~~~
+Once you are happy with your chosen settings, click the blue "Launch Instance" button to create the instance. You can
+monitor the status of the new instance and find its IP address in the Compute > Instances tab.
 
-For advanced users, you can add custom user data in. For more information on this, checkout the `Cloud-init
-documentation`_. Make sure you add ``#cloud-init`` at the top of the section and any other cloud-init configuration
-after that in Yaml format.
+.. image:: /_static/images/openstack-instance0.png
 
-.. _Cloud-init documentation: https://cloudinit.readthedocs.io/en/latest/topics/examples.html
+Advanced Usage
+--------------
+
+Advanced users can add custom YAML data through the "Customization" tab. This configuration is used by cloud-init. For
+more information on this, check out the `cloud-init documentation`_. Make sure to add ``#cloud-init`` at the top of the
+section.
+
+.. _cloud-init documentation: https://docs.cloud-init.io/en/latest/reference/examples.html
 
 .. image:: /_static/images/openstack-instance4.png
