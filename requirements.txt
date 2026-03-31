@@ -17,7 +17,7 @@ pbr==7.0.3
 Pygments==2.19.2
 pyparsing==3.3.2
 pytz==2026.1.post1
-requests==2.33.0
+requests==2.33.1
 rstcheck==6.2.5
 rstcheck-core==1.2.2
 six==1.17.0
