@@ -12,7 +12,7 @@ imagesize==2.0.0
 importlib_metadata==9.0.0
 Jinja2==3.1.6
 MarkupSafe==3.0.3
-packaging==26.1
+packaging==26.2
 pbr==7.0.3
 Pygments==2.20.0
 pyparsing==3.3.2
