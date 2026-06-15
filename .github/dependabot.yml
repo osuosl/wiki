@@ -5,3 +5,25 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    # Cap concurrent PRs so grouped updates don't pile up.
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+    commit-message:
+      prefix: pip
+    ignore:
+      # Sphinx / sphinx-rtd-theme cap docutils below 0.23 for now.
+      - dependency-name: docutils
+        versions:
+          - ">=0.23"
+    groups:
+      # Bundle all patch/minor bumps into a single PR.
+      python-dependencies:
+        update-types:
+          - minor
+          - patch
+      # Keep major bumps grouped but separate, since they may
+      # contain breaking changes that need a closer look.
+      python-dependencies-major:
+        update-types:
+          - major
