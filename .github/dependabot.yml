@@ -11,11 +11,6 @@ updates:
       - dependencies
     commit-message:
       prefix: pip
-    ignore:
-      # Sphinx / sphinx-rtd-theme cap docutils below 0.23 for now.
-      - dependency-name: docutils
-        versions:
-          - ">=0.23"
     groups:
       # Bundle all patch/minor bumps into a single PR.
       python-dependencies:

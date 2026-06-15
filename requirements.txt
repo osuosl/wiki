@@ -6,7 +6,6 @@ certifi==2026.5.20
 chardet==7.4.3
 charset-normalizer==3.3.2
 distlib==0.4.3
-docutils==0.22.4
 idna==3.18
 imagesize==2.0.0
 importlib_metadata==9.0.0
