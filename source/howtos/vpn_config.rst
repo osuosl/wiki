@@ -3,8 +3,6 @@
 OpenVPN Client Settings
 =======================
 
-.. contents::
-
 Supported Client Platforms
 --------------------------
 

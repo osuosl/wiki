@@ -16,8 +16,6 @@ import sys
 import os
 import datetime
 
-import sphinx_rtd_theme
-
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -48,8 +46,12 @@ autosectionlabel_prefix_document = True
 # None (disabled).
 autosectionlabel_maxdepth = 2
 
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+# Add any paths that contain templates here, relative to this directory. We
+# have no template overrides: Furo renders the "Edit this page" link from the
+# source_repository options below, and the old layout.html only injected a
+# legacy Google Analytics snippet whose UA property stopped collecting data
+# when Universal Analytics was shut down in July 2023.
+templates_path = []
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -102,8 +104,10 @@ exclude_patterns = []
 # output. They are ignored by default.
 #show_authors = False
 
-# The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+# The name of the Pygments (syntax highlighting) style to use. Left unset so
+# Furo can apply its own accessible light/dark pair (a11y-light / a11y-dark);
+# pinning a single style here breaks syntax highlighting in dark mode.
+#pygments_style = 'sphinx'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -116,18 +120,54 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'furo'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
-# documentation.
+# documentation. https://pradyunsg.me/furo/customisation/
 html_theme_options = {
-    "analytics_id": "UA-537692-15",
+    # Renders the "Edit this page" link in the right-hand sidebar. This
+    # replaces the old _templates/breadcrumbs.html override.
+    'source_repository': 'https://github.com/osuosl/wiki/',
+    'source_branch': 'master',
+    'source_directory': 'source/',
+    'navigation_with_keys': True,
+    'light_logo': 'images/osl-logo.png',
+    'dark_logo': 'images/osl-logo-dark.png',
+    # OSU brand palette, matching assets/scss/_variables.scss in the
+    # osuosl.org Hugo site and the osuosl/docs Sphinx site.
+    #
+    # Beaver Orange (#d73f09) is deliberately *not* used for links. Furo
+    # applies color-brand-primary to top-level sidebar links, which are
+    # normal-size text, and Beaver Orange only reaches 4.20:1 against the
+    # sidebar background -- below the WCAG AA 4.5:1 floor. The darkened
+    # link orange passes in both modes:
+    #
+    #   #c4340a on the sidebar  5.03:1
+    #   #c4340a on white        5.46:1
+    #   #ff7a42 on #1c1c1c      6.59:1
+    #   #ff7a42 on #2a2a2a      5.55:1
+    'light_css_variables': {
+        'color-brand-primary': '#c4340a',      # $osu-orange-link
+        'color-brand-content': '#c4340a',
+        'color-brand-visited': '#c4340a',
+        'color-foreground-primary': '#423e3c',  # $osu-warm-black
+        'color-background-secondary': '#f7f5f5',  # $osu-neutral-100
+    },
+    'dark_css_variables': {
+        'color-brand-primary': '#ff7a42',      # $osu-orange-link-dark
+        'color-brand-content': '#ff7a42',
+        'color-brand-visited': '#ff7a42',
+        'color-foreground-primary': '#e9e5e4',  # $osu-neutral-200
+        'color-background-primary': '#1c1c1c',  # $osu-bg-dark
+        'color-background-secondary': '#2a2a2a',  # $osu-surface-dark
+    },
 }
 
 # The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
-#html_title = None
+# "<project> v<release> documentation". Furo shows this as the sidebar brand,
+# where the version suffix is just noise.
+html_title = 'OSL Wiki'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -136,10 +176,11 @@ html_theme_options = {
 # of the sidebar.
 #html_logo = None
 
-# The name of an image file (within the static path) to use as favicon of the
-# docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
-# pixels large.
-#html_favicon = None
+# The name of an image file to use as favicon of the docs. This is the same
+# square OSL mark that osuosl.org and docs.osuosl.org serve. It lives at the
+# root of _static because Sphinx copies the favicon there regardless and
+# would otherwise ship it twice.
+html_favicon = '_static/favicon.png'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
