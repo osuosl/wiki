@@ -10,10 +10,10 @@ Supported Client Platforms
 
 The following platforms have been tested to work with our server:
 
-- RHEL 7, 8, 9
-- Debian 10, 11, 12
-- Ubuntu 18.04, 20.04, 22.04
-- Mac OS
+- RHEL 8, 9, 10
+- Debian 12, 13
+- Ubuntu 22.04, 24.04
+- macOS
 - Fedora
 - Windows 10, 11
 
@@ -26,7 +26,8 @@ What you need
 CA Certificate
 --------------
 
-We renewed our CA certificate in September 2021. You can download it here: :download:`ca.crt </_static/files/ca.crt>`
+We renewed our CA certificate in September 2021 (valid through September 2031). You can download it here:
+:download:`ca.crt </_static/files/ca.crt>`
 
 Settings
 --------
@@ -54,15 +55,15 @@ Packages
   $ apt install network-manager-openvpn-gnome
 
   # RHEL
-  $ yum install epel-release
-  $ yum install NetworkManager-openvpn-gnome
+  $ dnf install epel-release
+  $ dnf install NetworkManager-openvpn-gnome
 
 Procedure
 ~~~~~~~~~
 - Install the packages mentioned above
 - Open Network Manager
 - Click the **+** to create a new VPN connection
-- Click on **Import from file..**
+- Click on **Import from file...**
 - Use the ``.ovpn`` file we gave you
 - There are some additional settings we recommend you change that we're not able to do via the ``.ovpn`` file.
 
@@ -76,8 +77,8 @@ Procedure
   - ``ip a`` -- An IP address should be in the ``10.2.*.*`` range via a ``tun0`` interface.
   - ``ping -c 1 10.0.0.1`` -- You should be able to ping this IP address
 
-Trouble shooting
-~~~~~~~~~~~~~~~~
+Troubleshooting
+~~~~~~~~~~~~~~~
 
 Check the system logs by doing the following:
 
@@ -98,8 +99,8 @@ Packages
   $ apt install openvpn resolvconf-admin
 
   # RHEL
-  $ yum install epel-release
-  $ yum install openvpn
+  $ dnf install epel-release
+  $ dnf install openvpn
 
 
 Procedure
@@ -122,7 +123,7 @@ Procedure
 
 - Check connection:
 
-  - ``ip a`` -- An IP address should be in the ``10.*.*.*`` range via a ``tun0`` interface.
+  - ``ip a`` -- An IP address should be in the ``10.2.*.*`` range via a ``tun0`` interface.
   - ``ping -c 1 10.0.0.1`` -- You should be able to ping this IP address
 
 Troubleshooting
@@ -144,28 +145,28 @@ using sha256.
 Please send an email to support@osuosl.org with the subject line: ``OpenVPN Certificate renewal: <Name>``. We will send
 you an updated certificate which should fix the issue.
 
-Tunnelblick (OS X)
-------------------
+Tunnelblick (macOS)
+-------------------
 
-Tunnelblick is a free, open source gui for OpenVPN on OS X that allows for easy control of the OpenVPN client.
+Tunnelblick is a free, open source GUI for OpenVPN on macOS that allows for easy control of the OpenVPN client.
 
 Installation
 ~~~~~~~~~~~~
 Download and install Tunnelblick from the project's downloads_ page.
 
-Alternatively install the package using the Homebrew:
+Alternatively install the package using Homebrew:
 
 .. code-block:: bash
 
-    brew cask install tunnelblick
+    brew install --cask tunnelblick
 
 Configuration
 ~~~~~~~~~~~~~
-Tunnelblick uses a ``.ovpn`` file with your certificate and key to install a profile. If you would like to set up
-OpenVPN using Tunnelblick, please send an email to support@osuosl.org with the subject line:
+Tunnelblick uses a ``.ovpn`` file with your certificate and key embedded to install a profile. If you would like to
+set up OpenVPN using Tunnelblick, please send an email to support@osuosl.org with the subject line:
 ``OpenVPN .ovpn file: <Name>``. We will send you the file that you can easily use:
- 
-#.  Double click  the ``USER.ovpn`` file we provided to install the profile in Tunnelblick.
+
+#.  Double click the ``USER.ovpn`` file we provided to install the profile in Tunnelblick.
 
 #.  Open Tunnelblick and connect to the ``USER`` profile.
 
@@ -176,24 +177,20 @@ OpenVPN using Tunnelblick, please send an email to support@osuosl.org with the s
 .. _downloads: https://tunnelblick.net/downloads.html
 
 OpenVPN (Windows)
-------------------
+-----------------
 
-OpenVPN community edition for windows uses the ``.ovpn`` file we provided.
+OpenVPN community edition for Windows uses the ``.ovpn`` file we provided.
 
-#. Download window openvpn client from openvpn_community_downloads_ page. and install. Versions 2.5 and higher should
-   work fine. Earlier versions may also work.
-#. Create a folder in ``C:\Program Files\OpenVPN\config`` called **osuosl** and copy the .ovpn, .crt, and .key files
-   provided into the folder
-#. Edit the .ovpn file sections ca, cert, key. Should have full path e.g. replacing **yourname** with the filename part
-   of your crt and key files
+#. Download and install the Windows OpenVPN client from the openvpn_community_downloads_ page. Versions 2.6 and higher
+   should work fine.
+#. Launch **OpenVPN GUI** -- this creates an icon in the taskbar notification area.
+#. Right click the OpenVPN GUI icon and select **Import file...**, then select the ``.ovpn`` file we provided. The
+   certificates and key are embedded in the file, so no further editing is needed.
+#. Right click the OpenVPN GUI icon again and select **Connect**.
 
-.. code-block::
+.. note::
 
-  ca "C:\Program Files\OpenVPN\config\osuosl\ca.crt"         # Server certificate
-  cert "C:\Program Files\OpenVPN\config\osuosl\yourname.crt" # Client certificate
-  key "C:\Program Files\OpenVPN\config\osuosl\yourname.key"  # Client private key
-
-Once done with configs launch the ``C:\Program Files\OpenVPN\bin\openvpn-gui.exe``, this should create an icon on
-your task bar you can right click and see OSUOSL option for connection
+  If we provided your certificate and key as separate ``.crt`` and ``.key`` files instead of embedded in the ``.ovpn``
+  file, copy all of the files into the same folder (``%USERPROFILE%\OpenVPN\config``) so the client can find them.
 
 .. _openvpn_community_downloads: https://openvpn.net/community-downloads/
