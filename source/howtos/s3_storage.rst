@@ -3,8 +3,6 @@
 Using S3 Object Storage
 =======================
 
-.. contents::
-
 The OSL provides S3-compatible object storage backed by our Ceph cluster. Once
 we have created a bucket for your project and delivered your access keys, you
 can use any S3-compatible client to upload, download, and manage your data.
