@@ -1,0 +1,13 @@
+# Top-level dependencies only. The pinned lock file (requirements.txt) is
+# generated from this file with pip-compile:
+#
+#   pip install pip-tools
+#   pip-compile requirements.in
+#
+# Dependabot detects the pip-compile header in requirements.txt and uses a
+# full dependency resolution when proposing updates, so transitive pins
+# (docutils, pydantic_core, etc.) only move when the packages that depend
+# on them allow it.
+furo
+rstcheck
+Sphinx
