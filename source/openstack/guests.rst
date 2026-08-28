@@ -13,10 +13,10 @@ We are currently maintaining these images:
 
 .. csv-table::
    :file: ./csv/images.csv
-   :widths: 40, 15, 15, 15, 15, 15
+   :widths: 40, 15, 15, 15, 15
    :header-rows: 1
 
-.. note:: We currently maintain only ppc64le little-endian (LE) images for POWER8/9/10. IBM is focusing on LE, so we
+.. note:: We currently maintain only ppc64le little-endian (LE) images for POWER9/10. IBM is focusing on LE, so we
    provide limited support for a big-endian (BE) Debian Sid (unstable) image because other distributions have dropped
    BE.
 
