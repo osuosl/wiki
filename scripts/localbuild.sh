@@ -7,9 +7,10 @@
 DIR=`dirname $0`/../
 cd $DIR
 
-# Enable venv
-if [ ! -d venv ]; then
-    python3.11 -m venv venv
+# Enable venv (recreate it if missing or built with a different python)
+if [ ! -x venv/bin/python3.12 ]; then
+    rm -rf venv
+    python3.12 -m venv venv
 fi
 source venv/bin/activate
 
