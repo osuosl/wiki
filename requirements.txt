@@ -66,7 +66,7 @@ snowballstemmer==3.1.1
     # via sphinx
 soupsieve==2.9.2
     # via beautifulsoup4
-sphinx==9.0.4
+sphinx==9.1.0
     # via
     #   -r requirements.in
     #   furo
