@@ -3,14 +3,14 @@
 OpenStack Details
 =================
 
-These are notes on how the OSUOSL is setting up OpenStack (as of August 2026).
+These are notes on how the OSUOSL is setting up OpenStack (as of September 2026).
 
 Summary
 -------
 
 We use Chef as our configuration management tool of choice and have created an environment using the `osl-openstack`_
-cookbook. All nodes are running AlmaLinux 9, except the POWER nodes which are still on AlmaLinux 8. All storage for
-the cluster is powered via a `Ceph`_ cluster backed by a 10Gb network on x86 and AARCH64 and a 40Gb network on POWER.
+cookbook. All compute and controller nodes run AlmaLinux 9; the shared messaging tier runs AlmaLinux 10. All storage
+for the cluster is powered via a `Ceph`_ cluster backed by a 10Gb network on x86 and AARCH64 and a 40Gb network on POWER.
 
 .. _osl-openstack: https://github.com/osuosl-cookbooks/osl-openstack
 .. _Ceph: https://ceph.com/
@@ -86,7 +86,7 @@ Here is the current deployment of OpenStack we are using on all architectures:
 - Host Operating System
 
   - AlmaLinux 9
-  - The POWER nodes are still on AlmaLinux 8 and will be upgraded to 9 soon
+  - AlmaLinux 10 (messaging tier)
 
 - OpenStack
 
