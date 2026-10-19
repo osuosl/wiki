@@ -1,0 +1,13 @@
+# Labels that osuosl/docs links to through intersphinx (:ref:`public:<label>`).
+# check_style.py --public fails if one of these stops existing, because the
+# docs build (-W) would break. Update this list in the same PR as the docs
+# change that adds or removes such a reference:
+#   grep -rhoE 'public:[a-z0-9-]+' ~/git/osl/docs/source | sort -u
+openstack
+openstack-guests
+vpn-config
+ganeti-public
+ganeti-adding-rapi-users
+ganeti-common-commands
+ganeti-how-it-works
+cluster-commands

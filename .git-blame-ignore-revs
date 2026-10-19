@@ -1,0 +1,20 @@
+# Bulk formatting and rename commits that changed many pages without changing
+# what they say. `git blame` skips them when configured with
+#   git config blame.ignoreRevsFile .git-blame-ignore-revs
+# and the osl-docs-audit skill's content_dates.py skips them when it works out
+# when a page's content last changed. Add the commit of every mechanical sweep.
+
+# 2015-03-12 Change header styles
+dd7b5833dea95c00de1a8a7ed86f3b3e42edbcad
+# 2020-07-08 Fix header separator
+b31b2e409b3b2100c90fe0a3e6c99363cc8e08b4
+# 2021-08-30 Wrap lines at 120 chars
+3189d67ff2cf01e19d9e331c99df996b6a9be36d
+# 2023-01-05 Updated Gsoc terminology
+03a1b9a14a43ba6285c0444cf0072e857641bf04
+# 2023-01-18 Fix syntax
+78c9f9974d234be01aff052243f4e8ce2883f41a
+# 2023-03-09 Additional fixes for making automated linting work
+60c79e2a4f795e6ee92febfc513544e15dd5c215
+# 2026-08-19 theme: switch from sphinx-rtd-theme to Furo, with OSL branding
+aa1dd9a2176596b372d6d4f53887c724c39a91df
