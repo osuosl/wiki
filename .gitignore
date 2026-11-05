@@ -5,3 +5,6 @@ venv/
 
 # Python
 *.pyc
+
+# Local Claude Code files; the documentation skills live in osuosl/docs
+.claude/

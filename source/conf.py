@@ -109,6 +109,11 @@ exclude_patterns = []
 # pinning a single style here breaks syntax highlighting in dark mode.
 #pygments_style = 'sphinx'
 
+# Bare ``::`` blocks hold shell commands without a prompt; render them as
+# plain text instead of guessing Python. Name a language with
+# ``.. code-block:: <lang>`` when highlighting helps.
+highlight_language = 'none'
+
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
