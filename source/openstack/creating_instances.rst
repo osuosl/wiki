@@ -50,6 +50,48 @@ instance. Click "Next" to proceed to the "Networks" tab.
 
 .. image:: /_static/images/openstack-instance1-flavor.png
 
+.. _flavor-storage-types:
+
+Local storage and Ceph flavors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Each flavor puts the instance's disk either on our Ceph storage or on fast local
+NVMe storage on the compute node. These flavors use local storage:
+
+* x86: flavors with ``local`` in the name, such as ``m2.local.8c8m100d``
+* POWER: every POWER10 flavor, and the POWER9 ``p9.nvme`` flavors
+* AARCH64: none yet
+
+A few projects have flavors of their own that don't follow these names. If yours
+does, ask us which kind it is.
+
+The two trade off differently. Ceph keeps three copies of every disk across many
+servers, so we can move your instance between compute nodes, usually without
+downtime. Local storage gives much faster disk I/O, but the disk lives on a
+single compute node, so maintenance on that node usually means some downtime for
+your instance.
+
+.. warning::
+
+   Don't resize an instance between a local storage flavor and a Ceph flavor.
+   OpenStack doesn't copy the disk, so the instance boots with a fresh disk
+   built from its image. Email support@osuosl.org and we'll move it for you
+   instead.
+
+Resizing between flavors of the same kind works as usual. To check which kind
+your instance uses, look at the Flavor column on the dashboard's Instances page,
+or run this with the OpenStack command-line client::
+
+  openstack server show <NAME> -c flavor
+
+Instances that boot from a volume aren't affected, since their disk is a
+separate volume that stays with the instance whatever flavor it uses.
+
+If a resize has already left your instance with a fresh disk, don't confirm the
+resize, and don't delete or rebuild the instance. Email support@osuosl.org right
+away: we can often still recover the old disk, especially before the resize is
+confirmed.
+
 Selecting a Network
 -------------------
 
