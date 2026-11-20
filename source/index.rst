@@ -3,8 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. _index:
+
 Welcome to the OSL Wiki!
 ========================
+
+Documentation for people who use Open Source Lab services. See
+:ref:`contributing` to suggest a change.
 
 .. toctree::
     :titlesonly:
@@ -19,3 +24,4 @@ Welcome to the OSL Wiki!
    :hidden:
 
    gsoc/index
+   contributing
